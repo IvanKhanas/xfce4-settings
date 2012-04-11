@@ -1,0 +1,24 @@
+#!/bin/sh -eu
+# Try to adjust keyboard according with Xfce settings.
+
+get_xfce_xkb_conf()
+{
+	xfconf-query -c keyboard-layout -p "/Default/$1" 2>/dev/null
+}
+
+# Is it configured to use xfce layout settings?
+if [ "$(get_xfce_xkb_conf XkbDisable)" = false ]; then
+	model="$(get_xfce_xkb_conf XkbModel)"
+	layout="$(get_xfce_xkb_conf XkbLayout)"
+	variant="$(get_xfce_xkb_conf XkbVariant)"
+	option="$(get_xfce_xkb_conf XkbOption)"
+
+	[ -x "$option" ] || setxkbmap -option
+	setxkbmap ${model:+-model "$model"} \
+		${layout:+-layout "$layout"} \
+		${variant:+-variant "$variant"} \
+		${option:+-option "$option"}
+else
+	# Use system settings
+	/etc/X11/xinit/fixkeyboard
+fi

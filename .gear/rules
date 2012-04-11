@@ -1,0 +1,4 @@
+copy?: *.patch
+copy: xfce4-fixkeyboard
+tar: @name@-@version@:.
+diff: @name@-@version@:. @name@
