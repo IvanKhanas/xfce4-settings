@@ -16,6 +16,9 @@ BuildRequires(pre): rpm-build-licenses
 
 BuildPreReq: rpm-build-xfce4 xfce4-dev-tools > 4.5 libxfce4ui-devel libexo-devel >= 0.6.0 libxfconf-devel libgarcon-devel >= 0.1.10
 BuildRequires: intltool libICE-devel libXcursor-devel libXi-devel libXrandr-devel libglade-devel libnotify-devel libwnck-devel libxklavier-devel
+
+Requires: libgarcon-settings-manager-menu
+
 Obsoletes: xfce4-mcs-manager xfce4-mcs-plugins
 
 %description
@@ -58,6 +61,7 @@ install -pDm0755 %SOURCE1 %buildroot%_bindir/xfce4-fixkeyboard
 
 %changelog
 * Mon Apr 02 2012 Mikhail Efremov <sem@altlinux.org> 4.9.4-alt1
+- Require libgarcon-settings-manager-menu.
 - Updated to 4.9.4.
 
 * Mon Feb 13 2012 Mikhail Efremov <sem@altlinux.org> 4.9.2-alt1
