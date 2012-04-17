@@ -1,9 +1,0 @@
-object 4c9d33c0252069f960fc90916d632db0d88f17eb
-type commit
-tag xfce4-settings-4.9.4
-tagger Nick Schermer <nick@xfce.org> 1333274353 +0200
-
-4.9.4
-=====
-- Fix compilation without device property support (bug #8611).
-- Translation updates: Catalan (Valencian), Korean, Turkish.

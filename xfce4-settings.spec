@@ -1,5 +1,5 @@
 Name: xfce4-settings
-Version: 4.9.4
+Version: 4.9.5
 Release: alt1
 Summary: Settings Manager for Xfce
 Summary (ru_RU.UTF-8): Менеджер настроек Xfce
@@ -60,6 +60,9 @@ install -pDm0755 %SOURCE1 %buildroot%_bindir/xfce4-fixkeyboard
 %_desktopdir/*.desktop
 
 %changelog
+* Tue Apr 17 2012 Mikhail Efremov <sem@altlinux.org> 4.9.5-alt1
+- Updated to 4.9.5.
+
 * Mon Apr 02 2012 Mikhail Efremov <sem@altlinux.org> 4.9.4-alt1
 - Require libgarcon-settings-manager-menu.
 - Updated to 4.9.4.
