@@ -1,0 +1,12 @@
+object 728c2dc255b2ca30ee88c7b58063398fc469e9b6
+type commit
+tag xfce4-settings-4.10.0
+tagger Nick Schermer <nick@xfce.org> 1335646197 +0200
+
+4.10.0
+======
+- Use the more generic application-x-executable icon for MIME editor.
+- Xsettings ix an alignment problem seen on PPC.
+- Translation updates: English (United Kingdom), Spanish (Castilian),
+  French, Galician, Croatian, Hungarian, Japanese, Kazakh, Korean,
+  Lithuanian, Dutch (Flemish), Portuguese, Romanian, Chinese (China).

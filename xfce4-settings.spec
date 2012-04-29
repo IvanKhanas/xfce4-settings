@@ -1,5 +1,5 @@
 Name: xfce4-settings
-Version: 4.9.5
+Version: 4.10.0
 Release: alt1
 Summary: Settings Manager for Xfce
 Summary (ru_RU.UTF-8): Менеджер настроек Xfce
@@ -8,6 +8,8 @@ License: %gpl2plus
 Url: http://www.xfce.org/
 Group: Graphical desktop/XFce
 Packager: XFCE Team <xfce@packages.altlinux.org>
+
+# Upstream: git://git.xfce.org/xfce/xfce4-settings
 Source: %name-%version.tar
 Source1: xfce4-fixkeyboard
 Patch: %name-%version-%release.patch
@@ -60,6 +62,9 @@ install -pDm0755 %SOURCE1 %buildroot%_bindir/xfce4-fixkeyboard
 %_desktopdir/*.desktop
 
 %changelog
+* Sun Apr 29 2012 Mikhail Efremov <sem@altlinux.org> 4.10.0-alt1
+- Updated to 4.10.0.
+
 * Tue Apr 17 2012 Mikhail Efremov <sem@altlinux.org> 4.9.5-alt1
 - Updated to 4.9.5.
 
