@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfce 4-settings 4.5.90\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-04-12 22:46+0200\n"
-"PO-Revision-Date: 2012-04-11 22:23+0900\n"
+"POT-Creation-Date: 2012-04-21 13:54+0900\n"
+"PO-Revision-Date: 2012-04-25 20:36+0900\n"
 "Last-Translator: Masato Hashimoto <cabezon.hashimoto@gmail.com>\n"
 "Language-Team: Japanese <xfce-users-jp@ml.fdiary.net>\n"
 "Language: ja\n"
@@ -951,11 +951,11 @@ msgstr "該当なし"
 
 #: ../dialogs/mime-settings/xfce-mime-chooser.c:573
 msgid "Recommended Applications"
-msgstr "おすすめのアプリケーション"
+msgstr "推奨アプリケーション"
 
 #: ../dialogs/mime-settings/xfce-mime-chooser.c:591
 msgid "Other Applications"
-msgstr "その他のアプリケーション"
+msgstr "他のアプリケーション"
 
 #: ../dialogs/mime-settings/xfce-mime-chooser.c:611
 #, c-format
@@ -985,7 +985,7 @@ msgstr "フィルター(_F):"
 
 #: ../dialogs/mime-settings/xfce-mime-window.c:211
 msgid "Clear filter"
-msgstr "フィルターをクリアーします"
+msgstr "フィルターをクリアします"
 
 #: ../dialogs/mime-settings/xfce-mime-window.c:257
 msgid "MIME Type"
@@ -1141,7 +1141,7 @@ msgstr "選択したデバイスの加速度と感度の設定をデフォルト
 
 #: ../dialogs/mouse-settings/mouse-dialog.glade.h:16
 msgid "Pointer Speed"
-msgstr "ポインタ速度"
+msgstr "ポインター速度"
 
 #: ../dialogs/mouse-settings/mouse-dialog.glade.h:17
 msgid "B_uttons and Feedback"
