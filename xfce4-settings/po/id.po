@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfce4-settings\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-04-12 22:46+0200\n"
+"POT-Creation-Date: 2012-11-20 17:53+0100\n"
 "PO-Revision-Date: 2012-02-18 11:31+0700\n"
 "Last-Translator: Andhika Padmawan <andhika.padmawan@gmail.com>\n"
 "Language-Team: Indonesian <translation-team-id@lists.sourceforge.net>\n"
@@ -51,11 +51,13 @@ msgid "No AT-SPI provider was found on your system"
 msgstr "Tak ada penyedia AT-SPI yang ditemukan pada sistem anda"
 
 #: ../dialogs/accessibility-settings/accessibility-dialog.glade.h:8
-msgid "_Assistive Technologies"
+#, fuzzy
+msgid "Assistive _Technologies"
 msgstr "_Teknologi Pemandu"
 
 #: ../dialogs/accessibility-settings/accessibility-dialog.glade.h:9
-msgid "Use _sticky keys"
+#, fuzzy
+msgid "_Use sticky keys"
 msgstr "Gunakan tombol _lekat"
 
 #: ../dialogs/accessibility-settings/accessibility-dialog.glade.h:10
@@ -81,7 +83,8 @@ msgstr ""
 "tetap terkunci pada kondisi ditekan sampai ditekan lagi"
 
 #: ../dialogs/accessibility-settings/accessibility-dialog.glade.h:13
-msgid "Disable sticky keys if _two keys are pressed"
+#, fuzzy
+msgid "Disable sticky keys if two keys are _pressed"
 msgstr "Non aktifkan tombol lekat jika _dua tombol ditekan"
 
 #: ../dialogs/accessibility-settings/accessibility-dialog.glade.h:14
@@ -174,11 +177,13 @@ msgid "_Acceleration delay:"
 msgstr "_Jeda Akselerasi:"
 
 #: ../dialogs/accessibility-settings/accessibility-dialog.glade.h:31
-msgid "Acceleration _time:"
+#, fuzzy
+msgid "Acceleration t_ime:"
 msgstr "_Waktu akselerasi:"
 
 #: ../dialogs/accessibility-settings/accessibility-dialog.glade.h:32
-msgid "Maximum _speed:"
+#, fuzzy
+msgid "Ma_ximum speed:"
 msgstr "Kecepatan _maksimum:"
 
 #: ../dialogs/accessibility-settings/accessibility-dialog.glade.h:33
@@ -227,21 +232,21 @@ msgstr "_Tetikus"
 
 #: ../dialogs/accessibility-settings/main.c:43
 #: ../dialogs/appearance-settings/main.c:94
-#: ../dialogs/display-settings/main.c:102
+#: ../dialogs/display-settings/main.c:136
 #: ../dialogs/keyboard-settings/main.c:39 ../dialogs/mouse-settings/main.c:79
 msgid "Settings manager socket"
 msgstr "Pengaturan soket manajer"
 
 #: ../dialogs/accessibility-settings/main.c:43
 #: ../dialogs/appearance-settings/main.c:94
-#: ../dialogs/display-settings/main.c:102
+#: ../dialogs/display-settings/main.c:136
 #: ../dialogs/keyboard-settings/main.c:39 ../dialogs/mouse-settings/main.c:79
 msgid "SOCKET ID"
 msgstr "ID SOKET"
 
 #: ../dialogs/accessibility-settings/main.c:44
 #: ../dialogs/appearance-settings/main.c:95
-#: ../dialogs/display-settings/main.c:103
+#: ../dialogs/display-settings/main.c:137
 #: ../dialogs/keyboard-settings/main.c:40 ../dialogs/mime-settings/main.c:40
 #: ../dialogs/mouse-settings/main.c:80 ../xfce4-settings-editor/main.c:43
 #: ../xfsettingsd/main.c:77 ../xfce4-settings-manager/main.c:39
@@ -250,29 +255,29 @@ msgstr "Informasi versi"
 
 #: ../dialogs/accessibility-settings/main.c:192
 #: ../dialogs/appearance-settings/main.c:966
-#: ../dialogs/display-settings/main.c:1043
+#: ../dialogs/display-settings/main.c:1926
 #: ../dialogs/keyboard-settings/main.c:76 ../dialogs/mime-settings/main.c:62
-#: ../dialogs/mouse-settings/main.c:1526 ../xfce4-settings-editor/main.c:63
-#: ../xfsettingsd/main.c:173 ../xfce4-settings-manager/main.c:60
+#: ../dialogs/mouse-settings/main.c:1597 ../xfce4-settings-editor/main.c:63
+#: ../xfsettingsd/main.c:187 ../xfce4-settings-manager/main.c:60
 #, c-format
 msgid "Type '%s --help' for usage."
 msgstr "Ketikkan '%s --help' untuk bantuan."
 
 #: ../dialogs/accessibility-settings/main.c:211
 #: ../dialogs/appearance-settings/main.c:985
-#: ../dialogs/display-settings/main.c:1062
+#: ../dialogs/display-settings/main.c:1945
 #: ../dialogs/keyboard-settings/main.c:92 ../dialogs/mime-settings/main.c:81
-#: ../dialogs/mouse-settings/main.c:1545 ../xfce4-settings-editor/main.c:82
-#: ../xfsettingsd/main.c:189 ../xfce4-settings-manager/main.c:76
+#: ../dialogs/mouse-settings/main.c:1616 ../xfce4-settings-editor/main.c:82
+#: ../xfsettingsd/main.c:203 ../xfce4-settings-manager/main.c:76
 msgid "The Xfce development team. All rights reserved."
 msgstr "Tim pengembang Xfce. Hak cipta dilindungi undang-undang."
 
 #: ../dialogs/accessibility-settings/main.c:212
 #: ../dialogs/appearance-settings/main.c:986
-#: ../dialogs/display-settings/main.c:1063
+#: ../dialogs/display-settings/main.c:1946
 #: ../dialogs/keyboard-settings/main.c:93 ../dialogs/mime-settings/main.c:82
-#: ../dialogs/mouse-settings/main.c:1546 ../xfce4-settings-editor/main.c:83
-#: ../xfsettingsd/main.c:190 ../xfce4-settings-manager/main.c:77
+#: ../dialogs/mouse-settings/main.c:1617 ../xfce4-settings-editor/main.c:83
+#: ../xfsettingsd/main.c:204 ../xfce4-settings-manager/main.c:77
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "Silakan laporkan kutu ke <%s>."
@@ -282,59 +287,24 @@ msgid "Improve keyboard and mouse accessibility"
 msgstr "Tingkatkan aksesibilitas papan ketik dan tetikus"
 
 #: ../dialogs/appearance-settings/appearance-dialog.glade.h:1
-#: ../dialogs/appearance-settings/main.c:852
-#: ../dialogs/display-settings/main.c:79
-msgid "None"
-msgstr "Tak Ada"
-
-#: ../dialogs/appearance-settings/appearance-dialog.glade.h:2
-msgid "Slight"
-msgstr "Sedikit"
-
-#: ../dialogs/appearance-settings/appearance-dialog.glade.h:3
-msgid "Medium"
-msgstr "Sedang"
-
-#: ../dialogs/appearance-settings/appearance-dialog.glade.h:4
-msgid "Full"
-msgstr "Penuh"
-
-#: ../dialogs/appearance-settings/appearance-dialog.glade.h:5
-msgid "Icons"
-msgstr "Ikon"
-
-#: ../dialogs/appearance-settings/appearance-dialog.glade.h:6
-msgid "Text"
-msgstr "Teks"
-
-#: ../dialogs/appearance-settings/appearance-dialog.glade.h:7
-#: ../dialogs/display-settings/main.c:82
-msgid "Both"
-msgstr "Keduanya"
-
-#: ../dialogs/appearance-settings/appearance-dialog.glade.h:8
-msgid "Both Horizontal"
-msgstr "Keduanya Horisontal"
-
-#: ../dialogs/appearance-settings/appearance-dialog.glade.h:9
 #: ../dialogs/appearance-settings/xfce-ui-settings.desktop.in.h:1
 msgid "Appearance"
 msgstr "Tampilan"
 
-#: ../dialogs/appearance-settings/appearance-dialog.glade.h:10
+#: ../dialogs/appearance-settings/appearance-dialog.glade.h:2
 #: ../dialogs/appearance-settings/xfce-ui-settings.desktop.in.h:2
 msgid "Customize the look of your desktop"
 msgstr "Sesuaikan tampilan destop anda"
 
-#: ../dialogs/appearance-settings/appearance-dialog.glade.h:11
+#: ../dialogs/appearance-settings/appearance-dialog.glade.h:3
 msgid "St_yle"
 msgstr "Ga_ya"
 
-#: ../dialogs/appearance-settings/appearance-dialog.glade.h:12
+#: ../dialogs/appearance-settings/appearance-dialog.glade.h:4
 msgid "_Icons"
 msgstr "_Ikon"
 
-#: ../dialogs/appearance-settings/appearance-dialog.glade.h:13
+#: ../dialogs/appearance-settings/appearance-dialog.glade.h:5
 msgid ""
 "This font will be used as the default font used when drawing user interface "
 "text"
@@ -342,15 +312,15 @@ msgstr ""
 "Fonta ini akan digunakan sebagai fonta standar yang digunakan ketika "
 "menggambar teks antarmuka pengguna"
 
-#: ../dialogs/appearance-settings/appearance-dialog.glade.h:14
+#: ../dialogs/appearance-settings/appearance-dialog.glade.h:6
 msgid "Select a default font"
 msgstr "Pilih fonta standar"
 
-#: ../dialogs/appearance-settings/appearance-dialog.glade.h:15
+#: ../dialogs/appearance-settings/appearance-dialog.glade.h:7
 msgid "Default Fon_t"
 msgstr "Fonta _Standar"
 
-#: ../dialogs/appearance-settings/appearance-dialog.glade.h:16
+#: ../dialogs/appearance-settings/appearance-dialog.glade.h:8
 msgid ""
 "Many fonts contain information that provides extra hints as to how best draw "
 "the font; pick whichever looks best according to personal preference"
@@ -359,7 +329,7 @@ msgstr ""
 "bagaimana cara terbaik menggambar fonta; pilih apa saja yang terlihat paling "
 "bagus menurut selera pribadi"
 
-#: ../dialogs/appearance-settings/appearance-dialog.glade.h:17
+#: ../dialogs/appearance-settings/appearance-dialog.glade.h:9
 msgid ""
 "Font quality on a TFT or LCD screen can be greatly improved by choosing the "
 "correct sub-pixel order of the screen"
@@ -367,76 +337,78 @@ msgstr ""
 "Kualitas fonta pada layar TFT atau LCD dapat ditingkatkan dengan pesat "
 "dengan memilih urutan sub-piksel layar yang benar"
 
-#: ../dialogs/appearance-settings/appearance-dialog.glade.h:18
+#: ../dialogs/appearance-settings/appearance-dialog.glade.h:10
 msgid "Sub-_pixel order:"
 msgstr "Urutan sub-_piksel:"
 
-#: ../dialogs/appearance-settings/appearance-dialog.glade.h:19
-msgid "_Hinting:"
+#: ../dialogs/appearance-settings/appearance-dialog.glade.h:11
+#, fuzzy
+msgid "Hintin_g:"
 msgstr "_Petunjuk:"
 
-#: ../dialogs/appearance-settings/appearance-dialog.glade.h:20
-msgid "Enable _anti-aliasing"
+#: ../dialogs/appearance-settings/appearance-dialog.glade.h:12
+#, fuzzy
+msgid "_Enable anti-aliasing"
 msgstr "Aktifkan _anti-alias"
 
-#: ../dialogs/appearance-settings/appearance-dialog.glade.h:21
+#: ../dialogs/appearance-settings/appearance-dialog.glade.h:13
 msgid ""
 "Anti-aliasing, or font smoothing, can improve the look of text on the screen"
 msgstr ""
 "Anti-alias, atau penghalus fonta, dapat meningkatkan tampilan teks di layar"
 
-#: ../dialogs/appearance-settings/appearance-dialog.glade.h:22
+#: ../dialogs/appearance-settings/appearance-dialog.glade.h:14
 msgid "Rendering"
 msgstr "Sesuaian"
 
-#: ../dialogs/appearance-settings/appearance-dialog.glade.h:23
+#: ../dialogs/appearance-settings/appearance-dialog.glade.h:15
 msgid "Custom _DPI setting:"
 msgstr "Pengaturan _DPI suai:"
 
-#: ../dialogs/appearance-settings/appearance-dialog.glade.h:24
+#: ../dialogs/appearance-settings/appearance-dialog.glade.h:16
 msgid ""
 "Override the detected monitor resolution if fonts look too large or too small"
 msgstr ""
 "Timpa resolusi monitor terdeteksi jika fonta tampak terlalu besar atau "
 "terlalu kecil"
 
-#: ../dialogs/appearance-settings/appearance-dialog.glade.h:25
+#: ../dialogs/appearance-settings/appearance-dialog.glade.h:17
 msgid "DPI"
 msgstr "DPI"
 
-#: ../dialogs/appearance-settings/appearance-dialog.glade.h:26
+#: ../dialogs/appearance-settings/appearance-dialog.glade.h:18
 msgid "_Fonts"
 msgstr "_Fonta"
 
-#: ../dialogs/appearance-settings/appearance-dialog.glade.h:27
+#: ../dialogs/appearance-settings/appearance-dialog.glade.h:19
 msgid "Specify what should be displayed in toolbar items"
 msgstr "Tentukan apa yang harus ditampilkan pada item batang alat"
 
-#: ../dialogs/appearance-settings/appearance-dialog.glade.h:28
+#: ../dialogs/appearance-settings/appearance-dialog.glade.h:20
 msgid "_Toolbar Style"
 msgstr "_Gaya Batang Alat"
 
-#: ../dialogs/appearance-settings/appearance-dialog.glade.h:29
+#: ../dialogs/appearance-settings/appearance-dialog.glade.h:21
 msgid "Show images on _buttons"
 msgstr "Tampilkan citra di _tombol"
 
-#: ../dialogs/appearance-settings/appearance-dialog.glade.h:30
+#: ../dialogs/appearance-settings/appearance-dialog.glade.h:22
 msgid "Specify whether icons should be displayed next to text in buttons"
 msgstr "Tentukan apakah ikon harus ditampilkan di sebelah teks dalam tombol"
 
-#: ../dialogs/appearance-settings/appearance-dialog.glade.h:31
+#: ../dialogs/appearance-settings/appearance-dialog.glade.h:23
 msgid "Show images in _menus"
 msgstr "Tampilkan citra di _menu"
 
-#: ../dialogs/appearance-settings/appearance-dialog.glade.h:32
+#: ../dialogs/appearance-settings/appearance-dialog.glade.h:24
 msgid "Specify whether icons should be displayed next to items in menus"
 msgstr "Tentukan apakah ikon harus ditampilkan di sebelah item dalam menu"
 
-#: ../dialogs/appearance-settings/appearance-dialog.glade.h:33
+#: ../dialogs/appearance-settings/appearance-dialog.glade.h:25
 msgid "Enable e_ditable accelerators"
 msgstr "Aktifkan akselerator _dapat disunting"
 
-#: ../dialogs/appearance-settings/appearance-dialog.glade.h:34
+#: ../dialogs/appearance-settings/appearance-dialog.glade.h:26
 msgid ""
 "If selected, keyboard shortcuts for menu items can be changed by hovering "
 "the mouse over the menu item and pressing the new key combination for the "
@@ -446,25 +418,26 @@ msgstr ""
 "cara mendekatkan tetikus di item menu lalu menekan kombinasi tombol baru "
 "untuk jalan pintas"
 
-#: ../dialogs/appearance-settings/appearance-dialog.glade.h:35
+#: ../dialogs/appearance-settings/appearance-dialog.glade.h:27
 msgid "Menus and Buttons"
 msgstr "Menu dan Tombol"
 
-#: ../dialogs/appearance-settings/appearance-dialog.glade.h:36
+#: ../dialogs/appearance-settings/appearance-dialog.glade.h:28
 msgid "Enable _event sounds"
 msgstr "Aktifkan _suara peristiwa"
 
-#: ../dialogs/appearance-settings/appearance-dialog.glade.h:37
+#: ../dialogs/appearance-settings/appearance-dialog.glade.h:29
 msgid "Enable or disable event sounds globally (requires \"Canberra\" support)"
 msgstr ""
 "Aktifkan atau nonaktifkan suara peristiwa secara global (memerlukan dukungan "
 "\"Canberra\")"
 
-#: ../dialogs/appearance-settings/appearance-dialog.glade.h:38
-msgid "Enable i_nput feedback sounds"
+#: ../dialogs/appearance-settings/appearance-dialog.glade.h:30
+#, fuzzy
+msgid "Enable input feedbac_k sounds"
 msgstr "Aktifkan s_uara umpan balik masukan"
 
-#: ../dialogs/appearance-settings/appearance-dialog.glade.h:39
+#: ../dialogs/appearance-settings/appearance-dialog.glade.h:31
 msgid ""
 "Specify whether mouse clicks and other user input will cause event sounds to "
 "play"
@@ -472,13 +445,50 @@ msgstr ""
 "Tentukan apakah klik tetikus dan masukan pengguna lainnya akan menyebabkan "
 "pemutaran suara peristiwa"
 
-#: ../dialogs/appearance-settings/appearance-dialog.glade.h:40
+#: ../dialogs/appearance-settings/appearance-dialog.glade.h:32
 msgid "Event sounds"
 msgstr "Suara peristiwa"
 
+#: ../dialogs/appearance-settings/appearance-dialog.glade.h:33
+#, fuzzy
+msgid "Setti_ngs"
+msgstr "Pengaturan"
+
+#: ../dialogs/appearance-settings/appearance-dialog.glade.h:34
+#: ../dialogs/appearance-settings/main.c:852
+#: ../dialogs/display-settings/main.c:102
+#: ../dialogs/display-settings/main.c:113
+msgid "None"
+msgstr "Tak Ada"
+
+#: ../dialogs/appearance-settings/appearance-dialog.glade.h:35
+msgid "Slight"
+msgstr "Sedikit"
+
+#: ../dialogs/appearance-settings/appearance-dialog.glade.h:36
+msgid "Medium"
+msgstr "Sedang"
+
+#: ../dialogs/appearance-settings/appearance-dialog.glade.h:37
+msgid "Full"
+msgstr "Penuh"
+
+#: ../dialogs/appearance-settings/appearance-dialog.glade.h:38
+msgid "Icons"
+msgstr "Ikon"
+
+#: ../dialogs/appearance-settings/appearance-dialog.glade.h:39
+msgid "Text"
+msgstr "Teks"
+
+#: ../dialogs/appearance-settings/appearance-dialog.glade.h:40
+#: ../dialogs/display-settings/main.c:116
+msgid "Both"
+msgstr "Keduanya"
+
 #: ../dialogs/appearance-settings/appearance-dialog.glade.h:41
-msgid "_Settings"
-msgstr "_Pengaturan"
+msgid "Both Horizontal"
+msgstr "Keduanya Horisontal"
 
 #: ../dialogs/appearance-settings/main.c:733
 #, c-format
@@ -527,24 +537,24 @@ msgid "Confirmation"
 msgstr "Konfirmasi"
 
 #: ../dialogs/display-settings/confirmation-dialog.glade.h:2
+msgid "Keep this configuration"
+msgstr "Simpan konfigurasi ini"
+
+#: ../dialogs/display-settings/confirmation-dialog.glade.h:3
+msgid "Restore the previous configuration"
+msgstr "Kembalikan konfigurasi sebelumnya"
+
+#: ../dialogs/display-settings/confirmation-dialog.glade.h:4
 msgid "<big><b>Would you like to keep this configuration?</b></big>"
 msgstr "<big><b>Apakah anda ingin menyimpan konfigurasi ini?</b></big>"
 
-#: ../dialogs/display-settings/confirmation-dialog.glade.h:3
+#: ../dialogs/display-settings/confirmation-dialog.glade.h:5
 msgid ""
 "The previous configuration will be restored in 10 seconds if you do not "
 "reply to this question."
 msgstr ""
 "Konfigurasi sebelumnya akan dikembalikan dalam waktu 10 detik jika anda "
 "tidak ingin menjawab pertanyaan ini"
-
-#: ../dialogs/display-settings/confirmation-dialog.glade.h:4
-msgid "Keep this configuration"
-msgstr "Simpan konfigurasi ini"
-
-#: ../dialogs/display-settings/confirmation-dialog.glade.h:5
-msgid "Restore the previous configuration"
-msgstr "Kembalikan konfigurasi sebelumnya"
 
 #: ../dialogs/display-settings/display-dialog.glade.h:1
 #: ../dialogs/display-settings/xfce-display-settings.desktop.in.h:1
@@ -557,70 +567,123 @@ msgid "Configure screen settings and layout"
 msgstr "Atur pengaturan layar dan tata letak"
 
 #: ../dialogs/display-settings/display-dialog.glade.h:3
-msgid "_Use this output"
-msgstr "_Gunakan keluaran ini"
-
-#: ../dialogs/display-settings/display-dialog.glade.h:4
 msgid "Ref_lection:"
 msgstr "Ref_leksi:"
 
-#: ../dialogs/display-settings/display-dialog.glade.h:5
+#: ../dialogs/display-settings/display-dialog.glade.h:4
 msgid "Ro_tation:"
 msgstr "Ro_tasi:"
 
-#: ../dialogs/display-settings/display-dialog.glade.h:6
+#: ../dialogs/display-settings/display-dialog.glade.h:5
 msgid "Refresh _rate:"
 msgstr "Kecepatan pen_yegaran:"
 
-#: ../dialogs/display-settings/display-dialog.glade.h:7
+#: ../dialogs/display-settings/display-dialog.glade.h:6
 msgid "R_esolution:"
 msgstr "R_esolusi"
 
+#: ../dialogs/display-settings/display-dialog.glade.h:7
+#, fuzzy
+msgid "P_osition:"
+msgstr "_Rotasi:"
+
+#: ../dialogs/display-settings/display-dialog.glade.h:8
+msgid "_Use this output"
+msgstr "_Gunakan keluaran ini"
+
+#: ../dialogs/display-settings/display-dialog.glade.h:9
+msgid "_Mirror displays"
+msgstr ""
+
+#: ../dialogs/display-settings/display-dialog.glade.h:10
+msgid "Configure _new displays when connected"
+msgstr ""
+
+#: ../dialogs/display-settings/display-dialog.glade.h:11
+msgid ""
+"Automatically show the \"minimal dialog\" to quickly configure newly "
+"connected displays."
+msgstr ""
+
 #: ../dialogs/display-settings/minimal-display-dialog.glade.h:1
-msgid "Display settings"
-msgstr "Pengaturan tampilan"
+#, fuzzy
+msgid "Displays"
+msgstr "Tampilan"
 
 #: ../dialogs/display-settings/minimal-display-dialog.glade.h:2
-msgid "Several displays are available. Use:\n"
-msgstr "Beberapa tampilan juga tersedia. Gunakan:\n"
+#, fuzzy
+msgid "Only Display 1"
+msgstr "Tampilan"
+
+#: ../dialogs/display-settings/minimal-display-dialog.glade.h:3
+#, fuzzy
+msgid "Mirror Displays"
+msgstr "Tampilan"
 
 #: ../dialogs/display-settings/minimal-display-dialog.glade.h:4
-msgid "Both displays cloned"
-msgstr "Kedua tampilan dikloning"
+msgid "Extend to the right"
+msgstr ""
 
 #: ../dialogs/display-settings/minimal-display-dialog.glade.h:5
-msgid "Use both displays to show the same contents"
-msgstr "Gunakan kedua tampilan untuk menampilkan isi yang sama"
+#, fuzzy
+msgid "Only Display 2"
+msgstr "Tampilan"
 
-#: ../dialogs/display-settings/main.c:68
-msgid "Normal"
-msgstr "Normal"
+#: ../dialogs/display-settings/minimal-display-dialog.glade.h:6
+msgid "Advanced"
+msgstr ""
 
-#: ../dialogs/display-settings/main.c:69
+#: ../dialogs/display-settings/minimal-display-dialog.glade.h:7
+msgid "radiobutton"
+msgstr ""
+
+#: ../dialogs/display-settings/main.c:90
+msgid "Same as"
+msgstr ""
+
+#: ../dialogs/display-settings/main.c:91
+msgid "Above"
+msgstr ""
+
+#: ../dialogs/display-settings/main.c:92
+msgid "Below"
+msgstr ""
+
+#: ../dialogs/display-settings/main.c:93
+#, fuzzy
+msgid "Right of"
+msgstr "Kanan"
+
+#: ../dialogs/display-settings/main.c:94
+#, fuzzy
+msgid "Left of"
+msgstr "Kiri"
+
+#: ../dialogs/display-settings/main.c:103
 msgid "Left"
 msgstr "Kiri"
 
-#: ../dialogs/display-settings/main.c:70
+#: ../dialogs/display-settings/main.c:104
 msgid "Inverted"
 msgstr "Terbalik"
 
-#: ../dialogs/display-settings/main.c:71
+#: ../dialogs/display-settings/main.c:105
 msgid "Right"
 msgstr "Kanan"
 
-#: ../dialogs/display-settings/main.c:80
+#: ../dialogs/display-settings/main.c:114
 msgid "Horizontal"
 msgstr "Horizontal"
 
-#: ../dialogs/display-settings/main.c:81
+#: ../dialogs/display-settings/main.c:115
 msgid "Vertical"
 msgstr "Vertikal"
 
-#: ../dialogs/display-settings/main.c:104
+#: ../dialogs/display-settings/main.c:138
 msgid "Minimal interface to set up an external output"
 msgstr "Antarmuka minimal untuk membuat keluaran eksternal"
 
-#: ../dialogs/display-settings/main.c:171
+#: ../dialogs/display-settings/main.c:226
 #, c-format
 msgid ""
 "The previous configuration will be restored in %i seconds if you do not "
@@ -630,43 +693,53 @@ msgstr ""
 "ingin menjawab pertanyaan ini."
 
 #. Insert the mode
-#: ../dialogs/display-settings/main.c:505
+#: ../dialogs/display-settings/main.c:747
 #, c-format
 msgid "%.1f Hz"
 msgstr "%.1f Hz"
 
-#: ../dialogs/display-settings/main.c:651
+#: ../dialogs/display-settings/main.c:1040
+#, fuzzy
+msgid "Display:"
+msgstr "Tampilan"
+
+#: ../dialogs/display-settings/main.c:1045
+#, fuzzy
+msgid "Resolution:"
+msgstr "R_esolusi"
+
+#: ../dialogs/display-settings/main.c:1232
 msgid ""
 "The last active output must not be disabled, the system would be unusable."
 msgstr ""
 "Keluaran aktif terakhir jangan sampai dinonaktifkan, sistem akan menjadi "
 "tidak berguna"
 
-#: ../dialogs/display-settings/main.c:653
+#: ../dialogs/display-settings/main.c:1234
 msgid "Selected output not disabled"
 msgstr "Keluaran terpilih jangan dinonaktifkan"
 
-#: ../dialogs/display-settings/main.c:1075
-#: ../dialogs/display-settings/xfce-randr.c:249
+#: ../dialogs/display-settings/main.c:1958
+#: ../dialogs/display-settings/xfce-randr.c:350
 #, c-format
 msgid "Unable to query the version of the RandR extension being used"
 msgstr "Tak dapat kueri versi dari ekstensi RandR yang digunakan"
 
-#: ../dialogs/display-settings/main.c:1076
-#: ../dialogs/display-settings/main.c:1112
+#: ../dialogs/display-settings/main.c:1959
+#: ../dialogs/display-settings/main.c:1995
 msgid "Unable to start the Xfce Display Settings"
 msgstr "Tak dapat menjalankan Pengaturan Tampilan Xfce"
 
-#: ../dialogs/display-settings/main.c:1107
+#: ../dialogs/display-settings/main.c:1990
 msgid "ATI Settings"
 msgstr "Pengaturan ATI"
 
-#: ../dialogs/display-settings/main.c:1122
+#: ../dialogs/display-settings/main.c:2005
 msgid "Unable to launch the proprietary driver settings"
 msgstr "Tak dapat menjalankan pengaturan driver kode sumber tertutup"
 
 #. 1.2 is required
-#: ../dialogs/display-settings/xfce-randr.c:257
+#: ../dialogs/display-settings/xfce-randr.c:358
 #, c-format
 msgid ""
 "This system is using RandR %d.%d. For the display settings to work version "
@@ -675,19 +748,19 @@ msgstr ""
 "Sistem ini menggunakan RandR %d.%d. Agar pengaturan tampilan bekerja "
 "setidaknya versi 1.2 diperlukan"
 
-#: ../dialogs/display-settings/xfce-randr.c:536
+#: ../dialogs/display-settings/xfce-randr.c:626
 msgid "Laptop"
 msgstr "Laptop"
 
-#: ../dialogs/display-settings/xfce-randr.c:557
+#: ../dialogs/display-settings/xfce-randr.c:647
 msgid "Monitor"
 msgstr "Monitor"
 
-#: ../dialogs/display-settings/xfce-randr.c:560
+#: ../dialogs/display-settings/xfce-randr.c:650
 msgid "Television"
 msgstr "Televisi"
 
-#: ../dialogs/display-settings/xfce-randr.c:564
+#: ../dialogs/display-settings/xfce-randr.c:654
 msgid "Digital display"
 msgstr "Tampilan digital"
 
@@ -777,7 +850,7 @@ msgid "Restore num l_ock state on startup"
 msgstr "Mengembalikan kondisi numl_ock saat hidupkan"
 
 #: ../dialogs/keyboard-settings/keyboard-dialog.glade.h:6
-#: ../dialogs/mouse-settings/mouse-dialog.glade.h:21
+#: ../dialogs/mouse-settings/mouse-dialog.glade.h:25
 msgid "General"
 msgstr "Umum"
 
@@ -802,7 +875,8 @@ msgid "The time, in milliseconds, before a pressed key begins repeating"
 msgstr "Waktu, dalam milidetik, sebelum kunci yang ditekan mulai mengulang"
 
 #: ../dialogs/keyboard-settings/keyboard-dialog.glade.h:11
-msgid "Repeat _speed:"
+#, fuzzy
+msgid "Repe_at speed:"
 msgstr "Kecepatan _pengulangan"
 
 #: ../dialogs/keyboard-settings/keyboard-dialog.glade.h:12
@@ -838,11 +912,13 @@ msgid "_Test area:"
 msgstr "Area tes_"
 
 #: ../dialogs/keyboard-settings/keyboard-dialog.glade.h:20
-msgid "Be_havior"
-msgstr "Pe_rilaku"
+#, fuzzy
+msgid "Beha_vior"
+msgstr "_Perilaku"
 
 #: ../dialogs/keyboard-settings/keyboard-dialog.glade.h:21
-msgid "Define _shortcuts for launching applications:"
+#, fuzzy
+msgid "Define shortcuts for la_unching applications:"
 msgstr "Tentukan _jalan pintas untuk meluncurkan aplikasi:"
 
 #: ../dialogs/keyboard-settings/keyboard-dialog.glade.h:22
@@ -866,14 +942,38 @@ msgstr ""
 "ini, atau oleh server X"
 
 #: ../dialogs/keyboard-settings/keyboard-dialog.glade.h:26
-msgid "Keyboard model"
+#, fuzzy
+msgid "_Keyboard model"
 msgstr "Model papan ketik"
 
+# Automatically copied. Please review and remove fuzzy flag.
 #: ../dialogs/keyboard-settings/keyboard-dialog.glade.h:27
-msgid "Keyboard layout"
+#, fuzzy
+msgid "Change la_yout option"
+msgstr "Ubah opsi tata letak"
+
+# Automatically copied. Please review and remove fuzzy flag.
+#: ../dialogs/keyboard-settings/keyboard-dialog.glade.h:28
+#, fuzzy
+msgid "Co_mpose key"
+msgstr "Komposisikan tombol (kunci)"
+
+# Automatically copied. Please review and remove fuzzy flag.
+#: ../dialogs/keyboard-settings/keyboard-dialog.glade.h:29
+msgid "Move currently selected item up by one row"
+msgstr "Pindahkan item terpilih satu baris ke atas"
+
+# Automatically copied. Please review and remove fuzzy flag.
+#: ../dialogs/keyboard-settings/keyboard-dialog.glade.h:30
+msgid "Move currently selected item down by one row"
+msgstr "Pindahkan item terpilih satu baris ke bawah"
+
+#: ../dialogs/keyboard-settings/keyboard-dialog.glade.h:31
+#, fuzzy
+msgid "Key_board layout"
 msgstr "Tata letak papan ketik"
 
-#: ../dialogs/keyboard-settings/keyboard-dialog.glade.h:28
+#: ../dialogs/keyboard-settings/keyboard-dialog.glade.h:32
 msgid "_Layout"
 msgstr "_Tata letak"
 
@@ -890,32 +990,32 @@ msgstr "Gagal menyambung ke jurik xfconf. Alasan: %s"
 msgid "Could not create the settings dialog."
 msgstr "Tak dapat membuat dialog pengaturan."
 
-#: ../dialogs/keyboard-settings/xfce-keyboard-settings.c:300
+#: ../dialogs/keyboard-settings/xfce-keyboard-settings.c:396
 msgid "Command"
 msgstr "Perintah"
 
-#: ../dialogs/keyboard-settings/xfce-keyboard-settings.c:305
+#: ../dialogs/keyboard-settings/xfce-keyboard-settings.c:401
 msgid "Shortcut"
 msgstr "Jalan pintas"
 
-#: ../dialogs/keyboard-settings/xfce-keyboard-settings.c:380
+#: ../dialogs/keyboard-settings/xfce-keyboard-settings.c:473
 msgid "Layout"
 msgstr "Tata letak"
 
-#: ../dialogs/keyboard-settings/xfce-keyboard-settings.c:381
+#: ../dialogs/keyboard-settings/xfce-keyboard-settings.c:474
 msgid "Variant"
 msgstr "Jenis"
 
-#: ../dialogs/keyboard-settings/xfce-keyboard-settings.c:857
+#: ../dialogs/keyboard-settings/xfce-keyboard-settings.c:957
 msgid "Shortcut command may not be empty."
 msgstr "Jalan pintas perintah mungkin tidak kosong."
 
-#: ../dialogs/keyboard-settings/xfce-keyboard-settings.c:967
-#: ../dialogs/keyboard-settings/xfce-keyboard-settings.c:968
+#: ../dialogs/keyboard-settings/xfce-keyboard-settings.c:1067
+#: ../dialogs/keyboard-settings/xfce-keyboard-settings.c:1068
 msgid "Reset to Defaults"
 msgstr "Set Ulang ke Standar"
 
-#: ../dialogs/keyboard-settings/xfce-keyboard-settings.c:969
+#: ../dialogs/keyboard-settings/xfce-keyboard-settings.c:1069
 msgid ""
 "This will reset all shortcuts to their default values. Do you really want to "
 "do this?"
@@ -923,11 +1023,11 @@ msgstr ""
 "Ini akan mengatur ulang semua jalan pintas ke nilai standar mereka. Anda "
 "yakin ingin melakukan ini?"
 
-#: ../dialogs/keyboard-settings/xfce-keyboard-settings.c:1042
+#: ../dialogs/keyboard-settings/xfce-keyboard-settings.c:1148
 msgid "The system defaults will be restored next time you log in."
 msgstr "Standar sistem akan dikembalikan ketika lain kali anda log masuk."
 
-#: ../dialogs/keyboard-settings/xfce-keyboard-settings.c:1044
+#: ../dialogs/keyboard-settings/xfce-keyboard-settings.c:1150
 msgid "Warning"
 msgstr "Peringatan"
 
@@ -1080,54 +1180,73 @@ msgid "%g ms"
 msgstr "%g md"
 
 #: ../dialogs/mouse-settings/mouse-dialog.glade.h:1
+msgid "Disabled"
+msgstr "Dinonaktifkan"
+
+#: ../dialogs/mouse-settings/mouse-dialog.glade.h:2
+msgid "Edge scrolling"
+msgstr "Menggulung sisi"
+
+#: ../dialogs/mouse-settings/mouse-dialog.glade.h:3
+msgid "Two-finger scrolling"
+msgstr "Menggulung dua jari"
+
+#: ../dialogs/mouse-settings/mouse-dialog.glade.h:4
+msgid "Circular scrolling"
+msgstr "Menggulung sirkuler"
+
+#: ../dialogs/mouse-settings/mouse-dialog.glade.h:5
 #: ../dialogs/mouse-settings/xfce-mouse-settings.desktop.in.h:1
 msgid "Mouse and Touchpad"
 msgstr "Tetikus dan Touchpad"
 
-#: ../dialogs/mouse-settings/mouse-dialog.glade.h:2
+#: ../dialogs/mouse-settings/mouse-dialog.glade.h:6
 #: ../dialogs/mouse-settings/xfce-mouse-settings.desktop.in.h:2
 msgid "Configure pointer device behavior and appearance"
 msgstr "Atur perilaku divais penunjuk dan penampilan"
 
-#: ../dialogs/mouse-settings/mouse-dialog.glade.h:3
+#: ../dialogs/mouse-settings/mouse-dialog.glade.h:7
 msgid "De_vice:"
 msgstr "Di_vais:"
 
-#: ../dialogs/mouse-settings/mouse-dialog.glade.h:4
+#: ../dialogs/mouse-settings/mouse-dialog.glade.h:8
 msgid "_Enable this device"
 msgstr "_Aktifkan divais ini"
 
-#: ../dialogs/mouse-settings/mouse-dialog.glade.h:5
-msgid "_Right-handed"
+#: ../dialogs/mouse-settings/mouse-dialog.glade.h:9
+#, fuzzy
+msgid "Ri_ght-handed"
 msgstr "_Tangan Kanan"
 
-#: ../dialogs/mouse-settings/mouse-dialog.glade.h:6
-msgid "_Left-handed"
+#: ../dialogs/mouse-settings/mouse-dialog.glade.h:10
+#, fuzzy
+msgid "Le_ft-handed"
 msgstr "_Kidal"
 
-#: ../dialogs/mouse-settings/mouse-dialog.glade.h:7
+#: ../dialogs/mouse-settings/mouse-dialog.glade.h:11
 msgid "Reverse scroll d_irection"
 msgstr "Bal_ik arah gulungan"
 
-#: ../dialogs/mouse-settings/mouse-dialog.glade.h:8
+#: ../dialogs/mouse-settings/mouse-dialog.glade.h:12
 msgid "When selected, the scroll wheel will work in the opposite direction"
 msgstr "Ketika terpilih, roda gulung akan bekerja dalam arah yang berlawanan"
 
-#: ../dialogs/mouse-settings/mouse-dialog.glade.h:9
+#: ../dialogs/mouse-settings/mouse-dialog.glade.h:13
 msgid "Buttons"
 msgstr "Tombol"
 
-#: ../dialogs/mouse-settings/mouse-dialog.glade.h:10
-msgid "_Acceleration:"
+#: ../dialogs/mouse-settings/mouse-dialog.glade.h:14
+#, fuzzy
+msgid "Acceleratio_n:"
 msgstr "_Akselerasi:"
 
-#: ../dialogs/mouse-settings/mouse-dialog.glade.h:11
+#: ../dialogs/mouse-settings/mouse-dialog.glade.h:15
 msgid ""
 "The factor at which the pointer's speed will increase as the mouse is moved"
 msgstr ""
 "Faktor kecepatan penunjuk akan meningkat seiring tetikus yang digerakkan"
 
-#: ../dialogs/mouse-settings/mouse-dialog.glade.h:12
+#: ../dialogs/mouse-settings/mouse-dialog.glade.h:16
 msgid ""
 "The number of pixels the pointer must move in a short time before it starts "
 "accelerating"
@@ -1135,102 +1254,99 @@ msgstr ""
 "Jumlah piksel penunjuk yang harus berpindah dalam rentang waktu pendek "
 "sebelum memulai akselerasi"
 
-#: ../dialogs/mouse-settings/mouse-dialog.glade.h:13
-msgid "_Sensitivity:"
+#: ../dialogs/mouse-settings/mouse-dialog.glade.h:17
+#, fuzzy
+msgid "Sensitivit_y:"
 msgstr "_Sensitivitas:"
 
-#: ../dialogs/mouse-settings/mouse-dialog.glade.h:14
-msgid "Reset to De_faults"
-msgstr "Set Ulang ke Sta_ndar"
+#: ../dialogs/mouse-settings/mouse-dialog.glade.h:18
+msgid "_Reset to Defaults"
+msgstr "Set U_lang ke Standar"
 
-#: ../dialogs/mouse-settings/mouse-dialog.glade.h:15
+#: ../dialogs/mouse-settings/mouse-dialog.glade.h:19
 msgid ""
 "Set the acceleration and sensitivity for the selected device to the default "
 "values"
 msgstr ""
 "Atur akselerasi dan sensitivitas untuk divais terpilih ke nilai standar"
 
-#: ../dialogs/mouse-settings/mouse-dialog.glade.h:16
+#: ../dialogs/mouse-settings/mouse-dialog.glade.h:20
 msgid "Pointer Speed"
 msgstr "Kecepatan Penunjuk"
 
-#: ../dialogs/mouse-settings/mouse-dialog.glade.h:17
+#: ../dialogs/mouse-settings/mouse-dialog.glade.h:21
 msgid "B_uttons and Feedback"
 msgstr "T_ombol dan Umpan Balik"
 
-#: ../dialogs/mouse-settings/mouse-dialog.glade.h:18
-msgid "Disable to_uchpad while typing"
+#: ../dialogs/mouse-settings/mouse-dialog.glade.h:22
+#, fuzzy
+msgid "Disable touchpad _while typing"
 msgstr "Nonaktifkan to_uchpad ketika mengetik"
 
-#: ../dialogs/mouse-settings/mouse-dialog.glade.h:19
+#: ../dialogs/mouse-settings/mouse-dialog.glade.h:23
 msgid ""
 "When selected, the touchpad will be disabled when the keyboard is being used"
 msgstr ""
 "Jika dipilih, touchpad akan dinonaktifkan ketika papan ketik sedang digunakan"
 
-#: ../dialogs/mouse-settings/mouse-dialog.glade.h:20
-msgid "T_ap touchpad to click"
+#: ../dialogs/mouse-settings/mouse-dialog.glade.h:24
+#, fuzzy
+msgid "Tap touchpad to clic_k"
 msgstr "Ketuk touchp_ad untuk klik"
 
-#: ../dialogs/mouse-settings/mouse-dialog.glade.h:22
-msgid "Di_sabled"
-msgstr "N_onaktifkan"
+#: ../dialogs/mouse-settings/mouse-dialog.glade.h:26
+#, fuzzy
+msgid "Scrolling _mode:"
+msgstr "Mo_de menggulung:"
 
-#: ../dialogs/mouse-settings/mouse-dialog.glade.h:23
-msgid "Edge scro_lling"
-msgstr "Menggu_lung sisi"
-
-#: ../dialogs/mouse-settings/mouse-dialog.glade.h:24
-msgid "Two-_finger scrolling"
-msgstr "Menggulung _dua jari"
-
-#: ../dialogs/mouse-settings/mouse-dialog.glade.h:25
+#: ../dialogs/mouse-settings/mouse-dialog.glade.h:27
 msgid "Enable hori_zontal scrolling"
 msgstr "Aktifkan menggulung hori_zontal"
 
-#: ../dialogs/mouse-settings/mouse-dialog.glade.h:26
+#: ../dialogs/mouse-settings/mouse-dialog.glade.h:28
 msgid "Scrolling"
 msgstr "Menggulung"
 
-#: ../dialogs/mouse-settings/mouse-dialog.glade.h:27
+#: ../dialogs/mouse-settings/mouse-dialog.glade.h:29
 msgid "T_ouchpad"
 msgstr "T_ouchpad"
 
-#: ../dialogs/mouse-settings/mouse-dialog.glade.h:28
-msgid "Tr_acking mode:"
+#: ../dialogs/mouse-settings/mouse-dialog.glade.h:30
+#, fuzzy
+msgid "Trac_king mode:"
 msgstr "Mode pel_acakan:"
 
-#: ../dialogs/mouse-settings/mouse-dialog.glade.h:29
+#: ../dialogs/mouse-settings/mouse-dialog.glade.h:31
 msgid "_Rotation:"
 msgstr "_Rotasi:"
 
-#: ../dialogs/mouse-settings/mouse-dialog.glade.h:30
-msgid "Table_t"
-msgstr "Table_t"
+#: ../dialogs/mouse-settings/mouse-dialog.glade.h:32
+msgid "Tab_let"
+msgstr ""
 
-#: ../dialogs/mouse-settings/mouse-dialog.glade.h:31
+#: ../dialogs/mouse-settings/mouse-dialog.glade.h:33
 msgid "_Devices"
 msgstr "_Divais"
 
-#: ../dialogs/mouse-settings/mouse-dialog.glade.h:32
+#: ../dialogs/mouse-settings/mouse-dialog.glade.h:34
 msgid "Th_reshold:"
 msgstr "Amban_g:"
 
-#: ../dialogs/mouse-settings/mouse-dialog.glade.h:33
+#: ../dialogs/mouse-settings/mouse-dialog.glade.h:35
 msgid ""
 "The number of pixels the pointer must move before a drag operation will start"
 msgstr ""
 "Jumlah piksel penunjuk yang harus berpindah sebelum operasi penarikan dimulai"
 
-#: ../dialogs/mouse-settings/mouse-dialog.glade.h:34
+#: ../dialogs/mouse-settings/mouse-dialog.glade.h:36
 msgid "Drag and Drop"
 msgstr "Tarik dan Taruh"
 
-#: ../dialogs/mouse-settings/mouse-dialog.glade.h:35
+#: ../dialogs/mouse-settings/mouse-dialog.glade.h:37
 msgid "Ti_me:"
 msgstr "Wa_ktu:"
 
-#: ../dialogs/mouse-settings/mouse-dialog.glade.h:36
+#: ../dialogs/mouse-settings/mouse-dialog.glade.h:38
 msgid ""
 "Two mouse clicks in less than this length of time (in milliseconds) will be "
 "considered a double click"
@@ -1238,11 +1354,11 @@ msgstr ""
 "Dua klik tetikus dalam waktu yang lebih pendek dari ini (dalam milidetik) "
 "akan dianggap sebagai klik ganda"
 
-#: ../dialogs/mouse-settings/mouse-dialog.glade.h:37
+#: ../dialogs/mouse-settings/mouse-dialog.glade.h:39
 msgid "D_istance:"
 msgstr "_Jarak:"
 
-#: ../dialogs/mouse-settings/mouse-dialog.glade.h:38
+#: ../dialogs/mouse-settings/mouse-dialog.glade.h:40
 msgid ""
 "The mouse pointer cannot move farther than this distance between two clicks "
 "for them to be considered a double click"
@@ -1250,51 +1366,53 @@ msgstr ""
 "Penunjuk tetikus tak dapat berpindah lebih jauh dari jarak ini di antara dua "
 "klik agar mereka dianggap sebagai klik ganda"
 
-#: ../dialogs/mouse-settings/mouse-dialog.glade.h:39
+#: ../dialogs/mouse-settings/mouse-dialog.glade.h:41
 msgid "Double Click"
 msgstr "Klik Ganda"
 
-#: ../dialogs/mouse-settings/mouse-dialog.glade.h:40
+#: ../dialogs/mouse-settings/mouse-dialog.glade.h:42
 msgid "_Behavior"
 msgstr "_Perilaku"
 
-#: ../dialogs/mouse-settings/mouse-dialog.glade.h:41
-msgid "Cursor _size:"
+#: ../dialogs/mouse-settings/mouse-dialog.glade.h:43
+#, fuzzy
+msgid "Cursor si_ze:"
 msgstr "Ukuran _kursor:"
 
-#: ../dialogs/mouse-settings/mouse-dialog.glade.h:42
+#: ../dialogs/mouse-settings/mouse-dialog.glade.h:44
 msgid "Size"
 msgstr "Ukuran"
 
-#: ../dialogs/mouse-settings/mouse-dialog.glade.h:43
+#: ../dialogs/mouse-settings/mouse-dialog.glade.h:45
 msgid "Preview"
 msgstr "Pratayang"
 
-#: ../dialogs/mouse-settings/mouse-dialog.glade.h:44
-msgid "T_heme"
+#: ../dialogs/mouse-settings/mouse-dialog.glade.h:46
+#, fuzzy
+msgid "_Theme"
 msgstr "_Tema"
 
-#: ../dialogs/mouse-settings/mouse-dialog.glade.h:45
+#: ../dialogs/mouse-settings/mouse-dialog.glade.h:47
 msgid "Pen (absolute)"
 msgstr "Pena (absolut)"
 
-#: ../dialogs/mouse-settings/mouse-dialog.glade.h:46
+#: ../dialogs/mouse-settings/mouse-dialog.glade.h:48
 msgid "Mouse (relative)"
 msgstr "Tetikus (relatif)"
 
-#: ../dialogs/mouse-settings/mouse-dialog.glade.h:47
+#: ../dialogs/mouse-settings/mouse-dialog.glade.h:49
 msgid "None (right-handed)"
 msgstr "Tak ada (tangan kanan)"
 
-#: ../dialogs/mouse-settings/mouse-dialog.glade.h:48
+#: ../dialogs/mouse-settings/mouse-dialog.glade.h:50
 msgid "Half (left-handed)"
 msgstr "Setengah (kidal)"
 
-#: ../dialogs/mouse-settings/mouse-dialog.glade.h:49
+#: ../dialogs/mouse-settings/mouse-dialog.glade.h:51
 msgid "Clockwise"
 msgstr "Searah jarum jam"
 
-#: ../dialogs/mouse-settings/mouse-dialog.glade.h:50
+#: ../dialogs/mouse-settings/mouse-dialog.glade.h:52
 msgid "Counterclockwise"
 msgstr "Berlawanan arah jarum jam"
 
@@ -1497,39 +1615,39 @@ msgstr "Sunting Properti"
 msgid "Graphical settings editor for Xfconf"
 msgstr "Penyunting pengaturan grafis untuk Xfconf"
 
-#: ../xfsettingsd/accessibility.c:390
+#: ../xfsettingsd/accessibility.c:412
 msgid "Sticky keys are enabled"
 msgstr "Tombol lekat diaktifkan"
 
-#: ../xfsettingsd/accessibility.c:392
+#: ../xfsettingsd/accessibility.c:414
 msgid "Sticky keys are disabled"
 msgstr "Tombol lekat dinonaktifkan"
 
-#: ../xfsettingsd/accessibility.c:394
+#: ../xfsettingsd/accessibility.c:416
 msgid "Sticky keys"
 msgstr "Tombol lekat"
 
-#: ../xfsettingsd/accessibility.c:399
+#: ../xfsettingsd/accessibility.c:421
 msgid "Slow keys are enabled"
 msgstr "Tombol pelan diaktifkan"
 
-#: ../xfsettingsd/accessibility.c:401
+#: ../xfsettingsd/accessibility.c:423
 msgid "Slow keys are disabled"
 msgstr "Tombol pelan dinonaktifkan"
 
-#: ../xfsettingsd/accessibility.c:403
+#: ../xfsettingsd/accessibility.c:425
 msgid "Slow keys"
 msgstr "Tombol pelan"
 
-#: ../xfsettingsd/accessibility.c:408
+#: ../xfsettingsd/accessibility.c:430
 msgid "Bounce keys are enabled"
 msgstr "Tombol pantul diaktifkan"
 
-#: ../xfsettingsd/accessibility.c:410
+#: ../xfsettingsd/accessibility.c:432
 msgid "Bounce keys are disabled"
 msgstr "Tombol pantul dinonaktifkan"
 
-#: ../xfsettingsd/accessibility.c:412
+#: ../xfsettingsd/accessibility.c:434
 msgid "Bounce keys"
 msgstr "Tombol pantul"
 
@@ -1560,7 +1678,8 @@ msgid "Settings dialog to show"
 msgstr "Dialog pengaturan yang ditampilkan"
 
 #: ../xfce4-settings-manager/xfce-settings-manager-dialog.c:186
-msgid "_All Settings"
+#, fuzzy
+msgid "All _Settings"
 msgstr "_Semua Pengaturan"
 
 #: ../xfce4-settings-manager/xfce-settings-manager-dialog.c:366
@@ -1585,6 +1704,33 @@ msgstr "Manajer Pengaturan"
 msgid "Graphical Settings Manager for Xfce 4"
 msgstr "Manajer Pengaturan Grafis untuk Xfce 4"
 
+#~ msgid "_Settings"
+#~ msgstr "_Pengaturan"
+
+#~ msgid "Both displays cloned"
+#~ msgstr "Kedua tampilan dikloning"
+
+#~ msgid "Display settings"
+#~ msgstr "Pengaturan tampilan"
+
+#~ msgid "Several displays are available. Use:\n"
+#~ msgstr "Beberapa tampilan juga tersedia. Gunakan:\n"
+
+#~ msgid "Use both displays to show the same contents"
+#~ msgstr "Gunakan kedua tampilan untuk menampilkan isi yang sama"
+
+#~ msgid "Normal"
+#~ msgstr "Normal"
+
+#~ msgid "Be_havior"
+#~ msgstr "Pe_rilaku"
+
+#~ msgid "Reset to De_faults"
+#~ msgstr "Set Ulang ke Sta_ndar"
+
+#~ msgid "Table_t"
+#~ msgstr "Table_t"
+
 #~ msgid "This property name is not valid."
 #~ msgstr "Nama properti ini tidak sah."
 
@@ -1605,9 +1751,6 @@ msgstr "Manajer Pengaturan Grafis untuk Xfce 4"
 
 #~ msgid "_Overview"
 #~ msgstr "_Ringkasan"
-
-#~ msgid "_Reset to Defaults"
-#~ msgstr "Set U_lang ke Standar"
 
 #~ msgid "Feedback"
 #~ msgstr "Umpan Balik"

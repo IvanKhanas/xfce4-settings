@@ -1,6 +1,6 @@
 # $Id$
 
-INCLUDES = \
+AM_CPPFLAGS = \
 	-I${top_srcdir} \
 	-DDATADIR=\"$(datadir)\" \
 	-DSRCDIR=\"$(top_srcdir)\" \
@@ -19,6 +19,7 @@ xfce4_display_settings_SOURCES = \
 	confirmation-dialog_ui.h \
 	display-dialog_ui.h \
 	minimal-display-dialog_ui.h \
+	identity-popup_ui.h \
 	display-name.c \
 	edid-parse.c \
 	edid.h
@@ -49,7 +50,8 @@ if MAINTAINER_MODE
 BUILT_SOURCES = \
 	confirmation-dialog_ui.h \
 	display-dialog_ui.h \
-	minimal-display-dialog_ui.h
+	minimal-display-dialog_ui.h \
+	identity-popup_ui.h
 
 confirmation-dialog_ui.h: confirmation-dialog.glade
 	exo-csource --static --strip-comments --strip-content --name=confirmation_dialog_ui $< >$@
@@ -59,6 +61,9 @@ display-dialog_ui.h: display-dialog.glade
 
 minimal-display-dialog_ui.h: minimal-display-dialog.glade
 	exo-csource --static --strip-comments --strip-content --name=minimal_display_dialog_ui $< >$@
+	
+identity-popup_ui.h: identity-popup.glade
+	exo-csource --static --strip-comments --strip-content --name=identity_popup_ui $< >$@
 
 endif
 
@@ -68,11 +73,20 @@ desktop_DATA = $(desktop_in_files:.desktop.in=.desktop)
 
 @INTLTOOL_DESKTOP_RULE@
 
+iconsdir = $(datadir)/icons/hicolor/128x128/devices
+icons_DATA = \
+	xfce-display-extend.png \
+	xfce-display-external.png \
+	xfce-display-internal.png \
+	xfce-display-mirror.png
+
 EXTRA_DIST = \
+	$(icons_DATA) \
 	$(desktop_in_files) \
 	confirmation-dialog.glade \
 	display-dialog.glade \
-	minimal-display-dialog.glade
+	minimal-display-dialog.glade \
+	identity-popup.glade
 
 DISTCLEANFILES = \
 	$(desktop_DATA)
