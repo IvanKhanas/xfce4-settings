@@ -11,13 +11,15 @@ if [ "$(get_xfce_xkb_conf XkbDisable)" = false ]; then
 	model="$(get_xfce_xkb_conf XkbModel)"
 	layout="$(get_xfce_xkb_conf XkbLayout)"
 	variant="$(get_xfce_xkb_conf XkbVariant)"
-	option="$(get_xfce_xkb_conf XkbOption)"
+	xkb_option_grp="$(get_xfce_xkb_conf XkbOptions/Group)"
+	xkb_option_compose="$(get_xfce_xkb_conf XkbOptions/Compose)"
 
-	[ -x "$option" ] || setxkbmap -option
+	setxkbmap -option
 	setxkbmap ${model:+-model "$model"} \
 		${layout:+-layout "$layout"} \
 		${variant:+-variant "$variant"} \
-		${option:+-option "$option"}
+		${xkb_option_grp:+-option "$xkb_option_grp"} \
+		${xkb_option_compose:+-option "$xkb_option_compose"}
 else
 	# Use system settings
 	/etc/X11/xinit/fixkeyboard
