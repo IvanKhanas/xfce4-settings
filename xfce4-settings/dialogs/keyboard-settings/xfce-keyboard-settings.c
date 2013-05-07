@@ -797,8 +797,7 @@ xfce_keyboard_settings_validate_shortcut (XfceShortcutDialog   *dialog,
 
   if (G_UNLIKELY (info != NULL))
     {
-      //response = xfce_shortcut_conflict_dialog (GTK_WINDOW (dialog),
-      response = xfce_shortcut_conflict_dialog (
+      response = xfce_shortcut_conflict_dialog (GTK_WINDOW (dialog),
                                                 xfce_shortcuts_provider_get_name (settings->priv->provider),
                                                 xfce_shortcuts_provider_get_name (info->provider),
                                                 shortcut,
