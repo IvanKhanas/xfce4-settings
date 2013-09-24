@@ -1,363 +1,325 @@
-# translation of xfce4-settings to Danish
-# Copyright (C) 2010 xfce4-settings
-# This file is distributed under the same license as the xfce4-settings package.
-# Lars Jensen <lars@jink.dk>, 2008.
-# Per Kongstad <p_kongstad@op.pl>, 2009, 10.
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# k3lt01 <keltoiboy@gmail.com>, 2013
 msgid ""
 msgstr ""
-"Project-Id-Version: xfce4-settings 4.7.0\n"
+"Project-Id-Version: Xfce4-settings\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-11-20 17:53+0100\n"
-"PO-Revision-Date: 2010-01-19 21:40+0100\n"
-"Last-Translator: Per Kongstad <p_kongstad@op.pl>\n"
-"Language-Team: Dansk <dansk@dansk-gruppen.dk>\n"
-"Language: \n"
+"POT-Creation-Date: 2013-07-02 22:46+0200\n"
+"PO-Revision-Date: 2013-07-25 09:10+0000\n"
+"Last-Translator: k3lt01 <keltoiboy@gmail.com>\n"
+"Language-Team: English (Australia) (http://www.transifex.com/projects/p/xfce/language/en_AU/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Poedit-Language: Danish\n"
-"X-Poedit-SourceCharset: utf-8\n"
-"X-Poedit-Country: DENMARK\n"
-"X-Generator: KBabel 1.11.4\n"
+"Language: en_AU\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ../dialogs/accessibility-settings/accessibility-dialog.glade.h:1
 #: ../dialogs/accessibility-settings/xfce4-accessibility-settings.desktop.in.h:1
 msgid "Accessibility"
-msgstr "Tilgængelighed"
+msgstr "Accessibility"
 
 #: ../dialogs/accessibility-settings/accessibility-dialog.glade.h:2
 msgid "Configure keyboard and mouse accessibility"
-msgstr "Indstil tastatur- og musetilgængelighed"
+msgstr "Configure keyboard and mouse accessibility"
 
 #: ../dialogs/accessibility-settings/accessibility-dialog.glade.h:3
 msgid "_Enable assistive technologies"
-msgstr "_Aktivér hjælpeteknologier"
+msgstr "_Enable assistive technologies"
 
 #: ../dialogs/accessibility-settings/accessibility-dialog.glade.h:4
 msgid ""
 "If enabled, the session manager will start the required applications for "
 "screen readers and magnifiers"
-msgstr ""
-"Hvis aktiveret, vil sessionshåndteringen starte de nødvendige programmer for "
-"skærmlæser og forstørrelsesglas."
+msgstr "If enabled, the session manager will start the required applications for screen readers and magnifiers"
 
 #: ../dialogs/accessibility-settings/accessibility-dialog.glade.h:5
 msgid ""
 "Assistive technologies will be available the\n"
 "next time you login"
-msgstr ""
-"Hjælpeteknologier vil være tilrådighed \n"
-"næste gang du logger ind"
+msgstr "Assistive technologies will be available the\nnext time you login"
 
 #: ../dialogs/accessibility-settings/accessibility-dialog.glade.h:7
 msgid "No AT-SPI provider was found on your system"
-msgstr "Ingen udbyder af AT-SPI fundet på dit system"
+msgstr "No AT-SPI provider was found on your system"
 
 #: ../dialogs/accessibility-settings/accessibility-dialog.glade.h:8
-#, fuzzy
 msgid "Assistive _Technologies"
-msgstr "_Hjælpeteknologier"
+msgstr "Assistive _Technologies"
 
 #: ../dialogs/accessibility-settings/accessibility-dialog.glade.h:9
-#, fuzzy
 msgid "_Use sticky keys"
-msgstr "Brug _klæbende taster"
+msgstr "_Use sticky keys"
 
 #: ../dialogs/accessibility-settings/accessibility-dialog.glade.h:10
 msgid ""
 "When selected, modifier keys (such as Control, Alt, and Shift) do not need "
 "to be held down (they can be pressed and then released) when multiple keys "
 "would normally need to be pressed at the same time"
-msgstr ""
-"Når afkrydset, vil kombinationstaster (såsom Control, Alt og Shift) ikke "
-"behov for at blive holdt nede (de kan trykkes ned og derefter slippes), hvor "
-"multitaster normalt kræver at blive trykket samtidigt"
+msgstr "When selected, modifier keys (such as Control, Alt, and Shift) do not need to be held down (they can be pressed and then released) when multiple keys would normally need to be pressed at the same time"
 
 #: ../dialogs/accessibility-settings/accessibility-dialog.glade.h:11
 msgid "_Lock sticky keys"
-msgstr "_Lås klæbende taster"
+msgstr "_Lock sticky keys"
 
 #: ../dialogs/accessibility-settings/accessibility-dialog.glade.h:12
 msgid ""
 "When selected, modifier keys (such as Control, Alt, and Shift) will remain "
 "locked in the pressed state until pressed again"
-msgstr ""
-"Når afkrydset, vil kombinationstaster (såsom Control, Alt og Shift) forblive "
-"låst i den trykkede tilstand, indtil trykket igen"
+msgstr "When selected, modifier keys (such as Control, Alt, and Shift) will remain locked in the pressed state until pressed again"
 
 #: ../dialogs/accessibility-settings/accessibility-dialog.glade.h:13
-#, fuzzy
 msgid "Disable sticky keys if two keys are _pressed"
-msgstr "Deaktivér klæbende taster hvis _to taster er trykket"
+msgstr "Disable sticky keys if two keys are _pressed"
 
 #: ../dialogs/accessibility-settings/accessibility-dialog.glade.h:14
 msgid ""
 "When selected, the \"sticky keys\" feature will be disabled if two keys are "
 "pressed simultaneously"
-msgstr ""
-"Når afkrydset vil \"klæbende taster\" blive slået fra, hvis to taster "
-"trykkes samtidigt"
+msgstr "When selected, the \"sticky keys\" feature will be disabled if two keys are pressed simultaneously"
 
 #: ../dialogs/accessibility-settings/accessibility-dialog.glade.h:15
 msgid "Sticky Keys"
-msgstr "Klæbende taster"
+msgstr "Sticky Keys"
 
 #: ../dialogs/accessibility-settings/accessibility-dialog.glade.h:16
 msgid "Use slow _keys"
-msgstr "Brug langsomme _taster"
+msgstr "Use slow _keys"
 
 #: ../dialogs/accessibility-settings/accessibility-dialog.glade.h:17
 msgid ""
-"To help prevent accidental keystrokes, slow keys requires that a key is held "
-"for a certain minimum amount of time before the keystroke will be accepted"
-msgstr ""
-"For at afhjælpe utilsigtede tastetryk, kræver langsomme taster at en tast er "
-"holdt nede for et bestemt minimum tidsrum før tastetrykket bliver accepteret"
+"To help prevent accidental keystrokes, slow keys requires that a key is held"
+" for a certain minimum amount of time before the keystroke will be accepted"
+msgstr "To help prevent accidental keystrokes, slow keys requires that a key is held for a certain minimum amount of time before the keystroke will be accepted"
 
 #: ../dialogs/accessibility-settings/accessibility-dialog.glade.h:18
 msgid "Acceptance _delay:"
-msgstr "Accept_forsinkelse:"
+msgstr "Acceptance _delay:"
 
 #: ../dialogs/accessibility-settings/accessibility-dialog.glade.h:19
 msgid ""
 "The amount of time, in milliseconds, that must elapse before a keystroke "
 "will be accepted"
-msgstr ""
-"Tiden i millisekunder som skal forløbe inden et tastetryk vil blive "
-"accepteret"
+msgstr "The amount of time, in milliseconds, that must elapse before a keystroke will be accepted"
 
 #: ../dialogs/accessibility-settings/accessibility-dialog.glade.h:20
 msgid "Slow Keys"
-msgstr "Langsomme taster"
+msgstr "Slow Keys"
 
 #: ../dialogs/accessibility-settings/accessibility-dialog.glade.h:21
 msgid "Use _bounce keys"
-msgstr "Brug _rystetaster"
+msgstr "Use _bounce keys"
 
 #: ../dialogs/accessibility-settings/accessibility-dialog.glade.h:22
 msgid ""
 "To help prevent accidental multiple keystrokes, bounce keys imposes a "
 "minimum delay between keystrokes"
-msgstr ""
-"For at afhjælpe utilsigtede multi-tastetryk indsætter ryste-taster en "
-"minimumsforsinkelse mellem tastetryk"
+msgstr "To help prevent accidental multiple keystrokes, bounce keys imposes a minimum delay between keystrokes"
 
 #: ../dialogs/accessibility-settings/accessibility-dialog.glade.h:23
 msgid "K_eystroke delay:"
-msgstr "_Forsinkelse af tastetryk:"
+msgstr "K_eystroke delay:"
 
 #: ../dialogs/accessibility-settings/accessibility-dialog.glade.h:24
 msgid "The amount of time, in milliseconds, required between keystrokes"
-msgstr "Tiden i millisekunder som kræves mellem tastetryk"
+msgstr "The amount of time, in milliseconds, required between keystrokes"
 
 #: ../dialogs/accessibility-settings/accessibility-dialog.glade.h:25
 msgid "Bounce Keys"
-msgstr "Rystetaster"
+msgstr "Bounce Keys"
 
 #: ../dialogs/accessibility-settings/accessibility-dialog.glade.h:26
 msgid "Keyboa_rd"
-msgstr "Tast_atur"
+msgstr "Keyboa_rd"
 
 #: ../dialogs/accessibility-settings/accessibility-dialog.glade.h:27
 msgid "_Use mouse emulation"
-msgstr "_Brug museemulering"
+msgstr "_Use mouse emulation"
 
 #: ../dialogs/accessibility-settings/accessibility-dialog.glade.h:28
 msgid ""
-"When selected, the mouse pointer can be controlled using the keyboard number "
-"pad"
-msgstr ""
-"Når afkrydset kan musemarkøren styres ved hjælp af det numeriske tastatur"
+"When selected, the mouse pointer can be controlled using the keyboard number"
+" pad"
+msgstr "When selected, the mouse pointer can be controlled using the keyboard number pad"
 
 #: ../dialogs/accessibility-settings/accessibility-dialog.glade.h:29
 msgid "R_epeat interval:"
-msgstr "G_entag interval:"
+msgstr "R_epeat interval:"
 
 #: ../dialogs/accessibility-settings/accessibility-dialog.glade.h:30
 msgid "_Acceleration delay:"
-msgstr "_Accelerationsforsinkelse:"
+msgstr "_Acceleration delay:"
 
 #: ../dialogs/accessibility-settings/accessibility-dialog.glade.h:31
-#, fuzzy
 msgid "Acceleration t_ime:"
-msgstr "Accelerations_tid:"
+msgstr "Acceleration t_ime:"
 
 #: ../dialogs/accessibility-settings/accessibility-dialog.glade.h:32
-#, fuzzy
 msgid "Ma_ximum speed:"
-msgstr "Maksimal _hastighed:"
+msgstr "Ma_ximum speed:"
 
 #: ../dialogs/accessibility-settings/accessibility-dialog.glade.h:33
 msgid "Acceleration _profile:"
-msgstr "Accelerations_profil:"
+msgstr "Acceleration _profile:"
 
 #: ../dialogs/accessibility-settings/accessibility-dialog.glade.h:34
 msgid "msec"
-msgstr "millisekunder"
+msgstr "msec"
 
 #: ../dialogs/accessibility-settings/accessibility-dialog.glade.h:35
 msgid "pixels/sec"
-msgstr "pixels i sekundet"
+msgstr "pixels/sec"
 
 #: ../dialogs/accessibility-settings/accessibility-dialog.glade.h:36
 msgid ""
 "The time, in milliseconds, between the initial key press and first repeated "
 "motion event"
-msgstr ""
-"Tiden i millisekunder, mellem det første tastetryk og den første gentagne "
-"bevægelsesbegivenhed"
+msgstr "The time, in milliseconds, between the initial key press and first repeated motion event"
 
 #: ../dialogs/accessibility-settings/accessibility-dialog.glade.h:37
 msgid "The time, in milliseconds, between repeated motion events"
-msgstr "Tiden i millisekunder mellem gentagne bevægelseshandlinger"
+msgstr "The time, in milliseconds, between repeated motion events"
 
 #: ../dialogs/accessibility-settings/accessibility-dialog.glade.h:38
 msgid "The ramp used to reach maximum pointer speed"
-msgstr "Den brugte rampe til at opnå maksimal markørhastighed"
+msgstr "The ramp used to reach maximum pointer speed"
 
 #: ../dialogs/accessibility-settings/accessibility-dialog.glade.h:39
 msgid "The maximum pointer speed after acceleration"
-msgstr "Den maksimale markørhastighed efter acceleration"
+msgstr "The maximum pointer speed after acceleration"
 
 #: ../dialogs/accessibility-settings/accessibility-dialog.glade.h:40
 msgid "The time, in milliseconds, to get to maximum speed"
-msgstr "Tiden i millisekunder for at opnå maksimal hastighed"
+msgstr "The time, in milliseconds, to get to maximum speed"
 
 #: ../dialogs/accessibility-settings/accessibility-dialog.glade.h:41
 msgid "Mouse Emulation"
-msgstr "Museemulering"
+msgstr "Mouse Emulation"
 
 #: ../dialogs/accessibility-settings/accessibility-dialog.glade.h:42
 msgid "_Mouse"
-msgstr "_Mus"
+msgstr "_Mouse"
 
 #: ../dialogs/accessibility-settings/main.c:43
-#: ../dialogs/appearance-settings/main.c:94
-#: ../dialogs/display-settings/main.c:136
-#: ../dialogs/keyboard-settings/main.c:39 ../dialogs/mouse-settings/main.c:79
-msgid "Settings manager socket"
-msgstr "Sokkel til håndtering af indstillinger"
-
-#: ../dialogs/accessibility-settings/main.c:43
-#: ../dialogs/appearance-settings/main.c:94
-#: ../dialogs/display-settings/main.c:136
-#: ../dialogs/keyboard-settings/main.c:39 ../dialogs/mouse-settings/main.c:79
-msgid "SOCKET ID"
-msgstr "SOKKEL-ID"
-
-#: ../dialogs/accessibility-settings/main.c:44
 #: ../dialogs/appearance-settings/main.c:95
 #: ../dialogs/display-settings/main.c:137
+#: ../dialogs/keyboard-settings/main.c:39 ../dialogs/mouse-settings/main.c:79
+msgid "Settings manager socket"
+msgstr "Settings manager socket"
+
+#: ../dialogs/accessibility-settings/main.c:43
+#: ../dialogs/appearance-settings/main.c:95
+#: ../dialogs/display-settings/main.c:137
+#: ../dialogs/keyboard-settings/main.c:39 ../dialogs/mouse-settings/main.c:79
+msgid "SOCKET ID"
+msgstr "SOCKET ID"
+
+#: ../dialogs/accessibility-settings/main.c:44
+#: ../dialogs/appearance-settings/main.c:96
+#: ../dialogs/display-settings/main.c:138
 #: ../dialogs/keyboard-settings/main.c:40 ../dialogs/mime-settings/main.c:40
 #: ../dialogs/mouse-settings/main.c:80 ../xfce4-settings-editor/main.c:43
-#: ../xfsettingsd/main.c:77 ../xfce4-settings-manager/main.c:39
+#: ../xfsettingsd/main.c:77 ../xfce4-settings-manager/main.c:40
 msgid "Version information"
-msgstr "Versionsinformation"
+msgstr "Version information"
 
 #: ../dialogs/accessibility-settings/main.c:192
-#: ../dialogs/appearance-settings/main.c:966
-#: ../dialogs/display-settings/main.c:1926
+#: ../dialogs/appearance-settings/main.c:1006
+#: ../dialogs/display-settings/main.c:1943
 #: ../dialogs/keyboard-settings/main.c:76 ../dialogs/mime-settings/main.c:62
-#: ../dialogs/mouse-settings/main.c:1597 ../xfce4-settings-editor/main.c:63
-#: ../xfsettingsd/main.c:187 ../xfce4-settings-manager/main.c:60
+#: ../dialogs/mouse-settings/main.c:1611 ../xfce4-settings-editor/main.c:63
+#: ../xfsettingsd/main.c:187 ../xfce4-settings-manager/main.c:61
 #, c-format
 msgid "Type '%s --help' for usage."
-msgstr "Tast '%s --help' for brug."
+msgstr "Type '%s --help' for usage."
 
 #: ../dialogs/accessibility-settings/main.c:211
-#: ../dialogs/appearance-settings/main.c:985
-#: ../dialogs/display-settings/main.c:1945
+#: ../dialogs/appearance-settings/main.c:1025
+#: ../dialogs/display-settings/main.c:1962
 #: ../dialogs/keyboard-settings/main.c:92 ../dialogs/mime-settings/main.c:81
-#: ../dialogs/mouse-settings/main.c:1616 ../xfce4-settings-editor/main.c:82
-#: ../xfsettingsd/main.c:203 ../xfce4-settings-manager/main.c:76
+#: ../dialogs/mouse-settings/main.c:1630 ../xfce4-settings-editor/main.c:82
+#: ../xfsettingsd/main.c:203 ../xfce4-settings-manager/main.c:77
 msgid "The Xfce development team. All rights reserved."
-msgstr "Xfce-udviklingsholdet. Alle rettigheder forbeholdes."
+msgstr "The Xfce development team. All rights reserved."
 
 #: ../dialogs/accessibility-settings/main.c:212
-#: ../dialogs/appearance-settings/main.c:986
-#: ../dialogs/display-settings/main.c:1946
+#: ../dialogs/appearance-settings/main.c:1026
+#: ../dialogs/display-settings/main.c:1963
 #: ../dialogs/keyboard-settings/main.c:93 ../dialogs/mime-settings/main.c:82
-#: ../dialogs/mouse-settings/main.c:1617 ../xfce4-settings-editor/main.c:83
-#: ../xfsettingsd/main.c:204 ../xfce4-settings-manager/main.c:77
+#: ../dialogs/mouse-settings/main.c:1631 ../xfce4-settings-editor/main.c:83
+#: ../xfsettingsd/main.c:204 ../xfce4-settings-manager/main.c:78
 #, c-format
 msgid "Please report bugs to <%s>."
-msgstr "Rapportér venligst fejl til <%s>."
+msgstr "Please report bugs to <%s>."
 
 #: ../dialogs/accessibility-settings/xfce4-accessibility-settings.desktop.in.h:2
 msgid "Improve keyboard and mouse accessibility"
-msgstr "Forbedr tastatur- og mustilgængelighed"
+msgstr "Improve keyboard and mouse accessibility"
 
 #: ../dialogs/appearance-settings/appearance-dialog.glade.h:1
 #: ../dialogs/appearance-settings/xfce-ui-settings.desktop.in.h:1
 msgid "Appearance"
-msgstr "Udseende"
+msgstr "Appearance"
 
 #: ../dialogs/appearance-settings/appearance-dialog.glade.h:2
 #: ../dialogs/appearance-settings/xfce-ui-settings.desktop.in.h:2
 msgid "Customize the look of your desktop"
-msgstr "Tilpas udseendet på dit skrivebord"
+msgstr "Customise the look of your desktop"
 
 #: ../dialogs/appearance-settings/appearance-dialog.glade.h:3
 msgid "St_yle"
-msgstr "St_il"
+msgstr "St_yle"
 
 #: ../dialogs/appearance-settings/appearance-dialog.glade.h:4
 msgid "_Icons"
-msgstr "_Ikoner"
+msgstr "_Icons"
 
 #: ../dialogs/appearance-settings/appearance-dialog.glade.h:5
 msgid ""
 "This font will be used as the default font used when drawing user interface "
 "text"
-msgstr ""
-"Denne skrifttype vil blive brugt som standardskrifttype når brugerfladens "
-"tekst optegnes"
+msgstr "This font will be used as the default font used when drawing user interface text"
 
 #: ../dialogs/appearance-settings/appearance-dialog.glade.h:6
 msgid "Select a default font"
-msgstr "Vælg en standardskrifttype"
+msgstr "Select a default font"
 
 #: ../dialogs/appearance-settings/appearance-dialog.glade.h:7
 msgid "Default Fon_t"
-msgstr "Standardskrif_ttype"
+msgstr "Default Fon_t"
 
 #: ../dialogs/appearance-settings/appearance-dialog.glade.h:8
 msgid ""
-"Many fonts contain information that provides extra hints as to how best draw "
-"the font; pick whichever looks best according to personal preference"
-msgstr ""
-"Mange skrifttyper indeholder information som giver ekstra tips om, hvordan "
-"skrifttypen bedst optegnes; vælg bedste udseende i overensstemmelse med dit "
-"personlige foretrukne"
+"Many fonts contain information that provides extra hints as to how best draw"
+" the font; pick whichever looks best according to personal preference"
+msgstr "Many fonts contain information that provides extra hints as to how best draw the font; pick whichever looks best according to personal preference"
 
 #: ../dialogs/appearance-settings/appearance-dialog.glade.h:9
 msgid ""
 "Font quality on a TFT or LCD screen can be greatly improved by choosing the "
 "correct sub-pixel order of the screen"
-msgstr ""
-"Skrifttype-kvaliteten på TFT- eller LCD-skærme kan forbedres betydeligt, ved "
-"at vælge den korrekte sub-pixel rækkefølge af din skærm"
+msgstr "Font quality on a TFT or LCD screen can be greatly improved by choosing the correct sub-pixel order of the screen"
 
 #: ../dialogs/appearance-settings/appearance-dialog.glade.h:10
 msgid "Sub-_pixel order:"
-msgstr "Sub_pixelorden:"
+msgstr "Sub-_pixel order:"
 
 #: ../dialogs/appearance-settings/appearance-dialog.glade.h:11
-#, fuzzy
 msgid "Hintin_g:"
-msgstr "_Antydning:"
+msgstr "Hintin_g:"
 
 #: ../dialogs/appearance-settings/appearance-dialog.glade.h:12
-#, fuzzy
 msgid "_Enable anti-aliasing"
-msgstr "Aktivér _udjævning"
+msgstr "_Enable anti-aliasing"
 
 #: ../dialogs/appearance-settings/appearance-dialog.glade.h:13
 msgid ""
 "Anti-aliasing, or font smoothing, can improve the look of text on the screen"
-msgstr ""
-"Anti-aliasing eller udjævning af skrifttype kan forbedre udseendet af tekst "
-"på skærmen"
+msgstr "Anti-aliasing, or font smoothing, can improve the look of text on the screen"
 
 #: ../dialogs/appearance-settings/appearance-dialog.glade.h:14
 msgid "Rendering"
@@ -365,14 +327,13 @@ msgstr "Rendering"
 
 #: ../dialogs/appearance-settings/appearance-dialog.glade.h:15
 msgid "Custom _DPI setting:"
-msgstr "Tilpasset_DPI-indstilling:"
+msgstr "Custom _DPI setting:"
 
 #: ../dialogs/appearance-settings/appearance-dialog.glade.h:16
 msgid ""
-"Override the detected monitor resolution if fonts look too large or too small"
-msgstr ""
-"Tilsidesæt den fundne skærmopløsning hvis skrifttyper fremstår for store "
-"eller for små"
+"Override the detected monitor resolution if fonts look too large or too "
+"small"
+msgstr "Override the detected monitor resolution if fonts look too large or too small"
 
 #: ../dialogs/appearance-settings/appearance-dialog.glade.h:17
 msgid "DPI"
@@ -380,196 +341,192 @@ msgstr "DPI"
 
 #: ../dialogs/appearance-settings/appearance-dialog.glade.h:18
 msgid "_Fonts"
-msgstr "_Skrifttyper"
+msgstr "_Fonts"
 
 #: ../dialogs/appearance-settings/appearance-dialog.glade.h:19
 msgid "Specify what should be displayed in toolbar items"
-msgstr "Angiv hvad der skal vises i elementerne på værktøjsbjælken"
+msgstr "Specify what should be displayed in toolbar items"
 
 #: ../dialogs/appearance-settings/appearance-dialog.glade.h:20
 msgid "_Toolbar Style"
-msgstr "_Værktøjsbjælkestil"
+msgstr "_Toolbar Style"
 
 #: ../dialogs/appearance-settings/appearance-dialog.glade.h:21
 msgid "Show images on _buttons"
-msgstr "Vis billeder på _knapper"
+msgstr "Show images on _buttons"
 
 #: ../dialogs/appearance-settings/appearance-dialog.glade.h:22
 msgid "Specify whether icons should be displayed next to text in buttons"
-msgstr "Angiv om ikoner skal vises ved siden af tekst på knapperne"
+msgstr "Specify whether icons should be displayed next to text in buttons"
 
 #: ../dialogs/appearance-settings/appearance-dialog.glade.h:23
 msgid "Show images in _menus"
-msgstr "Vis billeder i _menuer"
+msgstr "Show images in _menus"
 
 #: ../dialogs/appearance-settings/appearance-dialog.glade.h:24
 msgid "Specify whether icons should be displayed next to items in menus"
-msgstr "Angiv om ikoner skal vises ved siden af elementer på menuer"
+msgstr "Specify whether icons should be displayed next to items in menus"
 
 #: ../dialogs/appearance-settings/appearance-dialog.glade.h:25
 msgid "Enable e_ditable accelerators"
-msgstr "Aktivér re_digerbare acceleratorer"
+msgstr "Enable e_ditable accelerators"
 
 #: ../dialogs/appearance-settings/appearance-dialog.glade.h:26
 msgid ""
 "If selected, keyboard shortcuts for menu items can be changed by hovering "
 "the mouse over the menu item and pressing the new key combination for the "
 "shortcut"
-msgstr ""
-"Hvis afkrydset, kan tastegenveje for menuelementer blive ændret ved at holde "
-"musen over menuelementet og trykke den nye tastekombination for genvejen"
+msgstr "If selected, keyboard shortcuts for menu items can be changed by hovering the mouse over the menu item and pressing the new key combination for the shortcut"
 
 #: ../dialogs/appearance-settings/appearance-dialog.glade.h:27
 msgid "Menus and Buttons"
-msgstr "Menuer og knapper"
+msgstr "Menus and Buttons"
 
 #: ../dialogs/appearance-settings/appearance-dialog.glade.h:28
 msgid "Enable _event sounds"
-msgstr "Aktivér _begivenhedslyde"
+msgstr "Enable _event sounds"
 
 #: ../dialogs/appearance-settings/appearance-dialog.glade.h:29
 msgid "Enable or disable event sounds globally (requires \"Canberra\" support)"
-msgstr ""
-"Aktivér eller deaktivér begivenhedslyde globalt (kræver \"Canberra\" "
-"understøttelse)"
+msgstr "Enable or disable event sounds globally (requires \"Canberra\" support)"
 
 #: ../dialogs/appearance-settings/appearance-dialog.glade.h:30
-#, fuzzy
 msgid "Enable input feedbac_k sounds"
-msgstr "Aktivér i_nddata tilbagemeldingslyde"
+msgstr "Enable input feedbac_k sounds"
 
 #: ../dialogs/appearance-settings/appearance-dialog.glade.h:31
 msgid ""
-"Specify whether mouse clicks and other user input will cause event sounds to "
-"play"
-msgstr ""
-"Angiv om museklik eller andre brugerhandlinger skal resultere i afspilning "
-"af begivenhedslyd"
+"Specify whether mouse clicks and other user input will cause event sounds to"
+" play"
+msgstr "Specify whether mouse clicks and other user input will cause event sounds to play"
 
 #: ../dialogs/appearance-settings/appearance-dialog.glade.h:32
 msgid "Event sounds"
-msgstr "Begivenhedslyde"
+msgstr "Event sounds"
 
 #: ../dialogs/appearance-settings/appearance-dialog.glade.h:33
-#, fuzzy
 msgid "Setti_ngs"
-msgstr "Indstillinger"
+msgstr "Setti_ngs"
 
 #: ../dialogs/appearance-settings/appearance-dialog.glade.h:34
-#: ../dialogs/appearance-settings/main.c:852
-#: ../dialogs/display-settings/main.c:102
-#: ../dialogs/display-settings/main.c:113
+#: ../dialogs/appearance-settings/main.c:892
+#: ../dialogs/display-settings/main.c:103
+#: ../dialogs/display-settings/main.c:114
 msgid "None"
-msgstr "Ingen"
+msgstr "None"
 
 #: ../dialogs/appearance-settings/appearance-dialog.glade.h:35
 msgid "Slight"
-msgstr "Lettere"
+msgstr "Slight"
 
 #: ../dialogs/appearance-settings/appearance-dialog.glade.h:36
 msgid "Medium"
-msgstr "Mellem"
+msgstr "Medium"
 
 #: ../dialogs/appearance-settings/appearance-dialog.glade.h:37
 msgid "Full"
-msgstr "Fuld"
+msgstr "Full"
 
 #: ../dialogs/appearance-settings/appearance-dialog.glade.h:38
 msgid "Icons"
-msgstr "Ikoner"
+msgstr "Icons"
 
 #: ../dialogs/appearance-settings/appearance-dialog.glade.h:39
 msgid "Text"
-msgstr "Tekst"
+msgstr "Text"
 
 #: ../dialogs/appearance-settings/appearance-dialog.glade.h:40
-#: ../dialogs/display-settings/main.c:116
-msgid "Both"
-msgstr "Begge"
+msgid "Text under icons"
+msgstr "Text under icons"
 
 #: ../dialogs/appearance-settings/appearance-dialog.glade.h:41
-msgid "Both Horizontal"
-msgstr "Begge vandrette"
+msgid "Text next to icons"
+msgstr "Text next to icons"
 
-#: ../dialogs/appearance-settings/main.c:733
+#: ../dialogs/appearance-settings/main.c:355
+#, c-format
+msgid ""
+"Warning: this icon theme has no cache file. You can create this by running "
+"<i>gtk-update-icon-cache %s/%s/</i> in a terminal emulator."
+msgstr "Warning: this icon theme has no cache file. You can create this by running <i>gtk-update-icon-cache %s/%s/</i> in a terminal emulator."
+
+#: ../dialogs/appearance-settings/main.c:765
 #, c-format
 msgid "File is larger than %d MB, installation aborted"
-msgstr "Filen er større end %d MB, installationen afbrydes"
+msgstr "File is larger than %d MB, installation aborted"
 
-#: ../dialogs/appearance-settings/main.c:738
+#: ../dialogs/appearance-settings/main.c:770
 msgid "Failed to create temporary directory"
-msgstr "Kunne ikke oprette mappe"
+msgstr "Failed to create temporary directory"
 
-#: ../dialogs/appearance-settings/main.c:743
+#: ../dialogs/appearance-settings/main.c:775
 msgid "Failed to extract archive"
-msgstr "Kunne ikke udtrække arkiv"
+msgstr "Failed to extract archive"
 
-#: ../dialogs/appearance-settings/main.c:748
+#: ../dialogs/appearance-settings/main.c:780
 msgid "Unknown format, only archives and directories are supported"
-msgstr "Ukendt format, kun arkiver og mapper er understøttet"
+msgstr "Unknown format, only archives and directories are supported"
 
-#: ../dialogs/appearance-settings/main.c:753
+#: ../dialogs/appearance-settings/main.c:785
 #, c-format
 msgid "An unknown error, exit code is %d"
-msgstr "En ukendt fejl, slutkode er %d"
+msgstr "An unknown error, exit code is %d"
 
-#: ../dialogs/appearance-settings/main.c:760
+#: ../dialogs/appearance-settings/main.c:792
 msgid "Failed to install theme"
-msgstr "Kunne ikke installere tema"
+msgstr "Failed to install theme"
 
-#: ../dialogs/appearance-settings/main.c:856
+#: ../dialogs/appearance-settings/main.c:896
 msgid "RGB"
 msgstr "RGB"
 
-#: ../dialogs/appearance-settings/main.c:860
+#: ../dialogs/appearance-settings/main.c:900
 msgid "BGR"
 msgstr "BGR"
 
-#: ../dialogs/appearance-settings/main.c:864
+#: ../dialogs/appearance-settings/main.c:904
 msgid "Vertical RGB"
-msgstr "Lodret RGB"
+msgstr "Vertical RGB"
 
-#: ../dialogs/appearance-settings/main.c:868
+#: ../dialogs/appearance-settings/main.c:908
 msgid "Vertical BGR"
-msgstr "Lodret BGR"
+msgstr "Vertical BGR"
 
 #: ../dialogs/display-settings/confirmation-dialog.glade.h:1
 msgid "Confirmation"
-msgstr "Bekræftelse"
+msgstr "Confirmation"
 
 #: ../dialogs/display-settings/confirmation-dialog.glade.h:2
 msgid "Keep this configuration"
-msgstr "Behold denne indstilling"
+msgstr "Keep this configuration"
 
 #: ../dialogs/display-settings/confirmation-dialog.glade.h:3
 msgid "Restore the previous configuration"
-msgstr "Genskab den forrige indstilling"
+msgstr "Restore the previous configuration"
 
 #: ../dialogs/display-settings/confirmation-dialog.glade.h:4
 msgid "<big><b>Would you like to keep this configuration?</b></big>"
-msgstr "<big><b>Vil du gerne beholde denne indstilling?</b></big>"
+msgstr "<big><b>Would you like to keep this configuration?</b></big>"
 
 #: ../dialogs/display-settings/confirmation-dialog.glade.h:5
 msgid ""
 "The previous configuration will be restored in 10 seconds if you do not "
 "reply to this question."
-msgstr ""
-"Den forrige indstilling vil blive genskabt om 10 sekunder, hvis du ikke "
-"besvarer dette spørgsmål."
+msgstr "The previous configuration will be restored in 10 seconds if you do not reply to this question."
 
 #: ../dialogs/display-settings/display-dialog.glade.h:1
 #: ../dialogs/display-settings/xfce-display-settings.desktop.in.h:1
 msgid "Display"
-msgstr "Skærm"
+msgstr "Display"
 
 #: ../dialogs/display-settings/display-dialog.glade.h:2
 #: ../dialogs/display-settings/xfce-display-settings.desktop.in.h:2
 msgid "Configure screen settings and layout"
-msgstr "Konfigurér skærm-indstillinger og -udseende"
+msgstr "Configure screen settings and layout"
 
 #: ../dialogs/display-settings/display-dialog.glade.h:3
 msgid "Ref_lection:"
-msgstr "Spe_jlbillede:"
+msgstr "Ref_lection:"
 
 #: ../dialogs/display-settings/display-dialog.glade.h:4
 msgid "Ro_tation:"
@@ -577,166 +534,152 @@ msgstr "Ro_tation:"
 
 #: ../dialogs/display-settings/display-dialog.glade.h:5
 msgid "Refresh _rate:"
-msgstr "Opdaterings_frekvens:"
+msgstr "Refresh _rate:"
 
 #: ../dialogs/display-settings/display-dialog.glade.h:6
 msgid "R_esolution:"
-msgstr "Op_løsning:"
+msgstr "R_esolution:"
 
 #: ../dialogs/display-settings/display-dialog.glade.h:7
-#, fuzzy
 msgid "P_osition:"
-msgstr "Ro_tation:"
+msgstr "P_osition:"
 
 #: ../dialogs/display-settings/display-dialog.glade.h:8
 msgid "_Use this output"
-msgstr "Brug disse _uddata"
+msgstr "_Use this output"
 
 #: ../dialogs/display-settings/display-dialog.glade.h:9
 msgid "_Mirror displays"
-msgstr ""
+msgstr "_Mirror displays"
 
 #: ../dialogs/display-settings/display-dialog.glade.h:10
 msgid "Configure _new displays when connected"
-msgstr ""
-
-#: ../dialogs/display-settings/display-dialog.glade.h:11
-msgid ""
-"Automatically show the \"minimal dialog\" to quickly configure newly "
-"connected displays."
-msgstr ""
+msgstr "Configure _new displays when connected"
 
 #: ../dialogs/display-settings/minimal-display-dialog.glade.h:1
-#, fuzzy
 msgid "Displays"
-msgstr "Skærm"
+msgstr "Displays"
 
 #: ../dialogs/display-settings/minimal-display-dialog.glade.h:2
-#, fuzzy
 msgid "Only Display 1"
-msgstr "Skærm"
+msgstr "Only Display 1"
 
 #: ../dialogs/display-settings/minimal-display-dialog.glade.h:3
-#, fuzzy
 msgid "Mirror Displays"
-msgstr "Skærm"
+msgstr "Mirror Displays"
 
 #: ../dialogs/display-settings/minimal-display-dialog.glade.h:4
 msgid "Extend to the right"
-msgstr ""
+msgstr "Extend to the right"
 
 #: ../dialogs/display-settings/minimal-display-dialog.glade.h:5
-#, fuzzy
 msgid "Only Display 2"
-msgstr "Skærm"
+msgstr "Only Display 2"
 
 #: ../dialogs/display-settings/minimal-display-dialog.glade.h:6
 msgid "Advanced"
-msgstr ""
+msgstr "Advanced"
 
 #: ../dialogs/display-settings/minimal-display-dialog.glade.h:7
 msgid "radiobutton"
-msgstr ""
-
-#: ../dialogs/display-settings/main.c:90
-msgid "Same as"
-msgstr ""
+msgstr "radiobutton"
 
 #: ../dialogs/display-settings/main.c:91
-msgid "Above"
-msgstr ""
+msgid "Same as"
+msgstr "Same as"
 
 #: ../dialogs/display-settings/main.c:92
-msgid "Below"
-msgstr ""
+msgid "Above"
+msgstr "Above"
 
 #: ../dialogs/display-settings/main.c:93
-#, fuzzy
-msgid "Right of"
-msgstr "Højre"
+msgid "Below"
+msgstr "Below"
 
 #: ../dialogs/display-settings/main.c:94
-#, fuzzy
-msgid "Left of"
-msgstr "Venstre"
+msgid "Right of"
+msgstr "Right of"
 
-#: ../dialogs/display-settings/main.c:103
-msgid "Left"
-msgstr "Venstre"
+#: ../dialogs/display-settings/main.c:95
+msgid "Left of"
+msgstr "Left of"
 
 #: ../dialogs/display-settings/main.c:104
-msgid "Inverted"
-msgstr "Omvendt"
+msgid "Left"
+msgstr "Left"
 
 #: ../dialogs/display-settings/main.c:105
-msgid "Right"
-msgstr "Højre"
+msgid "Inverted"
+msgstr "Inverted"
 
-#: ../dialogs/display-settings/main.c:114
-msgid "Horizontal"
-msgstr "Vandret"
+#: ../dialogs/display-settings/main.c:106
+msgid "Right"
+msgstr "Right"
 
 #: ../dialogs/display-settings/main.c:115
+msgid "Horizontal"
+msgstr "Horizontal"
+
+#: ../dialogs/display-settings/main.c:116
 msgid "Vertical"
-msgstr "Lodret"
+msgstr "Vertical"
 
-#: ../dialogs/display-settings/main.c:138
+#: ../dialogs/display-settings/main.c:117
+msgid "Horizontal and Vertical"
+msgstr "Horizontal and Vertical"
+
+#: ../dialogs/display-settings/main.c:139
 msgid "Minimal interface to set up an external output"
-msgstr "Minimalt interface for at sætte op til eksterne uddata"
+msgstr "Minimal interface to set up an external output"
 
-#: ../dialogs/display-settings/main.c:226
+#: ../dialogs/display-settings/main.c:227
 #, c-format
 msgid ""
 "The previous configuration will be restored in %i seconds if you do not "
 "reply to this question."
-msgstr ""
-"Den forrige indstilling vil blive genskabt om %i sekunder, hvis du ikke "
-"besvarer spørgsmålet."
+msgstr "The previous configuration will be restored in %i seconds if you do not reply to this question."
 
 #. Insert the mode
-#: ../dialogs/display-settings/main.c:747
+#: ../dialogs/display-settings/main.c:748
 #, c-format
 msgid "%.1f Hz"
 msgstr "%.1f Hz"
 
-#: ../dialogs/display-settings/main.c:1040
-#, fuzzy
+#: ../dialogs/display-settings/main.c:1041
 msgid "Display:"
-msgstr "Skærm"
+msgstr "Display:"
 
-#: ../dialogs/display-settings/main.c:1045
-#, fuzzy
+#: ../dialogs/display-settings/main.c:1046
 msgid "Resolution:"
-msgstr "Op_løsning:"
+msgstr "Resolution:"
 
-#: ../dialogs/display-settings/main.c:1232
+#: ../dialogs/display-settings/main.c:1233
 msgid ""
 "The last active output must not be disabled, the system would be unusable."
-msgstr ""
-"Det sidste aktive uddata må ikke slås fra idet systemet vil blive ubrugbart."
+msgstr "The last active output must not be disabled, the system would be unusable."
 
-#: ../dialogs/display-settings/main.c:1234
+#: ../dialogs/display-settings/main.c:1235
 msgid "Selected output not disabled"
-msgstr "Valgte uddata er ikke slået fra"
+msgstr "Selected output not disabled"
 
-#: ../dialogs/display-settings/main.c:1958
+#: ../dialogs/display-settings/main.c:1975
 #: ../dialogs/display-settings/xfce-randr.c:350
 #, c-format
 msgid "Unable to query the version of the RandR extension being used"
-msgstr "Kunne ikke forespørge hvilken version af RandR-udvidelsen er ibrug"
+msgstr "Unable to query the version of the RandR extension being used"
 
-#: ../dialogs/display-settings/main.c:1959
-#: ../dialogs/display-settings/main.c:1995
+#: ../dialogs/display-settings/main.c:1976
+#: ../dialogs/display-settings/main.c:2012
 msgid "Unable to start the Xfce Display Settings"
-msgstr "Kunne ikke starte skærmindstillingerne til Xfce"
+msgstr "Unable to start the Xfce Display Settings"
 
-#: ../dialogs/display-settings/main.c:1990
+#: ../dialogs/display-settings/main.c:2007
 msgid "ATI Settings"
-msgstr "ATI-indstillinger"
+msgstr "ATI Settings"
 
-#: ../dialogs/display-settings/main.c:2005
+#: ../dialogs/display-settings/main.c:2022
 msgid "Unable to launch the proprietary driver settings"
-msgstr "Kunne ikke starte den lukkede skærmprogramsindstilling."
+msgstr "Unable to launch the proprietary driver settings"
 
 #. 1.2 is required
 #: ../dialogs/display-settings/xfce-randr.c:358
@@ -744,25 +687,23 @@ msgstr "Kunne ikke starte den lukkede skærmprogramsindstilling."
 msgid ""
 "This system is using RandR %d.%d. For the display settings to work version "
 "1.2 is required at least"
-msgstr ""
-"Dette system bruger RandR %d.%d. For at skærmindstillingerne vil virke "
-"kræves mindst version 1.2"
+msgstr "This system is using RandR %d.%d. For the display settings to work version 1.2 is required at least"
 
 #: ../dialogs/display-settings/xfce-randr.c:626
 msgid "Laptop"
-msgstr "Bærbar computer"
+msgstr "Laptop"
 
 #: ../dialogs/display-settings/xfce-randr.c:647
 msgid "Monitor"
-msgstr "Skærm"
+msgstr "Monitor"
 
 #: ../dialogs/display-settings/xfce-randr.c:650
 msgid "Television"
-msgstr "Fjernsyn"
+msgstr "Television"
 
 #: ../dialogs/display-settings/xfce-randr.c:654
 msgid "Digital display"
-msgstr "Digitalskærm"
+msgstr "Digital display"
 
 #. Translators: "Unknown" here is used to identify a monitor for which
 #. * we don't know the vendor. When a vendor is known, the name of the
@@ -770,210 +711,198 @@ msgstr "Digitalskærm"
 #: ../dialogs/display-settings/display-name.c:269
 msgctxt "Monitor vendor"
 msgid "Unknown"
-msgstr "Ukendt"
+msgstr "Unknown"
 
 #. Set dialog title and icon
-#: ../dialogs/keyboard-settings/command-dialog.c:106
+#: ../dialogs/keyboard-settings/command-dialog.c:108
 msgid "Shortcut Command"
-msgstr "Genvejskommando"
+msgstr "Shortcut Command"
 
-#: ../dialogs/keyboard-settings/command-dialog.c:130
+#: ../dialogs/keyboard-settings/command-dialog.c:147
+msgid "Enter the command you want to trigger with a shortcut."
+msgstr "Enter the command you want to trigger with a shortcut."
+
+#. We are editing an existing shortcut
+#: ../dialogs/keyboard-settings/command-dialog.c:165
 msgid "Shortcut:"
-msgstr "Genvej:"
+msgstr "Shortcut:"
 
-#: ../dialogs/keyboard-settings/command-dialog.c:140
+#: ../dialogs/keyboard-settings/command-dialog.c:176
 msgid "Command:"
-msgstr "Kommando:"
+msgstr "Command:"
 
-#: ../dialogs/keyboard-settings/command-dialog.c:160
+#: ../dialogs/keyboard-settings/command-dialog.c:196
 msgid "Use _startup notification"
-msgstr "Brug _startopmeddelelser"
+msgstr "Use _startup notification"
 
-#: ../dialogs/keyboard-settings/command-dialog.c:207
+#: ../dialogs/keyboard-settings/command-dialog.c:243
 msgid "The command may not be empty."
-msgstr "Kommandoen må ikke være tom."
+msgstr "The command may not be empty."
 
-#: ../dialogs/keyboard-settings/command-dialog.c:227
+#: ../dialogs/keyboard-settings/command-dialog.c:263
 msgid "Select command"
-msgstr "Vælg kommando"
+msgstr "Select command"
 
-#: ../dialogs/keyboard-settings/command-dialog.c:235
+#: ../dialogs/keyboard-settings/command-dialog.c:271
 #: ../dialogs/mime-settings/xfce-mime-chooser.c:386
 msgid "All Files"
-msgstr "Alle filer"
+msgstr "All Files"
 
-#: ../dialogs/keyboard-settings/command-dialog.c:240
+#: ../dialogs/keyboard-settings/command-dialog.c:276
 #: ../dialogs/mime-settings/xfce-mime-chooser.c:391
 msgid "Executable Files"
-msgstr "Kørbare filer"
+msgstr "Executable Files"
 
-#: ../dialogs/keyboard-settings/command-dialog.c:255
+#: ../dialogs/keyboard-settings/command-dialog.c:291
 #: ../dialogs/mime-settings/xfce-mime-chooser.c:406
 msgid "Perl Scripts"
-msgstr "Perl-skripter"
+msgstr "Perl Scripts"
 
-#: ../dialogs/keyboard-settings/command-dialog.c:261
+#: ../dialogs/keyboard-settings/command-dialog.c:297
 #: ../dialogs/mime-settings/xfce-mime-chooser.c:412
 msgid "Python Scripts"
-msgstr "Python-skripter"
+msgstr "Python Scripts"
 
-#: ../dialogs/keyboard-settings/command-dialog.c:267
+#: ../dialogs/keyboard-settings/command-dialog.c:303
 #: ../dialogs/mime-settings/xfce-mime-chooser.c:418
 msgid "Ruby Scripts"
-msgstr "Ruby-skripter"
+msgstr "Ruby Scripts"
 
-#: ../dialogs/keyboard-settings/command-dialog.c:273
+#: ../dialogs/keyboard-settings/command-dialog.c:309
 #: ../dialogs/mime-settings/xfce-mime-chooser.c:424
 msgid "Shell Scripts"
-msgstr "Skal-skripter"
+msgstr "Shell Scripts"
 
 #: ../dialogs/keyboard-settings/keyboard-dialog.glade.h:1
 msgid "Keyboard layout selection"
-msgstr "Valg af tastaturlayout"
+msgstr "Keyboard layout selection"
 
 #: ../dialogs/keyboard-settings/keyboard-dialog.glade.h:2
 msgid "Select keyboard layout and variant"
-msgstr "Vælg tastaturlayout og -variant"
+msgstr "Select keyboard layout and variant"
 
 #: ../dialogs/keyboard-settings/keyboard-dialog.glade.h:3
 #: ../dialogs/keyboard-settings/xfce-keyboard-settings.desktop.in.h:1
 msgid "Keyboard"
-msgstr "Tastatur"
+msgstr "Keyboard"
 
 #: ../dialogs/keyboard-settings/keyboard-dialog.glade.h:4
 #: ../dialogs/keyboard-settings/xfce-keyboard-settings.desktop.in.h:2
 msgid "Edit keyboard settings and application shortcuts"
-msgstr "Redigér tastaturindstillinger og programgenveje"
+msgstr "Edit keyboard settings and application shortcuts"
 
 #: ../dialogs/keyboard-settings/keyboard-dialog.glade.h:5
 msgid "Restore num l_ock state on startup"
-msgstr "Genskab numl_ocktilstand ved opstart"
+msgstr "Restore num l_ock state on startup"
 
 #: ../dialogs/keyboard-settings/keyboard-dialog.glade.h:6
-#: ../dialogs/mouse-settings/mouse-dialog.glade.h:25
+#: ../dialogs/mouse-settings/mouse-dialog.glade.h:30
 msgid "General"
-msgstr "Generelt"
+msgstr "General"
 
 #: ../dialogs/keyboard-settings/keyboard-dialog.glade.h:7
 msgid "_Enable key repeat"
-msgstr "_Aktivér tastgentagelse"
+msgstr "_Enable key repeat"
 
 #: ../dialogs/keyboard-settings/keyboard-dialog.glade.h:8
 msgid ""
-"When selected, pressing and holding down a key emits the same character over "
-"and over again"
-msgstr ""
-"Når afkrydset vil nedtrykning og holdning af en tast medføre, at tasten vil "
-"sende det samme tegn igen og igen"
+"When selected, pressing and holding down a key emits the same character over"
+" and over again"
+msgstr "When selected, pressing and holding down a key emits the same character over and over again"
 
 #: ../dialogs/keyboard-settings/keyboard-dialog.glade.h:9
 msgid "_Repeat delay:"
-msgstr "_Gentagelsesforsinkelse:"
+msgstr "_Repeat delay:"
 
 #: ../dialogs/keyboard-settings/keyboard-dialog.glade.h:10
 msgid "The time, in milliseconds, before a pressed key begins repeating"
-msgstr "Tiden i millisekunder før en trykket tast begynder at gentage sig selv"
+msgstr "The time, in milliseconds, before a pressed key begins repeating"
 
 #: ../dialogs/keyboard-settings/keyboard-dialog.glade.h:11
-#, fuzzy
 msgid "Repe_at speed:"
-msgstr "Gentagelse_shastighed:"
+msgstr "Repe_at speed:"
 
 #: ../dialogs/keyboard-settings/keyboard-dialog.glade.h:12
 msgid "The rate at which keystrokes are generated while a key is pressed"
-msgstr "Frekvensen med hvilken et tastaturtryk dannes med en tast trykket"
+msgstr "The rate at which keystrokes are generated while a key is pressed"
 
 #: ../dialogs/keyboard-settings/keyboard-dialog.glade.h:13
 msgid "Typing Settings"
-msgstr "Tasteindstillinger"
+msgstr "Typing Settings"
 
 #: ../dialogs/keyboard-settings/keyboard-dialog.glade.h:14
 msgid "Show _blinking"
-msgstr "Vis _blinkende"
+msgstr "Show _blinking"
 
 #: ../dialogs/keyboard-settings/keyboard-dialog.glade.h:15
 msgid "Specify whether or not the text cursor blinks"
-msgstr "Angiv om tekstmarkøren skal blinke eller ej"
+msgstr "Specify whether or not the text cursor blinks"
 
 #: ../dialogs/keyboard-settings/keyboard-dialog.glade.h:16
 msgid "Blink _delay:"
-msgstr "Blinke_forsinkelse:"
+msgstr "Blink _delay:"
 
 #: ../dialogs/keyboard-settings/keyboard-dialog.glade.h:17
 msgid "The delay, in milliseconds, between successive blinks of the cursor"
-msgstr "Forsinkelsen i millisekunder mellem efterfølgende markørblink"
+msgstr "The delay, in milliseconds, between successive blinks of the cursor"
 
 #: ../dialogs/keyboard-settings/keyboard-dialog.glade.h:18
 msgid "Cursor"
-msgstr "Markør"
+msgstr "Cursor"
 
 #: ../dialogs/keyboard-settings/keyboard-dialog.glade.h:19
 msgid "_Test area:"
-msgstr "_Testområde:"
+msgstr "_Test area:"
 
 #: ../dialogs/keyboard-settings/keyboard-dialog.glade.h:20
-#, fuzzy
 msgid "Beha_vior"
-msgstr "Op_førsel"
+msgstr "Beha_viour"
 
 #: ../dialogs/keyboard-settings/keyboard-dialog.glade.h:21
-#, fuzzy
 msgid "Define shortcuts for la_unching applications:"
-msgstr "Definér _genveje til at starte programmer:"
+msgstr "Define shortcuts for la_unching applications:"
 
 #: ../dialogs/keyboard-settings/keyboard-dialog.glade.h:22
 msgid "Reset to _Defaults"
-msgstr "Nulstil til stan_dardindstillinger"
+msgstr "Reset to _Defaults"
 
 #: ../dialogs/keyboard-settings/keyboard-dialog.glade.h:23
 msgid "A_pplication Shortcuts"
-msgstr "P_rogramgenveje"
+msgstr "A_pplication Shortcuts"
 
 #: ../dialogs/keyboard-settings/keyboard-dialog.glade.h:24
 msgid "_Use system defaults"
-msgstr "Br_ug systemstandarder"
+msgstr "_Use system defaults"
 
 #: ../dialogs/keyboard-settings/keyboard-dialog.glade.h:25
 msgid ""
 "Specifies whether the keyboard layout is controlled with this settings "
 "dialog, or by the X server"
-msgstr ""
-"Angives om tastaturlayoutet er kontrolleret med denne indstillingsdialog "
-"eller af X-serveren"
+msgstr "Specifies whether the keyboard layout is controlled with this settings dialogue, or by the X server"
 
 #: ../dialogs/keyboard-settings/keyboard-dialog.glade.h:26
-#, fuzzy
 msgid "_Keyboard model"
-msgstr "Tastaturmodel"
+msgstr "_Keyboard model"
 
-# Automatically copied. Please review and remove fuzzy flag.
 #: ../dialogs/keyboard-settings/keyboard-dialog.glade.h:27
-#, fuzzy
 msgid "Change la_yout option"
-msgstr "Ændr layoutindstilling"
+msgstr "Change la_yout option"
 
-# Automatically copied. Please review and remove fuzzy flag.
 #: ../dialogs/keyboard-settings/keyboard-dialog.glade.h:28
-#, fuzzy
 msgid "Co_mpose key"
-msgstr "Position af sammensætningstast"
+msgstr "Co_mpose key"
 
-# Automatically copied. Please review and remove fuzzy flag.
 #: ../dialogs/keyboard-settings/keyboard-dialog.glade.h:29
-#, fuzzy
 msgid "Move currently selected item up by one row"
-msgstr "Flyt det aktuelle valgte element en række op"
+msgstr "Move currently selected item up by one row"
 
-# Automatically copied. Please review and remove fuzzy flag.
 #: ../dialogs/keyboard-settings/keyboard-dialog.glade.h:30
-#, fuzzy
 msgid "Move currently selected item down by one row"
-msgstr "Flyt det aktuelle valgte element en række ned"
+msgstr "Move currently selected item down by one row"
 
 #: ../dialogs/keyboard-settings/keyboard-dialog.glade.h:31
-#, fuzzy
 msgid "Key_board layout"
-msgstr "Tastaturlayout"
+msgstr "Key_board layout"
 
 #: ../dialogs/keyboard-settings/keyboard-dialog.glade.h:32
 msgid "_Layout"
@@ -981,113 +910,110 @@ msgstr "_Layout"
 
 #: ../dialogs/keyboard-settings/main.c:82
 msgid "Unable to initialize GTK+."
-msgstr "Kunne ikke klargøre GTK+."
+msgstr "Unable to initialise GTK+."
 
 #: ../dialogs/keyboard-settings/main.c:102
 #, c-format
 msgid "Failed to connect to xfconf daemon. Reason: %s"
-msgstr "Kunne ikke forbinde til xfconf-dæmon. Årsag: %s"
+msgstr "Failed to connect to xfconf daemon. Reason: %s"
 
 #: ../dialogs/keyboard-settings/main.c:113
 msgid "Could not create the settings dialog."
-msgstr "Kunne ikke oprette indstillingsdialogen."
+msgstr "Could not create the settings dialogue."
 
-#: ../dialogs/keyboard-settings/xfce-keyboard-settings.c:396
+#: ../dialogs/keyboard-settings/xfce-keyboard-settings.c:397
 msgid "Command"
-msgstr "Kommando"
+msgstr "Command"
 
-#: ../dialogs/keyboard-settings/xfce-keyboard-settings.c:401
+#: ../dialogs/keyboard-settings/xfce-keyboard-settings.c:402
 msgid "Shortcut"
-msgstr "Genvej"
+msgstr "Shortcut"
 
-#: ../dialogs/keyboard-settings/xfce-keyboard-settings.c:473
+#: ../dialogs/keyboard-settings/xfce-keyboard-settings.c:478
 msgid "Layout"
 msgstr "Layout"
 
-#: ../dialogs/keyboard-settings/xfce-keyboard-settings.c:474
+#: ../dialogs/keyboard-settings/xfce-keyboard-settings.c:479
 msgid "Variant"
 msgstr "Variant"
 
-#: ../dialogs/keyboard-settings/xfce-keyboard-settings.c:957
+#: ../dialogs/keyboard-settings/xfce-keyboard-settings.c:1002
+#: ../dialogs/keyboard-settings/xfce-keyboard-settings.c:1106
 msgid "Shortcut command may not be empty."
-msgstr "Genvejskommando må ikke være tom."
+msgstr "Shortcut command may not be empty."
 
-#: ../dialogs/keyboard-settings/xfce-keyboard-settings.c:1067
-#: ../dialogs/keyboard-settings/xfce-keyboard-settings.c:1068
+#: ../dialogs/keyboard-settings/xfce-keyboard-settings.c:1272
+#: ../dialogs/keyboard-settings/xfce-keyboard-settings.c:1273
 msgid "Reset to Defaults"
-msgstr "Nulstil til standardindstillinger"
+msgstr "Reset to Defaults"
 
-#: ../dialogs/keyboard-settings/xfce-keyboard-settings.c:1069
+#: ../dialogs/keyboard-settings/xfce-keyboard-settings.c:1274
 msgid ""
-"This will reset all shortcuts to their default values. Do you really want to "
-"do this?"
-msgstr ""
-"Dette vil nulstille alle genvejene til deres standardværdier. Vil du "
-"virkelig gøre dette?"
+"This will reset all shortcuts to their default values. Do you really want to"
+" do this?"
+msgstr "This will reset all shortcuts to their default values. Do you really want to do this?"
 
-#: ../dialogs/keyboard-settings/xfce-keyboard-settings.c:1148
+#: ../dialogs/keyboard-settings/xfce-keyboard-settings.c:1353
 msgid "The system defaults will be restored next time you log in."
-msgstr "Systemstandarder vil blive genskabt, når du logger ind næste gang."
+msgstr "The system defaults will be restored next time you log in."
 
-#: ../dialogs/keyboard-settings/xfce-keyboard-settings.c:1150
+#: ../dialogs/keyboard-settings/xfce-keyboard-settings.c:1355
 msgid "Warning"
-msgstr "Advarsel"
+msgstr "Warning"
 
 #: ../dialogs/mime-settings/xfce-mime-chooser.c:128
 msgid "Select Application"
-msgstr "Vælg et program"
+msgstr "Select Application"
 
 #: ../dialogs/mime-settings/xfce-mime-chooser.c:204
 msgid "Use a c_ustom command:"
-msgstr "Brug en til_passet kommando:"
+msgstr "Use a c_ustom command:"
 
 #: ../dialogs/mime-settings/xfce-mime-chooser.c:205
 msgid ""
-"Use a custom command for an application that is not available from the above "
-"application list."
-msgstr ""
-"Brug en tilpasset kommando for et program som ikke er tilgængeligt på "
-"programlisten."
+"Use a custom command for an application that is not available from the above"
+" application list."
+msgstr "Use a custom command for an application that is not available from the above application list."
 
 #: ../dialogs/mime-settings/xfce-mime-chooser.c:223
 msgid "_Browse..."
-msgstr "_Gennemse..."
+msgstr "_Browse..."
 
 #: ../dialogs/mime-settings/xfce-mime-chooser.c:376
 msgid "Select an Application"
-msgstr "Vælg et program"
+msgstr "Select an Application"
 
 #: ../dialogs/mime-settings/xfce-mime-chooser.c:526
 msgid "None available"
-msgstr "Ingen tilgængelige"
+msgstr "None available"
 
 #: ../dialogs/mime-settings/xfce-mime-chooser.c:573
 msgid "Recommended Applications"
-msgstr "Anbefalede programmer"
+msgstr "Recommended Applications"
 
 #: ../dialogs/mime-settings/xfce-mime-chooser.c:591
 msgid "Other Applications"
-msgstr "Andre programmer"
+msgstr "Other Applications"
 
 #: ../dialogs/mime-settings/xfce-mime-chooser.c:611
 #, c-format
 msgid "Open <i>%s</i> and other files of type \"%s\" with:"
-msgstr "Åbn <i>%s</i> og andre filer af typen \"%s\" med:"
+msgstr "Open <i>%s</i> and other files of type \"%s\" with:"
 
 #: ../dialogs/mime-settings/xfce-mime-chooser.c:647
 #, c-format
 msgid "Failed to add new application \"%s\""
-msgstr "Kunne ikke føje nyt prgram\"%s\" til"
+msgstr "Failed to add new application \"%s\""
 
 #: ../dialogs/mime-settings/xfce-mime-window.c:174
 #: ../dialogs/mime-settings/xfce4-mime-settings.desktop.in.h:1
 msgid "MIME Type Editor"
-msgstr "Redigering af MIME-type"
+msgstr "MIME Type Editor"
 
 #: ../dialogs/mime-settings/xfce-mime-window.c:178
 #: ../dialogs/mime-settings/xfce4-mime-settings.desktop.in.h:2
 msgid "Associate applications with MIME types"
-msgstr "Tilknyt programmer med MIME-typer"
+msgstr "Associate applications with MIME types"
 
 #: ../dialogs/mime-settings/xfce-mime-window.c:203
 msgid "_Filter:"
@@ -1095,11 +1021,11 @@ msgstr "_Filter:"
 
 #: ../dialogs/mime-settings/xfce-mime-window.c:211
 msgid "Clear filter"
-msgstr "Ryd filter"
+msgstr "Clear filter"
 
 #: ../dialogs/mime-settings/xfce-mime-window.c:257
 msgid "MIME Type"
-msgstr "MIME-type"
+msgstr "MIME Type"
 
 #: ../dialogs/mime-settings/xfce-mime-window.c:287
 msgid "Status"
@@ -1107,69 +1033,64 @@ msgstr "Status"
 
 #: ../dialogs/mime-settings/xfce-mime-window.c:308
 msgid "Default Application"
-msgstr "Standardprogram"
+msgstr "Default Application"
 
 #: ../dialogs/mime-settings/xfce-mime-window.c:479
 #: ../dialogs/mime-settings/xfce-mime-window.c:604
 msgid "User Set"
-msgstr "Indstil bruger"
+msgstr "User Set"
 
 #. sort the names but keep Default on top
 #: ../dialogs/mime-settings/xfce-mime-window.c:481
 #: ../dialogs/mime-settings/xfce-mime-window.c:604
-#: ../dialogs/mouse-settings/main.c:354 ../dialogs/mouse-settings/main.c:356
-#: ../dialogs/mouse-settings/main.c:416
+#: ../dialogs/mouse-settings/main.c:366 ../dialogs/mouse-settings/main.c:368
+#: ../dialogs/mouse-settings/main.c:428
 msgid "Default"
-msgstr "Standard"
+msgstr "Default"
 
 #: ../dialogs/mime-settings/xfce-mime-window.c:550
 #, c-format
 msgid "%d MIME type found"
 msgid_plural "%d MIME types found"
-msgstr[0] "%d MIME-type fundet"
-msgstr[1] "%d MIME-typer fundet"
+msgstr[0] "%d MIME type found"
+msgstr[1] "%d MIME types found"
 
 #: ../dialogs/mime-settings/xfce-mime-window.c:649
 #, c-format
 msgid "Failed to set application \"%s\" for mime type \"%s\"."
-msgstr "Kunne ikke indstille program \"%s\" til mime-type \"%s\"."
+msgstr "Failed to set application \"%s\" for mime type \"%s\"."
 
 #: ../dialogs/mime-settings/xfce-mime-window.c:906
 #, c-format
-msgid ""
-"Are you sure you want to reset content type \"%s\" to its default value?"
-msgstr ""
-"Er du sikker på, at du vil nulstille kanalen \"%s\" og alle dens "
-"indstillinger?"
+msgid "Are you sure you want to reset content type \"%s\" to its default value?"
+msgstr "Are you sure you want to reset content type \"%s\" to its default value?"
 
 #: ../dialogs/mime-settings/xfce-mime-window.c:910
 msgid "Question"
-msgstr "Spørgsmål"
+msgstr "Question"
 
 #: ../dialogs/mime-settings/xfce-mime-window.c:913
 msgid ""
 "This will remove your custom mime-association and restore the system-wide "
 "default."
-msgstr ""
-"Dette vil fjerne dine tilpassede MIME-tilknytninger og genskabe "
-"systemstandarderne."
+msgstr "This will remove your custom mime-association and restore the system-wide default."
 
 #: ../dialogs/mime-settings/xfce-mime-window.c:917
 #: ../dialogs/mime-settings/xfce-mime-window.c:988
 msgid "Reset to Default"
-msgstr "Nulstil til standardindstillinger"
+msgstr "Reset to Default"
 
 #: ../dialogs/mime-settings/xfce-mime-window.c:983
 msgid "Choose Application..."
-msgstr "Vælg program..."
+msgstr "Choose Application..."
 
 #: ../dialogs/mouse-settings/main.c:78
 msgid "Active device in the dialog"
-msgstr "Aktiv enhed i vinduet"
+msgstr "Active device in the dialogue"
 
 #: ../dialogs/mouse-settings/main.c:78
 msgid "DEVICE NAME"
-msgstr "Enhedsnavn"
+msgstr "DEVICE NAME"
 
 #. pixel value for some of the scales in the dialog
 #: ../dialogs/mouse-settings/main.c:124
@@ -1183,259 +1104,250 @@ msgstr "%g px"
 msgid "%g ms"
 msgstr "%g ms"
 
+#. seconds value for some of the scales in the dialog
+#: ../dialogs/mouse-settings/main.c:145
+#, c-format
+msgid "%.1f s"
+msgstr "%.1f s"
+
 #: ../dialogs/mouse-settings/mouse-dialog.glade.h:1
 msgid "Disabled"
-msgstr "Deaktiveret"
+msgstr "Disabled"
 
 #: ../dialogs/mouse-settings/mouse-dialog.glade.h:2
 msgid "Edge scrolling"
-msgstr "Hjørnerulning"
+msgstr "Edge scrolling"
 
 #: ../dialogs/mouse-settings/mouse-dialog.glade.h:3
 msgid "Two-finger scrolling"
-msgstr "Tofingerrulning"
+msgstr "Two-finger scrolling"
 
 #: ../dialogs/mouse-settings/mouse-dialog.glade.h:4
 msgid "Circular scrolling"
-msgstr "Circulærrulning"
+msgstr "Circular scrolling"
 
 #: ../dialogs/mouse-settings/mouse-dialog.glade.h:5
-#: ../dialogs/mouse-settings/xfce-mouse-settings.desktop.in.h:1
-msgid "Mouse and Touchpad"
-msgstr "Mus og pegeplade"
+msgid "None (right-handed)"
+msgstr "None (right-handed)"
 
 #: ../dialogs/mouse-settings/mouse-dialog.glade.h:6
-#: ../dialogs/mouse-settings/xfce-mouse-settings.desktop.in.h:2
-msgid "Configure pointer device behavior and appearance"
-msgstr "Indstil markør-enhedsopførsel og -udseende"
+msgid "Half (left-handed)"
+msgstr "Half (left-handed)"
 
 #: ../dialogs/mouse-settings/mouse-dialog.glade.h:7
-msgid "De_vice:"
-msgstr "En_hed:"
+msgid "Clockwise"
+msgstr "Clockwise"
 
 #: ../dialogs/mouse-settings/mouse-dialog.glade.h:8
-msgid "_Enable this device"
-msgstr "_Aktivér denne enhed"
+msgid "Counterclockwise"
+msgstr "Anti-clockwise"
 
 #: ../dialogs/mouse-settings/mouse-dialog.glade.h:9
-#, fuzzy
-msgid "Ri_ght-handed"
-msgstr "_Højrehåndet"
+#: ../dialogs/mouse-settings/xfce-mouse-settings.desktop.in.h:1
+msgid "Mouse and Touchpad"
+msgstr "Mouse and Touchpad"
 
 #: ../dialogs/mouse-settings/mouse-dialog.glade.h:10
-#, fuzzy
-msgid "Le_ft-handed"
-msgstr "_Venstrehåndet"
+#: ../dialogs/mouse-settings/xfce-mouse-settings.desktop.in.h:2
+msgid "Configure pointer device behavior and appearance"
+msgstr "Configure pointer device behaviour and appearance"
 
 #: ../dialogs/mouse-settings/mouse-dialog.glade.h:11
-msgid "Reverse scroll d_irection"
-msgstr "Omvendt rulle_retning"
+msgid "De_vice:"
+msgstr "De_vice:"
 
 #: ../dialogs/mouse-settings/mouse-dialog.glade.h:12
-msgid "When selected, the scroll wheel will work in the opposite direction"
-msgstr "Når afkrydset vil rullehjulet virke i den modsatte retning"
+msgid "_Enable this device"
+msgstr "_Enable this device"
 
 #: ../dialogs/mouse-settings/mouse-dialog.glade.h:13
-msgid "Buttons"
-msgstr "Knapper"
+msgid "Ri_ght-handed"
+msgstr "Ri_ght-handed"
 
 #: ../dialogs/mouse-settings/mouse-dialog.glade.h:14
-#, fuzzy
-msgid "Acceleratio_n:"
-msgstr "_Acceleration:"
+msgid "Le_ft-handed"
+msgstr "Le_ft-handed"
 
 #: ../dialogs/mouse-settings/mouse-dialog.glade.h:15
-msgid ""
-"The factor at which the pointer's speed will increase as the mouse is moved"
-msgstr ""
-"Faktoren med hvilken markørens hastighed vil forøges ved bevægelse af musen"
+msgid "Reverse scroll d_irection"
+msgstr "Reverse scroll d_irection"
 
 #: ../dialogs/mouse-settings/mouse-dialog.glade.h:16
-msgid ""
-"The number of pixels the pointer must move in a short time before it starts "
-"accelerating"
-msgstr ""
-"Det antal pixels markøren skal flyttes indenfor kort tid før accelerationen "
-"startes"
+msgid "When selected, the scroll wheel will work in the opposite direction"
+msgstr "When selected, the scroll wheel will work in the opposite direction"
 
 #: ../dialogs/mouse-settings/mouse-dialog.glade.h:17
-#, fuzzy
-msgid "Sensitivit_y:"
-msgstr "_Følsomhed:"
+msgid "Buttons"
+msgstr "Buttons"
 
 #: ../dialogs/mouse-settings/mouse-dialog.glade.h:18
-msgid "_Reset to Defaults"
-msgstr "Nul_stil til standardindstillinger"
+msgid "Acceleratio_n:"
+msgstr "Acceleratio_n:"
 
 #: ../dialogs/mouse-settings/mouse-dialog.glade.h:19
 msgid ""
-"Set the acceleration and sensitivity for the selected device to the default "
-"values"
-msgstr ""
-"Indstil acceleration og følsomhed for den valgte enhed til standardværdier"
+"The factor at which the pointer's speed will increase as the mouse is moved"
+msgstr "The factor at which the pointer's speed will increase as the mouse is moved"
 
 #: ../dialogs/mouse-settings/mouse-dialog.glade.h:20
-msgid "Pointer Speed"
-msgstr "Markørhastighed"
+msgid ""
+"The number of pixels the pointer must move in a short time before it starts "
+"accelerating"
+msgstr "The number of pixels the pointer must move in a short time before it starts accelerating"
 
 #: ../dialogs/mouse-settings/mouse-dialog.glade.h:21
-msgid "B_uttons and Feedback"
-msgstr "K_napper og tilbagemeldinger"
+msgid "Sensitivit_y:"
+msgstr "Sensitivit_y:"
 
 #: ../dialogs/mouse-settings/mouse-dialog.glade.h:22
-#, fuzzy
-msgid "Disable touchpad _while typing"
-msgstr "Deaktivér _pegeplade når der tastes"
+msgid "_Reset to Defaults"
+msgstr "_Reset to Defaults"
 
 #: ../dialogs/mouse-settings/mouse-dialog.glade.h:23
 msgid ""
-"When selected, the touchpad will be disabled when the keyboard is being used"
-msgstr ""
-"Når afkrydset vil pegepladen være deaktiveret, når tastaturet er i brug"
+"Set the acceleration and sensitivity for the selected device to the default "
+"values"
+msgstr "Set the acceleration and sensitivity for the selected device to the default values"
 
 #: ../dialogs/mouse-settings/mouse-dialog.glade.h:24
-#, fuzzy
-msgid "Tap touchpad to clic_k"
-msgstr "_Hurtigtryk pegeplade for at klikke"
+msgid "Pointer Speed"
+msgstr "Pointer Speed"
+
+#: ../dialogs/mouse-settings/mouse-dialog.glade.h:25
+msgid "B_uttons and Feedback"
+msgstr "B_uttons and Feedback"
 
 #: ../dialogs/mouse-settings/mouse-dialog.glade.h:26
-#, fuzzy
-msgid "Scrolling _mode:"
-msgstr "Rulningstil_stand:"
+msgid "Disable touchpad _while typing"
+msgstr "Disable touchpad _while typing"
 
 #: ../dialogs/mouse-settings/mouse-dialog.glade.h:27
-msgid "Enable hori_zontal scrolling"
-msgstr "Aktivér _horisontal rulning"
+msgid ""
+"When selected, the touchpad will be disabled when the keyboard is being used"
+msgstr "When selected, the touchpad will be disabled when the keyboard is being used"
 
 #: ../dialogs/mouse-settings/mouse-dialog.glade.h:28
-msgid "Scrolling"
-msgstr "Rulning"
+msgid "Duratio_n:"
+msgstr "Duratio_n:"
 
 #: ../dialogs/mouse-settings/mouse-dialog.glade.h:29
-msgid "T_ouchpad"
-msgstr "_Pegeplade"
-
-#: ../dialogs/mouse-settings/mouse-dialog.glade.h:30
-#, fuzzy
-msgid "Trac_king mode:"
-msgstr "_Sporingstilstand:"
+msgid "Tap touchpad to clic_k"
+msgstr "Tap touchpad to clic_k"
 
 #: ../dialogs/mouse-settings/mouse-dialog.glade.h:31
-msgid "_Rotation:"
-msgstr "Ro_tation:"
+msgid "Scrolling _mode:"
+msgstr "Scrolling _mode:"
 
 #: ../dialogs/mouse-settings/mouse-dialog.glade.h:32
-msgid "Tab_let"
-msgstr ""
+msgid "Enable hori_zontal scrolling"
+msgstr "Enable hori_zontal scrolling"
 
 #: ../dialogs/mouse-settings/mouse-dialog.glade.h:33
-msgid "_Devices"
-msgstr "En_heder"
+msgid "Scrolling"
+msgstr "Scrolling"
 
 #: ../dialogs/mouse-settings/mouse-dialog.glade.h:34
-msgid "Th_reshold:"
-msgstr "Tærsk_el:"
+msgid "T_ouchpad"
+msgstr "T_ouchpad"
 
 #: ../dialogs/mouse-settings/mouse-dialog.glade.h:35
-msgid ""
-"The number of pixels the pointer must move before a drag operation will start"
-msgstr ""
-"Det antal pixels markøren skal flyttes, før en trækkehandling vil starte"
+msgid "Trac_king mode:"
+msgstr "Trac_king mode:"
 
 #: ../dialogs/mouse-settings/mouse-dialog.glade.h:36
-msgid "Drag and Drop"
-msgstr "Træk og slip"
+msgid "_Rotation:"
+msgstr "_Rotation:"
 
 #: ../dialogs/mouse-settings/mouse-dialog.glade.h:37
-msgid "Ti_me:"
-msgstr "Ti_d:"
+msgid "Tab_let"
+msgstr "Tab_let"
 
 #: ../dialogs/mouse-settings/mouse-dialog.glade.h:38
-msgid ""
-"Two mouse clicks in less than this length of time (in milliseconds) will be "
-"considered a double click"
-msgstr ""
-"To museklik indenfor denne tidslængde (i millisekunder) vil blive opfattet "
-"som et dobbeltklik"
+msgid "_Devices"
+msgstr "_Devices"
 
 #: ../dialogs/mouse-settings/mouse-dialog.glade.h:39
-msgid "D_istance:"
-msgstr "_Afstand:"
+msgid "Th_reshold:"
+msgstr "Th_reshold:"
 
 #: ../dialogs/mouse-settings/mouse-dialog.glade.h:40
 msgid ""
-"The mouse pointer cannot move farther than this distance between two clicks "
-"for them to be considered a double click"
-msgstr ""
-"Musemarkøren kan ikke flytte yderligere end denne afstand mellem to klik, "
-"uden at blive opfattet som et dobbeltklik"
+"The number of pixels the pointer must move before a drag operation will "
+"start"
+msgstr "The number of pixels the pointer must move before a drag operation will start"
 
 #: ../dialogs/mouse-settings/mouse-dialog.glade.h:41
-msgid "Double Click"
-msgstr "Dobbeltklik"
+msgid "Drag and Drop"
+msgstr "Drag and Drop"
 
 #: ../dialogs/mouse-settings/mouse-dialog.glade.h:42
-msgid "_Behavior"
-msgstr "Op_førsel"
+msgid "Ti_me:"
+msgstr "Ti_me:"
 
 #: ../dialogs/mouse-settings/mouse-dialog.glade.h:43
-#, fuzzy
-msgid "Cursor si_ze:"
-msgstr "Markør_størrelse:"
+msgid ""
+"Two mouse clicks in less than this length of time (in milliseconds) will be "
+"considered a double click"
+msgstr "Two mouse clicks in less than this length of time (in milliseconds) will be considered a double click"
 
 #: ../dialogs/mouse-settings/mouse-dialog.glade.h:44
-msgid "Size"
-msgstr "Størrelse"
+msgid "D_istance:"
+msgstr "D_istance:"
 
 #: ../dialogs/mouse-settings/mouse-dialog.glade.h:45
-msgid "Preview"
-msgstr "Forhåndsvisning"
+msgid ""
+"The mouse pointer cannot move farther than this distance between two clicks "
+"for them to be considered a double click"
+msgstr "The mouse pointer cannot move farther than this distance between two clicks for them to be considered a double click"
 
 #: ../dialogs/mouse-settings/mouse-dialog.glade.h:46
-#, fuzzy
-msgid "_Theme"
-msgstr "_Tema"
+msgid "Double Click"
+msgstr "Double Click"
 
 #: ../dialogs/mouse-settings/mouse-dialog.glade.h:47
-msgid "Pen (absolute)"
-msgstr "Pen (absolut)"
+msgid "_Behavior"
+msgstr "_Behaviour"
 
 #: ../dialogs/mouse-settings/mouse-dialog.glade.h:48
-msgid "Mouse (relative)"
-msgstr "Mus (relativ)"
+msgid "Cursor si_ze:"
+msgstr "Cursor si_ze:"
 
 #: ../dialogs/mouse-settings/mouse-dialog.glade.h:49
-msgid "None (right-handed)"
-msgstr "Ingen (højrehåndet)"
+msgid "Size"
+msgstr "Size"
 
 #: ../dialogs/mouse-settings/mouse-dialog.glade.h:50
-msgid "Half (left-handed)"
-msgstr "Halv (venstrehåndet)"
+msgid "Preview"
+msgstr "Preview"
 
 #: ../dialogs/mouse-settings/mouse-dialog.glade.h:51
-msgid "Clockwise"
-msgstr "Med urets retning"
+msgid "_Theme"
+msgstr "_Theme"
 
 #: ../dialogs/mouse-settings/mouse-dialog.glade.h:52
-msgid "Counterclockwise"
-msgstr "Modsat urets retning"
+msgid "Pen (absolute)"
+msgstr "Pen (absolute)"
+
+#: ../dialogs/mouse-settings/mouse-dialog.glade.h:53
+msgid "Mouse (relative)"
+msgstr "Mouse (relative)"
 
 #: ../xfce4-settings-editor/xfce-settings-editor-dialog.c:184
 #: ../xfce4-settings-editor/xfce4-settings-editor.desktop.in.h:1
 msgid "Settings Editor"
-msgstr "Indstillingsredigering"
+msgstr "Settings Editor"
 
 #: ../xfce4-settings-editor/xfce-settings-editor-dialog.c:185
 msgid "Customize settings stored by Xfconf"
-msgstr "Tilpas indstillinger gemt af Xfconf"
+msgstr "Customise settings stored by Xfconf"
 
 #: ../xfce4-settings-editor/xfce-settings-editor-dialog.c:230
 msgid "Channel"
-msgstr "Kanal"
+msgstr "Channel"
 
 #: ../xfce4-settings-editor/xfce-settings-editor-dialog.c:264
 msgid "Property"
-msgstr "Egenskab"
+msgstr "Property"
 
 #: ../xfce4-settings-editor/xfce-settings-editor-dialog.c:271
 msgid "Type"
@@ -1443,56 +1355,55 @@ msgstr "Type"
 
 #: ../xfce4-settings-editor/xfce-settings-editor-dialog.c:278
 msgid "Locked"
-msgstr "Låst"
+msgstr "Locked"
 
 #: ../xfce4-settings-editor/xfce-settings-editor-dialog.c:285
 msgid "Value"
-msgstr "Værdi"
+msgstr "Value"
 
 #: ../xfce4-settings-editor/xfce-settings-editor-dialog.c:302
 msgid "New property"
-msgstr "Ny egenskab"
+msgstr "New property"
 
 #: ../xfce4-settings-editor/xfce-settings-editor-dialog.c:313
 msgid "Edit selected property"
-msgstr "Redigér vlagte egenskab"
+msgstr "Edit selected property"
 
 #: ../xfce4-settings-editor/xfce-settings-editor-dialog.c:321
 #: ../xfce4-settings-editor/xfce-settings-editor-dialog.c:1026
 #: ../xfce4-settings-editor/xfce-settings-editor-dialog.c:1369
 msgid "_Reset"
-msgstr "_Nulstil"
+msgstr "_Reset"
 
 #: ../xfce4-settings-editor/xfce-settings-editor-dialog.c:324
 msgid "Reset selected property"
-msgstr "Nulstil valgte egenskab"
+msgstr "Reset selected property"
 
 #: ../xfce4-settings-editor/xfce-settings-editor-dialog.c:448
 #: ../xfce4-settings-editor/xfce-settings-editor-dialog.c:539
 #: ../xfce4-settings-editor/xfce-settings-editor-dialog.c:658
 #: ../xfce4-settings-editor/xfce-settings-prop-dialog.c:90
 msgid "Empty"
-msgstr "Tom"
+msgstr "Empty"
 
 #: ../xfce4-settings-editor/xfce-settings-editor-dialog.c:451
 msgid "Array"
-msgstr "Tabel"
+msgstr "Array"
 
 #: ../xfce4-settings-editor/xfce-settings-editor-dialog.c:456
 #: ../xfce4-settings-editor/xfce-settings-prop-dialog.c:91
 msgid "String"
-msgstr "Streng"
+msgstr "String"
 
 #: ../xfce4-settings-editor/xfce-settings-editor-dialog.c:464
 msgid "Integer"
-msgstr "Heltal"
+msgstr "Integer"
 
 #: ../xfce4-settings-editor/xfce-settings-editor-dialog.c:467
 #: ../xfce4-settings-editor/xfce-settings-prop-dialog.c:92
 msgid "Boolean"
-msgstr "Boolesk"
+msgstr "Boolean"
 
-# Number with decimal
 #: ../xfce4-settings-editor/xfce-settings-editor-dialog.c:470
 #: ../xfce4-settings-editor/xfce-settings-prop-dialog.c:94
 msgid "Double"
@@ -1500,53 +1411,47 @@ msgstr "Double"
 
 #: ../xfce4-settings-editor/xfce-settings-editor-dialog.c:804
 msgid "_Reset Channel"
-msgstr "_Nulstil kanal"
+msgstr "_Reset Channel"
 
 #: ../xfce4-settings-editor/xfce-settings-editor-dialog.c:805
 msgid "Resetting a channel will permanently remove those custom settings."
-msgstr ""
-"Nulstilling af en kanal vil for bestandigt fjerne disse tilpassede "
-"indstillinger."
+msgstr "Resetting a channel will permanently remove those custom settings."
 
 #: ../xfce4-settings-editor/xfce-settings-editor-dialog.c:806
 #, c-format
 msgid "Are you sure you want to reset channel \"%s\" and all its properties?"
-msgstr ""
-"Er du sikker på, at du vil nulstille kanalen \"%s\" og alle dens "
-"indstillinger?"
+msgstr "Are you sure you want to reset channel \"%s\" and all its properties?"
 
 #: ../xfce4-settings-editor/xfce-settings-editor-dialog.c:881
 msgid "reset"
-msgstr "nulstil"
+msgstr "reset"
 
 #: ../xfce4-settings-editor/xfce-settings-editor-dialog.c:938
 #, c-format
 msgid "Monitor %s"
-msgstr "Overvåg %s"
+msgstr "Monitor %s"
 
 #: ../xfce4-settings-editor/xfce-settings-editor-dialog.c:946
 msgid "Watch an Xfconf channel for property changes"
-msgstr "Overvåg en Xconf-kanal for ændring af egenskaber"
+msgstr "Watch an Xfconf channel for property changes"
 
 #: ../xfce4-settings-editor/xfce-settings-editor-dialog.c:982
 #, c-format
 msgid "start monitoring channel \"%s\""
-msgstr "start overvågning af kanalen \"%s\""
+msgstr "start monitoring channel \"%s\""
 
 #: ../xfce4-settings-editor/xfce-settings-editor-dialog.c:1036
 msgid "_Monitor"
-msgstr "_Overvåg"
+msgstr "_Monitor"
 
 #: ../xfce4-settings-editor/xfce-settings-editor-dialog.c:1370
 msgid "Resetting a property will permanently remove those custom settings."
-msgstr ""
-"Nulstilling af en egenskab vil fjerne disse tilpassede indstillinger for "
-"bestandig."
+msgstr "Resetting a property will permanently remove those custom settings."
 
 #: ../xfce4-settings-editor/xfce-settings-editor-dialog.c:1371
 #, c-format
 msgid "Are you sure you want to reset property \"%s\"?"
-msgstr "Er du sikker på, at du vil nulstille egenskab \"%s\"?"
+msgstr "Are you sure you want to reset property \"%s\"?"
 
 #: ../xfce4-settings-editor/xfce-settings-prop-dialog.c:93
 msgid "Int"
@@ -1554,7 +1459,7 @@ msgstr "Int"
 
 #: ../xfce4-settings-editor/xfce-settings-prop-dialog.c:95
 msgid "Unsigned Int"
-msgstr "Int uden fortegn"
+msgstr "Unsigned Int"
 
 #: ../xfce4-settings-editor/xfce-settings-prop-dialog.c:96
 msgid "Int64"
@@ -1562,15 +1467,15 @@ msgstr "Int64"
 
 #: ../xfce4-settings-editor/xfce-settings-prop-dialog.c:97
 msgid "Unsigned Int64"
-msgstr "Int64 uden fortegn"
+msgstr "Unsigned Int64"
 
 #: ../xfce4-settings-editor/xfce-settings-prop-dialog.c:141
 msgid "New Property"
-msgstr "Ny egenskab"
+msgstr "New Property"
 
 #: ../xfce4-settings-editor/xfce-settings-prop-dialog.c:158
 msgid "_Property:"
-msgstr "_Egenskab"
+msgstr "_Property:"
 
 #: ../xfce4-settings-editor/xfce-settings-prop-dialog.c:173
 msgid "_Type:"
@@ -1583,296 +1488,127 @@ msgstr "_Type:"
 #: ../xfce4-settings-editor/xfce-settings-prop-dialog.c:215
 #: ../xfce4-settings-editor/xfce-settings-prop-dialog.c:227
 msgid "_Value:"
-msgstr "_Værdi:"
+msgstr "_Value:"
 
 #: ../xfce4-settings-editor/xfce-settings-prop-dialog.c:385
 #, c-format
 msgid "Property names must start with a '/' character"
-msgstr "Egenskabsnavne skal begynde med '/'"
+msgstr "Property names must start with a '/' character"
 
 #: ../xfce4-settings-editor/xfce-settings-prop-dialog.c:396
 #, c-format
 msgid "The root element ('/') is not a valid property name"
-msgstr "Rodelementet ('/') er ikke et gyldigt egenskabsnavn"
+msgstr "The root element ('/') is not a valid property name"
 
 #: ../xfce4-settings-editor/xfce-settings-prop-dialog.c:412
 #, c-format
 msgid ""
 "Property names can only include the ASCII characters A-Z, a-z, 0-9, '_', "
 "'-', '<' and '>', as well as '/' as a separator"
-msgstr ""
-"Egenskabsnavne kan kun indeholde ASCII-tegnene A-Z, a-z, 0-9, '_', '-', '<' "
-"og '>', samt '/' som en adskiller"
+msgstr "Property names can only include the ASCII characters A-Z, a-z, 0-9, '_', '-', '<' and '>', as well as '/' as a separator"
 
 #: ../xfce4-settings-editor/xfce-settings-prop-dialog.c:425
 #, c-format
 msgid "Property names cannot have two or more consecutive '/' characters"
-msgstr ""
-"Egenskabsnavne kan ikke indeholde to eller flere tegn af '/' i rækkefølge"
+msgstr "Property names cannot have two or more consecutive '/' characters"
 
 #: ../xfce4-settings-editor/xfce-settings-prop-dialog.c:439
 #, c-format
 msgid "Property names cannot end with a '/' character"
-msgstr "Egenskabsnavne kan ikke afsluttes med '/'"
+msgstr "Property names cannot end with a '/' character"
 
 #: ../xfce4-settings-editor/xfce-settings-prop-dialog.c:652
 msgid "Edit Property"
-msgstr "Redigér egenskab"
+msgstr "Edit Property"
 
 #: ../xfce4-settings-editor/xfce4-settings-editor.desktop.in.h:2
 msgid "Graphical settings editor for Xfconf"
-msgstr "Grafisk indstillingredigering til Xfconf"
+msgstr "Graphical settings editor for Xfconf"
 
 #: ../xfsettingsd/accessibility.c:412
 msgid "Sticky keys are enabled"
-msgstr "Klæbende taster er aktiveret"
+msgstr "Sticky keys are enabled"
 
 #: ../xfsettingsd/accessibility.c:414
 msgid "Sticky keys are disabled"
-msgstr "Klæbende taster er ikke aktiveret"
+msgstr "Sticky keys are disabled"
 
 #: ../xfsettingsd/accessibility.c:416
 msgid "Sticky keys"
-msgstr "Klæbende taster"
+msgstr "Sticky keys"
 
 #: ../xfsettingsd/accessibility.c:421
 msgid "Slow keys are enabled"
-msgstr "Langsomme taster er aktiveret"
+msgstr "Slow keys are enabled"
 
 #: ../xfsettingsd/accessibility.c:423
 msgid "Slow keys are disabled"
-msgstr "Langsomme taster er ikke aktiveret"
+msgstr "Slow keys are disabled"
 
 #: ../xfsettingsd/accessibility.c:425
 msgid "Slow keys"
-msgstr "Langsomme taster"
+msgstr "Slow keys"
 
 #: ../xfsettingsd/accessibility.c:430
 msgid "Bounce keys are enabled"
-msgstr "Rystetaster er aktiveret"
+msgstr "Bounce keys are enabled"
 
 #: ../xfsettingsd/accessibility.c:432
 msgid "Bounce keys are disabled"
-msgstr "Rystetaster er ikke aktiveret"
+msgstr "Bounce keys are disabled"
 
 #: ../xfsettingsd/accessibility.c:434
 msgid "Bounce keys"
-msgstr "Rystetaster"
+msgstr "Bounce keys"
 
 #: ../xfsettingsd/keyboard-shortcuts.c:244
 #, c-format
 msgid "Failed to launch shortcut \"%s\""
-msgstr "Kunne ikke starte genvejen \"%s\""
+msgstr "Failed to launch shortcut \"%s\""
 
 #: ../xfsettingsd/main.c:78
 msgid "Do not fork to the background"
-msgstr "Undlad at forgrene til baggrunden"
+msgstr "Do not fork to the background"
 
 #: ../xfsettingsd/main.c:79
 msgid "Replace running xsettings daemon (if any)"
-msgstr "Erstat kørende  xsettings-dæmon (hvis nogen)"
+msgstr "Replace running xsettings daemon (if any)"
 
 #: ../xfsettingsd/workspaces.c:385
 #, c-format
 msgid "Workspace %d"
-msgstr "Arbejdsområde %d"
+msgstr "Workspace %d"
 
 #: ../xfsettingsd/xfsettingsd.desktop.in.h:1
 msgid "The Xfce Settings Daemon"
-msgstr "Håndteringstjenesten til Xfce"
+msgstr "The Xfce Settings Daemon"
 
-#: ../xfce4-settings-manager/main.c:40
+#: ../xfce4-settings-manager/main.c:41
 msgid "Settings dialog to show"
-msgstr "Indstillingsdialog til visning"
+msgstr "Settings dialogue to show"
 
-#: ../xfce4-settings-manager/xfce-settings-manager-dialog.c:186
-#, fuzzy
+#: ../xfce4-settings-manager/xfce-settings-manager-dialog.c:192
 msgid "All _Settings"
-msgstr "_Alle indstillinger"
+msgstr "All _Settings"
 
-#: ../xfce4-settings-manager/xfce-settings-manager-dialog.c:366
+#: ../xfce4-settings-manager/xfce-settings-manager-dialog.c:386
 msgid "Settings"
-msgstr "Indstillinger"
+msgstr "Settings"
 
-#: ../xfce4-settings-manager/xfce-settings-manager-dialog.c:368
+#: ../xfce4-settings-manager/xfce-settings-manager-dialog.c:388
 msgid "Customize your desktop"
-msgstr "Tilpas dit skrivebord"
+msgstr "Customise your desktop"
 
-#: ../xfce4-settings-manager/xfce-settings-manager-dialog.c:858
-#: ../xfce4-settings-manager/xfce-settings-manager-dialog.c:869
+#: ../xfce4-settings-manager/xfce-settings-manager-dialog.c:878
+#: ../xfce4-settings-manager/xfce-settings-manager-dialog.c:889
 #, c-format
 msgid "Unable to start \"%s\""
-msgstr "Kunne ikke starte \"%s\""
+msgstr "Unable to start \"%s\""
 
 #: ../xfce4-settings-manager/xfce-settings-manager.desktop.in.h:1
 msgid "Settings Manager"
-msgstr "Indstillingshåndtering"
+msgstr "Settings Manager"
 
 #: ../xfce4-settings-manager/xfce-settings-manager.desktop.in.h:2
 msgid "Graphical Settings Manager for Xfce 4"
-msgstr "Grafisk indstillingshåndtering til Xfce 4"
-
-#~ msgid "_Settings"
-#~ msgstr "_Indstillinger"
-
-#~ msgid "Both displays cloned"
-#~ msgstr "Begge skærme klonet"
-
-#~ msgid "Display settings"
-#~ msgstr "Skærmindstillinger"
-
-#~ msgid "Several displays are available. Use:\n"
-#~ msgstr "Flere skærme er tilgængelige. Brug:\n"
-
-#~ msgid "Use both displays to show the same contents"
-#~ msgstr "Brug begge skærme til at vise det samme indhold"
-
-#~ msgid "Normal"
-#~ msgstr "Normal"
-
-#~ msgid "Be_havior"
-#~ msgstr "Op_førsel"
-
-#~ msgid "Reset to De_faults"
-#~ msgstr "Nulstil til _standardindstillinger"
-
-#~ msgid "Table_t"
-#~ msgstr "Table_t"
-
-#~ msgid "This property name is not valid."
-#~ msgstr "Dette egenskabsnavn er ugyldigt."
-
-#~ msgid "Enabled"
-#~ msgstr "Aktiveret"
-
-#~ msgid "Name:"
-#~ msgstr "Navn:"
-
-#~ msgid "Xfconf channels"
-#~ msgstr "Kanaler til Xfconf"
-
-#~ msgid "_Overview"
-#~ msgstr "_Overblik"
-
-#~ msgid "_General"
-#~ msgstr "_Generelt"
-
-#~ msgid "Use this area to _test the settings above:"
-#~ msgstr "Brug dette område til at af_prøve de ovenstående indstillinger:"
-
-#~ msgid "Failed to open the documentation"
-#~ msgstr "Kunne ikke åbne dokumentationen"
-
-#~ msgid "Feedback"
-#~ msgstr "Tilbagemelding"
-
-#~ msgid "Mouse"
-#~ msgstr "Mus"
-
-#~ msgid "Re_set to Defaults"
-#~ msgstr "Nul_stil til standardindstillinger"
-
-#~ msgid "Verbose output"
-#~ msgstr "Uddybende uddata"
-
-#~ msgid ""
-#~ "%s: %s\n"
-#~ "Try %s --help to see a full list of available command line options.\n"
-#~ msgstr ""
-#~ "%s: %s\n"
-#~ "Prøv %s --help for at se hele listen over mulige "
-#~ "kommandolinjemuligheder.\n"
-
-#~ msgid "NVIDIA Settings"
-#~ msgstr "NVIDIA-indstillinger"
-
-#~ msgid "The video driver does not support video outputs"
-#~ msgstr "Skærmprogrammet understøtter videouddata"
-
-#~ msgid "Xfce 4 Settings Manager"
-#~ msgstr "Indstillingshåndtering til Xfce 4"
-
-#~ msgid "Active"
-#~ msgstr "Aktive"
-
-#~ msgid "%d Hz"
-#~ msgstr "%d Hz"
-
-#~ msgid "Screen %d"
-#~ msgstr "Skærm %d"
-
-#~ msgid "RandR extension missing on display \"%s\""
-#~ msgstr "RandR-udvidelsen mangler til skærm \"%s\""
-
-#~ msgid ""
-#~ "The Resize and Rotate extension (RandR) is not enabled on this display. "
-#~ "Try to enable it and run the dialog again."
-#~ msgstr ""
-#~ "Ændr størrelse- og rotérudvidelsen (RandR) er ikke slået til på denne "
-#~ "skærm. Prøv at slå den til og kør dialogen igen."
-
-#~ msgid "Failed to use the RandR extension"
-#~ msgstr "Kunne ikke bruge RandR-udvidelsen"
-
-#~ msgid "Second monitor"
-#~ msgstr "Anden skærm"
-
-#~ msgid "Second digital display"
-#~ msgstr "Anden digitalskærm"
-
-#~ msgid "Property \"<b>%s</b>\" cannot be reset because it is locked"
-#~ msgstr "Egenskab \"<b>%s</b>\" kan ikke nulstilles, da den er låst"
-
-#~ msgid "<b>Bounce Keys</b>"
-#~ msgstr "<b>Rystetaster</b>"
-
-#~ msgid "<b>Slow Keys</b>"
-#~ msgstr "<b>Langsomme taster</b>"
-
-#~ msgid "<b>Sticky Keys</b>"
-#~ msgstr "<b>Klæbende taster</b>"
-
-#~ msgid "<b>DPI</b>"
-#~ msgstr "<b>DPI</b>"
-
-#~ msgid "<b>Size</b>"
-#~ msgstr "<b>Størrelse</b>"
-
-#~ msgid "Select a channel and property"
-#~ msgstr "Vælg en kanal og egenskab"
-
-#~ msgid "Client id used when resuming session"
-#~ msgstr "Klient-ID til brug ved genoptagelse af session"
-
-#~ msgid "gtk-close"
-#~ msgstr "gtk-luk"
-
-#~ msgid "gtk-apply"
-#~ msgstr "gtk-anvend"
-
-#~ msgid "Hz"
-#~ msgstr "Hz"
-
-#~ msgid "gtk-add"
-#~ msgstr "gtk-tilføj"
-
-#~ msgid "gtk-cancel"
-#~ msgstr "gtk-annullér"
-
-#~ msgid "gtk-delete"
-#~ msgstr "gtk-slet"
-
-#~ msgid "gtk-edit"
-#~ msgstr "gtk-redigér"
-
-#~ msgid "gtk-help"
-#~ msgstr "gtk-hjælp"
-
-#~ msgid "gtk-ok"
-#~ msgstr "gtk-ok"
-
-#~ msgid "gtk-remove"
-#~ msgstr "gtk-fjern"
-
-#~ msgid "gtk-save"
-#~ msgstr "gtk-gem"
+msgstr "Graphical Settings Manager for Xfce 4"
