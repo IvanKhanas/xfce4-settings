@@ -7,7 +7,7 @@ Summary (ru_RU.UTF-8): Менеджер настроек Xfce
 License: %gpl2plus
 Url: http://www.xfce.org/
 Group: Graphical desktop/XFce
-Packager: XFCE Team <xfce@packages.altlinux.org>
+Packager: Xfce Team <xfce@packages.altlinux.org>
 
 # Upstream: git://git.xfce.org/xfce/xfce4-settings
 Source: %name-%version.tar
