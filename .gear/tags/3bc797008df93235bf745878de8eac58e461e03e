@@ -1,0 +1,18 @@
+object e329018189663837f2cd9c50807e4376a852cc88
+type commit
+tag xfce4-settings-4.11.2
+tagger Nick Schermer <nick@xfce.org> 1393110599 +0100
+
+- Increase double click time to 400ms (bug #10562).
+- Show/hide display popups with focus.
+- Add hotplug checkbox to plug dialog.
+- Identify Displays button.
+- Fix display mirroring.
+- Make mirror button insensitive if not possible.
+- Translation updates: Arabic, Bengali, Danish, German, Greek,
+  English (United Kingdom), Basque, Finnish, Galician, Hebrew,
+  Croatian, Hungarian, Indonesian, Icelandic, Japanese, Kazakh,
+  Lithuanian, Norwegian Bokmal, Norwegian Nynorsk, Occitan (post 1500),
+  Polish, Portuguese, Portuguese (Brazilian), Romanian, Slovak,
+  Serbian, Swedish, Turkish, Ukrainian, Chinese (China), Chinese (Hong
+  Kong).
