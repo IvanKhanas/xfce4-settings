@@ -154,6 +154,7 @@ static gint randr_event_base;
 
 /* Used to identify the display */
 static GHashTable *display_popups;
+gboolean show_popups = FALSE;
 
 gboolean supports_alpha = FALSE;
 
@@ -1440,6 +1441,42 @@ display_settings_dialog_response (GtkDialog  *dialog,
         gtk_main_quit ();
 }
 
+static void
+set_display_popups_visible(gboolean visible)
+{
+    GHashTableIter iter;
+    gpointer key, value;
+    GtkWidget *popup;
+
+    g_hash_table_iter_init (&iter, display_popups);
+    while (g_hash_table_iter_next (&iter, &key, &value))
+    {
+        popup = (GtkWidget *) value;
+        gtk_widget_set_visible(popup, visible);
+    }
+}
+
+static gboolean
+focus_out_event (GtkWidget *widget, GdkEventFocus *event, gpointer data)
+{
+    set_display_popups_visible(FALSE);
+    return TRUE;
+}
+
+static gboolean
+focus_in_event (GtkWidget *widget, GdkEventFocus *event, gpointer data)
+{
+    set_display_popups_visible(TRUE && show_popups);
+    return TRUE;
+}
+
+static void
+on_identify_displays_toggled (GtkWidget *widget, GtkBuilder *builder)
+{
+    show_popups = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(widget));
+    set_display_popups_visible (show_popups);
+}
+
 
 
 static GtkWidget *
@@ -1449,7 +1486,7 @@ display_settings_dialog_new (GtkBuilder *builder)
     GtkCellRenderer  *renderer;
     GtkTreeSelection *selection;
     GObject          *combobox;
-    GObject          *label, *check, *mirror;
+    GObject          *label, *check, *mirror, *identify;
 
     /* Get the treeview */
     treeview = gtk_builder_get_object (builder, "randr-outputs");
@@ -1467,6 +1504,9 @@ display_settings_dialog_new (GtkBuilder *builder)
 
     /* Identification popups */
     display_setting_identity_popups_populate ();
+    identify = gtk_builder_get_object (builder, "identify-displays");
+    g_signal_connect (G_OBJECT (identify), "toggled", G_CALLBACK (on_identify_displays_toggled), builder);
+    set_display_popups_visible (show_popups);
 
     /* Treeview selection */
     selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (treeview));
@@ -1592,8 +1632,8 @@ display_settings_minimal_mirror_displays_toggled (GtkToggleButton *button,
                                                   GtkBuilder      *builder)
 {
     GObject *buttons;
-
-    guint n;
+    guint    n;
+    RRMode   mode;
 
     if (!gtk_toggle_button_get_active(button))
         return;
@@ -1606,23 +1646,23 @@ display_settings_minimal_mirror_displays_toggled (GtkToggleButton *button,
 
     buttons = gtk_builder_get_object (builder, "buttons");
     gtk_widget_set_sensitive (GTK_WIDGET(buttons), FALSE);
-
-    /* Activate all inactive displays */
+    
+    /* Activate mirror-mode with a single mode for all of them */
+    mode = xfce_randr_clonable_mode (xfce_randr);
+    /* Configure each available display for mirroring */
     for (n = 0; n < xfce_randr->noutput; ++n)
     {
         if (xfce_randr->mode[n] == None)
-        {
-            xfce_randr->mode[n] = xfce_randr_preferred_mode (xfce_randr, n);
-        }
+            continue;
+
+        if (mode != None)
+            xfce_randr->mode[n] = mode;
+        xfce_randr->relation[n] = XFCE_RANDR_PLACEMENT_MIRROR;
+        xfce_randr->related_to[n] = 0;
+        xfce_randr->rotation[n] = RR_Rotate_0;
+        xfce_randr_save_output (xfce_randr, "Default", display_channel,
+                                n, TRUE);
     }
-
-    /* Save changes to primary display */
-    xfce_randr_save_output (xfce_randr, "Default", display_channel, 0, FALSE);
-
-    /* Save changes to secondary display */
-    xfce_randr->relation[1] = XFCE_RANDR_PLACEMENT_MIRROR;
-    xfce_randr->related_to[1] = 0;
-    xfce_randr_save_output (xfce_randr, "Default", display_channel, 1, TRUE);
 
     /* Apply all changes */
     xfce_randr_apply (xfce_randr, "Default", display_channel);
@@ -1729,6 +1769,10 @@ display_settings_show_main_dialog (GdkDisplay *display)
                                               randr_event_base,
                                               RRNotify + 1);
         gdk_window_add_filter (gdk_get_default_root_window (), screen_on_event, builder);
+        
+        /* Show/Hide the helper popups when the dialog is shown/hidden */
+        g_signal_connect(G_OBJECT(dialog), "focus-out-event", G_CALLBACK (focus_out_event), builder);
+        g_signal_connect(G_OBJECT(dialog), "focus-in-event", G_CALLBACK (focus_in_event), builder);
 
         if (G_UNLIKELY (opt_socket_id == 0))
         {
@@ -1825,6 +1869,7 @@ display_settings_show_minimal_dialog (GdkDisplay *display)
     GObject    *only_display1, *only_display2, *mirror_displays;
     GObject    *extend_right, *advanced, *fake_button, *label;
     GError     *error = NULL;
+    RRMode      mode;
 
     builder = gtk_builder_new ();
 
@@ -1867,6 +1912,12 @@ display_settings_show_minimal_dialog (GdkDisplay *display)
             gtk_widget_set_tooltip_text(GTK_WIDGET(label), xfce_randr->friendly_name[1]);
             gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (only_display2),
                                           xfce_randr->mode[1] != None);
+                                          
+            /* Can outputs be cloned? */
+            if (display_settings_get_n_active_outputs () > 1)
+                mode = xfce_randr_clonable_mode (xfce_randr);
+
+            gtk_widget_set_sensitive (GTK_WIDGET (mirror_displays), mode != None);
 
             if (xfce_randr->mode[0] != None && xfce_randr->mode[1] != None)
             {
