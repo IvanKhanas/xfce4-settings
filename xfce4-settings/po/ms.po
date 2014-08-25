@@ -3,222 +3,220 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Kiril Kirilov <cybercop_montana@abv.bg>, 2012
-# Kiril Kirilov <cybercop_montana@abv.bg>, 2012
-# Kiril Kirilov <cybercop_montana@abv.bg>, 2014
+# abuyop <abuyop@gmail.com>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfce4-settings\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-07-27 18:30+0200\n"
-"PO-Revision-Date: 2014-07-28 10:57+0000\n"
-"Last-Translator: Kiril Kirilov <cybercop_montana@abv.bg>\n"
-"Language-Team: Bulgarian (http://www.transifex.com/projects/p/xfce4-settings/language/bg/)\n"
+"PO-Revision-Date: 2014-08-07 13:07+0000\n"
+"Last-Translator: abuyop <abuyop@gmail.com>\n"
+"Language-Team: Malay (http://www.transifex.com/projects/p/xfce4-settings/language/ms/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: bg\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: ms\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
 
 #: ../dialogs/accessibility-settings/accessibility-dialog.glade.h:1
 #: ../dialogs/accessibility-settings/xfce4-accessibility-settings.desktop.in.h:1
 msgid "Accessibility"
-msgstr "Специални възможности"
+msgstr "Kebolehcapaian"
 
 #: ../dialogs/accessibility-settings/accessibility-dialog.glade.h:2
 msgid "Configure keyboard and mouse accessibility"
-msgstr "Конфигуриране на специфични възможности на клавиатурата и мишката"
+msgstr "Konfigur kebolehcapaian papan kekunci dan tetikus"
 
 #: ../dialogs/accessibility-settings/accessibility-dialog.glade.h:3
 msgid "_Enable assistive technologies"
-msgstr "Включване на спомагателните технологии"
+msgstr "_Benarkan teknologi bantuan"
 
 #: ../dialogs/accessibility-settings/accessibility-dialog.glade.h:4
 msgid ""
 "If enabled, the session manager will start the required applications for "
 "screen readers and magnifiers"
-msgstr "Ако е включено, мениджърът на сесиите ще стартира програми, необходими за екранните четци и лупи"
+msgstr "Jika dibenarkan, pengurus sesi akan mula meminta aplikasi untuk pembaca dan pembesar skrin"
 
 #: ../dialogs/accessibility-settings/accessibility-dialog.glade.h:5
 msgid ""
 "Assistive technologies will be available the\n"
 "next time you login"
-msgstr "Спомагателните технологии ще бъдат достъпни\nпри следващото влизане в системата"
+msgstr "Teknologi bantuan akan tersedia pada\ndaftar masuk berikutnya"
 
 #: ../dialogs/accessibility-settings/accessibility-dialog.glade.h:7
 msgid "No AT-SPI provider was found on your system"
-msgstr "На вашата система не е намерен AP-SPI"
+msgstr "Tiada penyedia AT-SPI ditemui dalam sistem anda"
 
 #: ../dialogs/accessibility-settings/accessibility-dialog.glade.h:8
 msgid "Assistive _Technologies"
-msgstr "Спомагателни технологии"
+msgstr "_Teknologi Bantuan"
 
 #: ../dialogs/accessibility-settings/accessibility-dialog.glade.h:9
 msgid "_Use sticky keys"
-msgstr "Използване на залепващи клавиши"
+msgstr "G_una kekunci lekat"
 
 #: ../dialogs/accessibility-settings/accessibility-dialog.glade.h:10
 msgid ""
 "When selected, modifier keys (such as Control, Alt, and Shift) do not need "
 "to be held down (they can be pressed and then released) when multiple keys "
 "would normally need to be pressed at the same time"
-msgstr "Когато е избрано, клавишите-модификатори (като Control, Alt и Shift) няма нужда да се държат натиснати — те могат да бъдат натиснати и след това пуснати, докато останалите клавиши трябва да бъдат задържани."
+msgstr "Bila dipilih, kekunci pengubahsuai (seperti Control, Alt, dan Shift) tidak perlu ditahan (ia boleh ditekan dan kemudian dilepas) bila kekunci berbilang umumnya perlu ditekan pada masa yang sama"
 
 #: ../dialogs/accessibility-settings/accessibility-dialog.glade.h:11
 msgid "_Lock sticky keys"
-msgstr "Фиксиране на залепващи клавиши"
+msgstr "_Kunci kekunci lekat"
 
 #: ../dialogs/accessibility-settings/accessibility-dialog.glade.h:12
 msgid ""
 "When selected, modifier keys (such as Control, Alt, and Shift) will remain "
 "locked in the pressed state until pressed again"
-msgstr "Когато е избрано, клавишите-модификатори (като Control, Alt и Shift)  остават в натиснато състояние, докато не бъдат натиснати отново."
+msgstr "Bila dipilih, kekunci pengubahsuai (seperti Control, Alt, dan Shift) akan kekal terkunci dalam keadaan ditekan sehinggalah ia ditekan sekali lagi"
 
 #: ../dialogs/accessibility-settings/accessibility-dialog.glade.h:13
 msgid "Disable sticky keys if two keys are _pressed"
-msgstr "Изключване на залепващите клавиши, ако са натиснати два клавиша"
+msgstr "Lumpuhkan kekunci lekat jika _dua kekunci ditekan"
 
 #: ../dialogs/accessibility-settings/accessibility-dialog.glade.h:14
 msgid ""
 "When selected, the \"sticky keys\" feature will be disabled if two keys are "
 "pressed simultaneously"
-msgstr "Когато е избрано, функцията \"залепващи клавиши\" ще бъде забранена, ако са натиснати едновременно два клавиша"
+msgstr "Bila dipilih, fitur \"kekunci lekat\" akan dilumpuhkan jika dua kekunci ditekan serentak"
 
 #: ../dialogs/accessibility-settings/accessibility-dialog.glade.h:15
 msgid "Sticky Keys"
-msgstr "Залепващи клавиши"
+msgstr "Kekunci Lekat"
 
 #: ../dialogs/accessibility-settings/accessibility-dialog.glade.h:16
 msgid "Use slow _keys"
-msgstr "Използване на бавни клавиши"
+msgstr "Guna _kekunci lambat"
 
 #: ../dialogs/accessibility-settings/accessibility-dialog.glade.h:17
 msgid ""
 "To help prevent accidental keystrokes, slow keys requires that a key is held"
 " for a certain minimum amount of time before the keystroke will be accepted"
-msgstr "Позволява да се зададе интервал от време, от натискане на бавният клавиш до започването на действието. Това може да предотврати случайното натискане на клавиш."
+msgstr "Untuk menghindari ketukan kekunci secara tidak sengaja, kekunci lambat memerlukan kekunci yang tahan pada amaum masa minimum tertentu sebelum ketukan kekunci diterima"
 
 #: ../dialogs/accessibility-settings/accessibility-dialog.glade.h:18
 msgid "Acceptance _delay:"
-msgstr "Забавяне преди:"
+msgstr "_Lengah penerimaan:"
 
 #: ../dialogs/accessibility-settings/accessibility-dialog.glade.h:19
 msgid ""
 "The amount of time, in milliseconds, that must elapse before a keystroke "
 "will be accepted"
-msgstr "Време, милисекунди, което трябва да мине, преди задействане на натиснатият клавиш"
+msgstr "Amaun masa, dalam milisaat, yang mesti dilalui sebelum ketukan kekunci diterima"
 
 #: ../dialogs/accessibility-settings/accessibility-dialog.glade.h:20
 msgid "Slow Keys"
-msgstr "Бавни клавиши"
+msgstr "Kekunci Lambat"
 
 #: ../dialogs/accessibility-settings/accessibility-dialog.glade.h:21
 msgid "Use _bounce keys"
-msgstr "Използване на прескачащи клавиши."
+msgstr "Guna kekunci la_ntun"
 
 #: ../dialogs/accessibility-settings/accessibility-dialog.glade.h:22
 msgid ""
 "To help prevent accidental multiple keystrokes, bounce keys imposes a "
 "minimum delay between keystrokes"
-msgstr "Позволява да се зададе минимално време между натискането на клавишите. Прескачащите клавиши предотвратяват случайното натискане на клавиш няколко пъти."
+msgstr "Untuk menghindari ketukan kekunci berbilang secara tidak sengaja, kekunci lantun memerlukan lengahan minimum diantara ketukan kekunci"
 
 #: ../dialogs/accessibility-settings/accessibility-dialog.glade.h:23
 msgid "K_eystroke delay:"
-msgstr "Забавяне при натискане на клавиш:"
+msgstr "Lengah ketukan k_ekunci:"
 
 #: ../dialogs/accessibility-settings/accessibility-dialog.glade.h:24
 msgid "The amount of time, in milliseconds, required between keystrokes"
-msgstr "Време, в милисекунди, между натискане на клавишите"
+msgstr "Amaun masa, dalam milisaat, diperlukan diantara ketukan kekunci"
 
 #: ../dialogs/accessibility-settings/accessibility-dialog.glade.h:25
 msgid "Bounce Keys"
-msgstr "Прескачащи клавиши"
+msgstr "Kekunci Lantun"
 
 #: ../dialogs/accessibility-settings/accessibility-dialog.glade.h:26
 msgid "Keyboa_rd"
-msgstr "Клавиатура"
+msgstr "Papan Kek_unci"
 
 #: ../dialogs/accessibility-settings/accessibility-dialog.glade.h:27
 msgid "_Use mouse emulation"
-msgstr "Използване на емулация на мишката"
+msgstr "_Guna emulasi tetikus"
 
 #: ../dialogs/accessibility-settings/accessibility-dialog.glade.h:28
 msgid ""
 "When selected, the mouse pointer can be controlled using the keyboard number"
 " pad"
-msgstr "Когато е избрано, показалецът на мишката може да се контролира с цифровият панел наклавиатурата"
+msgstr "Bila dipilih, penuding tetikus boleh dikawal menggunakan pad nombor papan kekunci"
 
 #: ../dialogs/accessibility-settings/accessibility-dialog.glade.h:29
 msgid "R_epeat interval:"
-msgstr "Интервал на повторение:"
+msgstr "_Ulang sela:"
 
 #: ../dialogs/accessibility-settings/accessibility-dialog.glade.h:30
 msgid "_Acceleration delay:"
-msgstr "Задържане преди ускорение:"
+msgstr "Lengah peme_cutan:"
 
 #: ../dialogs/accessibility-settings/accessibility-dialog.glade.h:31
 msgid "Acceleration t_ime:"
-msgstr "Време на ускорение:"
+msgstr "_Masa pemecutan:"
 
 #: ../dialogs/accessibility-settings/accessibility-dialog.glade.h:32
 msgid "Ma_ximum speed:"
-msgstr "Максимална скорост:"
+msgstr "Kelajuan ma_ksimum:"
 
 #: ../dialogs/accessibility-settings/accessibility-dialog.glade.h:33
 msgid "Acceleration _profile:"
-msgstr "Профил на ускорение:"
+msgstr "_Profil pemecutan:"
 
 #: ../dialogs/accessibility-settings/accessibility-dialog.glade.h:34
 msgid "msec"
-msgstr "мсек"
+msgstr "msaat"
 
 #: ../dialogs/accessibility-settings/accessibility-dialog.glade.h:35
 msgid "pixels/sec"
-msgstr "пиксела/сек"
+msgstr "piksel/saat"
 
 #: ../dialogs/accessibility-settings/accessibility-dialog.glade.h:36
 msgid ""
 "The time, in milliseconds, between the initial key press and first repeated "
 "motion event"
-msgstr "Време, в милисекунди, между началото на натискане на клавиш и началото на движението"
+msgstr "Masa, dalam milisaat, diantara ketukan kekunci awalan dan peristiwa gerakan ulangan pertama"
 
 #: ../dialogs/accessibility-settings/accessibility-dialog.glade.h:37
 msgid "The time, in milliseconds, between repeated motion events"
-msgstr "Време, в милисекунди, между повтарящи се движения"
+msgstr "Masa, dalam milisaat, diantara peristiwa gerakan ulangan"
 
 #: ../dialogs/accessibility-settings/accessibility-dialog.glade.h:38
 msgid "The ramp used to reach maximum pointer speed"
-msgstr "Разстояние, което трябва да измине показалеца, преди да достигне максимална скорост"
+msgstr "Ramp digunakan untuk mencapai kelajuan penuding maksimum"
 
 #: ../dialogs/accessibility-settings/accessibility-dialog.glade.h:39
 msgid "The maximum pointer speed after acceleration"
-msgstr "Максимална скорост на показалеца след ускоряване"
+msgstr "Kelajuan penuding maksimum selepas pemecutan"
 
 #: ../dialogs/accessibility-settings/accessibility-dialog.glade.h:40
 msgid "The time, in milliseconds, to get to maximum speed"
-msgstr "Време, в милисекунди за достигане на максимална скорост"
+msgstr "Masa, dalam milisaat, untuk dapatkan kelajuan maksimum"
 
 #: ../dialogs/accessibility-settings/accessibility-dialog.glade.h:41
 msgid "Mouse Emulation"
-msgstr "Емулация на мишката"
+msgstr "Emulasi Tetikus"
 
 #: ../dialogs/accessibility-settings/accessibility-dialog.glade.h:42
 msgid "_Mouse"
-msgstr "Мишка"
+msgstr "_Tetikus"
 
 #: ../dialogs/accessibility-settings/main.c:43
 #: ../dialogs/appearance-settings/main.c:95
 #: ../dialogs/display-settings/main.c:120
 #: ../dialogs/keyboard-settings/main.c:39 ../dialogs/mouse-settings/main.c:79
 msgid "Settings manager socket"
-msgstr "Гнездо на мениджъра на настройките"
+msgstr "Soket pengurus tetapan"
 
 #: ../dialogs/accessibility-settings/main.c:43
 #: ../dialogs/appearance-settings/main.c:95
 #: ../dialogs/display-settings/main.c:120
 #: ../dialogs/keyboard-settings/main.c:39 ../dialogs/mouse-settings/main.c:79
 msgid "SOCKET ID"
-msgstr "Гнездо ID"
+msgstr "SOCKET ID"
 
 #: ../dialogs/accessibility-settings/main.c:44
 #: ../dialogs/appearance-settings/main.c:96
@@ -227,7 +225,7 @@ msgstr "Гнездо ID"
 #: ../dialogs/mouse-settings/main.c:80 ../xfce4-settings-editor/main.c:43
 #: ../xfsettingsd/main.c:77 ../xfce4-settings-manager/main.c:40
 msgid "Version information"
-msgstr "Информация за версията"
+msgstr "Maklumat versi"
 
 #: ../dialogs/accessibility-settings/main.c:192
 #: ../dialogs/appearance-settings/main.c:1006
@@ -237,7 +235,7 @@ msgstr "Информация за версията"
 #: ../xfsettingsd/main.c:187 ../xfce4-settings-manager/main.c:61
 #, c-format
 msgid "Type '%s --help' for usage."
-msgstr "Напишете '%s --help' за показване на потребителско ръководство"
+msgstr "Taip '%s --help' untuk penggunaan."
 
 #: ../dialogs/accessibility-settings/main.c:211
 #: ../dialogs/appearance-settings/main.c:1025
@@ -246,7 +244,7 @@ msgstr "Напишете '%s --help' за показване на потреби
 #: ../dialogs/mouse-settings/main.c:1630 ../xfce4-settings-editor/main.c:82
 #: ../xfsettingsd/main.c:203 ../xfce4-settings-manager/main.c:77
 msgid "The Xfce development team. All rights reserved."
-msgstr "Екипът по разрабоката на Xfce. Всички права са запазени."
+msgstr "Pasukan pembangunan Xfce. Semua hak cipta terpelihara."
 
 #: ../dialogs/accessibility-settings/main.c:212
 #: ../dialogs/appearance-settings/main.c:1026
@@ -256,226 +254,226 @@ msgstr "Екипът по разрабоката на Xfce. Всички пра�
 #: ../xfsettingsd/main.c:204 ../xfce4-settings-manager/main.c:78
 #, c-format
 msgid "Please report bugs to <%s>."
-msgstr "Моля, докладвайте грешки на <%s>."
+msgstr "Sila laporkan pepijat ke <%s>."
 
 #: ../dialogs/accessibility-settings/xfce4-accessibility-settings.desktop.in.h:2
 msgid "Improve keyboard and mouse accessibility"
-msgstr "Настройка на специални възможности на мишката и клавиатурата"
+msgstr "Pertingkatkan kebolehcapaian papan kekunci dan tetikus"
 
 #: ../dialogs/appearance-settings/appearance-dialog.glade.h:1
 #: ../dialogs/appearance-settings/xfce-ui-settings.desktop.in.h:1
 msgid "Appearance"
-msgstr "Външен вид"
+msgstr "Penampilan"
 
 #: ../dialogs/appearance-settings/appearance-dialog.glade.h:2
 #: ../dialogs/appearance-settings/xfce-ui-settings.desktop.in.h:2
 msgid "Customize the look of your desktop"
-msgstr "Настройка на външният вид на работният плот"
+msgstr "Suaikan penampilan dekstop anda"
 
 #: ../dialogs/appearance-settings/appearance-dialog.glade.h:3
 msgid "St_yle"
-msgstr "Стил"
+msgstr "Ga_ya"
 
 #: ../dialogs/appearance-settings/appearance-dialog.glade.h:4
 msgid "_Icons"
-msgstr "Икони"
+msgstr "_Ikon"
 
 #: ../dialogs/appearance-settings/appearance-dialog.glade.h:5
 msgid ""
 "This font will be used as the default font used when drawing user interface "
 "text"
-msgstr "Този шрифт ще бъде използван като стандартен за изписване текста на интерфейса"
+msgstr "Fon ini akan digunakan kerana fon lalai digunakan bila melukis teks antaramuka pengguna"
 
 #: ../dialogs/appearance-settings/appearance-dialog.glade.h:6
 msgid "Select a default font"
-msgstr "Избор на стандартен шрифт"
+msgstr "Pilih fon lalai"
 
 #: ../dialogs/appearance-settings/appearance-dialog.glade.h:7
 msgid "Default Fon_t"
-msgstr "Шрифт по подразбиране"
+msgstr "F_on Lalai"
 
 #: ../dialogs/appearance-settings/appearance-dialog.glade.h:8
 msgid ""
 "Many fonts contain information that provides extra hints as to how best draw"
 " the font; pick whichever looks best according to personal preference"
-msgstr "Много шрифтове съдържат допълнителна информация, която помага за изписване на шрифта по най- добър начин. Изберете вариант, който изглежда най- добре."
+msgstr "Kebanyakan fon mengandungi maklumat yang sediakan pembayang tambahan cara terbaik memilih fon; ambil yang mana nampak terbaik berdasarkan citarasa sendiri"
 
 #: ../dialogs/appearance-settings/appearance-dialog.glade.h:9
 msgid ""
 "Font quality on a TFT or LCD screen can be greatly improved by choosing the "
 "correct sub-pixel order of the screen"
-msgstr "Качество на шрифтовете на TFT или LCD екрани може да бъде подобрено с промяна на разположението на цветовете в самите пиксели"
+msgstr "Kualiti fon pada skrin TFT dan LCD dapat dipertingkatkan dengan memilih tertib sub-piksel skrin"
 
 #: ../dialogs/appearance-settings/appearance-dialog.glade.h:10
 msgid "Sub-_pixel order:"
-msgstr "Подпикселна подредба:"
+msgstr "Tertib sub-piksel:"
 
 #: ../dialogs/appearance-settings/appearance-dialog.glade.h:11
 msgid "Hintin_g:"
-msgstr "Намекване:"
+msgstr "Pembayan_g:"
 
 #: ../dialogs/appearance-settings/appearance-dialog.glade.h:12
 msgid "_Enable anti-aliasing"
-msgstr "Включване на заглаждане на шрифта"
+msgstr "B_enarkan anti-alias"
 
 #: ../dialogs/appearance-settings/appearance-dialog.glade.h:13
 msgid ""
 "Anti-aliasing, or font smoothing, can improve the look of text on the screen"
-msgstr "Заглаждането на шрифта може да подобри външният вид на текста на екрана"
+msgstr "Anti-alias, atau pelicinan fon, boleh dipertingkatkan rupa teks pada skrin"
 
 #: ../dialogs/appearance-settings/appearance-dialog.glade.h:14
 msgid "Rendering"
-msgstr "Визуализация"
+msgstr "Penerapan"
 
 #: ../dialogs/appearance-settings/appearance-dialog.glade.h:15
 msgid "Custom _DPI setting:"
-msgstr "Настройки на потребителска DPI:"
+msgstr "Tetapan _DPI suai:"
 
 #: ../dialogs/appearance-settings/appearance-dialog.glade.h:16
 msgid ""
 "Override the detected monitor resolution if fonts look too large or too "
 "small"
-msgstr "Замяна на откритата разделителната способност на монитора, ако шрифтове изглеждат твърде големи или твърде малки"
+msgstr "Batalkan resolusi monitor yang dikesan jika fon nampak terlalu besar atau terlalu kecil"
 
 #: ../dialogs/appearance-settings/appearance-dialog.glade.h:17
 msgid "DPI"
-msgstr "Разделителна способност (DPI)"
+msgstr "DPI"
 
 #: ../dialogs/appearance-settings/appearance-dialog.glade.h:18
 msgid "_Fonts"
-msgstr "Шрифтове"
+msgstr "_Fon"
 
 #: ../dialogs/appearance-settings/appearance-dialog.glade.h:19
 msgid "Specify what should be displayed in toolbar items"
-msgstr "Посочете какво да се показва в лентата с инструменти"
+msgstr "Nyatakan apakah yang patut dipapar dalam item palang alat"
 
 #: ../dialogs/appearance-settings/appearance-dialog.glade.h:20
 msgid "_Toolbar Style"
-msgstr "Стил на лентата с инструменти"
+msgstr "Gaya Palang Ala_t"
 
 #: ../dialogs/appearance-settings/appearance-dialog.glade.h:21
 msgid "Show images on _buttons"
-msgstr "Показване на изображения върху бутоните"
+msgstr "Tunjuk imej pada _butang"
 
 #: ../dialogs/appearance-settings/appearance-dialog.glade.h:22
 msgid "Specify whether icons should be displayed next to text in buttons"
-msgstr "Посочете, дали иконите да се показват до текста в бутоните"
+msgstr "Nyatakan sama ada ikon patut dipapar sebelah teks pada butang"
 
 #: ../dialogs/appearance-settings/appearance-dialog.glade.h:23
 msgid "Show images in _menus"
-msgstr "Показване на изображения в менютата"
+msgstr "Tunjuk imej dalam _menu"
 
 #: ../dialogs/appearance-settings/appearance-dialog.glade.h:24
 msgid "Specify whether icons should be displayed next to items in menus"
-msgstr "Посочете, дали иконите трябва да бъдат показвани до елементите в менютата"
+msgstr "Nyatakan sama ada ikon patut dipapar disebelah item dalam menu"
 
 #: ../dialogs/appearance-settings/appearance-dialog.glade.h:25
 msgid "Enable e_ditable accelerators"
-msgstr "Разрешаване на редактируеми ускорители"
+msgstr "Benarkan pemecut boleh s_unting"
 
 #: ../dialogs/appearance-settings/appearance-dialog.glade.h:26
 msgid ""
 "If selected, keyboard shortcuts for menu items can be changed by hovering "
 "the mouse over the menu item and pressing the new key combination for the "
 "shortcut"
-msgstr "Ако бъде избрано, клавишните комбинации за елементите от менюто могат да бъдат променени чрез преместване на мишката върху тях и натискане на клавишите за нова комбинация."
+msgstr "Jika dipilih, pintasan papan kekunci untuk item menu boleh diubah dengan meletak penuding tetikus diatas item menu dan menekan gabungan kekunci baharu untuk pintasan tersebut"
 
 #: ../dialogs/appearance-settings/appearance-dialog.glade.h:27
 msgid "Menus and Buttons"
-msgstr "Менюта и бутони"
+msgstr "Menu dan Butang"
 
 #: ../dialogs/appearance-settings/appearance-dialog.glade.h:28
 msgid "Enable _event sounds"
-msgstr "Включване на звуците за събития"
+msgstr "Benarkan bunyi pe_ristiwa"
 
 #: ../dialogs/appearance-settings/appearance-dialog.glade.h:29
 msgid "Enable or disable event sounds globally (requires \"Canberra\" support)"
-msgstr "Включване и изключване на звуците за събития глобално (необходима е поддръжката на \"Canberra\")"
+msgstr "Benar atau lumpuhkan bunyi peristiwa secara sejagat (perlukan sokongan \"Canberra\")"
 
 #: ../dialogs/appearance-settings/appearance-dialog.glade.h:30
 msgid "Enable input feedbac_k sounds"
-msgstr "Включване на входните звуци за обратна връзка"
+msgstr "Benarkan bunyi maklumbalas i_nput"
 
 #: ../dialogs/appearance-settings/appearance-dialog.glade.h:31
 msgid ""
 "Specify whether mouse clicks and other user input will cause event sounds to"
 " play"
-msgstr "Посочете дали кликвания на мишката и въвеждане на друг потребител да стартират звуци за събитие"
+msgstr "Nyatakan sama ada klik tetikus dan lain-lain input pengguna akan menyebabkan bunyi peristiwa dimainkan"
 
 #: ../dialogs/appearance-settings/appearance-dialog.glade.h:32
 msgid "Event sounds"
-msgstr "Звукове за събития"
+msgstr "Bunyi peristiwa"
 
 #: ../dialogs/appearance-settings/appearance-dialog.glade.h:33
 msgid "Setti_ngs"
-msgstr "_Настройки"
+msgstr "Tetapa_n"
 
 #: ../dialogs/appearance-settings/appearance-dialog.glade.h:34
 #: ../dialogs/appearance-settings/main.c:892
 #: ../dialogs/display-settings/main.c:87 ../dialogs/display-settings/main.c:98
 msgid "None"
-msgstr "Няма"
+msgstr "Tiada"
 
 #: ../dialogs/appearance-settings/appearance-dialog.glade.h:35
 msgid "Slight"
-msgstr "Тънък"
+msgstr "Seketika"
 
 #: ../dialogs/appearance-settings/appearance-dialog.glade.h:36
 msgid "Medium"
-msgstr "Среден"
+msgstr "Sederhana"
 
 #: ../dialogs/appearance-settings/appearance-dialog.glade.h:37
 msgid "Full"
-msgstr "Пълен"
+msgstr "Penuh"
 
 #: ../dialogs/appearance-settings/appearance-dialog.glade.h:38
 msgid "Icons"
-msgstr "Икони"
+msgstr "Ikon"
 
 #: ../dialogs/appearance-settings/appearance-dialog.glade.h:39
 msgid "Text"
-msgstr "Текст"
+msgstr "Teks"
 
 #: ../dialogs/appearance-settings/appearance-dialog.glade.h:40
 msgid "Text under icons"
-msgstr "Текст под иконите"
+msgstr "Teks bawah ikon"
 
 #: ../dialogs/appearance-settings/appearance-dialog.glade.h:41
 msgid "Text next to icons"
-msgstr "Текст до иконите"
+msgstr "Teks disebelah ikon"
 
 #: ../dialogs/appearance-settings/main.c:355
 #, c-format
 msgid ""
 "Warning: this icon theme has no cache file. You can create this by running "
 "<i>gtk-update-icon-cache %s/%s/</i> in a terminal emulator."
-msgstr "Внимание: Тази тема за икони няма кеш файл. Вие може да създадете такъв, като стартирате <i>gtk-update-icon-cache %s/%s/</i> в терминал."
+msgstr "Amaran: tema ikon ini tidak mempunyai fail cache. Anda boleh cipta ia dengan menjalankan <i>gtk-update-icon-cache %s/%s/</i> di dalam emulator terminal."
 
 #: ../dialogs/appearance-settings/main.c:765
 #, c-format
 msgid "File is larger than %d MB, installation aborted"
-msgstr "Файлът е по- голям от %d МБ, инсталацията е отхвърлена"
+msgstr "Fail lebih besar dari %d MB, pemasangan dihenti paksa"
 
 #: ../dialogs/appearance-settings/main.c:770
 msgid "Failed to create temporary directory"
-msgstr "Неуспех при създаване на временна директория"
+msgstr "Gagal mencipta direktori sementara"
 
 #: ../dialogs/appearance-settings/main.c:775
 msgid "Failed to extract archive"
-msgstr "Неуспех при извличане на архив"
+msgstr "Gagal mengekstrak arkib"
 
 #: ../dialogs/appearance-settings/main.c:780
 msgid "Unknown format, only archives and directories are supported"
-msgstr "Неизвестен формат. Поддържат се само архиви и директории"
+msgstr "Format tidak diketahui, hanya arkib dan direktori disokong"
 
 #: ../dialogs/appearance-settings/main.c:785
 #, c-format
 msgid "An unknown error, exit code is %d"
-msgstr "Неизвестна грешка, изходен код %d"
+msgstr "Satu ralat tidak diketahui, kod keluar adalah %d"
 
 #: ../dialogs/appearance-settings/main.c:792
 msgid "Failed to install theme"
-msgstr "Неуспех при инсталирането на тема"
+msgstr "Gagal memasang tema"
 
 #: ../dialogs/appearance-settings/main.c:896
 msgid "RGB"
@@ -487,138 +485,138 @@ msgstr "BGR"
 
 #: ../dialogs/appearance-settings/main.c:904
 msgid "Vertical RGB"
-msgstr "Вертикален RGB"
+msgstr "RGB menegak"
 
 #: ../dialogs/appearance-settings/main.c:908
 msgid "Vertical BGR"
-msgstr "Вертикален BGR"
+msgstr "BGR menegak"
 
 #: ../dialogs/display-settings/confirmation-dialog.glade.h:1
 msgid "Confirmation"
-msgstr "Потвърждение"
+msgstr "Pengesahan"
 
 #: ../dialogs/display-settings/confirmation-dialog.glade.h:2
 msgid "Keep this configuration"
-msgstr "Запазване на тази конфигурация"
+msgstr "Kekalkan konfigurasi ini"
 
 #: ../dialogs/display-settings/confirmation-dialog.glade.h:3
 msgid "Restore the previous configuration"
-msgstr "Възстановяване на предишната конфигурация"
+msgstr "Pulihkan konfigurasi terdahulu"
 
 #: ../dialogs/display-settings/confirmation-dialog.glade.h:4
 msgid "<big><b>Would you like to keep this configuration?</b></big>"
-msgstr "<big><b>Да бъдат ли запазени настройките?</b></big>"
+msgstr "<big><b>Anda mahu kekalkan konfigurasi ini?</b></big>"
 
 #: ../dialogs/display-settings/confirmation-dialog.glade.h:5
 msgid ""
 "The previous configuration will be restored in 10 seconds if you do not "
 "reply to this question."
-msgstr "Предишните настройки ще бъдат възстановени след 10 секунди, ако не отговорите на този въпрос."
+msgstr "Konfigurasi terdahulu akan dipulihkan dalam tempoh 10 saat jika anda tidak membalas pertanyaan ini."
 
 #: ../dialogs/display-settings/display-dialog.glade.h:1
 #: ../dialogs/display-settings/xfce-display-settings.desktop.in.h:1
 msgid "Display"
-msgstr "Дисплей"
+msgstr "Paparan"
 
 #: ../dialogs/display-settings/display-dialog.glade.h:2
 #: ../dialogs/display-settings/xfce-display-settings.desktop.in.h:2
 msgid "Configure screen settings and layout"
-msgstr "Конфигуриране на настройките на екрана и оформлението"
+msgstr "Konfigur tetapan dan bentangan skrin"
 
 #: ../dialogs/display-settings/display-dialog.glade.h:3
 msgid "Ref_lection:"
-msgstr "_Отражение:"
+msgstr "Pa_ntulan:"
 
 #: ../dialogs/display-settings/display-dialog.glade.h:4
 msgid "Ro_tation:"
-msgstr "Завъртане:"
+msgstr "P_utaran:"
 
 #: ../dialogs/display-settings/display-dialog.glade.h:5
 msgid "Refresh _rate:"
-msgstr "Честота на обновяване:"
+msgstr "_Kadar segar semula:"
 
 #: ../dialogs/display-settings/display-dialog.glade.h:6
 msgid "R_esolution:"
-msgstr "Разделителна способност:"
+msgstr "R_esolusi:"
 
 #: ../dialogs/display-settings/display-dialog.glade.h:7
 msgid "_Use this output"
-msgstr "Използване на този изход"
+msgstr "_Guna output ini"
 
 #: ../dialogs/display-settings/display-dialog.glade.h:8
 msgid "_Mirror displays"
-msgstr "Огледални дисплеи"
+msgstr "Paparan _Cermin"
 
 #: ../dialogs/display-settings/display-dialog.glade.h:9
 msgid "Configure _new displays when connected"
-msgstr "Конфигуриране на новите дисплеи при свързане"
+msgstr "Konfigur paparan ba_haru bila bersambung"
 
 #: ../dialogs/display-settings/display-dialog.glade.h:10
 msgid "Identify Displays"
-msgstr "Разпознаване на екрани"
+msgstr "Kenalpasti Paparan"
 
 #: ../dialogs/display-settings/minimal-display-dialog.glade.h:1
 msgid "Displays"
-msgstr "Дисплеи"
+msgstr "Paparan"
 
 #: ../dialogs/display-settings/minimal-display-dialog.glade.h:2
 msgid "Only Display 1"
-msgstr "Само дисплей 1"
+msgstr "Hanya Paparan 1"
 
 #: ../dialogs/display-settings/minimal-display-dialog.glade.h:3
 msgid "Mirror Displays"
-msgstr "Огледални дисплеи"
+msgstr "Paparan Cermin"
 
 #: ../dialogs/display-settings/minimal-display-dialog.glade.h:4
 msgid "Extend to the right"
-msgstr "Разширяване надясно"
+msgstr "Lanjut ke kanan"
 
 #: ../dialogs/display-settings/minimal-display-dialog.glade.h:5
 msgid "Only Display 2"
-msgstr "Само дисплей 2"
+msgstr "Hanya Paparan 2"
 
 #: ../dialogs/display-settings/minimal-display-dialog.glade.h:6
 msgid "Advanced"
-msgstr "За напреднали"
+msgstr "Lanjutan"
 
 #: ../dialogs/display-settings/minimal-display-dialog.glade.h:7
 msgid "radiobutton"
-msgstr "Радиобутон (превключвател)"
+msgstr "radiobutton"
 
 #: ../dialogs/display-settings/main.c:88
 msgid "Left"
-msgstr "Ляво"
+msgstr "Kiri"
 
 #: ../dialogs/display-settings/main.c:89
 msgid "Inverted"
-msgstr "Обърнат"
+msgstr "Songsang"
 
 #: ../dialogs/display-settings/main.c:90
 msgid "Right"
-msgstr "Дясно"
+msgstr "Kanan"
 
 #: ../dialogs/display-settings/main.c:99
 msgid "Horizontal"
-msgstr "Хоризонтално"
+msgstr "Mengufuk"
 
 #: ../dialogs/display-settings/main.c:100
 msgid "Vertical"
-msgstr "Вертикално"
+msgstr "Menegak"
 
 #: ../dialogs/display-settings/main.c:101
 msgid "Horizontal and Vertical"
-msgstr "Хоризонтално и Вертикално"
+msgstr "Mengufuk dan Mendatar"
 
 #: ../dialogs/display-settings/main.c:122
 msgid "Minimal interface to set up an external output"
-msgstr "Минимален интерфейс за създаване на външен изход"
+msgstr "Antaramuka minimum untuk tetapkan output luar"
 
 #: ../dialogs/display-settings/main.c:247
 #, c-format
 msgid ""
 "The previous configuration will be restored in %i seconds if you do not "
 "reply to this question."
-msgstr "Предишните настройки ще бъдат възстановени след  %i секунди, ако не отговорите на този въпрос."
+msgstr "Konfigurasi terdahulu akan dipulihkan dalam tempoh %i saat jika anda tidak membalas pertanyaan ini."
 
 #. Insert the mode
 #: ../dialogs/display-settings/main.c:532
@@ -628,26 +626,26 @@ msgstr "%.1f Hz"
 
 #: ../dialogs/display-settings/main.c:818
 msgid "Display:"
-msgstr "Дисплей"
+msgstr "Paparan:"
 
 #: ../dialogs/display-settings/main.c:823
 msgid "Resolution:"
-msgstr "Разделителна способност:"
+msgstr "Resolusi:"
 
 #: ../dialogs/display-settings/main.c:1003
 msgid ""
 "The last active output must not be disabled, the system would be unusable."
-msgstr "Последният активен изход не трябва да се заключва, системата ще стане негодна за ползване."
+msgstr "Output aktif terakhir mesti tidak boleh dilumpuhkan, kerana sistem akan menjadi tidak stabil."
 
 #: ../dialogs/display-settings/main.c:1005
 msgid "Selected output not disabled"
-msgstr "Избраният изход не е заключен"
+msgstr "Output terpilih tidak dilumpuhkan"
 
 #: ../dialogs/display-settings/main.c:2140
 msgid ""
 "Select a monitor to change its properties; drag it to rearrange its "
 "placement."
-msgstr "Изберете монитор на който да промените настройките; променете местоположението му с влачене."
+msgstr "Pilih monitor untuk menukar sifatnya; seret ia untuk menyusun semula kedudukannya."
 
 #: ../dialogs/display-settings/main.c:2177
 #: ../dialogs/display-settings/main.c:2251
@@ -661,30 +659,30 @@ msgstr "(%i, %i)"
 #. * translation could be "Pantallas en Espejo", *not* "Espejar Pantallas".
 #: ../dialogs/display-settings/main.c:2283
 msgid "Mirror Screens"
-msgstr "Огледални екрани"
+msgstr "Skrin Cermin"
 
 #: ../dialogs/display-settings/main.c:2481
 msgid "(Disabled)"
-msgstr "(Изключено)"
+msgstr "(Dilumpuhkan)"
 
 #: ../dialogs/display-settings/main.c:2982
 #: ../dialogs/display-settings/xfce-randr.c:274
 #, c-format
 msgid "Unable to query the version of the RandR extension being used"
-msgstr "Не може да променяте версията на разширението RandR докато се използва"
+msgstr "Tidak boleh tanya versi sambungan RandR yang digunakan"
 
 #: ../dialogs/display-settings/main.c:2983
 #: ../dialogs/display-settings/main.c:3019
 msgid "Unable to start the Xfce Display Settings"
-msgstr "Не могат да стартират настройките на дисплея"
+msgstr "Tidak boleh mulakan tetapan Paparan Xfce"
 
 #: ../dialogs/display-settings/main.c:3014
 msgid "ATI Settings"
-msgstr "Настройки на ATI"
+msgstr "Tetapan ATI"
 
 #: ../dialogs/display-settings/main.c:3029
 msgid "Unable to launch the proprietary driver settings"
-msgstr "Не могат да стартират настройките на лицензираният драйвър"
+msgstr "Tidak boleh lancarkan tetapan pemacu proprietari"
 
 #. 1.2 is required
 #: ../dialogs/display-settings/xfce-randr.c:282
@@ -692,23 +690,23 @@ msgstr "Не могат да стартират настройките на ли
 msgid ""
 "This system is using RandR %d.%d. For the display settings to work version "
 "1.2 is required at least"
-msgstr "Тази система използва RandR %d.%d. За настройване на дисплея е необходима версия 1.2 или по- нова"
+msgstr "Sistem ini menggunakan RandR %d.%d. Untuk tetapan paparan berfungsi dengan baikv sekurang-kurangnya versi 1.2 diperlukan"
 
 #: ../dialogs/display-settings/xfce-randr.c:544
 msgid "Laptop"
-msgstr "Лаптоп"
+msgstr "Komputer riba"
 
 #: ../dialogs/display-settings/xfce-randr.c:565
 msgid "Monitor"
-msgstr "Монитор"
+msgstr "Monitor"
 
 #: ../dialogs/display-settings/xfce-randr.c:568
 msgid "Television"
-msgstr "Телевизор"
+msgstr "Televisyen"
 
 #: ../dialogs/display-settings/xfce-randr.c:572
 msgid "Digital display"
-msgstr "Цифров дисплей"
+msgstr "Paparan digital"
 
 #. Translators: "Unknown" here is used to identify a monitor for which
 #. * we don't know the vendor. When a vendor is known, the name of the
@@ -716,334 +714,334 @@ msgstr "Цифров дисплей"
 #: ../dialogs/display-settings/display-name.c:269
 msgctxt "Monitor vendor"
 msgid "Unknown"
-msgstr "Неизвестно"
+msgstr "Tidak diketahui"
 
 #. Set dialog title and icon
 #: ../dialogs/keyboard-settings/command-dialog.c:108
 msgid "Shortcut Command"
-msgstr "Клавишна комбинация за команда"
+msgstr "Perintah Pintasan"
 
 #: ../dialogs/keyboard-settings/command-dialog.c:147
 msgid "Enter the command you want to trigger with a shortcut."
-msgstr "Въведете команда, която искате да стартира с клавишна комбинация."
+msgstr "Masukkan perintah yang anda mahu picu dengan pintasan."
 
 #. We are editing an existing shortcut
 #: ../dialogs/keyboard-settings/command-dialog.c:165
 msgid "Shortcut:"
-msgstr "Клавишна комбинация:"
+msgstr "Pintasan:"
 
 #: ../dialogs/keyboard-settings/command-dialog.c:176
 msgid "Command:"
-msgstr "Команда:"
+msgstr "Perintah:"
 
 #: ../dialogs/keyboard-settings/command-dialog.c:196
 msgid "Use _startup notification"
-msgstr "Използване на стартово уведомяване"
+msgstr "Guna pemberitahuan pe_rmulaan"
 
 #: ../dialogs/keyboard-settings/command-dialog.c:243
 msgid "The command may not be empty."
-msgstr "Командата не може да бъде празна."
+msgstr "Perintah tidak boleh kosong."
 
 #: ../dialogs/keyboard-settings/command-dialog.c:263
 msgid "Select command"
-msgstr "Избор на команда"
+msgstr "Pilih perintah"
 
 #: ../dialogs/keyboard-settings/command-dialog.c:271
 #: ../dialogs/mime-settings/xfce-mime-chooser.c:386
 msgid "All Files"
-msgstr "Всички файлове"
+msgstr "Semua Fail"
 
 #: ../dialogs/keyboard-settings/command-dialog.c:276
 #: ../dialogs/mime-settings/xfce-mime-chooser.c:391
 msgid "Executable Files"
-msgstr "Изпълними файлове"
+msgstr "Fail Bolehlaku"
 
 #: ../dialogs/keyboard-settings/command-dialog.c:291
 #: ../dialogs/mime-settings/xfce-mime-chooser.c:406
 msgid "Perl Scripts"
-msgstr "Perl скриптове"
+msgstr "Skrip Perl"
 
 #: ../dialogs/keyboard-settings/command-dialog.c:297
 #: ../dialogs/mime-settings/xfce-mime-chooser.c:412
 msgid "Python Scripts"
-msgstr "Python скриптове"
+msgstr "Skrip Python"
 
 #: ../dialogs/keyboard-settings/command-dialog.c:303
 #: ../dialogs/mime-settings/xfce-mime-chooser.c:418
 msgid "Ruby Scripts"
-msgstr "Ruby скриптове"
+msgstr "Skrip Ruby"
 
 #: ../dialogs/keyboard-settings/command-dialog.c:309
 #: ../dialogs/mime-settings/xfce-mime-chooser.c:424
 msgid "Shell Scripts"
-msgstr "Shell скриптове"
+msgstr "Skrip Shell"
 
 #: ../dialogs/keyboard-settings/keyboard-dialog.glade.h:1
 msgid "Keyboard layout selection"
-msgstr "Избор на клавиатурна подредба"
+msgstr "Pemilihan bentangan papan kekunci"
 
 #: ../dialogs/keyboard-settings/keyboard-dialog.glade.h:2
 msgid "Select keyboard layout and variant"
-msgstr "Избор на клавиатурна подредба и вариант"
+msgstr "Pilih bentangan dan varian papan kekunci"
 
 #: ../dialogs/keyboard-settings/keyboard-dialog.glade.h:3
 #: ../dialogs/keyboard-settings/xfce-keyboard-settings.desktop.in.h:1
 msgid "Keyboard"
-msgstr "Клавиатура"
+msgstr "Papan kekunci"
 
 #: ../dialogs/keyboard-settings/keyboard-dialog.glade.h:4
 #: ../dialogs/keyboard-settings/xfce-keyboard-settings.desktop.in.h:2
 msgid "Edit keyboard settings and application shortcuts"
-msgstr "Редактиране на настройките на клавиатурата и клавишните комбинации"
+msgstr "Sunting tetapan dan pintasan aplikasi papan kekunci"
 
 #: ../dialogs/keyboard-settings/keyboard-dialog.glade.h:5
 msgid "Restore num l_ock state on startup"
-msgstr "Възстановяване на състоянието на клавиша Num Lock при стартиране"
+msgstr "Pulih keadaan num l_ock ketika permulaan"
 
 #: ../dialogs/keyboard-settings/keyboard-dialog.glade.h:6
 #: ../dialogs/mouse-settings/mouse-dialog.glade.h:30
 msgid "General"
-msgstr "Общи"
+msgstr "Am"
 
 #: ../dialogs/keyboard-settings/keyboard-dialog.glade.h:7
 msgid "_Enable key repeat"
-msgstr "Включване на повторение на клавиш"
+msgstr "B_enarkan ulang kekunci"
 
 #: ../dialogs/keyboard-settings/keyboard-dialog.glade.h:8
 msgid ""
 "When selected, pressing and holding down a key emits the same character over"
 " and over again"
-msgstr "Когато е избрано, при натискане и задържане на клавиш ще се въвежда един и същ символ отново и отново"
+msgstr "Bila dipilih, menekan dan menahak kekunci akan timbulkan aksara yang serupa berulang-ulang kali"
 
 #: ../dialogs/keyboard-settings/keyboard-dialog.glade.h:9
 msgid "_Repeat delay:"
-msgstr "Забавяне на повторение:"
+msgstr "Lengah _ulang:"
 
 #: ../dialogs/keyboard-settings/keyboard-dialog.glade.h:10
 msgid "The time, in milliseconds, before a pressed key begins repeating"
-msgstr "Време, в милисекунди, преди повторно задействане на клавиш"
+msgstr "Masa, dalam milisaat, sebelum kekuncu ditekan mula mengulang"
 
 #: ../dialogs/keyboard-settings/keyboard-dialog.glade.h:11
 msgid "Repe_at speed:"
-msgstr "Скорост на повторение:"
+msgstr "_Ulang kelajuan:"
 
 #: ../dialogs/keyboard-settings/keyboard-dialog.glade.h:12
 msgid "The rate at which keystrokes are generated while a key is pressed"
-msgstr "Скоростта, с която се генерират натискания на клавиши, докато е натиснат клавиш"
+msgstr "Kadar yang mana ketukan kekunci terjana ketika kekunci ditekan"
 
 #: ../dialogs/keyboard-settings/keyboard-dialog.glade.h:13
 msgid "Typing Settings"
-msgstr "Настройки на въвеждането"
+msgstr "Tetapan Menaip"
 
 #: ../dialogs/keyboard-settings/keyboard-dialog.glade.h:14
 msgid "Show _blinking"
-msgstr "Показване на мигане"
+msgstr "Tunjuk pen_gelipan"
 
 #: ../dialogs/keyboard-settings/keyboard-dialog.glade.h:15
 msgid "Specify whether or not the text cursor blinks"
-msgstr "Определя, да мига или не показалецът в текста"
+msgstr "Nyatakan sama ada ia atau tidak kursor teks berkelip"
 
 #: ../dialogs/keyboard-settings/keyboard-dialog.glade.h:16
 msgid "Blink _delay:"
-msgstr "Забавяне на мигането:"
+msgstr "_Lengah kelip:"
 
 #: ../dialogs/keyboard-settings/keyboard-dialog.glade.h:17
 msgid "The delay, in milliseconds, between successive blinks of the cursor"
-msgstr "Забавяне, в милисекунди между последователни мигания на показалеца"
+msgstr "Lengah, dalam milisaat, diantar kelipan kursor yang menjadi"
 
 #: ../dialogs/keyboard-settings/keyboard-dialog.glade.h:18
 msgid "Cursor"
-msgstr "Показалец"
+msgstr "Kursor"
 
 #: ../dialogs/keyboard-settings/keyboard-dialog.glade.h:19
 msgid "_Test area:"
-msgstr "Област за проверка:"
+msgstr "Kawasan u_ji:"
 
 #: ../dialogs/keyboard-settings/keyboard-dialog.glade.h:20
 msgid "Beha_vior"
-msgstr "_Поведение"
+msgstr "Ke_lakuan"
 
 #: ../dialogs/keyboard-settings/keyboard-dialog.glade.h:21
 msgid "Define shortcuts for la_unching applications:"
-msgstr "Задаване на клавишни комбинации за стартиране на програми:"
+msgstr "Takrif _pintasan untuk melancarkan aplikasi:"
 
 #: ../dialogs/keyboard-settings/keyboard-dialog.glade.h:22
 msgid "Reset to _Defaults"
-msgstr "Възстановяване на настройките по подразбиране"
+msgstr "Tetap semula ke _Lalai"
 
 #: ../dialogs/keyboard-settings/keyboard-dialog.glade.h:23
 msgid "A_pplication Shortcuts"
-msgstr "Клавишни комбинации за програма"
+msgstr "Pintasan Aplika_si"
 
 #: ../dialogs/keyboard-settings/keyboard-dialog.glade.h:24
 msgid "_Use system defaults"
-msgstr "Използване на системните настройки"
+msgstr "G_una lalai sistem"
 
 #: ../dialogs/keyboard-settings/keyboard-dialog.glade.h:25
 msgid ""
 "Specifies whether the keyboard layout is controlled with this settings "
 "dialog, or by the X server"
-msgstr "Определя, дали клавиатурна подредба се контролира от диалога за настройки, или от X сървъра"
+msgstr "Nyatakan sama ada bentangan papan kekunci dikawal dengan dialog tetapan ini, atau berdasarkan pelayan X"
 
 #: ../dialogs/keyboard-settings/keyboard-dialog.glade.h:26
 msgid "_Keyboard model"
-msgstr "Модел клавиатура"
+msgstr "Model papan _kekunci"
 
 #: ../dialogs/keyboard-settings/keyboard-dialog.glade.h:27
 msgid "Change la_yout option"
-msgstr "Промяна на настройката за оформление"
+msgstr "Ubah pilihan ben_tangan"
 
 #: ../dialogs/keyboard-settings/keyboard-dialog.glade.h:28
 msgid "Co_mpose key"
-msgstr "Клавиш Compose"
+msgstr "Kekunci _gubah"
 
 #: ../dialogs/keyboard-settings/keyboard-dialog.glade.h:29
 msgid "Move currently selected item up by one row"
-msgstr "Преместване на избраният елемент с един ред нагоре"
+msgstr "Alih item terpilih naik ke atas satu baris"
 
 #: ../dialogs/keyboard-settings/keyboard-dialog.glade.h:30
 msgid "Move currently selected item down by one row"
-msgstr "Преместване на избраният елемент с един ред надолу"
+msgstr "Alih item terpilih satu baris ke bawah"
 
 #: ../dialogs/keyboard-settings/keyboard-dialog.glade.h:31
 msgid "Key_board layout"
-msgstr "Клавиатурна подредба"
+msgstr "_Bentangan papan kekunci"
 
 #: ../dialogs/keyboard-settings/keyboard-dialog.glade.h:32
 msgid "_Layout"
-msgstr "Оформление"
+msgstr "_Bentangan"
 
 #: ../dialogs/keyboard-settings/main.c:82
 msgid "Unable to initialize GTK+."
-msgstr "Не може да се инициализира GTK+."
+msgstr "Tidak dapat memulakan GTK+."
 
 #: ../dialogs/keyboard-settings/main.c:102
 #, c-format
 msgid "Failed to connect to xfconf daemon. Reason: %s"
-msgstr "Неуспех при свързване с диспечера на xfconf. Причина: %s"
+msgstr "Gagal sambung ke daemon xfconf. Sebab: %s"
 
 #: ../dialogs/keyboard-settings/main.c:113
 msgid "Could not create the settings dialog."
-msgstr "Не може да се създаде диалоговия прозорец за настройки."
+msgstr "Tak dapat mencipta dialog tetapan."
 
 #: ../dialogs/keyboard-settings/xfce-keyboard-settings.c:397
 msgid "Command"
-msgstr "Команда"
+msgstr "Perintah"
 
 #: ../dialogs/keyboard-settings/xfce-keyboard-settings.c:402
 msgid "Shortcut"
-msgstr "Клавишна комбинация"
+msgstr "Pintasan"
 
 #: ../dialogs/keyboard-settings/xfce-keyboard-settings.c:478
 msgid "Layout"
-msgstr "Оформление"
+msgstr "Bentangan"
 
 #: ../dialogs/keyboard-settings/xfce-keyboard-settings.c:479
 msgid "Variant"
-msgstr "Вариант"
+msgstr "Varian"
 
 #: ../dialogs/keyboard-settings/xfce-keyboard-settings.c:1002
 #: ../dialogs/keyboard-settings/xfce-keyboard-settings.c:1106
 msgid "Shortcut command may not be empty."
-msgstr "Клавишната комбинация за команда не може да бъде празна."
+msgstr "Pintasan perintah tidak boleh kosong."
 
 #: ../dialogs/keyboard-settings/xfce-keyboard-settings.c:1272
 #: ../dialogs/keyboard-settings/xfce-keyboard-settings.c:1273
 msgid "Reset to Defaults"
-msgstr "Възстановяване на настройките по подразбиране"
+msgstr "Tetap semula ke Lalai"
 
 #: ../dialogs/keyboard-settings/xfce-keyboard-settings.c:1274
 msgid ""
 "This will reset all shortcuts to their default values. Do you really want to"
 " do this?"
-msgstr "Това действие ще възстанови всички клавишни комбинации до техните стандартни стойности. Наистина ли искате да направите това?"
+msgstr "Ini akan menetapkan semula semua pintasan kepada nilai lalainya. Adakah anda benar-benar mahu berbuat demikian?"
 
 #: ../dialogs/keyboard-settings/xfce-keyboard-settings.c:1353
 msgid "The system defaults will be restored next time you log in."
-msgstr "Настройките по подразбиране ще бъдат възстановени при следващото влизане в системата."
+msgstr "Lalai sistem akan dipulihkan bila anda mendaftar masuk berikutnya."
 
 #: ../dialogs/keyboard-settings/xfce-keyboard-settings.c:1355
 msgid "Warning"
-msgstr "Внимание"
+msgstr "Amaran"
 
 #: ../dialogs/mime-settings/xfce-mime-chooser.c:128
 msgid "Select Application"
-msgstr "Избор на приложение"
+msgstr "Pilih Aplikasi"
 
 #: ../dialogs/mime-settings/xfce-mime-chooser.c:204
 msgid "Use a c_ustom command:"
-msgstr "Използване на потребителска команда:"
+msgstr "Guna pe_rintah suai:"
 
 #: ../dialogs/mime-settings/xfce-mime-chooser.c:205
 msgid ""
 "Use a custom command for an application that is not available from the above"
 " application list."
-msgstr "Използване на потребителска команда за стратиране на приложение, което не е налично в списъка с приложенията."
+msgstr "Guna perintah suai untuk aplikasi yang tidak tersedia dari senarai aplikasi di atas."
 
 #: ../dialogs/mime-settings/xfce-mime-chooser.c:223
 msgid "_Browse..."
-msgstr "Преглед..."
+msgstr "_Layar..."
 
 #: ../dialogs/mime-settings/xfce-mime-chooser.c:376
 msgid "Select an Application"
-msgstr "Избор на приложение"
+msgstr "Pilih Aplikasi"
 
 #: ../dialogs/mime-settings/xfce-mime-chooser.c:526
 msgid "None available"
-msgstr "Няма достъпно"
+msgstr "Tiada lagi tersedia"
 
 #: ../dialogs/mime-settings/xfce-mime-chooser.c:573
 msgid "Recommended Applications"
-msgstr "Препоръчителни програми"
+msgstr "Aplikasi Disaran"
 
 #: ../dialogs/mime-settings/xfce-mime-chooser.c:591
 msgid "Other Applications"
-msgstr "Други програми"
+msgstr "Aplikasi Lain"
 
 #: ../dialogs/mime-settings/xfce-mime-chooser.c:611
 #, c-format
 msgid "Open <i>%s</i> and other files of type \"%s\" with:"
-msgstr "Отваряне на <i>%s</i> и други файлове тип \"%s\" с:"
+msgstr "Buka <i>%s</i> dan lain-lain fail jenis \"%s\" dengan:"
 
 #: ../dialogs/mime-settings/xfce-mime-chooser.c:647
 #, c-format
 msgid "Failed to add new application \"%s\""
-msgstr "Неуспех при добавянето на нова програма \"%s\""
+msgstr "Gagal menambah aplikasi baharu \"%s\""
 
 #: ../dialogs/mime-settings/xfce-mime-window.c:174
 #: ../dialogs/mime-settings/xfce4-mime-settings.desktop.in.h:1
 msgid "MIME Type Editor"
-msgstr "Редактор на добавки тип MIME"
+msgstr "Penyunting Jenis MIME"
 
 #: ../dialogs/mime-settings/xfce-mime-window.c:178
 #: ../dialogs/mime-settings/xfce4-mime-settings.desktop.in.h:2
 msgid "Associate applications with MIME types"
-msgstr "Асоциирани приложения с добавки тип MIME"
+msgstr "Kaitkan aplikasi dengan jenis MIME"
 
 #: ../dialogs/mime-settings/xfce-mime-window.c:203
 msgid "_Filter:"
-msgstr "Филтър:"
+msgstr "_Tapis:"
 
 #: ../dialogs/mime-settings/xfce-mime-window.c:211
 msgid "Clear filter"
-msgstr "Филтър за почистване"
+msgstr "Kosongkan penapis"
 
 #: ../dialogs/mime-settings/xfce-mime-window.c:257
 msgid "MIME Type"
-msgstr "Тип MIME"
+msgstr "Jenis MIME"
 
 #: ../dialogs/mime-settings/xfce-mime-window.c:287
 msgid "Status"
-msgstr "Състояние"
+msgstr "Status"
 
 #: ../dialogs/mime-settings/xfce-mime-window.c:308
 msgid "Default Application"
-msgstr "Програма по подразбиране"
+msgstr "Aplikasi Lalai"
 
 #: ../dialogs/mime-settings/xfce-mime-window.c:479
 #: ../dialogs/mime-settings/xfce-mime-window.c:604
 msgid "User Set"
-msgstr "Потребителски"
+msgstr "Ditetap Pengguna"
 
 #. sort the names but keep Default on top
 #: ../dialogs/mime-settings/xfce-mime-window.c:481
@@ -1051,63 +1049,62 @@ msgstr "Потребителски"
 #: ../dialogs/mouse-settings/main.c:366 ../dialogs/mouse-settings/main.c:368
 #: ../dialogs/mouse-settings/main.c:428
 msgid "Default"
-msgstr "Стандартен"
+msgstr "Lalai"
 
 #: ../dialogs/mime-settings/xfce-mime-window.c:550
 #, c-format
 msgid "%d MIME type found"
 msgid_plural "%d MIME types found"
-msgstr[0] "Намерена е %d добавка тип MIME"
-msgstr[1] "Намерени са %d добавки тип MIME"
+msgstr[0] "%d jenis MIME ditemui"
 
 #: ../dialogs/mime-settings/xfce-mime-window.c:649
 #, c-format
 msgid "Failed to set application \"%s\" for mime type \"%s\"."
-msgstr "Неуспех при задаване на приложение \"%s\" за добавка тип MIME \"%s\"."
+msgstr "Gagal tetapkan aplikasi \"%s\" untuk jenis mime \"%s\"."
 
 #: ../dialogs/mime-settings/xfce-mime-window.c:906
 #, c-format
 msgid "Are you sure you want to reset content type \"%s\" to its default value?"
-msgstr "Наистина ли искате да възстановите съдържание тип \"%s\" до неговата стойност по подразбиране?"
+msgstr "Anda pasti mahu tetapkan jenis kandungan \"%s\" ke nilai lalainya?"
 
 #: ../dialogs/mime-settings/xfce-mime-window.c:910
 msgid "Question"
-msgstr "Въпрос"
+msgstr "Soalan"
 
 #: ../dialogs/mime-settings/xfce-mime-window.c:913
 msgid ""
 "This will remove your custom mime-association and restore the system-wide "
 "default."
-msgstr "Това ще премахне вашата потребителска MIME-асоциация и ще възстанови системните настройки по подразбиране."
+msgstr "Tindakan ini akan membuang perkaitan-mime suai anda dan pulihkan lalali menyeluruhi-sistem."
 
 #: ../dialogs/mime-settings/xfce-mime-window.c:917
 #: ../dialogs/mime-settings/xfce-mime-window.c:988
 msgid "Reset to Default"
-msgstr "Възстановяване на настройките по подразбиране"
+msgstr "Tetap Semula ke Lalai"
 
 #: ../dialogs/mime-settings/xfce-mime-window.c:983
 msgid "Choose Application..."
-msgstr "Избор на приложение..."
+msgstr "Pilih Aplikasi..."
 
 #: ../dialogs/mouse-settings/main.c:78
 msgid "Active device in the dialog"
-msgstr "Активно устройство в диалога"
+msgstr "Peranti aktif dalam dialog"
 
 #: ../dialogs/mouse-settings/main.c:78
 msgid "DEVICE NAME"
-msgstr "ИМЕ НА УСТРОЙСТВО"
+msgstr "NAMA PERANTI"
 
 #. pixel value for some of the scales in the dialog
 #: ../dialogs/mouse-settings/main.c:124
 #, c-format
 msgid "%g px"
-msgstr "%g пиксела"
+msgstr "%g px"
 
 #. miliseconds value for some of the scales in the dialog
 #: ../dialogs/mouse-settings/main.c:134
 #, c-format
 msgid "%g ms"
-msgstr "%g мсек"
+msgstr "%g ms"
 
 #. seconds value for some of the scales in the dialog
 #: ../dialogs/mouse-settings/main.c:145
@@ -1117,374 +1114,374 @@ msgstr "%.1f s"
 
 #: ../dialogs/mouse-settings/mouse-dialog.glade.h:1
 msgid "Disabled"
-msgstr "Изключено"
+msgstr "Dilumpuhkan"
 
 #: ../dialogs/mouse-settings/mouse-dialog.glade.h:2
 msgid "Edge scrolling"
-msgstr "Краища на превъртане"
+msgstr "Penatalan pinggir"
 
 #: ../dialogs/mouse-settings/mouse-dialog.glade.h:3
 msgid "Two-finger scrolling"
-msgstr "Превъртане с два пръста"
+msgstr "Penatalan dua jari"
 
 #: ../dialogs/mouse-settings/mouse-dialog.glade.h:4
 msgid "Circular scrolling"
-msgstr "Циклично превъртане"
+msgstr "Penatalan membulat"
 
 #: ../dialogs/mouse-settings/mouse-dialog.glade.h:5
 msgid "None (right-handed)"
-msgstr "Без (за дясна ръка)"
+msgstr "Tiada (tangan-kanan)"
 
 #: ../dialogs/mouse-settings/mouse-dialog.glade.h:6
 msgid "Half (left-handed)"
-msgstr "Наполовина (за лява ръка)"
+msgstr "Separa (tangan-kiri)"
 
 #: ../dialogs/mouse-settings/mouse-dialog.glade.h:7
 msgid "Clockwise"
-msgstr "По часовниковата стрелка"
+msgstr "Ikut jam"
 
 #: ../dialogs/mouse-settings/mouse-dialog.glade.h:8
 msgid "Counterclockwise"
-msgstr "Обратно на часовниковата стрелка"
+msgstr "Lawan jam"
 
 #: ../dialogs/mouse-settings/mouse-dialog.glade.h:9
 #: ../dialogs/mouse-settings/xfce-mouse-settings.desktop.in.h:1
 msgid "Mouse and Touchpad"
-msgstr "Мишка и тъчпад"
+msgstr "Tetikus dan Pad Sentuh"
 
 #: ../dialogs/mouse-settings/mouse-dialog.glade.h:10
 #: ../dialogs/mouse-settings/xfce-mouse-settings.desktop.in.h:2
 msgid "Configure pointer device behavior and appearance"
-msgstr "Настройване на поведението на устройствата и външният вид"
+msgstr "Konfigur kelakuan dan penampilan peranti"
 
 #: ../dialogs/mouse-settings/mouse-dialog.glade.h:11
 msgid "De_vice:"
-msgstr "Устройство:"
+msgstr "Pe_ranti:"
 
 #: ../dialogs/mouse-settings/mouse-dialog.glade.h:12
 msgid "_Enable this device"
-msgstr "Включване на това устройство"
+msgstr "B_enarkan peranti ini"
 
 #: ../dialogs/mouse-settings/mouse-dialog.glade.h:13
 msgid "Ri_ght-handed"
-msgstr "За дясна ръка"
+msgstr "Tan_gan-kanan"
 
 #: ../dialogs/mouse-settings/mouse-dialog.glade.h:14
 msgid "Le_ft-handed"
-msgstr "За лява ръка"
+msgstr "Tang_an-k_iri"
 
 #: ../dialogs/mouse-settings/mouse-dialog.glade.h:15
 msgid "Reverse scroll d_irection"
-msgstr "Обръщане на посоката на превъртане"
+msgstr "Songsangkan a_rah tatal"
 
 #: ../dialogs/mouse-settings/mouse-dialog.glade.h:16
 msgid "When selected, the scroll wheel will work in the opposite direction"
-msgstr "Когато е избрано, колелото на мишката ще работи в обратна посока"
+msgstr "Bila dipilih, roda tatal akan berfungsi dalam arah bertentangan"
 
 #: ../dialogs/mouse-settings/mouse-dialog.glade.h:17
 msgid "Buttons"
-msgstr "Бутони"
+msgstr "Butang"
 
 #: ../dialogs/mouse-settings/mouse-dialog.glade.h:18
 msgid "Acceleratio_n:"
-msgstr "Ускорение:"
+msgstr "Peme_cutan:"
 
 #: ../dialogs/mouse-settings/mouse-dialog.glade.h:19
 msgid ""
 "The factor at which the pointer's speed will increase as the mouse is moved"
-msgstr "Коефициент, по който да бъде умножена стойността на показалеца, при движение на мишката"
+msgstr "Faktor yang mana kelajuan penuding akan meningkat bila tetikus bergerak"
 
 #: ../dialogs/mouse-settings/mouse-dialog.glade.h:20
 msgid ""
 "The number of pixels the pointer must move in a short time before it starts "
 "accelerating"
-msgstr "Брой пиксели, което трябва за кратко време да измине показалецът на мишката, за да започне ускорение"
+msgstr "Bilangan piksel penuding mesti bergerak dalam masa singkat sebelum ia mula memecut"
 
 #: ../dialogs/mouse-settings/mouse-dialog.glade.h:21
 msgid "Sensitivit_y:"
-msgstr "_Чувствителност:"
+msgstr "Ke_pekaan:"
 
 #: ../dialogs/mouse-settings/mouse-dialog.glade.h:22
 msgid "_Reset to Defaults"
-msgstr "Възстановяване на настройките по подразбиране"
+msgstr "T_etapkan semula ke Lalai"
 
 #: ../dialogs/mouse-settings/mouse-dialog.glade.h:23
 msgid ""
 "Set the acceleration and sensitivity for the selected device to the default "
 "values"
-msgstr "Задаване на ускорение и чувствителност за избраното устройство в стойности по подразбиране"
+msgstr "Tetapkan pemecutan dan kepekaan peranti terpilih ke nilai lalai"
 
 #: ../dialogs/mouse-settings/mouse-dialog.glade.h:24
 msgid "Pointer Speed"
-msgstr "Скорост на показалеца"
+msgstr "Kelajuan Penuding"
 
 #: ../dialogs/mouse-settings/mouse-dialog.glade.h:25
 msgid "B_uttons and Feedback"
-msgstr "Бутони и обратна връзка"
+msgstr "B_utang dan Maklumbalas"
 
 #: ../dialogs/mouse-settings/mouse-dialog.glade.h:26
 msgid "Disable touchpad _while typing"
-msgstr "Заключване на тъчпада по време на писане"
+msgstr "Lumpuhkan pa_d sentuh ketika menaip"
 
 #: ../dialogs/mouse-settings/mouse-dialog.glade.h:27
 msgid ""
 "When selected, the touchpad will be disabled when the keyboard is being used"
-msgstr "Когато е избрано, тъчпада ще се заключва, когато ползвате клавиатурата"
+msgstr "Bila dipilih, pad sentuh akan dilumpuhkan ketika papan kekunci digunakan"
 
 #: ../dialogs/mouse-settings/mouse-dialog.glade.h:28
 msgid "Duratio_n:"
-msgstr "Продължителност:"
+msgstr "_Jangkamasa:"
 
 #: ../dialogs/mouse-settings/mouse-dialog.glade.h:29
 msgid "Tap touchpad to clic_k"
-msgstr "Натиснете тъчпада за да кликнете"
+msgstr "Ke_tuk pad sentuk untuk klik"
 
 #: ../dialogs/mouse-settings/mouse-dialog.glade.h:31
 msgid "Scrolling _mode:"
-msgstr "Режим на превъртане:"
+msgstr "_Mod penatalan:"
 
 #: ../dialogs/mouse-settings/mouse-dialog.glade.h:32
 msgid "Enable hori_zontal scrolling"
-msgstr "Включване на хоризонтално превъртане"
+msgstr "Benarkan penatalan mengu_fuk"
 
 #: ../dialogs/mouse-settings/mouse-dialog.glade.h:33
 msgid "Scrolling"
-msgstr "Превъртане"
+msgstr "Penatalan"
 
 #: ../dialogs/mouse-settings/mouse-dialog.glade.h:34
 msgid "T_ouchpad"
-msgstr "Тъчпад"
+msgstr "Pa_d sentuh"
 
 #: ../dialogs/mouse-settings/mouse-dialog.glade.h:35
 msgid "Trac_king mode:"
-msgstr "Режим на проследяване: "
+msgstr "Mod pen_jejakan:"
 
 #: ../dialogs/mouse-settings/mouse-dialog.glade.h:36
 msgid "_Rotation:"
-msgstr "Завъртане:"
+msgstr "P_utaran:"
 
 #: ../dialogs/mouse-settings/mouse-dialog.glade.h:37
 msgid "Tab_let"
-msgstr "Таблет"
+msgstr "Tab_let"
 
 #: ../dialogs/mouse-settings/mouse-dialog.glade.h:38
 msgid "_Devices"
-msgstr "Устройства"
+msgstr "Pe_ranti"
 
 #: ../dialogs/mouse-settings/mouse-dialog.glade.h:39
 msgid "Th_reshold:"
-msgstr "Праг:"
+msgstr "A_mbang:"
 
 #: ../dialogs/mouse-settings/mouse-dialog.glade.h:40
 msgid ""
 "The number of pixels the pointer must move before a drag operation will "
 "start"
-msgstr "Брой пиксели, което трябва да измине показалецът, преди началото на преместване на обекта"
+msgstr "Bilangan piksel penuding mesti gerak sebelum operasi seret bermula"
 
 #: ../dialogs/mouse-settings/mouse-dialog.glade.h:41
 msgid "Drag and Drop"
-msgstr "Влачене и Пускане"
+msgstr "Seret dan Lepas"
 
 #: ../dialogs/mouse-settings/mouse-dialog.glade.h:42
 msgid "Ti_me:"
-msgstr "Време:"
+msgstr "_Masa:"
 
 #: ../dialogs/mouse-settings/mouse-dialog.glade.h:43
 msgid ""
 "Two mouse clicks in less than this length of time (in milliseconds) will be "
 "considered a double click"
-msgstr "Две кликвания на мишката  с интервал по- малък от този (в милисекуни) ще се считат за двойно кликване"
+msgstr "Dua klik tetikus kurang dari panjang masa (dalam milisaat) akan dianggap sebagai dwi-klik"
 
 #: ../dialogs/mouse-settings/mouse-dialog.glade.h:44
 msgid "D_istance:"
-msgstr "_Разстояние:"
+msgstr "Ja_rak:"
 
 #: ../dialogs/mouse-settings/mouse-dialog.glade.h:45
 msgid ""
 "The mouse pointer cannot move farther than this distance between two clicks "
 "for them to be considered a double click"
-msgstr "За да се счита за двойно кликване, показалецът на мишката не трябва да се премества между две кликвания на по- голямо от зададеното разстояние"
+msgstr "Penuding tetikus tidak dapat gerak lebih jauh dari jarak diantara dua klik untuk dianggap sebagai dwi-klik"
 
 #: ../dialogs/mouse-settings/mouse-dialog.glade.h:46
 msgid "Double Click"
-msgstr "Двойно кликване"
+msgstr "Dwi-Klik"
 
 #: ../dialogs/mouse-settings/mouse-dialog.glade.h:47
 msgid "_Behavior"
-msgstr "_Поведение"
+msgstr "Ke_lakuan"
 
 #: ../dialogs/mouse-settings/mouse-dialog.glade.h:48
 msgid "Cursor si_ze:"
-msgstr "Размер на показалеца:"
+msgstr "_Saiz kursor:"
 
 #: ../dialogs/mouse-settings/mouse-dialog.glade.h:49
 msgid "Size"
-msgstr "Размер"
+msgstr "Saiz"
 
 #: ../dialogs/mouse-settings/mouse-dialog.glade.h:50
 msgid "Preview"
-msgstr "Преглед"
+msgstr "Pratonton"
 
 #: ../dialogs/mouse-settings/mouse-dialog.glade.h:51
 msgid "_Theme"
-msgstr "Тема"
+msgstr "_Tema"
 
 #: ../dialogs/mouse-settings/mouse-dialog.glade.h:52
 msgid "Pen (absolute)"
-msgstr "Писалка (абсолютно)"
+msgstr "Pen (mutlak)"
 
 #: ../dialogs/mouse-settings/mouse-dialog.glade.h:53
 msgid "Mouse (relative)"
-msgstr "Мишка (относително)"
+msgstr "Tetikus (relatif)"
 
 #: ../xfce4-settings-editor/xfce-settings-editor-dialog.c:184
 #: ../xfce4-settings-editor/xfce4-settings-editor.desktop.in.h:1
 msgid "Settings Editor"
-msgstr "Редактор на настройките"
+msgstr "Penyunting Tetapan"
 
 #: ../xfce4-settings-editor/xfce-settings-editor-dialog.c:185
 msgid "Customize settings stored by Xfconf"
-msgstr "Промяна на настройките, съхранени от Xfconf"
+msgstr "Suaikan tetapan yang disimpan oleh Xfconf"
 
 #: ../xfce4-settings-editor/xfce-settings-editor-dialog.c:230
 msgid "Channel"
-msgstr "Канал"
+msgstr "Saluran"
 
 #: ../xfce4-settings-editor/xfce-settings-editor-dialog.c:264
 msgid "Property"
-msgstr "Свойство"
+msgstr "Sifat"
 
 #: ../xfce4-settings-editor/xfce-settings-editor-dialog.c:271
 msgid "Type"
-msgstr "Тип"
+msgstr "Jenis"
 
 #: ../xfce4-settings-editor/xfce-settings-editor-dialog.c:278
 msgid "Locked"
-msgstr "Заключено"
+msgstr "Dikunci"
 
 #: ../xfce4-settings-editor/xfce-settings-editor-dialog.c:285
 msgid "Value"
-msgstr "Значение"
+msgstr "Nilai"
 
 #: ../xfce4-settings-editor/xfce-settings-editor-dialog.c:302
 msgid "New property"
-msgstr "Ново свойство"
+msgstr "Sifat baharu"
 
 #: ../xfce4-settings-editor/xfce-settings-editor-dialog.c:313
 msgid "Edit selected property"
-msgstr "Редактиране на избраното свойство"
+msgstr "Sunting sifat terpilih"
 
 #: ../xfce4-settings-editor/xfce-settings-editor-dialog.c:321
 #: ../xfce4-settings-editor/xfce-settings-editor-dialog.c:1026
 #: ../xfce4-settings-editor/xfce-settings-editor-dialog.c:1369
 msgid "_Reset"
-msgstr "Рестартиране"
+msgstr "_Tetap semula"
 
 #: ../xfce4-settings-editor/xfce-settings-editor-dialog.c:324
 msgid "Reset selected property"
-msgstr "Възстановяване на настройките по подразбиране на избраното свойство"
+msgstr "Tetap semula sifat terpilih"
 
 #: ../xfce4-settings-editor/xfce-settings-editor-dialog.c:448
 #: ../xfce4-settings-editor/xfce-settings-editor-dialog.c:539
 #: ../xfce4-settings-editor/xfce-settings-editor-dialog.c:658
 #: ../xfce4-settings-editor/xfce-settings-prop-dialog.c:90
 msgid "Empty"
-msgstr "Празно"
+msgstr "Kosong"
 
 #: ../xfce4-settings-editor/xfce-settings-editor-dialog.c:451
 msgid "Array"
-msgstr "Масив"
+msgstr "Tatasusunan"
 
 #: ../xfce4-settings-editor/xfce-settings-editor-dialog.c:456
 #: ../xfce4-settings-editor/xfce-settings-prop-dialog.c:91
 msgid "String"
-msgstr "Низ"
+msgstr "Rentetan"
 
 #: ../xfce4-settings-editor/xfce-settings-editor-dialog.c:464
 msgid "Integer"
-msgstr "Цяло"
+msgstr "Integer"
 
 #: ../xfce4-settings-editor/xfce-settings-editor-dialog.c:467
 #: ../xfce4-settings-editor/xfce-settings-prop-dialog.c:92
 msgid "Boolean"
-msgstr "Логическо"
+msgstr "Boolean"
 
 #: ../xfce4-settings-editor/xfce-settings-editor-dialog.c:470
 #: ../xfce4-settings-editor/xfce-settings-prop-dialog.c:94
 msgid "Double"
-msgstr "Дублиране"
+msgstr "Dwi"
 
 #: ../xfce4-settings-editor/xfce-settings-editor-dialog.c:804
 msgid "_Reset Channel"
-msgstr "Рестартиране на канал"
+msgstr "_Tetap Semula Saluran"
 
 #: ../xfce4-settings-editor/xfce-settings-editor-dialog.c:805
 msgid "Resetting a channel will permanently remove those custom settings."
-msgstr "Рестартирането на канала ще премахне завинаги потребителските настройки."
+msgstr "Menetap semula saluran akan buang tetapan suai secara kekal."
 
 #: ../xfce4-settings-editor/xfce-settings-editor-dialog.c:806
 #, c-format
 msgid "Are you sure you want to reset channel \"%s\" and all its properties?"
-msgstr "Наистина ли искате да рестартирате канал \"%s\" и всички негови свойства?"
+msgstr "Anda pasti ingin menetap semula saluran \"%s\" dan semua sifatnya?"
 
 #: ../xfce4-settings-editor/xfce-settings-editor-dialog.c:881
 msgid "reset"
-msgstr "рестартиране"
+msgstr "tetapkan semula"
 
 #: ../xfce4-settings-editor/xfce-settings-editor-dialog.c:938
 #, c-format
 msgid "Monitor %s"
-msgstr "Наблюдение на %s"
+msgstr "Pantau %s"
 
 #: ../xfce4-settings-editor/xfce-settings-editor-dialog.c:946
 msgid "Watch an Xfconf channel for property changes"
-msgstr "Следене за промени в свойствата на канал Xfconf"
+msgstr "Pantau saluran Xfconf untuk perubahan sifat"
 
 #: ../xfce4-settings-editor/xfce-settings-editor-dialog.c:982
 #, c-format
 msgid "start monitoring channel \"%s\""
-msgstr "Стартиране на наблюдение на канал \"%s\""
+msgstr "mula memantau saluran \"%s\""
 
 #: ../xfce4-settings-editor/xfce-settings-editor-dialog.c:1036
 msgid "_Monitor"
-msgstr "_Наблюдение"
+msgstr "_Pantau"
 
 #: ../xfce4-settings-editor/xfce-settings-editor-dialog.c:1370
 msgid "Resetting a property will permanently remove those custom settings."
-msgstr "Възстановяването на първоначалната стойност на свойството ще премахне потребителските настройки."
+msgstr "Menetap semula sifat akan buang tetapan suai tersebut secara kekal."
 
 #: ../xfce4-settings-editor/xfce-settings-editor-dialog.c:1371
 #, c-format
 msgid "Are you sure you want to reset property \"%s\"?"
-msgstr "Наистина ли искате на възстановите първоначалната стойност на свойство \"%s\"?"
+msgstr "Anda pasti ingin menetap semula sifat \"%s\"?"
 
 #: ../xfce4-settings-editor/xfce-settings-prop-dialog.c:93
 msgid "Int"
-msgstr "Цяло число"
+msgstr "Int"
 
 #: ../xfce4-settings-editor/xfce-settings-prop-dialog.c:95
 msgid "Unsigned Int"
-msgstr "Неподписано цяло число"
+msgstr "Int tidak bertandatangan"
 
 #: ../xfce4-settings-editor/xfce-settings-prop-dialog.c:96
 msgid "Int64"
-msgstr "64 битово цяло число"
+msgstr "Int64"
 
 #: ../xfce4-settings-editor/xfce-settings-prop-dialog.c:97
 msgid "Unsigned Int64"
-msgstr "Неподписано 64 битово цяло число"
+msgstr "Int64 tidak bertandatangan"
 
 #: ../xfce4-settings-editor/xfce-settings-prop-dialog.c:141
 msgid "New Property"
-msgstr "Ново свойство"
+msgstr "Sifat Baharu"
 
 #: ../xfce4-settings-editor/xfce-settings-prop-dialog.c:158
 msgid "_Property:"
-msgstr "_Свойство:"
+msgstr "Si_fat:"
 
 #: ../xfce4-settings-editor/xfce-settings-prop-dialog.c:173
 msgid "_Type:"
-msgstr "_Тип:"
+msgstr "_Jenis:"
 
 #. strings
 #. integers
@@ -1493,17 +1490,17 @@ msgstr "_Тип:"
 #: ../xfce4-settings-editor/xfce-settings-prop-dialog.c:215
 #: ../xfce4-settings-editor/xfce-settings-prop-dialog.c:227
 msgid "_Value:"
-msgstr "Значение:"
+msgstr "_Nilai:"
 
 #: ../xfce4-settings-editor/xfce-settings-prop-dialog.c:385
 #, c-format
 msgid "Property names must start with a '/' character"
-msgstr "Имената на свойствата трябва да започват със символ '/'"
+msgstr "Nama sifat mesti bermula dengan aksara '/'"
 
 #: ../xfce4-settings-editor/xfce-settings-prop-dialog.c:396
 #, c-format
 msgid "The root element ('/') is not a valid property name"
-msgstr "Коренов елемент ('/') не е валидно име на свойство"
+msgstr "Elemen root ('/') bukan nama sifat yang sah"
 
 #: ../xfce4-settings-editor/xfce-settings-prop-dialog.c:413
 #, c-format
@@ -1511,110 +1508,110 @@ msgid ""
 "Property names can only include the ASCII characters A-Z, a-z, 0-9, '_', "
 "'-', ':', '.', ',', '[', ']', '{', '}', '<' and '>', as well as '/' as a "
 "separator"
-msgstr "Имената на свойствата могат да включват само ASCII символи A-Z, a-z, 0-9, '_', '-', ':', '.', ',', '[', ']', '{', '}', '<' и '>', а също и елемент '/' като разделител"
+msgstr "Nama sifat hanya boleh sertakan aksara ASCII A-Z, a-z, 0-9, '_', '-', ':', '.', ',', '[', ']', '{', '}', '<' and '>', begitu juga '/' sebagai pemisah"
 
 #: ../xfce4-settings-editor/xfce-settings-prop-dialog.c:427
 #, c-format
 msgid "Property names cannot have two or more consecutive '/' characters"
-msgstr "Имената на свойствата не могат да съдържат два или повече последователни елемента '/'"
+msgstr "Nama sifat tidak boleh mempunyai dua atau lebih berturut-turut aksara '/'"
 
 #: ../xfce4-settings-editor/xfce-settings-prop-dialog.c:441
 #, c-format
 msgid "Property names cannot end with a '/' character"
-msgstr "Имената на свойствата не могат да завършват със символ '/'"
+msgstr "Nama sifat tidak boleh berakhir dengan aksara '/'"
 
 #: ../xfce4-settings-editor/xfce-settings-prop-dialog.c:654
 msgid "Edit Property"
-msgstr "Редактиране на свойство"
+msgstr "Sunting Sifat"
 
 #: ../xfce4-settings-editor/xfce4-settings-editor.desktop.in.h:2
 msgid "Graphical settings editor for Xfconf"
-msgstr "Графичен редактор на настройките на Xfconf"
+msgstr "Penyunting tetapan bergrafik untuk Xfconf"
 
 #: ../xfsettingsd/accessibility.c:412
 msgid "Sticky keys are enabled"
-msgstr "Залепващите клавиши са включени"
+msgstr "Kekunci lekat dibenarkan"
 
 #: ../xfsettingsd/accessibility.c:414
 msgid "Sticky keys are disabled"
-msgstr "Залепващите клавиши са изключени"
+msgstr "Kekunci lekat dilumpuhkan"
 
 #: ../xfsettingsd/accessibility.c:416
 msgid "Sticky keys"
-msgstr "Залепващи клавиши"
+msgstr "Kekunci lekat"
 
 #: ../xfsettingsd/accessibility.c:421
 msgid "Slow keys are enabled"
-msgstr "Бавните клавиши са включени"
+msgstr "Kekunci lambat dibenarkan"
 
 #: ../xfsettingsd/accessibility.c:423
 msgid "Slow keys are disabled"
-msgstr "Бавните клавиши са изключени"
+msgstr "Kekunci lambat dilumpuhkan"
 
 #: ../xfsettingsd/accessibility.c:425
 msgid "Slow keys"
-msgstr "Бавни клавиши"
+msgstr "Kekunci lambat"
 
 #: ../xfsettingsd/accessibility.c:430
 msgid "Bounce keys are enabled"
-msgstr "Прескачащите клавиши са включени"
+msgstr "Kekunci lantun dibenarkan"
 
 #: ../xfsettingsd/accessibility.c:432
 msgid "Bounce keys are disabled"
-msgstr "Прескащите клавиши са изключени"
+msgstr "Kekunci lantun dilumpuhkan"
 
 #: ../xfsettingsd/accessibility.c:434
 msgid "Bounce keys"
-msgstr "Прескачащи клавиши"
+msgstr "Kekunci lantun"
 
 #: ../xfsettingsd/keyboard-shortcuts.c:244
 #, c-format
 msgid "Failed to launch shortcut \"%s\""
-msgstr "Неуспех при стартиране на клавишна комбинация \"%s\""
+msgstr "Gagal melancarkan pintasan \"%s\""
 
 #: ../xfsettingsd/main.c:78
 msgid "Do not fork to the background"
-msgstr "Да не се клонира на Работният плот"
+msgstr "Jangan cabangkan latar belakang"
 
 #: ../xfsettingsd/main.c:79
 msgid "Replace running xsettings daemon (if any)"
-msgstr "Замяна на стартиране услуга xsettings (ако е налична)"
+msgstr "Ganti daemon xsetting yang berjalan (jika ada)"
 
 #: ../xfsettingsd/workspaces.c:385
 #, c-format
 msgid "Workspace %d"
-msgstr "Работно място %d"
+msgstr "Ruang Kerja %d"
 
 #: ../xfsettingsd/xfsettingsd.desktop.in.h:1
 msgid "The Xfce Settings Daemon"
-msgstr "Мениджърът на настройките на Xfce"
+msgstr "Daemon Tetapan Xfce"
 
 #: ../xfce4-settings-manager/main.c:41
 msgid "Settings dialog to show"
-msgstr "Показване на диалог за настройки"
+msgstr "Dialog tetapan yang ditunjukkan"
 
 #: ../xfce4-settings-manager/xfce-settings-manager-dialog.c:192
 msgid "All _Settings"
-msgstr "Всички настройки"
+msgstr "Semua T_etapan"
 
 #: ../xfce4-settings-manager/xfce-settings-manager-dialog.c:386
 msgid "Settings"
-msgstr "Настройки"
+msgstr "Tetapan"
 
 #: ../xfce4-settings-manager/xfce-settings-manager-dialog.c:388
 msgid "Customize your desktop"
-msgstr "Персонализирайте вашият Работен плот"
+msgstr "Suaikan desktop anda"
 
 #: ../xfce4-settings-manager/xfce-settings-manager-dialog.c:878
 #: ../xfce4-settings-manager/xfce-settings-manager-dialog.c:889
 #, c-format
 msgid "Unable to start \"%s\""
-msgstr "Неуспех при стартиране на \"%s\""
+msgstr "Tidak boleh mulakan \"%s\""
 
 #: ../xfce4-settings-manager/xfce-settings-manager.desktop.in.h:1
 msgid "Settings Manager"
-msgstr "Мениджър на настройките"
+msgstr "Pengurus Tetapan"
 
 #: ../xfce4-settings-manager/xfce-settings-manager.desktop.in.h:2
 msgid "Graphical Settings Manager for Xfce 4"
-msgstr "Графичен мениджър на настройките за Xfce 4"
+msgstr "Pengurus Tetapan Bergrafik untuk Xfce 4"
