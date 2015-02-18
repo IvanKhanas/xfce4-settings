@@ -11,11 +11,18 @@ dnl *** Version information ***
 dnl ***************************
 m4_define([xfce4_settings_version_major], [4])
 m4_define([xfce4_settings_version_minor], [11])
-m4_define([xfce4_settings_version_micro], [3])
+m4_define([xfce4_settings_version_micro], [4])
 m4_define([xfce4_settings_version_nano], [])
 m4_define([xfce4_settings_version_build], [@REVISION@])
-m4_define([xfce4_settings_version_tag], [git]) # Leave empty for releases
+m4_define([xfce4_settings_version_tag], []) # Leave empty for releases
 m4_define([xfce4_settings_version], [xfce4_settings_version_major().xfce4_settings_version_minor().xfce4_settings_version_micro()ifelse(xfce4_settings_version_nano(), [], [], [.xfce4_settings_version_nano()])ifelse(xfce4_settings_version_tag(), [git], [xfce4_settings_version_tag()-xfce4_settings_version_build()], [xfce4_settings_version_tag()])])
+
+dnl define a short version string for xfce4-settings
+m4_append([xfce4_settings_version_short], ["])
+m4_append([xfce4_settings_version_short], [xfce4_settings_version_major])
+m4_append([xfce4_settings_version_short], [.])
+m4_append([xfce4_settings_version_short], [xfce4_settings_version_minor])
+m4_append([xfce4_settings_version_short], ["])
 
 dnl *******************************************
 dnl *** Debugging support for GIT snapshots ***
@@ -71,6 +78,11 @@ dnl ******************************
 dnl *** Check for i18n support ***
 dnl ******************************
 XDT_I18N([@LINGUAS@])
+
+dnl ***********************************
+dnl *** Version string for the docs ***
+dnl ***********************************
+AC_DEFINE([XFCE4_SETTINGS_VERSION_SHORT], [xfce4_settings_version_short], [Short version string of xfce4-settings])
 
 dnl ***********************************
 dnl *** Check for required packages ***
@@ -157,6 +169,12 @@ dnl *** Optional support for Xcursor ***
 dnl ************************************
 XDT_CHECK_OPTIONAL_PACKAGE([XCURSOR], [xcursor], [1.1.0],
                            [xcursor], [Cursor themes support])
+
+dnl *************************************************
+dnl *** Optional support for libinput Xorg driver ***
+dnl *************************************************
+XDT_CHECK_OPTIONAL_PACKAGE([LIBINPUT], [xorg-libinput], [0.6.0],
+                           [xorg-libinput], [libinput Xorg driver support])
 
 dnl ****************************************
 dnl *** Optional support for Libxklavier ***
@@ -271,6 +289,11 @@ if test x"$XCURSOR_FOUND" = x"yes"; then
 echo "* Xcursor support:           yes"
 else
 echo "* Xcursor support:           no"
+fi
+if test x"$LIBINPUT_FOUND" = x"yes"; then
+echo "* Xorg libinput support:     yes"
+else
+echo "* Xorg libinput support:     no"
 fi
 if test x"$ENABLE_PLUGGABLE_DIALOGS" = x"1"; then
 echo "* Embedded settings dialogs  yes"

@@ -351,7 +351,10 @@ xfce_displays_helper_finalize (GObject *object)
         gdk_error_trap_push ();
         XRRFreeScreenResources (helper->resources);
         gdk_flush ();
-        gdk_error_trap_pop ();
+        if (gdk_error_trap_pop () != 0)
+        {
+            g_critical ("Failed to free screen resources");
+        }
         helper->resources = NULL;
     }
 
@@ -408,7 +411,7 @@ xfce_displays_helper_screen_on_event (GdkXEvent *xevent,
 {
     XfceDisplaysHelper *helper = XFCE_DISPLAYS_HELPER (data);
     GPtrArray          *old_outputs;
-    XfceRRCrtc         *crtc;
+    XfceRRCrtc         *crtc = NULL;
     XfceRROutput       *output, *o;
     XEvent             *e = xevent;
     gint                event_num;
@@ -695,9 +698,14 @@ xfce_displays_helper_load_from_xfconf (XfceDisplaysHelper *helper,
             rate = (gdouble) helper->resources->modes[m].dotClock /
                     ((gdouble) helper->resources->modes[m].hTotal * (gdouble) helper->resources->modes[m].vTotal);
 
+            /* construct a string equivalent to the mode generated in displays */
+            /* property is the resources mode translated into display panel name */
+            g_snprintf (property, sizeof (property), "%dx%d", helper->resources->modes[m].width,
+                        helper->resources->modes[m].height);
+
             /* find the mode corresponding to the saved values */
-            if (rint (rate) == rint (output_rate)
-                && (g_strcmp0 (helper->resources->modes[m].name, str_value) == 0))
+            if (rint (rate * 10) == rint (output_rate * 10)
+                && (g_strcmp0 (property, str_value) == 0))
             {
                 valid_mode = helper->resources->modes[m].id;
                 break;
@@ -842,6 +850,9 @@ xfce_displays_helper_list_outputs (XfceDisplaysHelper *helper)
         crtc = xfce_displays_helper_find_crtc_by_id (helper, output->info->crtc);
         output->active = crtc && crtc->mode != None;
 
+        /* Translate output->name into xfconf compatible format in place */
+        g_strcanon(output->info->name, "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_<>", '_');
+
         xfsettings_dbg (XFSD_DEBUG_DISPLAYS, "Detected output %lu %s.", output->id,
                         output->info->name);
 
@@ -863,8 +874,10 @@ xfce_displays_helper_free_output (XfceRROutput *output)
     gdk_error_trap_push ();
     XRRFreeOutputInfo (output->info);
     gdk_flush ();
-    gdk_error_trap_pop ();
-
+    if (gdk_error_trap_pop () != 0)
+    {
+        g_critical ("Failed to free output info");
+    }
     g_free (output);
 }
 
@@ -1207,7 +1220,10 @@ xfce_displays_helper_apply_all (XfceDisplaysHelper *helper)
     /* release the grab, changes are done */
     gdk_x11_display_ungrab (helper->display);
     gdk_flush ();
-    gdk_error_trap_pop ();
+    if (gdk_error_trap_pop () != 0)
+    {
+        g_critical ("Failed to apply display settings");
+    }
 }
 
 

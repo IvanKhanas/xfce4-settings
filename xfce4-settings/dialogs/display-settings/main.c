@@ -136,7 +136,7 @@ static XfceRandr *xfce_randr = NULL;
 static gint randr_event_base;
 
 /* Used to identify the display */
-static GHashTable *display_popups;
+static GHashTable *display_popups = NULL;
 gboolean show_popups = FALSE;
 
 gboolean supports_alpha = FALSE;
@@ -163,6 +163,9 @@ static void display_settings_minimal_extend_right_toggled    (GtkToggleButton *b
 static void display_settings_minimal_only_display2_toggled   (GtkToggleButton *button,
                                                               GtkBuilder      *builder);
 
+static void display_setting_primary_toggled                  (GtkToggleButton *button,
+                                                              GtkBuilder *builder);
+
 static void
 display_settings_changed (void)
 {
@@ -172,7 +175,8 @@ display_settings_changed (void)
 static XfceOutputInfo*
 get_nth_xfce_output_info(gint id)
 {
-    XfceOutputInfo *output;
+    XfceOutputInfo *output = NULL;
+
     if (current_outputs)
         output = g_list_nth (current_outputs, id)->data;
 
@@ -772,7 +776,7 @@ static GtkWidget *
 display_setting_identity_display (gint display_id)
 {
     GtkBuilder       *builder;
-    GtkWidget        *popup;
+    GtkWidget        *popup = NULL;
     GObject          *display_name, *display_details;
     const XfceRRMode *current_mode;
     gchar            *color_hex = "#FFFFFF", *name_label, *details_label;
@@ -979,6 +983,69 @@ display_setting_mirror_displays_populate (GtkBuilder *builder)
 }
 
 static void
+display_setting_primary_toggled (GtkToggleButton *togglebutton,
+                                 GtkBuilder *builder)
+{
+    guint m;
+
+    if (!xfce_randr)
+        return;
+
+    if (gtk_toggle_button_get_active (togglebutton))
+    {
+        /* Set currently active display as primary */
+        xfce_randr->status[active_output]=XFCE_OUTPUT_STATUS_PRIMARY;
+        xfce_randr_save_output (xfce_randr, "Default", display_channel,
+                                active_output);
+        /* and all others as secondary */
+        for (m = 0; m < xfce_randr->noutput; ++m)
+        {
+            if (m != active_output)
+            {
+                xfce_randr->status[m]=XFCE_OUTPUT_STATUS_SECONDARY;
+                xfce_randr_save_output (xfce_randr, "Default", display_channel, m);
+            }
+        }
+    }
+    else
+    {
+        xfce_randr->status[active_output]=XFCE_OUTPUT_STATUS_SECONDARY;
+        xfce_randr_save_output (xfce_randr, "Default", display_channel, active_output);
+    }
+
+    /* Apply the changes */
+    xfce_randr_apply (xfce_randr, "Default", display_channel);
+}
+
+static void
+display_setting_primary_populate (GtkBuilder *builder)
+{
+    GObject *check;
+
+    if (!xfce_randr)
+        return;
+
+    check = gtk_builder_get_object (builder, "primary");
+
+    if (xfce_randr->noutput > 1)
+        gtk_widget_show (GTK_WIDGET (check));
+    else
+    {
+        gtk_widget_hide (GTK_WIDGET (check));
+        return;
+    }
+
+    /* Block the "changed" signal to avoid triggering the confirmation dialog */
+    g_signal_handlers_block_by_func (check, display_setting_primary_toggled,
+                                     builder);
+    gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (check),
+    xfce_randr->status[active_output] != XFCE_OUTPUT_STATUS_SECONDARY);
+    /* Unblock the signal */
+    g_signal_handlers_unblock_by_func (check, display_setting_primary_toggled,
+                                       builder);
+}
+
+static void
 display_setting_output_toggled (GtkToggleButton *togglebutton,
                                 GtkBuilder      *builder)
 {
@@ -1081,6 +1148,7 @@ display_settings_combobox_selection_changed (GtkComboBox *combobox,
 
         /* Update the combo boxes */
         display_setting_output_status_populate (builder);
+        display_setting_primary_populate (builder);
         display_setting_mirror_displays_populate (builder);
         display_setting_resolutions_populate (builder);
         display_setting_refresh_rates_populate (builder);
@@ -1123,14 +1191,9 @@ display_settings_combobox_populate (GtkBuilder *builder)
     {
         /* Insert the output in the store */
         gtk_list_store_append (store, &iter);
-        if (xfce_randr->mode[m] == None)
-            gtk_list_store_set (store, &iter,
-                                COLUMN_OUTPUT_NAME, xfce_randr->friendly_name[m],
-                                COLUMN_OUTPUT_ID, m, -1);
-        else
-            gtk_list_store_set (store, &iter,
-                                COLUMN_OUTPUT_NAME, xfce_randr->friendly_name[m],
-                                COLUMN_OUTPUT_ID, m, -1);
+        gtk_list_store_set (store, &iter,
+                            COLUMN_OUTPUT_NAME, xfce_randr->friendly_name[m],
+                            COLUMN_OUTPUT_ID, m, -1);
 
         /* Select active output */
         if (m == active_output)
@@ -1173,7 +1236,8 @@ display_settings_dialog_response (GtkDialog  *dialog,
                                   GtkBuilder *builder)
 {
     if (response_id == GTK_RESPONSE_HELP)
-        xfce_dialog_show_help (GTK_WINDOW (dialog), "xfce4-settings", "display", NULL);
+        xfce_dialog_show_help_with_version (GTK_WINDOW (dialog), "xfce4-settings", "display",
+                                            NULL, XFCE4_SETTINGS_VERSION_SHORT);
     else
         gtk_main_quit ();
 }
@@ -1232,7 +1296,7 @@ display_settings_dialog_new (GtkBuilder *builder)
 {
     GObject          *combobox;
     GtkCellRenderer  *renderer;
-    GObject          *label, *check, *mirror, *identify;
+    GObject          *label, *check, *primary, *mirror, *identify;
 
     /* Get the combobox */
     combobox = gtk_builder_get_object (builder, "randr-outputs");
@@ -1254,17 +1318,21 @@ display_settings_dialog_new (GtkBuilder *builder)
 
     /* Setup the combo boxes */
     check = gtk_builder_get_object (builder, "output-on");
+    primary = gtk_builder_get_object (builder, "primary");
     mirror = gtk_builder_get_object (builder, "mirror-displays");
     g_signal_connect (G_OBJECT (check), "toggled", G_CALLBACK (display_setting_output_toggled), builder);
+    g_signal_connect (G_OBJECT (primary), "toggled", G_CALLBACK (display_setting_primary_toggled), builder);
     g_signal_connect (G_OBJECT (mirror), "toggled", G_CALLBACK (display_setting_mirror_displays_toggled), builder);
     if (xfce_randr->noutput > 1)
     {
         gtk_widget_show (GTK_WIDGET (check));
+        gtk_widget_show (GTK_WIDGET (primary));
         gtk_widget_show (GTK_WIDGET (mirror));
     }
     else
     {
         gtk_widget_hide (GTK_WIDGET (check));
+        gtk_widget_hide (GTK_WIDGET (primary));
         gtk_widget_hide (GTK_WIDGET (mirror));
     }
 
@@ -1496,7 +1564,7 @@ get_mirrored_configuration (void)
     if (!xfce_randr)
         return FALSE;
 
-    if (!xfce_randr->noutput > 1)
+    if (xfce_randr->noutput <= 1)
         return FALSE;
 
     /* Can outputs be cloned? */
@@ -2861,6 +2929,9 @@ display_settings_show_minimal_dialog (GdkDisplay *display)
             /* Can outputs be cloned? */
             if (display_settings_get_n_active_outputs () > 1)
                 mode = xfce_randr_clonable_mode (xfce_randr);
+            else
+                mode = None;
+
             gtk_widget_set_sensitive (GTK_WIDGET (mirror_displays), mode != None);
 
             if (xfce_randr->mode[0] != None)
@@ -3007,6 +3078,7 @@ main (gint argc, gchar **argv)
 
         if (!xfce_randr)
         {
+            succeeded = FALSE;
             command = g_find_program_in_path ("amdcccle");
 
             if (command != NULL)
@@ -3037,7 +3109,10 @@ main (gint argc, gchar **argv)
 
         /* Hook to make sure the libxfce4ui library is linked */
         if (xfce_titled_dialog_get_type () == 0)
-            return EXIT_FAILURE;
+        {
+            succeeded = FALSE;
+            goto cleanup;
+        }
 
         if (xfce_randr->noutput <= 1 || !minimal)
             display_settings_show_main_dialog (display);

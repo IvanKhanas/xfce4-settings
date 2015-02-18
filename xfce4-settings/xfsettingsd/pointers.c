@@ -30,6 +30,10 @@
 #include <string.h>
 #endif
 
+#ifdef HAVE_LIBINPUT
+#include "libinput-properties.h"
+#endif /* HAVE_LIBINPUT */
+
 #include <glib.h>
 #include <gdk/gdk.h>
 #include <gdk/gdkx.h>
@@ -41,7 +45,6 @@
 #include "debug.h"
 #include "pointers.h"
 #include "pointers-defines.h"
-
 
 #define MAX_DENOMINATOR (100.00)
 
@@ -63,6 +66,13 @@ static GdkFilterReturn  xfce_pointers_helper_event_filter             (GdkXEvent
                                                                        GdkEvent           *gdk_event,
                                                                        gpointer            user_data);
 #endif
+#if defined(DEVICE_PROPERTIES) || defined(HAVE_LIBINPUT)
+static void             xfce_pointers_helper_change_property          (XDeviceInfo        *device_info,
+                                                                       XDevice            *device,
+                                                                       Display            *xdisplay,
+                                                                       const gchar        *prop_name,
+                                                                       const GValue       *value);
+#endif /* DEVICE_PROPERTIES || HAVE_LIBINPUT */
 
 
 
@@ -187,6 +197,34 @@ xfce_pointers_helper_finalize (GObject *object)
 
     (*G_OBJECT_CLASS (xfce_pointers_helper_parent_class)->finalize) (object);
 }
+
+
+
+#ifdef HAVE_LIBINPUT
+static gboolean
+xfce_pointers_is_libinput (Display *xdisplay,
+                           XDevice *device)
+{
+    Atom     prop, type;
+    gulong   n_items, bytes_after;
+    gint     rc, format;
+    guchar  *data;
+
+    prop = XInternAtom (xdisplay, LIBINPUT_PROP_LEFT_HANDED, False);
+    gdk_error_trap_push ();
+    rc = XGetDeviceProperty (xdisplay, device, prop, 0, 1, False,
+                             XA_INTEGER, &type, &format, &n_items,
+                             &bytes_after, &data);
+    gdk_error_trap_pop ();
+    if (rc == Success)
+    {
+        XFree (data);
+        return (n_items > 0);
+    }
+
+    return FALSE;
+}
+#endif /* HAVE_LIBINPUT */
 
 
 
@@ -355,6 +393,35 @@ xfce_pointers_helper_change_button_mapping (XDeviceInfo *device_info,
     gint          right_button;
     GString      *readable_map;
 
+#ifdef HAVE_LIBINPUT
+    if (xfce_pointers_is_libinput (xdisplay, device))
+    {
+        if (right_handed != -1)
+        {
+            GValue value = G_VALUE_INIT;
+
+            g_value_init (&value, G_TYPE_INT);
+            g_value_set_int (&value, !right_handed);
+
+            xfce_pointers_helper_change_property (device_info, device, xdisplay,
+                                                  LIBINPUT_PROP_LEFT_HANDED, &value);
+        }
+
+        if (reverse_scrolling != -1)
+        {
+            GValue value = G_VALUE_INIT;
+
+            g_value_init (&value, G_TYPE_INT);
+            g_value_set_int (&value, reverse_scrolling);
+
+            xfce_pointers_helper_change_property (device_info, device, xdisplay,
+                                                  LIBINPUT_PROP_NATURAL_SCROLL, &value);
+        }
+
+        return;
+    }
+#endif /* HAVE_LIBINPUT */
+
     /* search the number of buttons */
     for (n = 0, ptr = device_info->inputclassinfo; n < device_info->num_classes; n++)
     {
@@ -464,6 +531,21 @@ xfce_pointers_helper_change_feedback (XDeviceInfo *device_info,
     gint                 num, denom, gcd;
     gboolean             found = FALSE;
 
+#ifdef HAVE_LIBINPUT
+    if (xfce_pointers_is_libinput (xdisplay, device))
+    {
+        gdouble libinput_accel;
+        GValue value = G_VALUE_INIT;
+
+        libinput_accel = CLAMP ((acceleration / 5) - 1.0, -1.0, 1.0);
+        g_value_init (&value, G_TYPE_DOUBLE);
+        g_value_set_double (&value, libinput_accel);
+
+        xfce_pointers_helper_change_property (device_info, device, xdisplay,
+                                              LIBINPUT_PROP_ACCEL, &value);
+        return;
+    }
+#endif /* HAVE_LIBINPUT */
     /* get the feedback states for this device */
     gdk_error_trap_push ();
     states = XGetFeedbackControl (xdisplay, device, &num_feedbacks);
@@ -497,9 +579,9 @@ xfce_pointers_helper_change_feedback (XDeviceInfo *device_info,
 
         /* above 0 is a valid value, -1 is reset, -2.00
          * is passed if no change is required */
-        if (acceleration > 0 || acceleration == -1)
+        if (acceleration >= 0 || acceleration == -1)
         {
-            if (acceleration > 0)
+            if (acceleration >= 0)
             {
                 /* calculate the faction of the acceleration */
                 num = acceleration * MAX_DENOMINATOR;
@@ -619,7 +701,7 @@ xfce_pointers_helper_device_xfconf_name (const gchar *name)
 
 
 
-#ifdef DEVICE_PROPERTIES
+#if defined(DEVICE_PROPERTIES) || defined(HAVE_LIBINPUT)
 static void
 xfce_pointers_helper_change_property (XDeviceInfo  *device_info,
                                       XDevice      *device,
@@ -637,11 +719,13 @@ xfce_pointers_helper_change_property (XDeviceInfo  *device_info,
     gulong        n_succeeds;
     Atom          float_atom;
     GPtrArray    *array = NULL;
+    int           rc;
     const GValue *val;
     union {
         guchar *c;
         gshort *s;
         glong  *l;
+        float  *f;
         Atom   *a;
     } data;
 
@@ -658,7 +742,7 @@ xfce_pointers_helper_change_property (XDeviceInfo  *device_info,
 
     gdk_error_trap_push ();
     props = XListDeviceProperties (xdisplay, device, &n_props);
-    if (gdk_error_trap_pop () != 0 || props == NULL)
+    if (gdk_error_trap_pop () || props == NULL)
         return;
 
     float_atom = XInternAtom (xdisplay, "FLOAT", False);
@@ -669,9 +753,11 @@ xfce_pointers_helper_change_property (XDeviceInfo  *device_info,
         if (props[n] != prop)
             continue;
 
-        if (XGetDeviceProperty (xdisplay, device, prop, 0, 1000, False,
-                                AnyPropertyType, &type, &format,
-                                &n_items, &bytes_after, &data.c) == Success)
+        gdk_error_trap_push ();
+        rc = XGetDeviceProperty (xdisplay, device, prop, 0, 1000, False,
+                                 AnyPropertyType, &type, &format,
+                                 &n_items, &bytes_after, &data.c);
+        if (!gdk_error_trap_pop () && rc == Success)
         {
             if (n_items == 1
                 && (G_VALUE_HOLDS_INT (value)
@@ -734,7 +820,7 @@ xfce_pointers_helper_change_property (XDeviceInfo  *device_info,
                          && type == float_atom
                          && format == 32)
                 {
-                    data.l[i] = g_value_get_double (val);
+                    data.f[i] = (float) g_value_get_double (val);
                 }
                 else
                 {
@@ -752,7 +838,8 @@ xfce_pointers_helper_change_property (XDeviceInfo  *device_info,
                 gdk_error_trap_push ();
                 XChangeDeviceProperty (xdisplay, device, prop, type, format,
                                        PropModeReplace, data.c, n_items);
-                if (gdk_error_trap_pop () != 0)
+                XSync (xdisplay, FALSE);
+                if (gdk_error_trap_pop ())
                 {
                     g_critical ("Failed to set device property %s for %s",
                                 prop_name, device_info->name);
@@ -762,18 +849,20 @@ xfce_pointers_helper_change_property (XDeviceInfo  *device_info,
                                 "[%s] Changed device property %s",
                                 device_info->name, prop_name);
             }
-
-            XFree (data.c);
         }
+
+        if (data.c)
+            XFree (data.c);
 
         break;
     }
 
     XFree (props);
 }
+#endif /* DEVICE_PROPERTIES || HAVE_LIBINPUT */
 
 
-
+#ifdef DEVICE_PROPERTIES
 static void
 xfce_pointers_helper_change_properties (gpointer key,
                                         gpointer value,
