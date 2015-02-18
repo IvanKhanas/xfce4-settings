@@ -1,7 +1,7 @@
 copy?: *.patch
 copy: xfce4-fixkeyboard
-#tar: @name@-@version@:.
-#diff: @name@-@version@:. @name@
+tar: @name@-@version@:.
+diff: @name@-@version@:. @name@
 
-tar: upstream:.
-diff: upstream:. @name@
+#tar: upstream:.
+#diff: upstream:. @name@
