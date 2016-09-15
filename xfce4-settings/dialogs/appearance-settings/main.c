@@ -460,7 +460,8 @@ theme_create_preview (GdkColor *colors)
     gint width = 44;
     gint height = 22;
 
-    drawable = gdk_pixmap_new (NULL, width, height, 24);
+    drawable = gdk_pixmap_new (gdk_get_default_root_window(), width, height,
+                               gdk_drawable_get_depth (gdk_get_default_root_window ()));
     cr = gdk_cairo_create (drawable);
     cairo_set_operator (cr, CAIRO_OPERATOR_SOURCE);
 
@@ -561,6 +562,9 @@ cb_hinting_style_combo_changed (GtkComboBox *combo)
 
     /* Save setting */
     xfconf_channel_set_string (xsettings_channel, "/Xft/HintStyle", xft_hint_styles_array[active]);
+
+    /* Also update /Xft/Hinting to match */
+    xfconf_channel_set_int (xsettings_channel, "/Xft/Hinting", active > 0 ? 1 : 0);
 }
 
 static void
@@ -776,6 +780,7 @@ appearance_settings_load_icon_themes (preview_data *pd)
                         gtk_tree_path_free (tree_path);
                     }
 
+                    g_object_unref (icon_theme);
                     g_object_unref (preview);
                 }
             }

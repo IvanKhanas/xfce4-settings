@@ -12,8 +12,8 @@ msgstr ""
 "Project-Id-Version: Xfce4-settings\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-02-06 06:30+0100\n"
-"PO-Revision-Date: 2015-02-23 11:05+0000\n"
-"Last-Translator: Lyubomir Vasilev\n"
+"PO-Revision-Date: 2015-07-31 11:10+0000\n"
+"Last-Translator: Kiril Kirilov <cybercop_montana@abv.bg>\n"
 "Language-Team: Bulgarian (http://www.transifex.com/projects/p/xfce4-settings/language/bg/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -272,7 +272,7 @@ msgstr "Външен вид"
 #: ../dialogs/appearance-settings/appearance-dialog.glade.h:2
 #: ../dialogs/appearance-settings/xfce-ui-settings.desktop.in.h:2
 msgid "Customize the look of your desktop"
-msgstr "Настройка на външният вид на работният плот"
+msgstr "Настройка на външният вид на работния плот"
 
 #: ../dialogs/appearance-settings/appearance-dialog.glade.h:3
 msgid "St_yle"
@@ -331,7 +331,7 @@ msgstr "Визуализация"
 
 #: ../dialogs/appearance-settings/appearance-dialog.glade.h:15
 msgid "Custom _DPI setting:"
-msgstr "Настройки на потребителска DPI:"
+msgstr "Потребителска настройка DPI:"
 
 #: ../dialogs/appearance-settings/appearance-dialog.glade.h:16
 msgid ""
@@ -559,7 +559,7 @@ msgstr "Основен дисплей"
 msgid ""
 "This is a hint for panels, docks and desktop to show on this display "
 "preferably."
-msgstr "Това е подсказването за панелите, доковете и работният плот, което предпочитате да виждате."
+msgstr "Това е подсказването за панелите, доковете и работния плот, което предпочитате да виждате."
 
 #: ../dialogs/display-settings/display-dialog.glade.h:11
 msgid "Configure _new displays when connected"
