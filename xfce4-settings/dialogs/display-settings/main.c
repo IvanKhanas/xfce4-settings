@@ -32,6 +32,7 @@
 
 #include <glib.h>
 #include <gtk/gtk.h>
+#include <gtk/gtkx.h>
 #include <gdk/gdkx.h>
 #include <gdk/gdkkeysyms.h>
 
@@ -112,7 +113,7 @@ typedef struct
 
 
 /* Option entries */
-static GdkNativeWindow opt_socket_id = 0;
+static gint opt_socket_id = 0;
 static gboolean opt_version = FALSE;
 static gboolean minimal = FALSE;
 static GOptionEntry option_entries[] =
@@ -166,6 +167,8 @@ static void display_settings_minimal_only_display2_toggled   (GtkToggleButton *b
 static void display_setting_primary_toggled                  (GtkToggleButton *button,
                                                               GtkBuilder *builder);
 
+static void display_setting_mirror_displays_populate         (GtkBuilder *builder);
+
 static void
 display_settings_changed (void)
 {
@@ -176,14 +179,15 @@ static XfceOutputInfo*
 get_nth_xfce_output_info(gint id)
 {
     XfceOutputInfo *output = NULL;
+    GList * entry = NULL;
 
     if (current_outputs)
-        output = g_list_nth (current_outputs, id)->data;
+        entry = g_list_nth (current_outputs, id);
 
-    if (output)
-        return output;
+    if (entry)
+        output = entry->data;
 
-    return NULL;
+    return output;
 }
 
 static void
@@ -482,8 +486,12 @@ display_setting_refresh_rates_changed (GtkComboBox *combobox,
     /* Set new mode */
     xfce_randr->mode[active_output] = value;
 
+    /* In any case, check if we're now in mirror mode */
+    display_setting_mirror_displays_populate (builder);
+
     /* Apply the changes */
     display_settings_changed ();
+    foo_scroll_area_invalidate (FOO_SCROLL_AREA (randr_gui_area));
 }
 
 static void
@@ -548,6 +556,9 @@ display_setting_refresh_rates_populate (GtkBuilder *builder)
     /* If a new resolution was selected, set a refresh rate */
     if (gtk_combo_box_get_active (GTK_COMBO_BOX (combobox)) == -1)
         gtk_combo_box_set_active_iter (GTK_COMBO_BOX (combobox), &iter);
+
+    /* In any case, check if we're now in mirror mode */
+    display_setting_mirror_displays_populate (builder);
 
     /* Unblock the signal */
     g_signal_handlers_unblock_by_func (combobox, display_setting_refresh_rates_changed,
@@ -643,52 +654,54 @@ display_setting_screen_changed (GtkWidget *widget,
                                 GdkScreen *old_screen,
                                 gpointer   userdata)
 {
-    GdkScreen   *screen = gtk_widget_get_screen (widget);
-    GdkColormap *colormap = gdk_screen_get_rgba_colormap (screen);
+    GdkScreen *screen = gtk_widget_get_screen (widget);
+    GdkVisual *visual = gdk_screen_get_rgba_visual (screen);
 
     if (gdk_screen_is_composited (screen))
         supports_alpha = TRUE;
     else
     {
-        colormap = gdk_screen_get_rgb_colormap (screen);
+        visual = gdk_screen_get_system_visual (screen);
         supports_alpha = FALSE;
     }
 
-    gtk_widget_set_colormap (widget, colormap);
+    gtk_widget_set_visual (widget, visual);
 }
 
 static gboolean
-display_setting_identity_popup_expose (GtkWidget      *popup,
-                                       GdkEventExpose *event,
-                                       GtkBuilder     *builder)
+display_setting_identity_popup_draw (GtkWidget      *popup,
+                                     cairo_t *cr,
+                                     GtkBuilder     *builder)
 {
-    cairo_t         *cr = gdk_cairo_create (popup->window);
     cairo_pattern_t *vertical_gradient, *innerstroke_gradient, *selected_gradient, *selected_innerstroke_gradient;
     gint             radius;
     gboolean         selected = (g_hash_table_lookup (display_popups, GINT_TO_POINTER (active_output)) == popup);
+
+    GtkAllocation *allocation = g_new0 (GtkAllocation, 1);
+    gtk_widget_get_allocation(GTK_WIDGET(popup), allocation);
 
     radius = 10;
     cairo_set_operator (cr, CAIRO_OPERATOR_SOURCE);
 
     /* Create the various gradients */
-    vertical_gradient = cairo_pattern_create_linear (0, 0, 0, popup->allocation.height);
+    vertical_gradient = cairo_pattern_create_linear (0, 0, 0, allocation->height);
     cairo_pattern_add_color_stop_rgb (vertical_gradient, 0, 0.25, 0.25, 0.25);
     cairo_pattern_add_color_stop_rgb (vertical_gradient, 0.24, 0.15, 0.15, 0.15);
     cairo_pattern_add_color_stop_rgb (vertical_gradient, 0.6, 0.0, 0.0, 0.0);
 
-    innerstroke_gradient = cairo_pattern_create_linear (0, 0, 0, popup->allocation.height);
+    innerstroke_gradient = cairo_pattern_create_linear (0, 0, 0, allocation->height);
     cairo_pattern_add_color_stop_rgb (innerstroke_gradient, 0, 0.35, 0.35, 0.35);
     cairo_pattern_add_color_stop_rgb (innerstroke_gradient, 0.4, 0.25, 0.25, 0.25);
     cairo_pattern_add_color_stop_rgb (innerstroke_gradient, 0.7, 0.15, 0.15, 0.15);
     cairo_pattern_add_color_stop_rgb (innerstroke_gradient, 0.85, 0.0, 0.0, 0.0);
 
-    selected_gradient = cairo_pattern_create_linear (0, 0, 0, popup->allocation.height);
+    selected_gradient = cairo_pattern_create_linear (0, 0, 0, allocation->height);
     cairo_pattern_add_color_stop_rgb (selected_gradient, 0, 0.05, 0.20, 0.46);
     cairo_pattern_add_color_stop_rgb (selected_gradient, 0.4, 0.05, 0.12, 0.25);
     cairo_pattern_add_color_stop_rgb (selected_gradient, 0.6, 0.05, 0.10, 0.20);
     cairo_pattern_add_color_stop_rgb (selected_gradient, 0.8, 0.0, 0.02, 0.05);
 
-    selected_innerstroke_gradient = cairo_pattern_create_linear (0, 0, 0, popup->allocation.height);
+    selected_innerstroke_gradient = cairo_pattern_create_linear (0, 0, 0, allocation->height);
     cairo_pattern_add_color_stop_rgb (selected_innerstroke_gradient, 0, 0.15, 0.45, 0.75);
     cairo_pattern_add_color_stop_rgb (selected_innerstroke_gradient, 0.7, 0.0, 0.15, 0.25);
     cairo_pattern_add_color_stop_rgb (selected_innerstroke_gradient, 0.85, 0.0, 0.0, 0.0);
@@ -703,7 +716,7 @@ display_setting_identity_popup_expose (GtkWidget      *popup,
             cairo_set_source (cr, selected_gradient);
         cairo_paint (cr);
         cairo_set_source_rgb (cr, 0.0, 0.0, 0.0);
-        cairo_rectangle (cr, 0.5, 0.5, popup->allocation.width-0.5, popup->allocation.height-0.5);
+        cairo_rectangle (cr, 0.5, 0.5, allocation->width-0.5, allocation->height-0.5);
         cairo_stroke (cr);
 
         /* Draw the inner stroke */
@@ -711,15 +724,15 @@ display_setting_identity_popup_expose (GtkWidget      *popup,
         if (selected)
             cairo_set_source_rgb (cr, 0.15, 0.45, 0.75);
         cairo_move_to (cr, 1.5, 1.5);
-        cairo_line_to (cr, popup->allocation.width-1, 1.5);
+        cairo_line_to (cr, allocation->width-1, 1.5);
         cairo_stroke (cr);
         cairo_set_source (cr, innerstroke_gradient);
         if (selected)
             cairo_set_source (cr, selected_innerstroke_gradient);
         cairo_move_to (cr, 1.5, 1.5);
-        cairo_line_to (cr, 1.5, popup->allocation.height-1.0);
-        cairo_move_to (cr, popup->allocation.width-1.5, 1.5);
-        cairo_line_to (cr, popup->allocation.width-1.5, popup->allocation.height-1.0);
+        cairo_line_to (cr, 1.5, allocation->height-1.0);
+        cairo_move_to (cr, allocation->width-1.5, 1.5);
+        cairo_line_to (cr, allocation->width-1.5, allocation->height-1.0);
         cairo_stroke (cr);
     }
     /* Draw rounded corners. */
@@ -730,12 +743,12 @@ display_setting_identity_popup_expose (GtkWidget      *popup,
 
         /* Draw a filled rounded rectangle with outline */
         cairo_set_line_width (cr, 1.0);
-        cairo_move_to (cr, 0.5, popup->allocation.height+0.5);
+        cairo_move_to (cr, 0.5, allocation->height+0.5);
         cairo_line_to (cr, 0.5, radius+0.5);
         cairo_arc (cr, radius+0.5, radius+0.5, radius, 3.14, 3.0*3.14/2.0);
-        cairo_line_to (cr, popup->allocation.width-0.5 - radius, 0.5);
-        cairo_arc (cr, popup->allocation.width-0.5 - radius, radius+0.5, radius, 3.0*3.14/2.0, 0.0);
-        cairo_line_to (cr, popup->allocation.width-0.5, popup->allocation.height+0.5);
+        cairo_line_to (cr, allocation->width-0.5 - radius, 0.5);
+        cairo_arc (cr, allocation->width-0.5 - radius, radius+0.5, radius, 3.0*3.14/2.0, 0.0);
+        cairo_line_to (cr, allocation->width-0.5, allocation->height+0.5);
         cairo_set_source (cr, vertical_gradient);
         if (selected)
             cairo_set_source (cr, selected_gradient);
@@ -748,26 +761,27 @@ display_setting_identity_popup_expose (GtkWidget      *popup,
         if (selected)
             cairo_set_source_rgb (cr, 0.15, 0.45, 0.75);
         cairo_arc (cr, radius+1.5, radius+1.5, radius, 3.14, 3.0*3.14/2.0);
-        cairo_line_to (cr, popup->allocation.width-1.5 - radius, 1.5);
-        cairo_arc (cr, popup->allocation.width-1.5 - radius, radius+1.5, radius, 3.0*3.14/2.0, 0.0);
+        cairo_line_to (cr, allocation->width-1.5 - radius, 1.5);
+        cairo_arc (cr, allocation->width-1.5 - radius, radius+1.5, radius, 3.0*3.14/2.0, 0.0);
         cairo_stroke (cr);
         cairo_set_source (cr, innerstroke_gradient);
         if (selected)
             cairo_set_source (cr, selected_innerstroke_gradient);
         cairo_move_to (cr, 1.5, radius+1.0);
-        cairo_line_to (cr, 1.5, popup->allocation.height-1.0);
-        cairo_move_to (cr, popup->allocation.width-1.5, radius+1.0);
-        cairo_line_to (cr, popup->allocation.width-1.5, popup->allocation.height-1.0);
+        cairo_line_to (cr, 1.5, allocation->height-1.0);
+        cairo_move_to (cr, allocation->width-1.5, radius+1.0);
+        cairo_line_to (cr, allocation->width-1.5, allocation->height-1.0);
         cairo_stroke (cr);
 
         cairo_close_path (cr);
     }
 
-    cairo_destroy (cr);
     cairo_pattern_destroy (vertical_gradient);
     cairo_pattern_destroy (innerstroke_gradient);
     cairo_pattern_destroy (selected_gradient);
     cairo_pattern_destroy (selected_innerstroke_gradient);
+
+    g_free (allocation);
 
     return FALSE;
 }
@@ -791,7 +805,7 @@ display_setting_identity_display (gint display_id)
         gtk_widget_set_name (popup, "XfceDisplayDialogPopup");
 
         gtk_widget_set_app_paintable (popup, TRUE);
-        g_signal_connect (G_OBJECT (popup), "expose-event", G_CALLBACK (display_setting_identity_popup_expose), builder);
+        g_signal_connect (G_OBJECT (popup), "draw", G_CALLBACK (display_setting_identity_popup_draw), builder);
         g_signal_connect (G_OBJECT (popup), "screen-changed", G_CALLBACK (display_setting_screen_changed), NULL);
 
         display_name = gtk_builder_get_object (builder, "display_name");
@@ -814,8 +828,10 @@ display_setting_identity_display (gint display_id)
         {
             screen_pos_x = 0;
             screen_pos_y = 0;
+G_GNUC_BEGIN_IGNORE_DEPRECATIONS
             screen_width = gdk_screen_width ();
             screen_height = gdk_screen_height ();
+G_GNUC_END_IGNORE_DEPRECATIONS
         }
 
         name_label = g_markup_printf_escaped ("<span foreground='%s'><big><b>%s %s</b></big></span>",
@@ -877,6 +893,10 @@ display_setting_mirror_displays_toggled (GtkToggleButton *togglebutton,
     if (!xfce_randr)
         return;
 
+    /* reset the inconsistent state, since the mirror checkbutton is being toggled */
+    if (gtk_toggle_button_get_inconsistent(togglebutton))
+        gtk_toggle_button_set_inconsistent (togglebutton, FALSE);
+
     if (gtk_toggle_button_get_active (togglebutton))
     {
         /* Activate mirror-mode with a single mode for all of them */
@@ -905,7 +925,7 @@ display_setting_mirror_displays_toggled (GtkToggleButton *togglebutton,
             xfce_randr->position[n].x = pos;
             xfce_randr->position[n].y = 0;
 
-            pos = xfce_randr_mode_width (xfce_randr_find_mode_by_id (xfce_randr, n, xfce_randr->mode[n]), 0);
+            pos += xfce_randr_mode_width (xfce_randr_find_mode_by_id (xfce_randr, n, xfce_randr->mode[n]), 0);
         }
     }
 
@@ -913,12 +933,14 @@ display_setting_mirror_displays_toggled (GtkToggleButton *togglebutton,
     for (n = 0; n < xfce_randr->noutput; n++)
     {
         output = get_nth_xfce_output_info (n);
-        output->rotation = xfce_randr->rotation[n];
-        output->x = xfce_randr->position[n].x;
-        output->y = xfce_randr->position[n].y;
-        output->mirrored = xfce_randr->mirrored[n];
-        output->width = xfce_randr_mode_width (xfce_randr_find_mode_by_id (xfce_randr, n, xfce_randr->mode[n]), 0);
-        output->height = xfce_randr_mode_height (xfce_randr_find_mode_by_id (xfce_randr, n, xfce_randr->mode[n]), 0);
+        if (output) {
+            output->rotation = xfce_randr->rotation[n];
+            output->x = xfce_randr->position[n].x;
+            output->y = xfce_randr->position[n].y;
+            output->mirrored = xfce_randr->mirrored[n];
+            output->width = xfce_randr_mode_width (xfce_randr_find_mode_by_id (xfce_randr, n, xfce_randr->mode[n]), 0);
+            output->height = xfce_randr_mode_height (xfce_randr_find_mode_by_id (xfce_randr, n, xfce_randr->mode[n]), 0);
+        } /* else: some kind of racecondition during re-connect? - just ignore */
     }
 
     /* Apply the changes */
@@ -932,7 +954,8 @@ display_setting_mirror_displays_populate (GtkBuilder *builder)
     GObject *check;
     RRMode   mode = None;
     guint    n;
-    gint     cloned = TRUE;
+    gboolean cloned = TRUE;
+    gboolean mirrored = FALSE;
 
     if (!xfce_randr)
         return;
@@ -970,12 +993,25 @@ display_setting_mirror_displays_populate (GtkBuilder *builder)
 
         cloned &= (xfce_randr->mode[n] == mode &&
                    xfce_randr->mirrored[n]);
+        mirrored = xfce_randr->mirrored[n];
 
         if (!cloned)
             break;
     }
 
-    gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (check), cloned);
+    /* if two displays are 'mirrored', i.e. their x and y positions are the same
+       we set the checkbutton to the inconsistent state */
+    if (mirrored == TRUE && cloned == FALSE)
+    {
+        gtk_toggle_button_set_inconsistent (GTK_TOGGLE_BUTTON (check), 1);
+    }
+    else
+    {
+        if (gtk_toggle_button_get_inconsistent (GTK_TOGGLE_BUTTON (check)))
+            gtk_toggle_button_set_inconsistent (GTK_TOGGLE_BUTTON (check), 0);
+        gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (check), cloned);
+    }
+
 
     /* Unblock the signal */
     g_signal_handlers_unblock_by_func (check, display_setting_mirror_displays_toggled,
@@ -1554,10 +1590,17 @@ screen_on_event (GdkXEvent *xevent,
 }
 
 /* Xfce RANDR GUI **TODO** Place these functions in a sensible location */
-static gboolean
+/* This function checks the status quo of more than one display with respect to
+   cloning and mirroring and returns:
+      0: not cloned
+      1: cloned (same x/y, same resolution)
+      2: mirrored (same x/y, different resolution)
+*/
+static gint
 get_mirrored_configuration (void)
 {
-    gboolean cloned = FALSE;
+    gboolean cloned = TRUE;
+    gboolean mirrored = FALSE;
     RRMode   mode = None;
     guint    n;
 
@@ -1572,7 +1615,7 @@ get_mirrored_configuration (void)
         mode = xfce_randr_clonable_mode (xfce_randr);
 
     if (mode == None)
-        return FALSE;
+        return 0;
 
     /* Check if mirror settings are on */
     for (n = 0; n < xfce_randr->noutput; n++)
@@ -1580,13 +1623,18 @@ get_mirrored_configuration (void)
         if (xfce_randr->mode[n] == None)
             continue;
 
-        cloned = xfce_randr->mirrored[n];
+        cloned &= (xfce_randr->mode[n] == mode &&
+                   xfce_randr->mirrored[n]);
+        mirrored = xfce_randr->mirrored[n];
 
         if (!cloned)
             break;
     }
 
-    return cloned;
+    if (mirrored == TRUE && cloned == FALSE)
+        return 2;
+    else
+        return cloned;
 }
 
 static XfceOutputInfo *convert_xfce_output_info (gint output_id)
@@ -2201,7 +2249,7 @@ set_cursor (GtkWidget *widget, GdkCursorType type)
         gdk_window_set_cursor (window, cursor);
 
     if (cursor)
-        gdk_cursor_unref (cursor);
+        g_object_unref (cursor);
 }
 
 static void
@@ -2224,14 +2272,19 @@ on_output_event (FooScrollArea      *area,
                  gpointer            data)
 {
     XfceOutputInfo *output = data;
+    gint            mirrored;
 
     //App *app = g_object_get_data (G_OBJECT (area), "app");
 
+    mirrored = get_mirrored_configuration();
     /* If the mouse is inside the outputs, set the cursor to "you can move me".  See
      * on_canvas_event() for where we reset the cursor to the default if it
      * exits the outputs' area.
      */
-    if (!get_mirrored_configuration() && get_n_connected() > 1)
+    if (event->type == FOO_MOTION_OUTSIDE)
+        return;
+
+    if (!mirrored && get_n_connected() > 1)
         set_cursor (GTK_WIDGET (area), GDK_FLEUR);
 
     if (event->type == FOO_BUTTON_PRESS)
@@ -2240,7 +2293,7 @@ on_output_event (FooScrollArea      *area,
 
         gtk_combo_box_set_active (GTK_COMBO_BOX(randr_outputs_combobox), output->id);
 
-        if (!get_mirrored_configuration() && get_n_connected() > 1)
+        if (!mirrored && get_n_connected() > 1)
         {
             foo_scroll_area_begin_grab (area, on_output_event, data);
 
@@ -2344,61 +2397,21 @@ on_canvas_event (FooScrollArea      *area,
     set_cursor (GTK_WIDGET (area), GDK_BLANK_CURSOR);
 }
 
-static PangoLayout *
-get_display_name (XfceOutputInfo *output)
-{
-    const char *text;
-
-    if (get_mirrored_configuration())
-    {
-    /* Translators:  this is the feature where what you see on your laptop's
-     * screen is the same as your external monitor.  Here, "Mirror" is being
-     * used as an adjective, not as a verb.  For example, the Spanish
-     * translation could be "Pantallas en Espejo", *not* "Espejar Pantallas".
-     */
-        text = _("Mirror Screens");
-    }
-    else
-    {
-        text = output->display_name;
-    }
-
-    return gtk_widget_create_pango_layout (
-    GTK_WIDGET (randr_gui_area), text);
-}
-
 static void
 paint_background (FooScrollArea *area,
                   cairo_t       *cr)
 {
     GdkRectangle viewport;
     GtkWidget *widget;
-    GtkStyle *widget_style;
+    GtkStyleContext *ctx;
 
     widget = GTK_WIDGET (area);
 
     foo_scroll_area_get_viewport (area, &viewport);
-    widget_style = gtk_widget_get_style (widget);
-
-    cairo_set_source_rgb (cr,
-                          widget_style->base[GTK_STATE_NORMAL].red / 65535.0,
-                          widget_style->base[GTK_STATE_NORMAL].green / 65535.0,
-                          widget_style->base[GTK_STATE_NORMAL].blue / 65535.0);
-
-    cairo_rectangle (cr,
-                     viewport.x, viewport.y,
-                     viewport.width, viewport.height);
-
-    cairo_fill_preserve (cr);
+    ctx = gtk_widget_get_style_context (widget);
+    gtk_style_context_add_class (ctx, "view");
 
     foo_scroll_area_add_input_from_fill (area, cr, on_canvas_event, NULL);
-
-    cairo_set_source_rgb (cr,
-                          widget_style->dark[GTK_STATE_NORMAL].red / 65535.0,
-                          widget_style->dark[GTK_STATE_NORMAL].green / 65535.0,
-                          widget_style->dark[GTK_STATE_NORMAL].blue / 65535.0);
-
-    cairo_stroke (cr);
 }
 
 static void
@@ -2409,20 +2422,31 @@ paint_output (cairo_t *cr, int i, double *snap_x, double *snap_y)
     double x, y, end_x, end_y;
     gint total_w, total_h;
     GList *connected_outputs = list_connected_outputs (&total_w, &total_h);
-    XfceOutputInfo *output = g_list_nth (connected_outputs, i)->data;
-    PangoLayout *layout = get_display_name (output);
+    XfceOutputInfo *output = NULL;
+    GList *entry = NULL;
+    PangoLayout *layout;
     PangoRectangle ink_extent, log_extent;
     GdkRectangle viewport;
     cairo_pattern_t *pat_lin = NULL, *pat_radial = NULL;
     double alpha = 1.0;
     double available_w;
     double factor = 1.0;
+    const char *text;
+    gint    mirrored;
+
+    mirrored = get_mirrored_configuration();
 
     cairo_save (cr);
 
     foo_scroll_area_get_viewport (FOO_SCROLL_AREA (randr_gui_area), &viewport);
 
-    get_geometry (output, &w, &h);
+    entry = g_list_nth (connected_outputs, i);
+    if (entry)
+        output = entry->data;
+    if (output)
+        get_geometry (output, &w, &h);
+    else
+        return;
 
     viewport.height -= 2 * MARGIN;
     viewport.width -= 2 * MARGIN;
@@ -2469,8 +2493,18 @@ paint_output (cairo_t *cr, int i, double *snap_x, double *snap_y)
 
     cairo_set_line_width (cr, 1.0);
 
-    if (output->id != active_output)
-        alpha = 0.8;
+    /* Make overlapping displays ('mirrored') more transparent so both displays can
+       be recognized more easily */
+    if (output->id != active_output && mirrored == 2)
+        alpha = 0.5;
+    /* When displays are mirrored it makes no sense to make them semi-transparent
+       because they overlay each other completely */
+    else if (mirrored == 1)
+        alpha = 1.0;
+    /* the inactive display should be more transparent and the overlapping one as
+       well */
+    else if (output->id != active_output || mirrored == 2)
+        alpha = 0.7;
 
     if (output->on)
     {
@@ -2521,6 +2555,20 @@ paint_output (cairo_t *cr, int i, double *snap_x, double *snap_y)
     cairo_fill (cr);
 
     /* Display name label*/
+    if (mirrored == 1)
+    {
+    /* Translators:  this is the feature where what you see on your laptop's
+     * screen is the same as your external monitor.  Here, "Mirror" is being
+     * used as an adjective, not as a verb.  For example, the Spanish
+     * translation could be "Pantallas en Espejo", *not* "Espejar Pantallas".
+     */
+        text = _("Mirror Screens");
+    }
+    else
+    {
+        text = output->display_name;
+    }
+    layout = gtk_widget_create_pango_layout (GTK_WIDGET (randr_gui_area), text);
     layout_set_font (layout, "Sans Bold 12");
     pango_layout_get_pixel_extents (layout, &ink_extent, &log_extent);
 
@@ -2538,7 +2586,11 @@ paint_output (cairo_t *cr, int i, double *snap_x, double *snap_y)
     cairo_move_to (cr,
                    x + ((w * scale + 0.5) - factor * log_extent.width) / 2,
                    y + ((h * scale + 0.5) - factor * log_extent.height) / 2 - 1);
-    cairo_set_source_rgba (cr, 0.0, 0.0, 0.0, alpha - 0.6);
+    /* Try to make the text as readable as possible for overlapping displays */
+    if (output->id == active_output && mirrored == 2)
+       cairo_set_source_rgba (cr, 0.0, 0.0, 0.0, alpha);
+    else
+        cairo_set_source_rgba (cr, 0.0, 0.0, 0.0, alpha - 0.6);
 
     pango_cairo_show_layout (cr, layout);
 
@@ -2546,7 +2598,12 @@ paint_output (cairo_t *cr, int i, double *snap_x, double *snap_y)
                    x + ((w * scale + 0.5) - factor * log_extent.width) / 2,
                    y + ((h * scale + 0.5) - factor * log_extent.height) / 2);
 
-    cairo_set_source_rgba (cr, 1.0, 1.0, 1.0, alpha);
+    /* Try to make the text as readable as possible for overlapping displays - the
+       currently selected one could be painted below the other display*/
+    if (output->id == active_output && mirrored == 2)
+        cairo_set_source_rgba (cr, 1.0, 1.0, 1.0, 1.0);
+    else
+        cairo_set_source_rgba (cr, 1.0, 1.0, 1.0, alpha);
 
     pango_cairo_show_layout (cr, layout);
 
@@ -2582,11 +2639,9 @@ paint_output (cairo_t *cr, int i, double *snap_x, double *snap_y)
 }
 
 static void
-on_area_paint (FooScrollArea *area,
-               cairo_t       *cr,
-               GdkRectangle  *extent,
-               GdkRegion     *region,
-               gpointer       data)
+on_area_paint (FooScrollArea  *area,
+               cairo_t        *cr,
+               gpointer        data)
 {
     GList *connected_outputs = NULL;
     GList *list;
@@ -2598,11 +2653,21 @@ on_area_paint (FooScrollArea *area,
 
     for (list = connected_outputs; list != NULL; list = list->next)
     {
-        paint_output (cr, g_list_position (connected_outputs, list), &x, &y);
+        gint i;
 
-        if (get_mirrored_configuration())
+        i = g_list_position (connected_outputs, list);
+        /* Always paint the currently selected display last, i.e. on top, so it's
+           visible and the name is readable */
+        if (i >= 0 && (guint)i == active_output) {
+            continue;
+        }
+        paint_output (cr, i, &x, &y);
+
+        if (get_mirrored_configuration() == 1)
             break;
     }
+    /* Finally also paint the active output */
+    paint_output (cr, active_output, &x, &y);
 }
 
 static XfceOutputInfo *
@@ -2664,7 +2729,7 @@ get_output_for_window (GdkWindow *window)
     int largest_index;
     guint m;
 
-    gdk_window_get_geometry (window, &win_rect.x, &win_rect.y, &win_rect.width, &win_rect.height, NULL);
+    gdk_window_get_geometry (window, &win_rect.x, &win_rect.y, &win_rect.width, &win_rect.height);
     gdk_window_get_origin (window, &win_rect.x, &win_rect.y);
 
     largest_area = 0;
@@ -2813,12 +2878,12 @@ display_settings_show_main_dialog (GdkDisplay *display)
 
             /* Get plug child widget */
             plug_child = gtk_builder_get_object (builder, "plug-child");
-            gtk_widget_reparent (GTK_WIDGET (plug_child), plug);
+            xfce_widget_reparent (GTK_WIDGET (plug_child), plug);
             gtk_widget_show (GTK_WIDGET (plug_child));
         }
 
         /* To prevent the settings dialog to be saved in the session */
-        gdk_set_sm_client_id ("FAKE ID");
+        gdk_x11_set_sm_client_id ("FAKE ID");
 
         /* Enter the main loop */
         gtk_main ();
@@ -2842,7 +2907,7 @@ display_settings_minimal_dialog_key_press_event(GtkWidget *widget,
                                                 GdkEventKey *event,
                                                 gpointer user_data)
 {
-    if (event->keyval == GDK_Escape)
+    if (event->keyval == GDK_KEY_Escape)
     {
         gtk_main_quit();
         return TRUE;
@@ -2893,6 +2958,7 @@ display_settings_show_minimal_dialog (GdkDisplay *display)
     GError     *error = NULL;
     gboolean    found = FALSE;
     RRMode      mode;
+    GtkApplication *app;
 
     builder = gtk_builder_new ();
 
@@ -2979,6 +3045,24 @@ display_settings_show_minimal_dialog (GdkDisplay *display)
             gtk_widget_set_sensitive (GTK_WIDGET (only_display2), FALSE);
         }
 
+        /* Initialize application to ensure single instance */
+        app = gtk_application_new ("org.xfce.display.settings", 0);
+
+        g_application_register (G_APPLICATION (app), NULL, &error);
+        if (error != NULL)
+          {
+            g_warning ("Unable to register GApplication: %s", error->message);
+            g_error_free (error);
+            error = NULL;
+          }
+
+        if (g_application_get_is_remote (G_APPLICATION (app)))
+          {
+            g_application_activate (G_APPLICATION (app));
+            g_object_unref (app);
+            return;
+          }
+
         g_signal_connect (only_display1, "toggled", G_CALLBACK (display_settings_minimal_only_display1_toggled),
                           builder);
         g_signal_connect (mirror_displays, "toggled", G_CALLBACK (display_settings_minimal_mirror_displays_toggled),
@@ -2989,6 +3073,8 @@ display_settings_show_minimal_dialog (GdkDisplay *display)
                           builder);
         g_signal_connect (advanced, "clicked", G_CALLBACK (display_settings_minimal_advanced_clicked),
                           builder);
+
+        g_signal_connect_swapped (app, "activate", G_CALLBACK (gtk_window_present), dialog);
 
         /* Show the minimal dialog and start the main loop */
         gtk_window_present (GTK_WINDOW (dialog));
@@ -3044,7 +3130,7 @@ main (gint argc, gchar **argv)
     if (G_UNLIKELY (opt_version))
     {
         g_print ("%s %s (Xfce %s)\n\n", G_LOG_DOMAIN, PACKAGE_VERSION, xfce_version_string ());
-        g_print ("%s\n", "Copyright (c) 2004-2014");
+        g_print ("%s\n", "Copyright (c) 2004-2018");
         g_print ("\t%s\n\n", _("The Xfce development team. All rights reserved."));
         g_print (_("Please report bugs to <%s>."), PACKAGE_BUGREPORT);
         g_print ("\n");
@@ -3080,9 +3166,9 @@ main (gint argc, gchar **argv)
     if (G_LIKELY (display_channel))
     {
         /* Create a new xfce randr (>= 1.2) for this display
-         * this will only work if there is 1 screen on this display */
-        if (gdk_display_get_n_screens (display) == 1)
-            xfce_randr = xfce_randr_new (display, &error);
+         * this will only work if there is 1 screen on this display
+         * As GTK 3.10, the number of screens is always 1 */
+        xfce_randr = xfce_randr_new (display, &error);
 
         if (!xfce_randr)
         {
@@ -3095,10 +3181,10 @@ main (gint argc, gchar **argv)
                 alternative_icon = "ccc_small";
             }
 
-            response = xfce_message_dialog (NULL, NULL, GTK_STOCK_DIALOG_ERROR,
+            response = xfce_message_dialog (NULL, NULL, "dialog-error",
                                             _("Unable to start the Xfce Display Settings"),
                                             error ? error->message : NULL,
-                                            GTK_STOCK_CLOSE, GTK_RESPONSE_CLOSE,
+                                            _("_Close"), GTK_RESPONSE_CLOSE,
                                             alternative != NULL ?XFCE_BUTTON_TYPE_MIXED : NULL,
                                             alternative_icon, alternative, GTK_RESPONSE_OK, NULL);
             g_clear_error (&error);
