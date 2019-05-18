@@ -1,5 +1,5 @@
 Name: xfce4-settings
-Version: 4.13.5
+Version: 4.13.6
 Release: alt1
 Summary: Settings Manager for Xfce
 Summary (ru_RU.UTF-8): Менеджер настроек Xfce
@@ -70,9 +70,13 @@ install -pDm0755 %SOURCE1 %buildroot%_bindir/xfce4-fixkeyboard
 %config(noreplace) %_sysconfdir/xdg/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml
 %_sysconfdir/xdg/menus/xfce-settings-manager.menu
 %_desktopdir/*.desktop
-%_iconsdir/*/*/*/*.png
+%_iconsdir/*/*/*/*.*
 
 %changelog
+* Sat May 18 2019 Mikhail Efremov <sem@altlinux.org> 4.13.6-alt1
+- Enabled colord support.
+- Updated to 4.13.6.
+
 * Wed Oct 03 2018 Mikhail Efremov <sem@altlinux.org> 4.13.5-alt1
 - Updated to 4.13.5.
 
