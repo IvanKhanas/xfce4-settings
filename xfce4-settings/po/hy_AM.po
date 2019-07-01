@@ -3,22 +3,20 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Aputsiak Niels Janussen (Skjalden) <aj@isit.gl>, 2013-2014
-# Chris Darnell <chris@cedeel.com>, 2013
-# Per Kongstad <p_kongstad@op.pl>, 2015
-# scootergrisen, 2016-2019
+# E-Hayq LLC <www.ehayq.am>, 2018
+# Real School <translator_students@realschool.am>, 2019
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfce4-settings\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-05-29 00:31+0200\n"
-"PO-Revision-Date: 2019-06-18 01:31+0000\n"
-"Last-Translator: scootergrisen\n"
-"Language-Team: Danish (http://www.transifex.com/xfce/xfce4-settings/language/da/)\n"
+"PO-Revision-Date: 2019-06-18 08:53+0000\n"
+"Last-Translator: Real School <translator_students@realschool.am>\n"
+"Language-Team: Armenian (Armenia) (http://www.transifex.com/xfce/xfce4-settings/language/hy_AM/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: da\n"
+"Language: hy_AM\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. Translators: "Unknown" here is used to identify a monitor for which
@@ -27,12 +25,12 @@ msgstr ""
 #: ../common/display-name.c:2641
 msgctxt "Monitor vendor"
 msgid "Unknown"
-msgstr "Ukendt"
+msgstr "Անյայտ"
 
 #: ../common/xfce-randr.c:286 ../dialogs/display-settings/main.c:3904
 #, c-format
 msgid "Unable to query the version of the RandR extension being used"
-msgstr "Kan ikke forespørge hvilken version af RandR-udvidelsen som anvendes"
+msgstr "Հնարաւոր չէ հարցնել, գործածուող RandR ընդլայնման տարբերակի վերաբերեալ"
 
 #. 1.2 is required
 #: ../common/xfce-randr.c:294
@@ -40,233 +38,233 @@ msgstr "Kan ikke forespørge hvilken version af RandR-udvidelsen som anvendes"
 msgid ""
 "This system is using RandR %d.%d. For the display settings to work version "
 "1.2 is required at least"
-msgstr "Dette system bruger RandR %d.%d. For at skærmindstillingerne skal fungere, så kræves der mindst version 1.2"
+msgstr "Համակարգն աւգտագործում է RandR %d.%d։ Ցուցադրիչի կարգաւորումների աշխատանքի համար պահանջուում է, գոնէ 1.2 տարբերակը"
 
 #: ../common/xfce-randr.c:574
 msgid "Laptop"
-msgstr "Bærbar"
+msgstr "Ծնկադիր"
 
 #. TRANSLATORS: an externally connected display, where %s is either the
 #. * model, vendor or ID, e.g. 'LP2480zx Monitor'
 #: ../common/xfce-randr.c:587 ../dialogs/color-settings/color-device.c:65
 msgid "Monitor"
-msgstr "Skærm"
+msgstr "Ցուցասարք"
 
 #: ../common/xfce-randr.c:590
 msgid "Television"
-msgstr "Fjernsyn"
+msgstr "Հեռուստացոյց"
 
 #: ../common/xfce-randr.c:594
 msgid "Digital display"
-msgstr "Digital skærm"
+msgstr "Թուային ցուցադրիչ"
 
 #: ../dialogs/accessibility-settings/accessibility-dialog.glade.h:1
 #: ../dialogs/accessibility-settings/xfce4-accessibility-settings.desktop.in.h:1
 msgid "Accessibility"
-msgstr "Tilgængelighed"
+msgstr "Մատչելիութիւն"
 
 #: ../dialogs/accessibility-settings/accessibility-dialog.glade.h:2
 msgid "Configure keyboard and mouse accessibility"
-msgstr "Konfigurer tilgængeligheden for tastatur og mus"
+msgstr "Կարգաւորել ստեղնաշարի եւ մկնիկի մատչելիութիւնը"
 
 #: ../dialogs/accessibility-settings/accessibility-dialog.glade.h:3
 msgid ""
 "When enabled, the session manager will start the required applications for "
 "screen readers and magnifiers."
-msgstr "Når den aktiveres, så vil sessionshåndteringen starte de krævede programmer for skærmlæsere og forstørrelsesglas."
+msgstr ""
 
 #: ../dialogs/accessibility-settings/accessibility-dialog.glade.h:4
 msgid "_Enable assistive technologies"
-msgstr "_Aktivér hjælpeteknologier"
+msgstr "Մի_ացնել աւժանդակ տեխնոլոգիաները"
 
 #: ../dialogs/accessibility-settings/accessibility-dialog.glade.h:5
 msgid "Start With Session"
-msgstr "Start med session"
+msgstr ""
 
 #: ../dialogs/accessibility-settings/accessibility-dialog.glade.h:6
 msgid "Assistive technologies will be available the next time you login"
-msgstr "Hjælpeteknologierne vil være tilgængelige næste gang du logger ind"
+msgstr ""
 
 #: ../dialogs/accessibility-settings/accessibility-dialog.glade.h:7
 msgid "No AT-SPI provider was found on your system"
-msgstr "Der blev ikke fundet en AT-SPI-udbyder på dit system"
+msgstr "Համակարգում AP-SPI մատակարար չի գտնուել"
 
 #: ../dialogs/accessibility-settings/accessibility-dialog.glade.h:8
 msgid "Assistive _Technologies"
-msgstr "_Hjælpeteknologier"
+msgstr "Աւժանդակ _տեխնոլոգիաներ"
 
 #: ../dialogs/accessibility-settings/accessibility-dialog.glade.h:9
 msgid ""
 "When enabled, modifier keys (such as Control, Alt, and Shift) do not need to"
 " be held down (they can be pressed and then released) when multiple keys "
 "would normally need to be pressed at the same time."
-msgstr "Når den aktiveres, så er det ikke nødvendigt at holde ændringstaster (såsom Kontrol, Alt og Skift) nede (de kan trykkes og slippes igen), hvor flere taster normalt ville skulle være trykket ned på samme tid."
+msgstr ""
 
 #: ../dialogs/accessibility-settings/accessibility-dialog.glade.h:10
 msgid "_Use sticky keys"
-msgstr "_Brug klæbetaster"
+msgstr "_Աւգտագործել կպչուն ստեղները"
 
 #: ../dialogs/accessibility-settings/accessibility-dialog.glade.h:11
 msgid "_Lock sticky keys"
-msgstr "_Lås klæbetaster"
+msgstr "_Արգելափակել կպչուն ստեղները"
 
 #: ../dialogs/accessibility-settings/accessibility-dialog.glade.h:12
 msgid ""
 "When selected, modifier keys (such as Control, Alt, and Shift) will remain "
 "locked in the pressed state until pressed again"
-msgstr "Når den vælges, så vil ændringstaster (såsom Kontrol, Alt og Skift) forblive låste i den trykkede tilstand indtil der tastes på dem igen"
+msgstr "Երբ ընտրուած է՝ կերպափոխիչ ստեղները (ինչպիսիք են՝ Control֊ը, Alt֊ը եւ Shift֊ը) սեղմուած կը մնան այնքան, մինչ կրկին սեղմելը"
 
 #: ../dialogs/accessibility-settings/accessibility-dialog.glade.h:13
 msgid "Disable sticky keys if two keys are _pressed"
-msgstr "Deaktivér klæbetaster, hvis der _trykkes på to taster"
+msgstr "Ա_նջատել կպչուն ստեղները, եթե երկու ստեղներ սեղմուած են"
 
 #: ../dialogs/accessibility-settings/accessibility-dialog.glade.h:14
 msgid ""
 "When selected, the \"sticky keys\" feature will be disabled if two keys are "
 "pressed simultaneously"
-msgstr "Når den vælges, så vil funktionen \"klæbetaster\" blive deaktiveret, hvis der trykkes på to taster samtidigt"
+msgstr "Երբ ընտրուած է՝ երկու ստեղների միաժամանակ սեղմման դէպքում, «կպչուն ստեղներ» յատկութիւնը կանջատուի։"
 
 #: ../dialogs/accessibility-settings/accessibility-dialog.glade.h:15
 msgid "Sticky Keys"
-msgstr "Klæbetaster"
+msgstr "Կպչուն ստեղներ"
 
 #: ../dialogs/accessibility-settings/accessibility-dialog.glade.h:16
 msgid ""
 "To help prevent accidental keystrokes, slow keys requires that a key is held"
 " for a certain minimum amount of time before the keystroke will be accepted."
-msgstr "For at hjælpe med at undgå uønskede tastetryk, så kræver langsomme taster at tasten holdes i et vist stykke tid, før tastetrykket godtages."
+msgstr ""
 
 #: ../dialogs/accessibility-settings/accessibility-dialog.glade.h:17
 msgid "Use slow _keys"
-msgstr "Brug langsomme _taster"
+msgstr "Աւգտագործել հատուկ _ստեղները"
 
 #: ../dialogs/accessibility-settings/accessibility-dialog.glade.h:18
 msgid "Acceptance _delay:"
-msgstr "_Forsinkelse før godtagelse:"
+msgstr "Ընդունման _դադար․"
 
 #: ../dialogs/accessibility-settings/accessibility-dialog.glade.h:19
 msgid ""
 "The amount of time, in milliseconds, that must elapse before a keystroke "
 "will be accepted"
-msgstr "Varigheden i tid, målt i millisekunder, der skal gå før et tastetryk godtages"
+msgstr "Միլիվայրկեաններով ժամանակը, մինչ ստեղնահարուածի ընդունումը։"
 
 #: ../dialogs/accessibility-settings/accessibility-dialog.glade.h:20
 msgid "Slow Keys"
-msgstr "Langsomme taster"
+msgstr "Հատուկ ստեղներ"
 
 #: ../dialogs/accessibility-settings/accessibility-dialog.glade.h:21
 msgid ""
 "To help prevent accidental multiple keystrokes, bounce keys imposes a "
 "minimum delay between keystrokes."
-msgstr "For at hjælpe med at forhindre uønskede, gentagne tastetryk, så indfører rystetaster et minimum af forsinkelse mellem tastetryk."
+msgstr ""
 
 #: ../dialogs/accessibility-settings/accessibility-dialog.glade.h:22
 msgid "Use _bounce keys"
-msgstr "Brug _rystetaster"
+msgstr "Աւգտագործել _բազմակի սեղմման ստեղները"
 
 #: ../dialogs/accessibility-settings/accessibility-dialog.glade.h:23
 msgid "K_eystroke delay:"
-msgstr "Forsinkelse for _tastetryk:"
+msgstr "Ստ_եղնահարուածների դադար․"
 
 #: ../dialogs/accessibility-settings/accessibility-dialog.glade.h:24
 msgid "The amount of time, in milliseconds, required between keystrokes"
-msgstr "Tiden, i millisekunder, påkrævet mellem tastetryk"
+msgstr "Ստեղնահարուածների միջեւ ընկած, միլիվայրկեաններով ժամանակը"
 
 #: ../dialogs/accessibility-settings/accessibility-dialog.glade.h:25
 msgid "Bounce Keys"
-msgstr "Rystetaster"
+msgstr "Բազմակի սեղմում"
 
 #: ../dialogs/accessibility-settings/accessibility-dialog.glade.h:26
 msgid "Keyboa_rd"
-msgstr "Tastatu_r"
+msgstr "Ստեղնա_շար"
 
 #: ../dialogs/accessibility-settings/accessibility-dialog.glade.h:27
 msgid ""
 "When enabled, the mouse pointer can be controlled using the keyboard number "
 "pad."
-msgstr "Når den er aktiveres, så kan musemarkøren styres med tastaturets numeriske taster."
+msgstr ""
 
 #: ../dialogs/accessibility-settings/accessibility-dialog.glade.h:28
 msgid "_Use mouse emulation"
-msgstr "Br_ug emulering af mus"
+msgstr "_Աւգտագործել մկնիկի նմանակումը"
 
 #: ../dialogs/accessibility-settings/accessibility-dialog.glade.h:29
 msgid ""
 "When selected, the mouse pointer can be controlled using the keyboard number"
 " pad"
-msgstr "Når den vælges, så kan musemarkøren styres med tastaturets numeriske taster"
+msgstr "Երբ ընտրուած է՝ մկնիկի նշիչը հսկուում է"
 
 #: ../dialogs/accessibility-settings/accessibility-dialog.glade.h:30
 msgid "msec"
-msgstr "msek"
+msgstr "մվրկ"
 
 #: ../dialogs/accessibility-settings/accessibility-dialog.glade.h:31
 msgid ""
 "The time, in milliseconds, between the initial key press and first repeated "
 "motion event"
-msgstr "Tiden, i millisekunder, mellem det første tastetryk og første gentagne bevægelseshændelse"
+msgstr "Միլիվայրկեաններով ժամանակը, սկզբնատառերի սեղմման եւ առաջին կրկնուող շարժման միջեւ"
 
 #: ../dialogs/accessibility-settings/accessibility-dialog.glade.h:32
 msgid "_Acceleration delay:"
-msgstr "Forsinkelse for _acceleration:"
+msgstr "_Արագացման դադար․"
 
 #: ../dialogs/accessibility-settings/accessibility-dialog.glade.h:33
 msgid "R_epeat interval:"
-msgstr "G_entagelsesinterval:"
+msgstr "Կ_րկնութեան ժամանակամիջոց․"
 
 #: ../dialogs/accessibility-settings/accessibility-dialog.glade.h:34
 msgid "The time, in milliseconds, between repeated motion events"
-msgstr "Tiden, i millisekunder, mellem gentagne bevægelseshændelser"
+msgstr "Միլիվայրկեաններով ժամանակը, կրկնուող շարժման միջեւ"
 
 #: ../dialogs/accessibility-settings/accessibility-dialog.glade.h:35
 msgid "Acceleration t_ime:"
-msgstr "Accelerations_tid:"
+msgstr "Արագացման ժ_ամանակ․"
 
 #: ../dialogs/accessibility-settings/accessibility-dialog.glade.h:36
 msgid "The time, in milliseconds, to get to maximum speed"
-msgstr "Tiden, i millisekunder, for at nå den maksimale hastighed"
+msgstr "Միլիվայրկեաններով ժամանակը, առաւելագոյն արագութեան հասնելու համար"
 
 #: ../dialogs/accessibility-settings/accessibility-dialog.glade.h:37
 msgid "Ma_ximum speed:"
-msgstr "Ma_ksimal hastighed:"
+msgstr "Ա_ռաւելագոյն արագութիւն․"
 
 #: ../dialogs/accessibility-settings/accessibility-dialog.glade.h:38
 msgid "The maximum pointer speed after acceleration"
-msgstr "Den maksimale markørhastighed efter acceleration"
+msgstr "Առավելագոյն արագութեան ցուցանիշը արագացումից յետոյ"
 
 #: ../dialogs/accessibility-settings/accessibility-dialog.glade.h:39
 msgid "pixels/sec"
-msgstr "pixels/sek"
+msgstr "պատկերատարր/վրկ"
 
 #: ../dialogs/accessibility-settings/accessibility-dialog.glade.h:40
 msgid "Acceleration _profile:"
-msgstr "_Profil for acceleration:"
+msgstr "Արագացման _յատկագիր․"
 
 #: ../dialogs/accessibility-settings/accessibility-dialog.glade.h:41
 msgid "The ramp used to reach maximum pointer speed"
-msgstr "Rampen som bruges til at nå den maksimale markørhastighed"
+msgstr "Անցումն աւգտագործուում է արագութեան առավելագոյն ցուցանիշին հասնելու համար"
 
 #: ../dialogs/accessibility-settings/accessibility-dialog.glade.h:42
 msgid "Mouse Emulation"
-msgstr "Emulering af mus"
+msgstr "Մկնիկի նմանակում"
 
 #: ../dialogs/accessibility-settings/accessibility-dialog.glade.h:43
 msgid ""
 "Bind a keyboard shortcut to xfce4-find-cursor to get visual feedback of the "
 "mouse pointer's current location."
-msgstr "Bind en tastaturgenvej til xfce4-find-cursor for at få visuel tilbagemelding af musemarkørens nuværende placering."
+msgstr ""
 
 #: ../dialogs/accessibility-settings/accessibility-dialog.glade.h:44
 msgid "Show location of pointer on keypress"
-msgstr "Vis placering af markør ved tastetryk"
+msgstr ""
 
 #: ../dialogs/accessibility-settings/accessibility-dialog.glade.h:45
 msgid "Find Cursor"
-msgstr "Find markør"
+msgstr ""
 
 #: ../dialogs/accessibility-settings/accessibility-dialog.glade.h:46
 msgid "_Mouse"
-msgstr "_Mus"
+msgstr "_Մկնիկ"
 
 #: ../dialogs/accessibility-settings/main.c:46
 #: ../dialogs/appearance-settings/main.c:109
@@ -274,7 +272,7 @@ msgstr "_Mus"
 #: ../dialogs/keyboard-settings/main.c:40 ../dialogs/mime-settings/main.c:43
 #: ../dialogs/mouse-settings/main.c:84 ../xfce4-settings-editor/main.c:49
 msgid "Settings manager socket"
-msgstr "Sokkel til indstillingshåndtering"
+msgstr "Կարգաւորումների կառավարչի բնիկ"
 
 #: ../dialogs/accessibility-settings/main.c:46
 #: ../dialogs/appearance-settings/main.c:109
@@ -282,7 +280,7 @@ msgstr "Sokkel til indstillingshåndtering"
 #: ../dialogs/keyboard-settings/main.c:40 ../dialogs/mime-settings/main.c:43
 #: ../dialogs/mouse-settings/main.c:84 ../xfce4-settings-editor/main.c:49
 msgid "SOCKET ID"
-msgstr "SOKKEL-ID"
+msgstr "ԲՆԻԿԻ ID"
 
 #: ../dialogs/accessibility-settings/main.c:47
 #: ../dialogs/appearance-settings/main.c:110
@@ -291,7 +289,7 @@ msgstr "SOKKEL-ID"
 #: ../dialogs/mouse-settings/main.c:85 ../xfce4-settings-editor/main.c:50
 #: ../xfce4-settings-manager/main.c:43 ../xfsettingsd/main.c:101
 msgid "Version information"
-msgstr "Versionsinformation"
+msgstr "Տեղեկոյթ տարբերակի վերաբերեալ"
 
 #: ../dialogs/accessibility-settings/main.c:200
 #: ../dialogs/appearance-settings/main.c:1166
@@ -303,7 +301,7 @@ msgstr "Versionsinformation"
 #: ../xfsettingsd/main.c:275
 #, c-format
 msgid "Type '%s --help' for usage."
-msgstr "Skriv \"%s --help\" for anvendelse."
+msgstr "Մուտքագրէք '%s --help' աջակցութեան համար։"
 
 #: ../dialogs/accessibility-settings/main.c:219
 #: ../dialogs/appearance-settings/main.c:1185
@@ -313,7 +311,7 @@ msgstr "Skriv \"%s --help\" for anvendelse."
 #: ../dialogs/mouse-settings/main.c:1891 ../xfce4-settings-editor/main.c:139
 #: ../xfce4-settings-manager/main.c:80 ../xfsettingsd/main.c:253
 msgid "The Xfce development team. All rights reserved."
-msgstr "Xfce's udviklingshold. Alle rettigheder forbeholdes."
+msgstr "Xfce մշակման խումբ։ Բոլոր իրաւունքները պաշտպանուած են։"
 
 #: ../dialogs/accessibility-settings/main.c:220
 #: ../dialogs/appearance-settings/main.c:1186
@@ -324,143 +322,143 @@ msgstr "Xfce's udviklingshold. Alle rettigheder forbeholdes."
 #: ../xfce4-settings-manager/main.c:81 ../xfsettingsd/main.c:254
 #, c-format
 msgid "Please report bugs to <%s>."
-msgstr "Rapportér venligst fejl til <%s>."
+msgstr "Սխալի դէպքում կարող էք դիմել <%s> հասցէով։"
 
 #: ../dialogs/accessibility-settings/xfce4-accessibility-settings.desktop.in.h:2
 msgid "Improve keyboard and mouse accessibility"
-msgstr "Forbedr tilgængeligheden med tastatur og mus"
+msgstr "Բարելաւել ստեղնաշարի եւ մկնիկի մատչելիութիւնը"
 
 #: ../dialogs/appearance-settings/appearance-dialog.glade.h:1
 #: ../dialogs/appearance-settings/main.c:1041
 #: ../dialogs/display-settings/main.c:98
 #: ../dialogs/display-settings/main.c:109
 msgid "None"
-msgstr "Ingen"
+msgstr "Ոչ մեկը"
 
 #: ../dialogs/appearance-settings/appearance-dialog.glade.h:2
 msgid "Slight"
-msgstr "Let"
+msgstr "Աննշան"
 
 #: ../dialogs/appearance-settings/appearance-dialog.glade.h:3
 msgid "Medium"
-msgstr "Medium"
+msgstr "Միջին"
 
 #: ../dialogs/appearance-settings/appearance-dialog.glade.h:4
 msgid "Full"
-msgstr "Fuld"
+msgstr "Ամբողջ"
 
 #: ../dialogs/appearance-settings/appearance-dialog.glade.h:5
 msgid "Icons"
-msgstr "Ikoner"
+msgstr "Պատկերակներ"
 
 #: ../dialogs/appearance-settings/appearance-dialog.glade.h:6
 msgid "Text"
-msgstr "Tekst"
+msgstr "Գրոյթ"
 
 #: ../dialogs/appearance-settings/appearance-dialog.glade.h:7
 msgid "Text under icons"
-msgstr "Tekst under ikoner"
+msgstr "Գրոյթ պատկերակների տակ"
 
 #: ../dialogs/appearance-settings/appearance-dialog.glade.h:8
 msgid "Text next to icons"
-msgstr "Tekst ved siden af ikoner"
+msgstr "Գրոյթ պատկերակների կողքին"
 
 #: ../dialogs/appearance-settings/appearance-dialog.glade.h:9
 msgid "1x (no scaling)"
-msgstr "1x (ingen skalering)"
+msgstr ""
 
 #: ../dialogs/appearance-settings/appearance-dialog.glade.h:10
 msgid "2x"
-msgstr "2x"
+msgstr ""
 
 #: ../dialogs/appearance-settings/appearance-dialog.glade.h:11
 #: ../dialogs/appearance-settings/xfce-ui-settings.desktop.in.h:1
 msgid "Appearance"
-msgstr "Udseende"
+msgstr "Տեսք"
 
 #: ../dialogs/appearance-settings/appearance-dialog.glade.h:12
 #: ../dialogs/appearance-settings/xfce-ui-settings.desktop.in.h:2
 msgid "Customize the look of your desktop"
-msgstr "Tilpas udseendet på dit skrivebord"
+msgstr "Յարմարեցնել աշխատասեղանի տեսքը"
 
 #: ../dialogs/appearance-settings/appearance-dialog.glade.h:13
 msgid "St_yle"
-msgstr "S_til"
+msgstr "Ձ_եւ"
 
 #: ../dialogs/appearance-settings/appearance-dialog.glade.h:14
 msgid "_Icons"
-msgstr "_Ikoner"
+msgstr "Պ_ատկերակներ"
 
 #: ../dialogs/appearance-settings/appearance-dialog.glade.h:15
 msgid ""
 "This font will be used as the default font used when drawing user interface "
 "text"
-msgstr "Skrifttypen vil blive brugt som standardskrifttype når tekst i brugerfladen optegnes"
+msgstr "Այս տառատեսակը կաւգտագործուի, որպէս լռելյայն՝ աւգտատիրոջ միջերեսի գրոյթի գրման համար։"
 
 #: ../dialogs/appearance-settings/appearance-dialog.glade.h:16
 msgid "Select a default font"
-msgstr "Vælg en standardskrifttype"
+msgstr "Ընտրել լռելեայն տառատեսակ"
 
 #: ../dialogs/appearance-settings/appearance-dialog.glade.h:17
 msgid "Default Fon_t"
-msgstr "Standardskrif_ttype"
+msgstr "Լռելեայն տառատե_սակ"
 
 #: ../dialogs/appearance-settings/appearance-dialog.glade.h:18
 msgid ""
 "This font will be used as the default monospace font, for example by "
 "terminal emulators."
-msgstr "Skrifttypen vil blive brugt som standardskrifttype med fast bredde, f.eks. af terminalemulatorer."
+msgstr ""
 
 #: ../dialogs/appearance-settings/appearance-dialog.glade.h:19
 msgid "Select a default monospace font"
-msgstr "Vælg en standardskrifttype med fast bredde"
+msgstr ""
 
 #: ../dialogs/appearance-settings/appearance-dialog.glade.h:20
 msgid "Default _Monospace Font"
-msgstr "Standard_skrifttype med fast bredde"
+msgstr ""
 
 #: ../dialogs/appearance-settings/appearance-dialog.glade.h:21
 msgid "_Enable anti-aliasing"
-msgstr "_Aktivér udjævning"
+msgstr "_Միացնել հարթումը"
 
 #: ../dialogs/appearance-settings/appearance-dialog.glade.h:22
 msgid ""
 "Anti-aliasing, or font smoothing, can improve the look of text on the screen"
-msgstr "Udjævning, eller skriftudglatning kan forbedre udseendet af tekst på skærmen"
+msgstr "Հարթումը կամ տառատեսակի յղկումը, կարող են բարելաւել գրոյթի տեսքը, ցուցադրիչի վրայ։"
 
 #: ../dialogs/appearance-settings/appearance-dialog.glade.h:23
 msgid "Hintin_g:"
-msgstr "Hintin_g:"
+msgstr "Յու_շում․"
 
 #: ../dialogs/appearance-settings/appearance-dialog.glade.h:24
 msgid ""
 "Many fonts contain information that provides extra hints as to how best draw"
 " the font; pick whichever looks best according to personal preference"
-msgstr "Mange skrifttyper indeholder informationer, der giver ekstra hints til, hvordan skrifttypen bedst tegnes; vælg den du synes der ser bedst ud"
+msgstr "Շատ տառատեսակներ պարունակում են տեղեկոյթ, որը տալիս է յաւելեալ յուշումներ, տառատեսակների լաւագոյն նկարման համար, ընտրէք այն տարբերակը, որը ըստ ձեզ լաւագոյնն է։"
 
 #: ../dialogs/appearance-settings/appearance-dialog.glade.h:25
 msgid "Sub-_pixel order:"
-msgstr "Rækkefølge på under_pixel:"
+msgstr "Ենթա_պատկերատարրերի կարգ․"
 
 #: ../dialogs/appearance-settings/appearance-dialog.glade.h:26
 msgid ""
 "Font quality on a TFT or LCD screen can be greatly improved by choosing the "
 "correct sub-pixel order of the screen"
-msgstr "Skriftkvalitet på en TFT- eller LCD-skærm kan i stor grad forbedres ved at vælge den korrekte rækkefølge af underpixler på skærmen"
+msgstr "Տառատեսակի որակը TFT֊ի կամ LCD ցուցադրիչի վրայ կարող է բարելաւուել՝ ճիշտ ենթա֊պատկերատարրերի կարգ, ցուցադրիչի համար"
 
 #: ../dialogs/appearance-settings/appearance-dialog.glade.h:27
 msgid "Rendering"
-msgstr "Gengivelse"
+msgstr "Ցուցադրում"
 
 #: ../dialogs/appearance-settings/appearance-dialog.glade.h:28
 msgid "Custom _DPI setting:"
-msgstr "Brugerdefineret _DPI-indstilling:"
+msgstr "Ընտրովի _DPI կարգաւորումներ․"
 
 #: ../dialogs/appearance-settings/appearance-dialog.glade.h:29
 msgid ""
 "Override the detected monitor resolution if fonts look too large or too "
 "small"
-msgstr "Tilsidesæt den registrerede skærmopløsning, hvis skrifttypen ser for stor eller lille ud"
+msgstr "Վերասահմանել գտնուած ցուցասարքի կէտայնութիւնը, եթե տառատեսակը շատ մեծ է կամ փոքր"
 
 #: ../dialogs/appearance-settings/appearance-dialog.glade.h:30
 msgid "DPI"
@@ -468,113 +466,113 @@ msgstr "DPI"
 
 #: ../dialogs/appearance-settings/appearance-dialog.glade.h:31
 msgid "_Fonts"
-msgstr "Skri_fttyper"
+msgstr "_Տառատեսակներ"
 
 #: ../dialogs/appearance-settings/appearance-dialog.glade.h:32
 msgid "Specify what should be displayed in toolbar items"
-msgstr "Angiv hvad der skal vises i værktøjslinjens elementer"
+msgstr "Նշել, թե ինչ պէտք է ցուցադրուի գործեշերտում"
 
 #: ../dialogs/appearance-settings/appearance-dialog.glade.h:33
 msgid "_Toolbar Style"
-msgstr "_Værktøjslinjestil"
+msgstr "_Գործեշերտի ոճ"
 
 #: ../dialogs/appearance-settings/appearance-dialog.glade.h:34
 msgid "Show images on _buttons"
-msgstr "Vis billeder på _knapper"
+msgstr "Ցուցադրել կոճակների _պատկերակները"
 
 #: ../dialogs/appearance-settings/appearance-dialog.glade.h:35
 msgid "Specify whether icons should be displayed next to text in buttons"
-msgstr "Angiv om ikoner skal vises ved siden af tekst i knapper"
+msgstr "Նշել, արդեւաք պատկերակները պէտք է ցուցադրուեն կոճակներով՝ գրոյթի կողքին"
 
 #: ../dialogs/appearance-settings/appearance-dialog.glade.h:36
 msgid "Show images in _menus"
-msgstr "Vis billeder i _menuer"
+msgstr "Ցուցադրել պատկերակները _ցանկերում"
 
 #: ../dialogs/appearance-settings/appearance-dialog.glade.h:37
 msgid "Specify whether icons should be displayed next to items in menus"
-msgstr "Angiv om ikoner skal vises ved siden af elementer i menuer"
+msgstr "Նշել, արդեաւք պատկերակները պէտք է ցուցադրուեն ընտրացանկի տարրերի կողքին"
 
 #: ../dialogs/appearance-settings/appearance-dialog.glade.h:38
 msgid "Enable e_ditable accelerators"
-msgstr "Aktivér re_digerbare acceleratorer"
+msgstr "Միացնել խ_մբագրելի արագացուցիչները"
 
 #: ../dialogs/appearance-settings/appearance-dialog.glade.h:39
 msgid ""
 "If selected, keyboard shortcuts for menu items can be changed by hovering "
 "the mouse over the menu item and pressing the new key combination for the "
 "shortcut"
-msgstr "Hvis den vælges, så kan tastaturgenveje for menuelementer ændres ved at holde musen over menuelementet, og trykke den nye tastekombination for genvejen"
+msgstr "Եթե ընտրուած է, ստեղնաշարի դիւրանցումները կարող են փոխուել մկնիկը ցանկի տարր տեղափոխելով եւ սեղմելով դիւրանցման նոր զուգորդութիւնը"
 
 #: ../dialogs/appearance-settings/appearance-dialog.glade.h:40
 msgid "Menus and Buttons"
-msgstr "Menuer og knapper"
+msgstr "Ցանկեր եւ կոճակներ"
 
 #: ../dialogs/appearance-settings/appearance-dialog.glade.h:41
 msgid "Enable _event sounds"
-msgstr "Aktivér lyde for _hændelser"
+msgstr "Միացնել _իրադարձութիւնների ձայները"
 
 #: ../dialogs/appearance-settings/appearance-dialog.glade.h:42
 msgid "Enable or disable event sounds globally (requires \"Canberra\" support)"
-msgstr "Aktivér eller deaktivér globalt for hændelser (kræver understøttelse af \"Canberra\")"
+msgstr "Միացնել կամ անջատել իրադարձությունների ձայները (պահանջուում է «Canberra»֊ի սատարումը)"
 
 #: ../dialogs/appearance-settings/appearance-dialog.glade.h:43
 msgid "Enable input feedbac_k sounds"
-msgstr "Aktivér tilbagemeldingsl_yde for input"
+msgstr "Միացնել մուտքի յետադարձի ձայն_երը"
 
 #: ../dialogs/appearance-settings/appearance-dialog.glade.h:44
 msgid ""
 "Specify whether mouse clicks and other user input will cause event sounds to"
 " play"
-msgstr "Angiv om museklik eller andre brugerinput skal føre til, at hændelseslyde afspilles"
+msgstr "Նշել, արդեւաք մկնիկի սեղմումը կամ այլ աւգտատիրոջ մուտքը, կը հանգեցնի ձայնի արձակմանը"
 
 #: ../dialogs/appearance-settings/appearance-dialog.glade.h:45
 msgid "Event sounds"
-msgstr "Hændelseslyde"
+msgstr "Իրադարձութեան ձայներ"
 
 #: ../dialogs/appearance-settings/appearance-dialog.glade.h:46
 msgid "Adjust the system-wide display scaling"
-msgstr "Juster skærmskalering for hele systemet"
+msgstr ""
 
 #: ../dialogs/appearance-settings/appearance-dialog.glade.h:47
 msgid "_Window Scaling"
-msgstr "_Vinduesskalering"
+msgstr ""
 
 #: ../dialogs/appearance-settings/appearance-dialog.glade.h:48
 msgid "Setti_ngs"
-msgstr "I_ndstillinger"
+msgstr "_Կարգաւորումներ"
 
 #: ../dialogs/appearance-settings/main.c:463
 #, c-format
 msgid ""
 "Warning: this icon theme has no cache file. You can create this by running "
 "<i>gtk-update-icon-cache %s/%s/</i> in a terminal emulator."
-msgstr "Advarsel: ikontemaet har ingen mellemlagringsfil. Du kan oprette den ved at køre <i>gtk-update-icon-cache %s/%s/</i> i en terminalemulator."
+msgstr "Զգուշացում․ այս պատկերակի ոճապնակը շտեմային նիշ չունի։ Դուք կարող էք ստեղծել այն գործարկելով <i>gtk-update-icon-cache %s/%s/</i>՝ վահանակում։"
 
 #: ../dialogs/appearance-settings/main.c:879
 #, c-format
 msgid "File is larger than %d MB, installation aborted"
-msgstr "Fil er større end %d MB, installationen er afbrudt"
+msgstr "Նիշը գերազանցում է %d ՄԲ֊ն, տեղակայումը ընդհատուած է"
 
 #: ../dialogs/appearance-settings/main.c:884
 msgid "Failed to create temporary directory"
-msgstr "Kunne ikke oprette midlertidig mappe"
+msgstr "Չյաջողուեց ստեղծել ժամանակաւոր նշարան"
 
 #: ../dialogs/appearance-settings/main.c:889
 msgid "Failed to extract archive"
-msgstr "Kunne ikke udpakke arkiv"
+msgstr "Չյաջողուեց արտածել պահոցը"
 
 #: ../dialogs/appearance-settings/main.c:894
 msgid "Unknown format, only archives and directories are supported"
-msgstr "Ukendt format, kun arkiver og mapper er understøttede"
+msgstr "Անյայտ ձեւաչափ, սատարուում են միայն պահոցներն ու նշարանները"
 
 #: ../dialogs/appearance-settings/main.c:899
 #, c-format
 msgid "An unknown error, exit code is %d"
-msgstr "En ukendt fejl, afslutningskode er %d"
+msgstr "Անյայտ սխալ՝ դուրս գալու այլագիրը %d֊ն է"
 
 #: ../dialogs/appearance-settings/main.c:906
 msgid "Failed to install theme"
-msgstr "Kunne ikke installere tema"
+msgstr "Չյաջողուեց տեղակայել ոճապնակը"
 
 #: ../dialogs/appearance-settings/main.c:1045
 msgid "RGB"
@@ -586,128 +584,128 @@ msgstr "BGR"
 
 #: ../dialogs/appearance-settings/main.c:1053
 msgid "Vertical RGB"
-msgstr "Lodret RGB"
+msgstr "Ուղղահայեաց RGB"
 
 #: ../dialogs/appearance-settings/main.c:1057
 msgid "Vertical BGR"
-msgstr "Lodret BGR"
+msgstr "Ուղղահայեաց BGR"
 
 #. TRANSLATORS: a flatbed scanner device, e.g. 'Epson Scanner'
 #: ../dialogs/color-settings/color-device.c:68
 msgid "Scanner"
-msgstr "Skanner"
+msgstr ""
 
 #. TRANSLATORS: a camera device, e.g. 'Nikon D60 Camera'
 #: ../dialogs/color-settings/color-device.c:71
 msgid "Camera"
-msgstr "Kamera"
+msgstr ""
 
 #. TRANSLATORS: a printer device, e.g. 'Epson Photosmart Printer'
 #: ../dialogs/color-settings/color-device.c:74
 msgid "Printer"
-msgstr "Printer"
+msgstr ""
 
 #. TRANSLATORS: a webcam device, e.g. 'Philips HiDef Camera'
 #: ../dialogs/color-settings/color-device.c:77
 msgid "Webcam"
-msgstr "Webcam"
+msgstr ""
 
 #. TRANSLATORS: This refers to the TFT display on a laptop
 #: ../dialogs/color-settings/color-device.c:94
 msgid "Laptop Screen"
-msgstr "Skærm på bærbar"
+msgstr ""
 
 #. TRANSLATORS: This refers to the embedded webcam on a laptop
 #: ../dialogs/color-settings/color-device.c:102
 msgid "Built-in Webcam"
-msgstr "Indbygget webcam"
+msgstr ""
 
 #: ../dialogs/color-settings/color-device.c:195
 #, c-format
 msgid "Enable color management for %s"
-msgstr "Aktivér farvestyring for %s"
+msgstr ""
 
 #: ../dialogs/color-settings/color-dialog.glade.h:1
 #: ../dialogs/color-settings/xfce4-color-settings.desktop.in.h:1
 msgid "Color Profiles"
-msgstr "Farveprofiler"
+msgstr ""
 
 #: ../dialogs/color-settings/color-dialog.glade.h:2
 msgid "Configure color profiles for your devices"
-msgstr "Konfigurer farveprofiler for dine enheder"
+msgstr ""
 
 #: ../dialogs/color-settings/color-dialog.glade.h:3
 msgid "<b>No devices found.</b>"
-msgstr "<b>Ingen enheder fundet.</b>"
+msgstr ""
 
 #: ../dialogs/color-settings/color-dialog.glade.h:4
 msgid "Model:"
-msgstr "Model:"
+msgstr ""
 
 #: ../dialogs/color-settings/color-dialog.glade.h:5
 msgid "Colorspace:"
-msgstr "Farverum:"
+msgstr ""
 
 #: ../dialogs/color-settings/color-dialog.glade.h:6
 msgid "Vendor:"
-msgstr "Producent:"
+msgstr ""
 
 #: ../dialogs/color-settings/color-dialog.glade.h:7
 msgid "Calibrate"
-msgstr "Kalibrer"
+msgstr ""
 
 #: ../dialogs/color-settings/color-dialog.glade.h:8
 msgid "<b>No profiles for the selected device.</b>"
-msgstr "<b>Ingen profiler for den valgte enhed.</b>"
+msgstr ""
 
 #: ../dialogs/color-settings/color-dialog.glade.h:9
 msgid "Add a profile to the currently selected device"
-msgstr "Tilføj en profil til den valgte enhed"
+msgstr ""
 
 #: ../dialogs/color-settings/color-dialog.glade.h:10
 msgid "Delete the currently selected profile"
-msgstr "Slet den valgte profil"
+msgstr ""
 
 #: ../dialogs/color-settings/color-dialog.glade.h:11
 msgid "Enable"
-msgstr "Aktivér"
+msgstr ""
 
 #: ../dialogs/color-settings/color-dialog.glade.h:12
 msgid "Enable the selected profile"
-msgstr "Aktivér den valgte profil"
+msgstr ""
 
 #: ../dialogs/color-settings/color-dialog.glade.h:13
 msgid "Add Profile to Device"
-msgstr "Tilføj profil til enhed"
+msgstr ""
 
 #: ../dialogs/color-settings/color-dialog.glade.h:14
 msgid "Add a Color Profile to your Device"
-msgstr "Tilføj en farveprofil til din enhed"
+msgstr ""
 
 #: ../dialogs/color-settings/color-dialog.glade.h:15
 #: ../dialogs/color-settings/main.c:130
 msgid "_Cancel"
-msgstr "_Annuller"
+msgstr "_Չեղարկել"
 
 #: ../dialogs/color-settings/color-dialog.glade.h:16
 msgid "_OK"
-msgstr "_OK"
+msgstr "_Բարի"
 
 #: ../dialogs/color-settings/color-dialog.glade.h:17
 msgid "Import color profile files (*.icc)"
-msgstr "Importér farveprofilfiler (*.icc)"
+msgstr ""
 
 #. TRANSLATORS: standard spaces are well known colorspaces like
 #. * sRGB, AdobeRGB and ProPhotoRGB
 #: ../dialogs/color-settings/color-profile.c:94
 msgid "Standard Space"
-msgstr "Standardrum"
+msgstr ""
 
 #. TRANSLATORS: test profiles do things like changing the screen
 #. * a different color, or swap the red and green channels
 #: ../dialogs/color-settings/color-profile.c:99
 msgid "Test Profile"
-msgstr "Testprofil"
+msgstr ""
 
 #. TRANSLATORS: automatic profiles are generated automatically
 #. * by the color management system based on manufacturing data,
@@ -716,7 +714,7 @@ msgstr "Testprofil"
 #: ../dialogs/color-settings/color-profile.c:106
 msgctxt "Automatically generated profile"
 msgid "Automatic"
-msgstr "Automatisk"
+msgstr "Ինքնաշխատ"
 
 #. TRANSLATORS: the profile quality - low quality profiles take
 #. * much less time to generate but may be a poor reflection of the
@@ -724,13 +722,13 @@ msgstr "Automatisk"
 #: ../dialogs/color-settings/color-profile.c:115
 msgctxt "Profile quality"
 msgid "Low Quality"
-msgstr "Lav kvalitet"
+msgstr ""
 
 #. TRANSLATORS: the profile quality
 #: ../dialogs/color-settings/color-profile.c:119
 msgctxt "Profile quality"
 msgid "Medium Quality"
-msgstr "Medium kvalitet"
+msgstr ""
 
 #. TRANSLATORS: the profile quality - high quality profiles take
 #. * a *long* time, and have the best calibration and
@@ -738,349 +736,349 @@ msgstr "Medium kvalitet"
 #: ../dialogs/color-settings/color-profile.c:125
 msgctxt "Profile quality"
 msgid "High Quality"
-msgstr "Høj kvalitet"
+msgstr ""
 
 #. TRANSLATORS: this default RGB space is used for printers that
 #. * do not have additional printer profiles specified in the PPD
 #: ../dialogs/color-settings/color-profile.c:140
 msgctxt "Colorspace fallback"
 msgid "Default RGB"
-msgstr "Standard-RGB"
+msgstr ""
 
 #. TRANSLATORS: this default CMYK space is used for printers that
 #. * do not have additional printer profiles specified in the PPD
 #: ../dialogs/color-settings/color-profile.c:146
 msgctxt "Colorspace fallback"
 msgid "Default CMYK"
-msgstr "Standard-CMYK"
+msgstr ""
 
 #. TRANSLATORS: this default gray space is used for printers that
 #. * do not have additional printer profiles specified in the PPD
 #: ../dialogs/color-settings/color-profile.c:152
 msgctxt "Colorspace fallback"
 msgid "Default Gray"
-msgstr "Standard-grå"
+msgstr ""
 
 #. TRANSLATORS: an ICC profile is a file containing colorspace data
 #: ../dialogs/color-settings/main.c:128
 msgid "Select ICC Profile File"
-msgstr "Vælg ICC-profilfil"
+msgstr ""
 
 #: ../dialogs/color-settings/main.c:131
 msgid "_Import"
-msgstr "_Importér"
+msgstr ""
 
 #. TRANSLATORS: filter name on the file->open dialog
 #: ../dialogs/color-settings/main.c:142
 msgid "Supported ICC profiles"
-msgstr "Understøttede ICC-profiler"
+msgstr ""
 
 #. TRANSLATORS: filter name on the file->open dialog
 #: ../dialogs/color-settings/main.c:149
 msgid "All files"
-msgstr "Alle filer"
+msgstr ""
 
 #. TRANSLATORS: this is a profile prefix to signify the
 #. * profile has been auto-generated for this hardware
 #: ../dialogs/color-settings/main.c:193
 msgid "Default: "
-msgstr "Standard:"
+msgstr ""
 
 #. TRANSLATORS: this is a profile prefix to signify the
 #. * profile his a standard space like AdobeRGB
 #: ../dialogs/color-settings/main.c:200
 msgid "Colorspace: "
-msgstr "Farverum:"
+msgstr ""
 
 #. TRANSLATORS: this is a profile prefix to signify the
 #. * profile is a test profile
 #: ../dialogs/color-settings/main.c:206
 msgid "Test profile: "
-msgstr "Testprofil:"
+msgstr ""
 
 #: ../dialogs/color-settings/main.c:244
 msgid "Compatible Profiles"
-msgstr "Kompatible profiler"
+msgstr ""
 
 #: ../dialogs/color-settings/main.c:832 ../dialogs/color-settings/main.c:833
 #: ../dialogs/color-settings/main.c:834
 msgid "Unknown"
-msgstr "Ukendt"
+msgstr "Անյայտ"
 
 #: ../dialogs/color-settings/xfce4-color-settings.desktop.in.h:2
 msgid "Set color profiles"
-msgstr "Indstil farveprofiler"
+msgstr ""
 
 #: ../dialogs/display-settings/confirmation-dialog.glade.h:1
 msgid "Confirmation"
-msgstr "Bekræftelse"
+msgstr "Հաստատում"
 
 #: ../dialogs/display-settings/confirmation-dialog.glade.h:2
 msgid "Keep this configuration"
-msgstr "Behold konfigurationen"
+msgstr "Պահել կազմաձեւումը"
 
 #: ../dialogs/display-settings/confirmation-dialog.glade.h:3
 msgid "Restore the previous configuration"
-msgstr "Genskab forrige konfiguration"
+msgstr "Վերականգնել նախկին կազմաձեւումը"
 
 #: ../dialogs/display-settings/confirmation-dialog.glade.h:4
 msgid "<big><b>Would you like to keep this configuration?</b></big>"
-msgstr "<big><b>Vil du beholde konfigurationen?</b></big>"
+msgstr "<big><b>Պահե՞լ այս կազմաձեւումը։</b></big>"
 
 #: ../dialogs/display-settings/confirmation-dialog.glade.h:5
 msgid ""
 "The previous configuration will be restored in 10 seconds if you do not "
 "reply to this question."
-msgstr "Den forrige konfiguration genskabes i løbet af 10 sekunder, hvis du ikke besvarer dette spørgsmål."
+msgstr "Նախկին կազմաձեւումը կը վերականգնուի տաս վայրկեանի ընթացքում, եթե չկրկնէք այս հարցումը։"
 
 #: ../dialogs/display-settings/display-dialog.glade.h:1
 msgid "The primary display is currently configured to show:"
-msgstr "Den nuværende skærm er konfigureret til at vise:"
+msgstr ""
 
 #: ../dialogs/display-settings/display-dialog.glade.h:2
 msgid "Xfce Panel"
-msgstr "Xfce-panel"
+msgstr ""
 
 #: ../dialogs/display-settings/display-dialog.glade.h:3
 msgid "Desktop icons"
-msgstr "Skrivebordsikoner"
+msgstr ""
 
 #: ../dialogs/display-settings/display-dialog.glade.h:4
 msgid "Notifications"
-msgstr "Underretninger"
+msgstr ""
 
 #: ../dialogs/display-settings/display-dialog.glade.h:5
 msgid "Configure..."
-msgstr "Konfigurer ..."
+msgstr "Կազմաձեւել․․․"
 
 #: ../dialogs/display-settings/display-dialog.glade.h:6
 #: ../dialogs/display-settings/xfce-display-settings.desktop.in.h:1
 msgid "Display"
-msgstr "Skærm"
+msgstr "Ցուցադրիչ"
 
 #: ../dialogs/display-settings/display-dialog.glade.h:7
 #: ../dialogs/display-settings/xfce-display-settings.desktop.in.h:2
 msgid "Configure screen settings and layout"
-msgstr "Konfigurer skærmindstillinger og -layout"
+msgstr "Կազմաձեւել ցուցադրիչի կարգաւորումներն ու շարակարգը"
 
 #: ../dialogs/display-settings/display-dialog.glade.h:8
 msgid "_Mirror displays"
-msgstr "_Spejl skærme"
+msgstr "_Հայելային ցուցադրիչներ"
 
 #: ../dialogs/display-settings/display-dialog.glade.h:9
 msgid "Primary Display:"
-msgstr "Primær skærm:"
+msgstr ""
 
 #: ../dialogs/display-settings/display-dialog.glade.h:10
 msgid "R_esolution:"
-msgstr "Op_løsning:"
+msgstr "Կ_էտայնացում․"
 
 #: ../dialogs/display-settings/display-dialog.glade.h:11
 msgid "Refresh _rate:"
-msgstr "Opdate_ringshastighed:"
+msgstr "Թարմացնել _արագութիւնը․"
 
 #: ../dialogs/display-settings/display-dialog.glade.h:12
 msgid "Ro_tation:"
-msgstr "Ro_tation:"
+msgstr "Պտ_տում․"
 
 #: ../dialogs/display-settings/display-dialog.glade.h:13
 msgid "Ref_lection:"
-msgstr "Ref_lektion:"
+msgstr "Արտա_ցոլում․"
 
 #: ../dialogs/display-settings/display-dialog.glade.h:14
 msgid "_General"
-msgstr "_Generelt"
+msgstr "_Ընդհանուր"
 
 #: ../dialogs/display-settings/display-dialog.glade.h:15
 msgid "<b>Profiles</b>"
-msgstr "<b>Profiler</b>"
+msgstr ""
 
 #: ../dialogs/display-settings/display-dialog.glade.h:16
 msgid "<b>Connecting Displays</b>"
-msgstr "<b>Tilslutter skærme</b>"
+msgstr ""
 
 #: ../dialogs/display-settings/display-dialog.glade.h:17
 msgid "Delete the currently selected display profile."
-msgstr "Slet den valgte skærmprofil."
+msgstr ""
 
 #: ../dialogs/display-settings/display-dialog.glade.h:18
 msgid "Apply"
-msgstr "Anvend"
+msgstr ""
 
 #: ../dialogs/display-settings/display-dialog.glade.h:19
 msgid "Apply the currently selected display profile."
-msgstr "Anvend den valgte skærmprofil."
+msgstr ""
 
 #: ../dialogs/display-settings/display-dialog.glade.h:20
 msgid "Create a new display profile."
-msgstr "Opret en ny skærmprofil."
+msgstr ""
 
 #: ../dialogs/display-settings/display-dialog.glade.h:21
 msgid "Update an existing profile."
-msgstr "Opdater en eksisterende profil."
+msgstr ""
 
 #: ../dialogs/display-settings/display-dialog.glade.h:22
 msgid "Automatically enable profiles when new display is connected"
-msgstr "Aktivér automatisk profiler når der tilsluttes en ny skærm"
+msgstr ""
 
 #: ../dialogs/display-settings/display-dialog.glade.h:23
 msgid "Configure new displays when connected"
-msgstr "Konfigurer nye skærme når de tilsluttes"
+msgstr ""
 
 #: ../dialogs/display-settings/display-dialog.glade.h:24
 msgid "Show popup windows to identify displays"
-msgstr "Vis pop op-vinduer for at identificere skærme"
+msgstr ""
 
 #: ../dialogs/display-settings/display-dialog.glade.h:25
 msgid "<b>Identifying Displays</b>"
-msgstr "<b>Identificerer skærme</b>"
+msgstr ""
 
 #: ../dialogs/display-settings/display-dialog.glade.h:26
 #: ../dialogs/display-settings/minimal-display-dialog.glade.h:6
 msgid "_Advanced"
-msgstr "_Avanceret"
+msgstr ""
 
 #: ../dialogs/display-settings/display-dialog.glade.h:27
 msgid "<b>Profile Name</b>"
-msgstr "<b>Profilnavn</b>"
+msgstr ""
 
 #: ../dialogs/display-settings/display-dialog.glade.h:28
 msgid "Create"
-msgstr "Opret"
+msgstr ""
 
 #: ../dialogs/display-settings/display-dialog.glade.h:29
 msgid "A profile of this name already exists."
-msgstr "Der findes allerede en profil med dette navn."
+msgstr ""
 
 #: ../dialogs/display-settings/minimal-display-dialog.glade.h:1
 msgid "Displays"
-msgstr "Skærme"
+msgstr "Ցուցադրիչներ"
 
 #: ../dialogs/display-settings/minimal-display-dialog.glade.h:2
 msgid "Only Display 1"
-msgstr "Kun skærm 1"
+msgstr "Միայն ցուցադրիչ 1֊ը"
 
 #: ../dialogs/display-settings/minimal-display-dialog.glade.h:3
 msgid "Mirror Displays"
-msgstr "Spejl skærme"
+msgstr "Հայելային ցուցադրիչներ"
 
 #: ../dialogs/display-settings/minimal-display-dialog.glade.h:4
 msgid "Extend to the right"
-msgstr "Udvid til højre"
+msgstr "Տարածել դէպի աջ"
 
 #: ../dialogs/display-settings/minimal-display-dialog.glade.h:5
 msgid "Only Display 2"
-msgstr "Kun skærm 2"
+msgstr "Միայն ցուցադրիչ 2֊ը"
 
 #: ../dialogs/display-settings/minimal-display-dialog.glade.h:7
 msgid "radiobutton"
-msgstr "radioknap"
+msgstr "փոխընտրման կոճակ"
 
 #: ../dialogs/display-settings/profile-changed-dialog.glade.h:1
 msgid "Update Display Profile"
-msgstr "Opdater skærmprofil"
+msgstr ""
 
 #: ../dialogs/display-settings/profile-changed-dialog.glade.h:2
 #: ../dialogs/display-settings/main.c:3944
 #: ../xfce4-settings-manager/xfce-settings-manager-dialog.c:208
 msgid "_Close"
-msgstr "_Luk"
+msgstr "_Փակել"
 
 #: ../dialogs/display-settings/profile-changed-dialog.glade.h:3
 msgid "_Update"
-msgstr "_Opdater"
+msgstr ""
 
 #: ../dialogs/display-settings/profile-changed-dialog.glade.h:4
 msgid ""
 "<big><b>You have made changes to your previously active profile</b></big>"
-msgstr "<big><b>Du har foretaget ændringer til din tidligere aktive profil</b></big>"
+msgstr ""
 
 #: ../dialogs/display-settings/profile-changed-dialog.glade.h:5
 msgid ""
 "If you don't update the profile your changes will be lost upon restarting "
 "your session or disconnecting or connecting a display."
-msgstr "Hvis du ikke opdaterer profilen, så går dine ændringer tabt når du genstarter din session eller afbryder forbindelse til eller opretter forbindelse til en skærm."
+msgstr ""
 
 #: ../dialogs/display-settings/main.c:99
 msgid "Left"
-msgstr "Venstre"
+msgstr "Ձախ"
 
 #: ../dialogs/display-settings/main.c:100
 msgid "Inverted"
-msgstr "Omvendt"
+msgstr "Շրջուած"
 
 #: ../dialogs/display-settings/main.c:101
 msgid "Right"
-msgstr "Højre"
+msgstr "Աջ"
 
 #: ../dialogs/display-settings/main.c:110
 msgid "Horizontal"
-msgstr "Vandret"
+msgstr "Հորիզոնական"
 
 #: ../dialogs/display-settings/main.c:111
 msgid "Vertical"
-msgstr "Lodret"
+msgstr "Ուղղահայեաց"
 
 #: ../dialogs/display-settings/main.c:112
 msgid "Horizontal and Vertical"
-msgstr "Lodret og vandret"
+msgstr "Հորիզոնական եւ ուղղահայեաց"
 
 #: ../dialogs/display-settings/main.c:133
 msgid "Minimal interface to set up an external output"
-msgstr "Minimal grænseflade til opsætning af et ekstern output"
+msgstr "Նուազագույն միջավայր՝ արտաքին արտածման սահմանման համար"
 
 #: ../dialogs/display-settings/main.c:273
 #, c-format
 msgid ""
 "The previous configuration will be restored in %i seconds if you do not "
 "reply to this question."
-msgstr "Den forrige konfiguration genskabes i løbet af %i sekunder, hvis du ikke besvarer dette spørgsmål."
+msgstr "Նախկին կարգաւորումները կը վերականգնուեն %i վայրկեանի ընթացքում, եթե չկրկնէք այս հարցումը։"
 
 #. Insert the mode
 #: ../dialogs/display-settings/main.c:568
 #, c-format
 msgid "%.1f Hz"
-msgstr "%.1f Hz"
+msgstr "%.1f Հց"
 
 #: ../dialogs/display-settings/main.c:878
 msgid "Display:"
-msgstr "Skærm:"
+msgstr "Ցուցադրիչ․"
 
 #: ../dialogs/display-settings/main.c:883
 msgid "Resolution:"
-msgstr "Opløsning:"
+msgstr "Կէտայնացում․"
 
 #: ../dialogs/display-settings/main.c:1164
 msgid ""
 "The last active output must not be disabled, the system would be unusable."
-msgstr "Det seneste aktive output må ikke være deaktiveret - systemet ville blive uanvendeligt."
+msgstr "Վերջին գործուն արտածումը չպէ՛տք է անջատուի, համակարգը կը դառնայ ոչ աւգտագործելի։"
 
 #: ../dialogs/display-settings/main.c:1166
 msgid "Selected output not disabled"
-msgstr "Valgte output er ikke deaktiveret"
+msgstr "Ընտրուած արտածումը անջատուած չէ"
 
 #: ../dialogs/display-settings/main.c:1519
 #, c-format
 msgid "Update changed display profile '%s'?"
-msgstr "Opdater ændrede skærmprofil '%s'?"
+msgstr ""
 
 #: ../dialogs/display-settings/main.c:1524
 #, c-format
 msgid "_Update '%s'"
-msgstr "_Opdater '%s'"
+msgstr ""
 
 #: ../dialogs/display-settings/main.c:1811
 #, c-format
 msgid "Do you want to delete the display profile '%s'?"
-msgstr "Vil du slette skærmprofilen '%s'?"
+msgstr ""
 
 #: ../dialogs/display-settings/main.c:1813
 msgid "Delete Profile"
-msgstr "Slet profil"
+msgstr ""
 
 #: ../dialogs/display-settings/main.c:1816
 msgid "Once a display profile is deleted it cannot be restored."
-msgstr "Når en skærmprofil er blevet slettet kan den ikke genskabes."
+msgstr ""
 
 #. Create cancel button
 #: ../dialogs/display-settings/main.c:1817
@@ -1091,22 +1089,22 @@ msgstr "Når en skærmprofil er blevet slettet kan den ikke genskabes."
 #: ../dialogs/mime-settings/xfce-mime-window.c:908
 #: ../xfce4-settings-editor/xfce-settings-prop-dialog.c:144
 msgid "Cancel"
-msgstr "Annuller"
+msgstr "Փակել"
 
 #: ../dialogs/display-settings/main.c:1818
 msgid "Delete"
-msgstr "Slet"
+msgstr ""
 
 #: ../dialogs/display-settings/main.c:1919
 #, c-format
 msgid "%d Xfce Panels"
-msgstr "%d Xfce-paneler"
+msgstr ""
 
 #: ../dialogs/display-settings/main.c:2923
 msgid ""
 "Select a monitor to change its properties; drag it to rearrange its "
 "placement."
-msgstr "Vælg en skærm for at ændre dens egenskaber; træk den for at ændre dens placering."
+msgstr "Ընտրել ցուցասարք՝ դրա յատկութիւնների փոխման համար, տեղադրէք այն, դիրքի վերադասաւորման համար։"
 
 #: ../dialogs/display-settings/main.c:2966
 #: ../dialogs/display-settings/main.c:3042
@@ -1120,39 +1118,39 @@ msgstr "(%i, %i)"
 #. * translation could be "Pantallas en Espejo", *not* "Espejar Pantallas".
 #: ../dialogs/display-settings/main.c:3244
 msgid "Mirror Screens"
-msgstr "Spejlvend skærme"
+msgstr "Հայելային ցուցադրիչներ"
 
 #: ../dialogs/display-settings/main.c:3294
 msgid "(Disabled)"
-msgstr "(Deaktiveret)"
+msgstr "(Անջատուած է)"
 
 #: ../dialogs/display-settings/main.c:3711
 #, c-format
 msgid "Only %s (1)"
-msgstr "Kun %s (1)"
+msgstr ""
 
 #: ../dialogs/display-settings/main.c:3722
 #, c-format
 msgid "Only %s (2)"
-msgstr "Kun %s (2)"
+msgstr ""
 
 #: ../dialogs/display-settings/main.c:3905
 #: ../dialogs/display-settings/main.c:3942
 msgid "Unable to start the Xfce Display Settings"
-msgstr "Kunne ikke starte Xfce-skærmindstillingerne"
+msgstr "Հնարաւոր չէ մեկնարկել Xfce ցուցադրիչի կարգաւորումները"
 
 #: ../dialogs/display-settings/main.c:3937
 msgid "ATI Settings"
-msgstr "ATI-indstillinger"
+msgstr "ATI կարգաւորումներ"
 
 #: ../dialogs/display-settings/main.c:3952
 msgid "Unable to launch the proprietary driver settings"
-msgstr "Kan ikke opstarte de proprietære driverindstillinger"
+msgstr "Հնարաւոր չէ գործարկել մասնաւոր վարաւնի կարգաւորումները"
 
 #. Set dialog title and icon
 #: ../dialogs/keyboard-settings/command-dialog.c:106
 msgid "Shortcut Command"
-msgstr "Genvejskommando"
+msgstr "Դիւրանցման հրաման"
 
 #: ../dialogs/keyboard-settings/command-dialog.c:114
 msgid "OK"
@@ -1160,344 +1158,344 @@ msgstr "OK"
 
 #: ../dialogs/keyboard-settings/command-dialog.c:137
 msgid "Enter the command you want to trigger with a shortcut."
-msgstr "Indtast kommandoen som du vil udløse med en genvej."
+msgstr "Մուտքագրէք հրամանը, որը ցանկանում էք գործարկել դիւրանցման հետ։"
 
 #. We are editing an existing shortcut
 #: ../dialogs/keyboard-settings/command-dialog.c:155
 msgid "Shortcut:"
-msgstr "Genvej:"
+msgstr "Դիւրանցում․"
 
 #: ../dialogs/keyboard-settings/command-dialog.c:168
 msgid "Command:"
-msgstr "Kommando:"
+msgstr "Հրաման․"
 
 #: ../dialogs/keyboard-settings/command-dialog.c:184
 #: ../dialogs/keyboard-settings/command-dialog.c:260
 #: ../dialogs/mime-settings/xfce-mime-chooser.c:136
 #: ../dialogs/mime-settings/xfce-mime-chooser.c:383
 msgid "Open"
-msgstr "Åbn"
+msgstr ""
 
 #: ../dialogs/keyboard-settings/command-dialog.c:189
 msgid "Use _startup notification"
-msgstr "Brug _opstartsunderretning"
+msgstr "Աւգտագործել _մեկնարկի ծանուցումը"
 
 #: ../dialogs/keyboard-settings/command-dialog.c:236
 msgid "The command may not be empty."
-msgstr "Kommandoen må ikke være tom."
+msgstr "Հրամանը չի կարող դատարկ լինել։"
 
 #: ../dialogs/keyboard-settings/command-dialog.c:256
 msgid "Select command"
-msgstr "Vælg kommando"
+msgstr "Ընտրել հրամանը"
 
 #: ../dialogs/keyboard-settings/command-dialog.c:264
 #: ../dialogs/mime-settings/xfce-mime-chooser.c:389
 msgid "All Files"
-msgstr "Alle filer"
+msgstr "Բոլոր նիշերը"
 
 #: ../dialogs/keyboard-settings/command-dialog.c:269
 #: ../dialogs/mime-settings/xfce-mime-chooser.c:394
 msgid "Executable Files"
-msgstr "Kørbare filer"
+msgstr "Գործարկուող նիշեր"
 
 #: ../dialogs/keyboard-settings/command-dialog.c:284
 #: ../dialogs/mime-settings/xfce-mime-chooser.c:409
 msgid "Perl Scripts"
-msgstr "Perl-scripter"
+msgstr "Perl գրուածքներ"
 
 #: ../dialogs/keyboard-settings/command-dialog.c:290
 #: ../dialogs/mime-settings/xfce-mime-chooser.c:415
 msgid "Python Scripts"
-msgstr "Python-scripter"
+msgstr "Python գրուածքներ"
 
 #: ../dialogs/keyboard-settings/command-dialog.c:296
 #: ../dialogs/mime-settings/xfce-mime-chooser.c:421
 msgid "Ruby Scripts"
-msgstr "Ruby-scripter"
+msgstr "Ruby գրուածքներ"
 
 #: ../dialogs/keyboard-settings/command-dialog.c:302
 #: ../dialogs/mime-settings/xfce-mime-chooser.c:427
 msgid "Shell Scripts"
-msgstr "Skal-scripter"
+msgstr "Shell գրուածքներ"
 
 #: ../dialogs/keyboard-settings/keyboard-dialog.glade.h:1
 msgid "Keyboard layout selection"
-msgstr "Valg af tastaturlayout"
+msgstr "Ստեղնաշարի շարակարգի ընտրութիւն"
 
 #: ../dialogs/keyboard-settings/keyboard-dialog.glade.h:2
 msgid "Select keyboard layout and variant"
-msgstr "Vælg tastaturlayout og -variant"
+msgstr "Ընտրել ստեղնաշարի շարակարգն ու տարբերակը"
 
 #: ../dialogs/keyboard-settings/keyboard-dialog.glade.h:3
 #: ../dialogs/keyboard-settings/xfce-keyboard-settings.desktop.in.h:1
 msgid "Keyboard"
-msgstr "Tastatur"
+msgstr "Ստեղնաշար"
 
 #: ../dialogs/keyboard-settings/keyboard-dialog.glade.h:4
 #: ../dialogs/keyboard-settings/xfce-keyboard-settings.desktop.in.h:2
 msgid "Edit keyboard settings and application shortcuts"
-msgstr "Rediger tastaturindstillinger og programgenveje"
+msgstr "Խմբագրել ստեղնաշարի կարգաւորումները եւ ծրագրի դիւրանցումները"
 
 #: ../dialogs/keyboard-settings/keyboard-dialog.glade.h:5
 msgid "Restore num l_ock state on startup"
-msgstr "Gendan tilstand for num l_ock ved opstart"
+msgstr "Վե_րականգնել Num Լ_ock֊ի վիճակը մեկնարկի ժամանակ"
 
 #: ../dialogs/keyboard-settings/keyboard-dialog.glade.h:6
 #: ../dialogs/mouse-settings/mouse-dialog.glade.h:31
 msgid "General"
-msgstr "Generelt"
+msgstr "Ընդհանուր"
 
 #: ../dialogs/keyboard-settings/keyboard-dialog.glade.h:7
 msgid "_Enable key repeat"
-msgstr "_Aktivér tastegentagelse"
+msgstr "_Միացնել ստեղնի կրկնութիւնը"
 
 #: ../dialogs/keyboard-settings/keyboard-dialog.glade.h:8
 msgid ""
 "When selected, pressing and holding down a key emits the same character over"
 " and over again"
-msgstr "Når den vælges, så udsendes det samme tegn igen og igen når der trykkes og holdes nede på en tast"
+msgstr "Երբ ընտրուած՝ ստեղնի սեղմումն ու պահումը, անվերջ արձակում է նոյն գրանշանը։"
 
 #: ../dialogs/keyboard-settings/keyboard-dialog.glade.h:9
 msgid "_Repeat delay:"
-msgstr "Forsinkelse for _gentagelse:"
+msgstr "_Կրկնութեան դադար․"
 
 #: ../dialogs/keyboard-settings/keyboard-dialog.glade.h:10
 msgid "The time, in milliseconds, before a pressed key begins repeating"
-msgstr "Tiden, i millisekunder, før en nedtrykket tast begynder at gentage sig"
+msgstr "Միլիվայրկեաններով ժամանակը, մինչ սեղմուած ստեղնի կրկնութիւնը"
 
 #: ../dialogs/keyboard-settings/keyboard-dialog.glade.h:11
 msgid "Repe_at speed:"
-msgstr "Hastighed for gent_agelse:"
+msgstr "Կրկնութեան _արագութիւնը․"
 
 #: ../dialogs/keyboard-settings/keyboard-dialog.glade.h:12
 msgid "The rate at which keystrokes are generated while a key is pressed"
-msgstr "Hastigheden som tastetryk generers mens en tast holdes nede"
+msgstr "Ստեղնահարուածների ստեղծման արագութիւնը, ստեղնի սեղմման ընթացքում"
 
 #: ../dialogs/keyboard-settings/keyboard-dialog.glade.h:13
 msgid "Typing Settings"
-msgstr "Skriveindstillinger"
+msgstr "Մուտքագրման կարգաւորումներ"
 
 #: ../dialogs/keyboard-settings/keyboard-dialog.glade.h:14
 msgid "Show _blinking"
-msgstr "Vis _blink"
+msgstr "Ցուցադրել _թարթումը"
 
 #: ../dialogs/keyboard-settings/keyboard-dialog.glade.h:15
 msgid "Specify whether or not the text cursor blinks"
-msgstr "Angiv om tekstmarkøren blinker"
+msgstr "Սահմանէք, արդեաւք գրոյթի նշորդը պէտք է թարթի, թե ոչ"
 
 #: ../dialogs/keyboard-settings/keyboard-dialog.glade.h:16
 msgid "Blink _delay:"
-msgstr "Forsinkelse for _blink:"
+msgstr "Թարթման _դադար․"
 
 #: ../dialogs/keyboard-settings/keyboard-dialog.glade.h:17
 msgid "The delay, in milliseconds, between successive blinks of the cursor"
-msgstr "Forsinkelsen, i millisekunder, mellem efterfølgende blink fra markøren"
+msgstr "Նշորդի թարթումների միջեւ ընկած ընդհատումը՝ միլիվայրկեաններով"
 
 #: ../dialogs/keyboard-settings/keyboard-dialog.glade.h:18
 msgid "Cursor"
-msgstr "Markør"
+msgstr "Նշորդ"
 
 #: ../dialogs/keyboard-settings/keyboard-dialog.glade.h:19
 msgid "_Test area:"
-msgstr "_Testområde:"
+msgstr "_Փորձարկման տարածք․"
 
 #: ../dialogs/keyboard-settings/keyboard-dialog.glade.h:20
 msgid "Beha_vior"
-msgstr "Op_førsel"
+msgstr "Վար_քագիծ"
 
 #: ../dialogs/keyboard-settings/keyboard-dialog.glade.h:21
 msgid "Define shortcuts for la_unching applications:"
-msgstr "Definér genveje til op_start af programmer:"
+msgstr "Սահմանել դիւրանցումները ծրագրերի _գործարկման համար․"
 
 #: ../dialogs/keyboard-settings/keyboard-dialog.glade.h:22
 msgid "Reset to _Defaults"
-msgstr "Nulstil til _standarder"
+msgstr "Վերադարձնել _լռելեայները"
 
 #: ../dialogs/keyboard-settings/keyboard-dialog.glade.h:23
 msgid "A_pplication Shortcuts"
-msgstr "_Programgenveje"
+msgstr "Ծ_րագրի դիւրանցումներ"
 
 #: ../dialogs/keyboard-settings/keyboard-dialog.glade.h:24
 msgid "_Use system defaults"
-msgstr "_Brug systemstandarderne"
+msgstr "_Աւգտագործել համակարգի սկզբնադիրները"
 
 #: ../dialogs/keyboard-settings/keyboard-dialog.glade.h:25
 msgid ""
 "Specifies whether the keyboard layout is controlled with this settings "
 "dialog, or by the X server"
-msgstr "Angiver om tastaturlayoutet styres med dette indstillingsvindue eller af X-serveren"
+msgstr "Սահմանում է, արդեաւք ստեղնաշարի շարակարգը կառավարուում է կարգաւորումների այս երկխաւսութեամբ, թե X սպասարկչից։"
 
 #: ../dialogs/keyboard-settings/keyboard-dialog.glade.h:26
 msgid "_Keyboard model"
-msgstr "Ta_staturmodel"
+msgstr "_Ստեղնաշարի տիպար"
 
 #: ../dialogs/keyboard-settings/keyboard-dialog.glade.h:27
 msgid "Change la_yout option"
-msgstr "Skift valgmulighed for la_yout"
+msgstr "Փոփոխել շա_րակարգի ընտրանքը"
 
 #: ../dialogs/keyboard-settings/keyboard-dialog.glade.h:28
 msgid "Co_mpose key"
-msgstr "Co_mpose-tast"
+msgstr "Կազմ_ման ստեղն"
 
 #: ../dialogs/keyboard-settings/keyboard-dialog.glade.h:29
 msgid "Move currently selected item up by one row"
-msgstr "Flyt det valgte element en række op"
+msgstr "Տեղափոխել ընտրուած տարրը մեկ տող վերեւ"
 
 #: ../dialogs/keyboard-settings/keyboard-dialog.glade.h:30
 msgid "Move currently selected item down by one row"
-msgstr "Flyt det valgte element en række ned"
+msgstr "Տեղափոխել ընտրուած տարրը մեկ տող ներքեւ"
 
 #: ../dialogs/keyboard-settings/keyboard-dialog.glade.h:31
 msgid "Key_board layout"
-msgstr "_Tastaturlayout"
+msgstr "Ստեղ_նաշարի շարակարգ"
 
 #: ../dialogs/keyboard-settings/keyboard-dialog.glade.h:32
 msgid "_Layout"
-msgstr "_Layout"
+msgstr "_Շարակարգ"
 
 #: ../dialogs/keyboard-settings/main.c:84
 msgid "Unable to initialize GTK+."
-msgstr "Kunne ikke klargøre GTK+."
+msgstr "Անհնար է գործարկել GTK+֊ը։"
 
 #: ../dialogs/keyboard-settings/main.c:104
 #, c-format
 msgid "Failed to connect to xfconf daemon. Reason: %s"
-msgstr "Kunne ikke forbinde til xfconf-dæmon. Årsag: %s"
+msgstr "Չյաջողուեց կապակցուել xfconf աւժանդակ ծրագրին։ Պատճառը՝ %s"
 
 #: ../dialogs/keyboard-settings/main.c:115
 msgid "Could not create the settings dialog."
-msgstr "Kunne ikke oprette indstillingsdialogen."
+msgstr "Կարգաւորումների երկխաւսութիւնը չի ստեղծուել։"
 
 #: ../dialogs/keyboard-settings/xfce-keyboard-settings.c:398
 msgid "Command"
-msgstr "Kommando"
+msgstr "Հրաման"
 
 #: ../dialogs/keyboard-settings/xfce-keyboard-settings.c:403
 msgid "Shortcut"
-msgstr "Genvej"
+msgstr "Դիւրանցում"
 
 #: ../dialogs/keyboard-settings/xfce-keyboard-settings.c:479
 msgid "Layout"
-msgstr "Layout"
+msgstr "Շարակարգ"
 
 #: ../dialogs/keyboard-settings/xfce-keyboard-settings.c:480
 msgid "Variant"
-msgstr "Variant"
+msgstr "Տարբերակ"
 
 #: ../dialogs/keyboard-settings/xfce-keyboard-settings.c:1003
 #: ../dialogs/keyboard-settings/xfce-keyboard-settings.c:1107
 msgid "Shortcut command may not be empty."
-msgstr "Genvejskommandoen må ikke være tom."
+msgstr "Դիւրանցման հրամանը չի կարող դատարկ լինել։"
 
 #: ../dialogs/keyboard-settings/xfce-keyboard-settings.c:1271
 #: ../dialogs/keyboard-settings/xfce-keyboard-settings.c:1272
 msgid "Reset to Defaults"
-msgstr "Nulstil til standarder"
+msgstr "Վերատեղադրել լռելեայները"
 
 #: ../dialogs/keyboard-settings/xfce-keyboard-settings.c:1273
 msgid ""
 "This will reset all shortcuts to their default values. Do you really want to"
 " do this?"
-msgstr "Dette vil nulstille alle genveje til deres standardværdier. Vil du virkelig gøre dette?"
+msgstr "Սա կը վերատեղադրի դիւրանցումները, նրանց լռելեայն արժէքներին։ Անե՞լ սա։"
 
 #: ../dialogs/keyboard-settings/xfce-keyboard-settings.c:1275
 msgid "No"
-msgstr "Nej"
+msgstr "Ոչ"
 
 #: ../dialogs/keyboard-settings/xfce-keyboard-settings.c:1276
 msgid "Yes"
-msgstr "Ja"
+msgstr "Այո"
 
 #: ../dialogs/keyboard-settings/xfce-keyboard-settings.c:1352
 msgid "The system defaults will be restored next time you log in."
-msgstr "Systemstandarderne vil blive genskabt næste gang du logger ind."
+msgstr "Համակարգի լռելեայները կը վերատեղադրուեն ամեն մուտքի ժամանակ։"
 
 #: ../dialogs/keyboard-settings/xfce-keyboard-settings.c:1354
 msgid "Warning"
-msgstr "Advarsel"
+msgstr "Զգուշացում"
 
 #: ../dialogs/mime-settings/main.c:115
 msgid "Could not create the mime dialog."
-msgstr "Kunne ikke oprette mime-dialogen."
+msgstr ""
 
 #: ../dialogs/mime-settings/xfce-mime-chooser.c:128
 msgid "Select Application"
-msgstr "Vælg program"
+msgstr "Ընտրել յաւելուածը"
 
 #: ../dialogs/mime-settings/xfce-mime-chooser.c:205
 msgid "Use a c_ustom command:"
-msgstr "Brug en _tilpasset kommando:"
+msgstr "Գործածել ը_նտրովի հրաման․"
 
 #: ../dialogs/mime-settings/xfce-mime-chooser.c:206
 msgid ""
 "Use a custom command for an application that is not available from the above"
 " application list."
-msgstr "Brug en tilpasset kommando for et program der ikke er tilgængelig fra den ovenstående programliste."
+msgstr "Աւգտագործել ընտրովի հրաման այն ծրագրի համար, որը հասանելի է վերեւում նշուած ծրագրերի ցանկում"
 
 #: ../dialogs/mime-settings/xfce-mime-chooser.c:224
 msgid "_Browse..."
-msgstr "_Gennemse ..."
+msgstr "Զ_ննել..."
 
 #: ../dialogs/mime-settings/xfce-mime-chooser.c:379
 msgid "Select an Application"
-msgstr "Vælg et program"
+msgstr "Ընտրել յաւելուած"
 
 #: ../dialogs/mime-settings/xfce-mime-chooser.c:529
 msgid "None available"
-msgstr "Ingen tilgængelige"
+msgstr "Ոչ մեկը հասանելի չէ"
 
 #: ../dialogs/mime-settings/xfce-mime-chooser.c:576
 msgid "Recommended Applications"
-msgstr "Anbefalede programmer"
+msgstr "Առաջարկուող յաւելուածներ"
 
 #: ../dialogs/mime-settings/xfce-mime-chooser.c:594
 msgid "Other Applications"
-msgstr "Andre programmer"
+msgstr "Այլ յաւելուածներ"
 
 #: ../dialogs/mime-settings/xfce-mime-chooser.c:614
 #, c-format
 msgid "Open <i>%s</i> and other files of type \"%s\" with:"
-msgstr "Åbn <i>%s</i> og andre filer af typen \"%s\" med:"
+msgstr "Բացել <i>%s</i>֊ը եւ այդ տիպի այլ նիշեր, «%s»֊ի աւգնութեամբ․"
 
 #: ../dialogs/mime-settings/xfce-mime-chooser.c:650
 #, c-format
 msgid "Failed to add new application \"%s\""
-msgstr "Kunne ikke tilføje nyt program \"%s\""
+msgstr "Չյաջողուեց յաւելել «%s» յաւելուածը"
 
 #: ../dialogs/mime-settings/xfce-mime-window.c:169
 #: ../dialogs/mime-settings/xfce4-mime-settings.desktop.in.h:1
 msgid "MIME Type Editor"
-msgstr "MIME-type-redigering"
+msgstr "MIME տիպերի խմբագրիչ"
 
 #: ../dialogs/mime-settings/xfce-mime-window.c:173
 #: ../dialogs/mime-settings/xfce4-mime-settings.desktop.in.h:2
 msgid "Associate applications with MIME types"
-msgstr "Tilknyt programmer med MIME-typer"
+msgstr "Համակցել ծրագրերը MIME տիպերի հետ"
 
 #: ../dialogs/mime-settings/xfce-mime-window.c:192
 msgid "_Filter:"
-msgstr "_Filter:"
+msgstr "_Զտիչ․"
 
 #: ../dialogs/mime-settings/xfce-mime-window.c:200
 msgid "Clear filter"
-msgstr "Ryd filter"
+msgstr "Մաքրել զտիչը"
 
 #: ../dialogs/mime-settings/xfce-mime-window.c:249
 msgid "MIME Type"
-msgstr "MIME-type"
+msgstr "MIME տիպ"
 
 #: ../dialogs/mime-settings/xfce-mime-window.c:277
 msgid "Status"
-msgstr "Status"
+msgstr "Վիճակ"
 
 #: ../dialogs/mime-settings/xfce-mime-window.c:297
 msgid "Default Application"
-msgstr "Standardprogram"
+msgstr "Լռելեայն յաւելուած"
 
 #: ../dialogs/mime-settings/xfce-mime-window.c:472
 #: ../dialogs/mime-settings/xfce-mime-window.c:597
 msgid "User Set"
-msgstr "Angivet af bruger"
+msgstr "Աւգտատիրոջ կարգ"
 
 #. sort the names but keep Default on top
 #: ../dialogs/mime-settings/xfce-mime-window.c:474
@@ -1505,460 +1503,460 @@ msgstr "Angivet af bruger"
 #: ../dialogs/mouse-settings/main.c:383 ../dialogs/mouse-settings/main.c:385
 #: ../dialogs/mouse-settings/main.c:445
 msgid "Default"
-msgstr "Standard"
+msgstr "Լռելեայն"
 
 #: ../dialogs/mime-settings/xfce-mime-window.c:543
 #, c-format
 msgid "%d MIME type found"
 msgid_plural "%d MIME types found"
-msgstr[0] "%d MIME-type fundet"
-msgstr[1] "%d MIME-typer fundet"
+msgstr[0] "գտնուել է %d MIME տիպ"
+msgstr[1] "գտնուել են %d MIME տիպեր"
 
 #: ../dialogs/mime-settings/xfce-mime-window.c:642
 #, c-format
 msgid "Failed to set application \"%s\" for mime type \"%s\"."
-msgstr "Kunne ikke angive program \"%s\" for MIME-type \"%s\"."
+msgstr "Չյաջողուեց սահմանել «%s» յաւելուածը «%s» MIME տիպի համար։"
 
 #: ../dialogs/mime-settings/xfce-mime-window.c:899
 #, c-format
 msgid "Are you sure you want to reset content type \"%s\" to its default value?"
-msgstr "Er du sikker på, at du vil nulstille indholdstypen \"%s\" til dens standardværdi?"
+msgstr "Վերադարձնել բովանդակութեան «%s» տիպը, նրա նախկին արժէքին։"
 
 #: ../dialogs/mime-settings/xfce-mime-window.c:903
 msgid "Question"
-msgstr "Spørgsmål"
+msgstr "Հարցում"
 
 #: ../dialogs/mime-settings/xfce-mime-window.c:906
 msgid ""
 "This will remove your custom mime-association and restore the system-wide "
 "default."
-msgstr "Dette vil fjerne dine brugerdefinerede mime-associationer og genskabe systemets standardværdier."
+msgstr "Սա կը հեռացնի յարմարեցուած MIME համակցումը եւ կը վերադարձնի համակարգային լռելեայնները"
 
 #: ../dialogs/mime-settings/xfce-mime-window.c:910
 #: ../dialogs/mime-settings/xfce-mime-window.c:981
 msgid "Reset to Default"
-msgstr "Nulstil til standarder"
+msgstr "Վերադարձնել լռելեայները"
 
 #: ../dialogs/mime-settings/xfce-mime-window.c:976
 msgid "Choose Application..."
-msgstr "Vælg program ..."
+msgstr "Ընտրել յաւելուած..."
 
 #: ../dialogs/mouse-settings/main.c:83
 msgid "Active device in the dialog"
-msgstr "Aktiv enhed i vinduet"
+msgstr "Գործուն սարքը, երկխաւսութեան մէջ"
 
 #: ../dialogs/mouse-settings/main.c:83
 msgid "DEVICE NAME"
-msgstr "ENHEDSNAVN"
+msgstr "ՍԱՐՔԻ ԱՆՈՒՆԸ"
 
 #. pixel value for some of the scales in the dialog
 #: ../dialogs/mouse-settings/main.c:141
 #, c-format
 msgid "%g px"
-msgstr "%g px"
+msgstr "%g պտ"
 
 #. miliseconds value for some of the scales in the dialog
 #: ../dialogs/mouse-settings/main.c:151
 #, c-format
 msgid "%g ms"
-msgstr "%g ms"
+msgstr "%g մվ"
 
 #. seconds value for some of the scales in the dialog
 #: ../dialogs/mouse-settings/main.c:162
 #, c-format
 msgid "%.1f s"
-msgstr "%.1f s"
+msgstr "%.1f վ"
 
 #: ../dialogs/mouse-settings/mouse-dialog.glade.h:1
 msgid "Disabled"
-msgstr "Deaktiveret"
+msgstr "Անջատուած է"
 
 #: ../dialogs/mouse-settings/mouse-dialog.glade.h:2
 msgid "Edge scrolling"
-msgstr "Kant-rulning"
+msgstr "Եզրային ոլորում"
 
 #: ../dialogs/mouse-settings/mouse-dialog.glade.h:3
 msgid "Two-finger scrolling"
-msgstr "To-finger rulning"
+msgstr "Երկու մատով ոլորում"
 
 #: ../dialogs/mouse-settings/mouse-dialog.glade.h:4
 msgid "Circular scrolling"
-msgstr "Cirkulær rulning"
+msgstr "Շրջադարձային ոլորում"
 
 #: ../dialogs/mouse-settings/mouse-dialog.glade.h:5
 msgid "Pen (absolute)"
-msgstr "Pen (absolut)"
+msgstr "Գրիչ (բացարձակ)"
 
 #: ../dialogs/mouse-settings/mouse-dialog.glade.h:6
 msgid "Mouse (relative)"
-msgstr "Mus (relativ)"
+msgstr "Մկնիկ (հակադարձ)"
 
 #: ../dialogs/mouse-settings/mouse-dialog.glade.h:7
 msgid "None (right-handed)"
-msgstr "Ingen (højrehåndet)"
+msgstr "Ոչինչ (աջլիկների համար)"
 
 #: ../dialogs/mouse-settings/mouse-dialog.glade.h:8
 msgid "Half (left-handed)"
-msgstr "Halv (venstrehåndet)"
+msgstr "Կեսը (ձախլիկների համար)"
 
 #: ../dialogs/mouse-settings/mouse-dialog.glade.h:9
 msgid "Clockwise"
-msgstr "Med uret"
+msgstr "ժամսլաքի ուղութեամբ"
 
 #: ../dialogs/mouse-settings/mouse-dialog.glade.h:10
 msgid "Counterclockwise"
-msgstr "Mod uret"
+msgstr "Ժամսլաքին հակառակ"
 
 #: ../dialogs/mouse-settings/mouse-dialog.glade.h:11
 #: ../dialogs/mouse-settings/xfce-mouse-settings.desktop.in.h:1
 msgid "Mouse and Touchpad"
-msgstr "Mus og pegeplade"
+msgstr "Մկնիկ եւ հպահարթակ"
 
 #: ../dialogs/mouse-settings/mouse-dialog.glade.h:12
 #: ../dialogs/mouse-settings/xfce-mouse-settings.desktop.in.h:2
 msgid "Configure pointer device behavior and appearance"
-msgstr "Konfigurer opførsel og udseende for markørenhed"
+msgstr "Կազմաձեւել նշող սարքի վարքագիծն ու արտաքին տեսքը"
 
 #: ../dialogs/mouse-settings/mouse-dialog.glade.h:13
 msgid "De_vice:"
-msgstr "En_hed:"
+msgstr "Սա_րք․"
 
 #: ../dialogs/mouse-settings/mouse-dialog.glade.h:14
 msgid "Le_ft-handed"
-msgstr "_Venstrehåndet"
+msgstr "_Ձախլիկների համար"
 
 #: ../dialogs/mouse-settings/mouse-dialog.glade.h:15
 msgid "Ri_ght-handed"
-msgstr "_Højrehåndet"
+msgstr "_Աջլիկների համար"
 
 #: ../dialogs/mouse-settings/mouse-dialog.glade.h:16
 msgid "Reverse scroll d_irection"
-msgstr "Omvendt _rulleretning"
+msgstr "_Ոլորման հակադարձ ուղղութիւն "
 
 #: ../dialogs/mouse-settings/mouse-dialog.glade.h:17
 msgid "When selected, the scroll wheel will work in the opposite direction"
-msgstr "Når den vælges, så vil musehjulet fungere i modsat retning"
+msgstr "Ոլորման անիւը կաշխատի հակառակ ուղղութեամբ։"
 
 #: ../dialogs/mouse-settings/mouse-dialog.glade.h:18
 msgid "Buttons"
-msgstr "Knapper"
+msgstr "Կոճակներ"
 
 #: ../dialogs/mouse-settings/mouse-dialog.glade.h:19
 msgid "_Reset to Defaults"
-msgstr "_Nulstil til standarder"
+msgstr "Վ_երատեղադրել լռելեայնները"
 
 #: ../dialogs/mouse-settings/mouse-dialog.glade.h:20
 msgid ""
 "Set the acceleration and sensitivity for the selected device to the default "
 "values"
-msgstr "Angiv accelerationen og følsomheden for den valgte enhed til standardværdierne"
+msgstr "Սահմանել լռելեայն արժէքները, տուեալ սարքի արագութեան եւ զգայունութեան համար։"
 
 #: ../dialogs/mouse-settings/mouse-dialog.glade.h:21
 msgid "Sensitivit_y:"
-msgstr "_Følsomhed:"
+msgstr "Զգայունութիւ_ն․"
 
 #: ../dialogs/mouse-settings/mouse-dialog.glade.h:22
 msgid "Acceleratio_n:"
-msgstr "Acceleratio_n:"
+msgstr "Արագութ_իւն․"
 
 #: ../dialogs/mouse-settings/mouse-dialog.glade.h:23
 msgid ""
 "The factor at which the pointer's speed will increase as the mouse is moved"
-msgstr "Den faktor som markørens hastighed vil blive forøget med, når musen bevæges"
+msgstr "Գործառոյթը, որում ցուցիչի արագութիւնը կը նուազի մկնիկի շարժման դէպքում։"
 
 #: ../dialogs/mouse-settings/mouse-dialog.glade.h:24
 msgid ""
 "The number of pixels the pointer must move in a short time before it starts "
 "accelerating"
-msgstr "Antallet af pixels som markøren skal flyttes med, i en kort tidsperiode, før den begynder at accelerere"
+msgstr "Պատկերատարրերի քանակը, որը ցուցիչը պէտք է կարճ ժամանակում տեղափոխի մինչ արագացումը"
 
 #: ../dialogs/mouse-settings/mouse-dialog.glade.h:25
 msgid "Pointer Speed"
-msgstr "Markørhastighed"
+msgstr "Ցուցիչի արագութիւն"
 
 #: ../dialogs/mouse-settings/mouse-dialog.glade.h:26
 msgid "B_uttons and Feedback"
-msgstr "Kna_pper og tilbagemelding"
+msgstr "Կ_ոճակներ եւ յետադարձ կապ"
 
 #: ../dialogs/mouse-settings/mouse-dialog.glade.h:27
 msgid "Disable touchpad _while typing"
-msgstr "Deaktivér pegeplade _mens der skrives"
+msgstr "Անջատել հպահարթակը մուտքագրման _ընթացքում"
 
 #: ../dialogs/mouse-settings/mouse-dialog.glade.h:28
 msgid ""
 "When selected, the touchpad will be disabled when the keyboard is being used"
-msgstr "Når den vælges, så vil pegepladen være deaktiveret, når tastaturet anvendes"
+msgstr "Հպարահարթակը կանջատուի, ստեղնաշարի աւգտագործման ժամանակ"
 
 #: ../dialogs/mouse-settings/mouse-dialog.glade.h:29
 msgid "Duratio_n:"
-msgstr "Varighe_d:"
+msgstr "Տեւողու_թիւն․"
 
 #: ../dialogs/mouse-settings/mouse-dialog.glade.h:30
 msgid "Tap touchpad to clic_k"
-msgstr "Tryk på pegepladen for at _klikke"
+msgstr "Դիպել հարթակին սեղմ_ման համար"
 
 #: ../dialogs/mouse-settings/mouse-dialog.glade.h:32
 msgid "Scrolling _mode:"
-msgstr "Rulle_tilstand:"
+msgstr "Ոլորման _եղանակ․"
 
 #: ../dialogs/mouse-settings/mouse-dialog.glade.h:33
 msgid "Enable hori_zontal scrolling"
-msgstr "Aktivér _vandret rulning"
+msgstr "Միացնել _հորիզոնական ոլորումը"
 
 #: ../dialogs/mouse-settings/mouse-dialog.glade.h:34
 msgid "Scrolling"
-msgstr "Rulning"
+msgstr "Ոլորում"
 
 #: ../dialogs/mouse-settings/mouse-dialog.glade.h:35
 msgid "T_ouchpad"
-msgstr "_Pegeplade"
+msgstr "Հ_պահարթակ"
 
 #: ../dialogs/mouse-settings/mouse-dialog.glade.h:36
 msgid "Trac_king mode:"
-msgstr "S_poringstilstand:"
+msgstr "Հետեւ_ման եղանակ․"
 
 #: ../dialogs/mouse-settings/mouse-dialog.glade.h:37
 msgid "_Rotation:"
-msgstr "_Rotation:"
+msgstr "_Պտտում․"
 
 #: ../dialogs/mouse-settings/mouse-dialog.glade.h:38
 msgid "Tab_let"
-msgstr "Tab_let"
+msgstr "Գրա_սալիկ"
 
 #: ../dialogs/mouse-settings/mouse-dialog.glade.h:39
 msgid "_Devices"
-msgstr "_Enheder"
+msgstr "Սարք_եր"
 
 #: ../dialogs/mouse-settings/mouse-dialog.glade.h:40
 msgid "Th_reshold:"
-msgstr "G_rænseværdi:"
+msgstr "Շ_եմ․"
 
 #: ../dialogs/mouse-settings/mouse-dialog.glade.h:41
 msgid ""
 "The number of pixels the pointer must move before a drag operation will "
 "start"
-msgstr "Antallet af pixels som markøren skal flyttes før en trækkehandling starter"
+msgstr "Պատկերատարրերի քանակը, որը ցուցիչը պէտք է տեղափոխի՝ մինչ վերցման գործողութեան մեկնարկը"
 
 #: ../dialogs/mouse-settings/mouse-dialog.glade.h:42
 msgid "Drag and Drop"
-msgstr "Træk og slip"
+msgstr "Քաշ ու քից"
 
 #: ../dialogs/mouse-settings/mouse-dialog.glade.h:43
 msgid "Ti_me:"
-msgstr "Ti_d:"
+msgstr "Ժա_մանակահատուած․"
 
 #: ../dialogs/mouse-settings/mouse-dialog.glade.h:44
 msgid ""
 "Two mouse clicks in less than this length of time (in milliseconds) will be "
 "considered a double click"
-msgstr "To museklik inden for dette tidsrum (i millisekunder) anses som et dobbeltklik"
+msgstr "Մկնիկի կրկնակի սեղմումը, ժամանակի այս միջոցում (միլիվայրկեաններ), կընդունուի որպէս երկկտոց։"
 
 #: ../dialogs/mouse-settings/mouse-dialog.glade.h:45
 msgid "D_istance:"
-msgstr "Afst_and:"
+msgstr "_Հեռաւորութիւն․"
 
 #: ../dialogs/mouse-settings/mouse-dialog.glade.h:46
 msgid ""
 "The mouse pointer cannot move farther than this distance between two clicks "
 "for them to be considered a double click"
-msgstr "Musemarkøren kan ikke flyttes længere end denne afstand, mellem to klik, før de anses som et dobbeltklik"
+msgstr "Մկնիկի ցուցիչը չի կարող տեղափոխուել աւելի երկան քան կրկնակի սեղմման միջեւ ընկած տարածութիւնը, նրանց երկկտոց սահմանման համար։"
 
 #: ../dialogs/mouse-settings/mouse-dialog.glade.h:47
 msgid "Double Click"
-msgstr "Dobbeltklik"
+msgstr "Երկկտտոց"
 
 #: ../dialogs/mouse-settings/mouse-dialog.glade.h:48
 msgid "_Behavior"
-msgstr "_Opførsel"
+msgstr "_Վարքագիծ"
 
 #: ../dialogs/mouse-settings/mouse-dialog.glade.h:49
 msgid "Cursor si_ze:"
-msgstr "Markør_størrelse:"
+msgstr "Սլաքի _չափը․"
 
 #: ../dialogs/mouse-settings/mouse-dialog.glade.h:50
 msgid "Size"
-msgstr "Størrelse"
+msgstr "Չափ"
 
 #: ../dialogs/mouse-settings/mouse-dialog.glade.h:51
 msgid "Preview"
-msgstr "Forhåndsvisning"
+msgstr "Նախադիտում"
 
 #: ../dialogs/mouse-settings/mouse-dialog.glade.h:52
 msgid "_Theme"
-msgstr "_Tema"
+msgstr "_Ոճապնակ"
 
 #: ../xfce4-settings-editor/main.c:163
 #: ../xfce4-settings-editor/xfce4-settings-editor.desktop.in.h:1
 msgid "Settings Editor"
-msgstr "Indstillingsredigering"
+msgstr "Կարգաւորումների խմբագրիչ"
 
 #: ../xfce4-settings-editor/main.c:170
 msgid "Customize settings stored by Xfconf"
-msgstr "Tilpas indstillinger gemt af Xfconf"
+msgstr "Յարմարեցնել Xfconf֊ի կարգաւորումները"
 
 #: ../xfce4-settings-editor/xfce-settings-editor-box.c:252
 msgid "Channel"
-msgstr "Kanal"
+msgstr "Ուղի"
 
 #: ../xfce4-settings-editor/xfce-settings-editor-box.c:286
 msgid "Property"
-msgstr "Egenskab"
+msgstr "Յատկութիւն"
 
 #: ../xfce4-settings-editor/xfce-settings-editor-box.c:293
 msgid "Type"
-msgstr "Type"
+msgstr "Տիպ"
 
 #: ../xfce4-settings-editor/xfce-settings-editor-box.c:300
 msgid "Locked"
-msgstr "Låst"
+msgstr "Կողպուած"
 
 #: ../xfce4-settings-editor/xfce-settings-editor-box.c:307
 msgid "Value"
-msgstr "Værdi"
+msgstr "Արժէք"
 
 #: ../xfce4-settings-editor/xfce-settings-editor-box.c:322
 msgid "New"
-msgstr "Ny"
+msgstr "Նոր"
 
 #: ../xfce4-settings-editor/xfce-settings-editor-box.c:325
 msgid "New property"
-msgstr "Ny egenskab"
+msgstr "Նոր յատկութիւն"
 
 #: ../xfce4-settings-editor/xfce-settings-editor-box.c:333
 msgid "Edit"
-msgstr "Rediger"
+msgstr "Խմբագրել"
 
 #: ../xfce4-settings-editor/xfce-settings-editor-box.c:336
 msgid "Edit selected property"
-msgstr "Rediger valgte egenskab"
+msgstr "Խմբագրել ընտրուած յատկութիւնը"
 
 #: ../xfce4-settings-editor/xfce-settings-editor-box.c:344
 #: ../xfce4-settings-editor/xfce-settings-editor-box.c:1031
 #: ../xfce4-settings-editor/xfce-settings-editor-box.c:1370
 msgid "_Reset"
-msgstr "_Nulstil"
+msgstr "Վ_երատեղադրել"
 
 #: ../xfce4-settings-editor/xfce-settings-editor-box.c:347
 msgid "Reset selected property"
-msgstr "Nulstil valgte egenskab"
+msgstr "Վերատեղադրել ընտրուած յատկութիւնը"
 
 #: ../xfce4-settings-editor/xfce-settings-editor-box.c:454
 #: ../xfce4-settings-editor/xfce-settings-editor-box.c:545
 #: ../xfce4-settings-editor/xfce-settings-editor-box.c:664
 #: ../xfce4-settings-editor/xfce-settings-prop-dialog.c:89
 msgid "Empty"
-msgstr "Tom"
+msgstr "Դատարկ"
 
 #: ../xfce4-settings-editor/xfce-settings-editor-box.c:457
 msgid "Array"
-msgstr "Tabel"
+msgstr "Զանգուած"
 
 #: ../xfce4-settings-editor/xfce-settings-editor-box.c:462
 #: ../xfce4-settings-editor/xfce-settings-prop-dialog.c:90
 msgid "String"
-msgstr "Streng"
+msgstr "Տողերով"
 
 #: ../xfce4-settings-editor/xfce-settings-editor-box.c:470
 msgid "Integer"
-msgstr "Heltal"
+msgstr "Ամբողջ թվերով"
 
 #: ../xfce4-settings-editor/xfce-settings-editor-box.c:473
 #: ../xfce4-settings-editor/xfce-settings-prop-dialog.c:91
 msgid "Boolean"
-msgstr "Boolesk"
+msgstr "Տրամաբանական"
 
 #: ../xfce4-settings-editor/xfce-settings-editor-box.c:476
 #: ../xfce4-settings-editor/xfce-settings-prop-dialog.c:93
 msgid "Double"
-msgstr "Decimaltal"
+msgstr "Կրկնակի"
 
 #: ../xfce4-settings-editor/xfce-settings-editor-box.c:810
 msgid "_Reset Channel"
-msgstr "_Nulstil kanal"
+msgstr "Վ_երատեղադրել ալիքը"
 
 #: ../xfce4-settings-editor/xfce-settings-editor-box.c:811
 msgid "Resetting a channel will permanently remove those custom settings."
-msgstr "Nulstilling af en kanal vil fjerne disse brugerdefinerede indstillinger permanent."
+msgstr "Ուղու վերատեղադրումը, անվերադարձ կը հեռացնի ընտրովի կարգաւորումները։"
 
 #: ../xfce4-settings-editor/xfce-settings-editor-box.c:812
 #, c-format
 msgid "Are you sure you want to reset channel \"%s\" and all its properties?"
-msgstr "Er du sikker på, at du vil nulstille kanalen \"%s\" og alle dens egenskaber?"
+msgstr "Վերատեղադրե՞լ «%s»֊ն իր բոլոր յատկութիւնների հետ միասին։"
 
 #: ../xfce4-settings-editor/xfce-settings-editor-box.c:887
 msgid "reset"
-msgstr "nulstil"
+msgstr "Վերատեղադրել"
 
 #: ../xfce4-settings-editor/xfce-settings-editor-box.c:944
 #, c-format
 msgid "Monitor %s"
-msgstr "Overvåg %s"
+msgstr "Հսկել %s֊ին"
 
 #: ../xfce4-settings-editor/xfce-settings-editor-box.c:952
 msgid "Watch an Xfconf channel for property changes"
-msgstr "Overvåg en Xfconf-kanal for egenskabsændringer"
+msgstr "Հետեւել Xfconf ալիքին, յատկութեան փոփոխութիւնների համար"
 
 #: ../xfce4-settings-editor/xfce-settings-editor-box.c:954
 msgid "Clear"
-msgstr "Ryd"
+msgstr "Մաքրել"
 
 #: ../xfce4-settings-editor/xfce-settings-editor-box.c:955
 msgid "Close"
-msgstr "Luk"
+msgstr "Փակել"
 
 #: ../xfce4-settings-editor/xfce-settings-editor-box.c:988
 #, c-format
 msgid "start monitoring channel \"%s\""
-msgstr "start overvågning af kanal \"%s\""
+msgstr "սկսել \"%s\" ալիքի կառավարումը"
 
 #: ../xfce4-settings-editor/xfce-settings-editor-box.c:1037
 msgid "_Monitor"
-msgstr "_Overvågning"
+msgstr "_Կառավարել"
 
 #: ../xfce4-settings-editor/xfce-settings-editor-box.c:1047
 msgid "Refresh"
-msgstr "Opdater"
+msgstr ""
 
 #: ../xfce4-settings-editor/xfce-settings-editor-box.c:1371
 msgid "Resetting a property will permanently remove those custom settings."
-msgstr "Nulstilling af en egenskab vil fjerne disse brugerdefinerede indstillinger permanent."
+msgstr "Յատկութեան վերատեղադրումը, անվերադարձ կը հեռացնի ընտրովի կարգաւորումները։"
 
 #: ../xfce4-settings-editor/xfce-settings-editor-box.c:1372
 #, c-format
 msgid "Are you sure you want to reset property \"%s\"?"
-msgstr "Er du sikker på, at du vil nulstille egenskaben \"%s\"?"
+msgstr "Վերատեղադրե՞լ «%s» յատկութիւնը։"
 
 #: ../xfce4-settings-editor/xfce-settings-prop-dialog.c:92
 msgid "Int"
-msgstr "Heltal"
+msgstr "Ամբողջ թիւ"
 
 #: ../xfce4-settings-editor/xfce-settings-prop-dialog.c:94
 msgid "Unsigned Int"
-msgstr "Heltal uden fortegn"
+msgstr "Չգրանցուած ամբողջ թուերով"
 
 #: ../xfce4-settings-editor/xfce-settings-prop-dialog.c:95
 msgid "Int64"
-msgstr "Heltal-64"
+msgstr "Մեծ ամբողջ թուով"
 
 #: ../xfce4-settings-editor/xfce-settings-prop-dialog.c:96
 msgid "Unsigned Int64"
-msgstr "Heltal-64 uden fortegn"
+msgstr "Չգրանցուած ամբողջ թվերով"
 
 #: ../xfce4-settings-editor/xfce-settings-prop-dialog.c:141
 msgid "New Property"
-msgstr "Ny egenskab"
+msgstr "Նոր յատկութիւն"
 
 #: ../xfce4-settings-editor/xfce-settings-prop-dialog.c:145
 msgid "Save"
-msgstr "Gem"
+msgstr "Պահպանել"
 
 #: ../xfce4-settings-editor/xfce-settings-prop-dialog.c:160
 msgid "_Property:"
-msgstr "_Egenskab:"
+msgstr "_Անուն․"
 
 #: ../xfce4-settings-editor/xfce-settings-prop-dialog.c:174
 msgid "_Type:"
-msgstr "_Type:"
+msgstr "_Տիպ․"
 
 #. strings
 #. integers
@@ -1967,17 +1965,17 @@ msgstr "_Type:"
 #: ../xfce4-settings-editor/xfce-settings-prop-dialog.c:213
 #: ../xfce4-settings-editor/xfce-settings-prop-dialog.c:224
 msgid "_Value:"
-msgstr "_Værdi:"
+msgstr "_Արժէք․"
 
 #: ../xfce4-settings-editor/xfce-settings-prop-dialog.c:381
 #, c-format
 msgid "Property names must start with a '/' character"
-msgstr "Egenskabsnavne skal begynde med et '/'-tegn"
+msgstr "Յատկութեան անունը պէտք է սկսվի «/» գրանշանով"
 
 #: ../xfce4-settings-editor/xfce-settings-prop-dialog.c:392
 #, c-format
 msgid "The root element ('/') is not a valid property name"
-msgstr "Rodelementet ('/') er ikke et gyldigt egenskabsnavn"
+msgstr "(«/») արմատական տարրը, յատկութեան վաւեր անուն չէ"
 
 #: ../xfce4-settings-editor/xfce-settings-prop-dialog.c:409
 #, c-format
@@ -1985,115 +1983,115 @@ msgid ""
 "Property names can only include the ASCII characters A-Z, a-z, 0-9, '_', "
 "'-', ':', '.', ',', '[', ']', '{', '}', '<' and '>', as well as '/' as a "
 "separator"
-msgstr "Egenskabsnavne må kun indeholde ASCII-tegnene A-Z, a-z, 0-9, '_', '-', ':', '.', ',', '[', ']', '{', '}', '<' og '>', såvel som '/' som en separator"
+msgstr "Յատկութեան անունը կարող է պարունակել միայն ASCII գրանշաններ A-Z, a-z, 0-9, «_», «-», «:», «.», «,», «[», «]», «{», «}», «<» եւ «>», ինչպէս նաեւ «/» բաժանիչը"
 
 #: ../xfce4-settings-editor/xfce-settings-prop-dialog.c:423
 #, c-format
 msgid "Property names cannot have two or more consecutive '/' characters"
-msgstr "Egenskabsnavne må ikke indeholde mere end ét '/'-tegn efter hinanden"
+msgstr "Յատկութեան անունները չեն կարող ունենալ երկու կամ աւելի «/» յաջորդական գրանշաններ"
 
 #: ../xfce4-settings-editor/xfce-settings-prop-dialog.c:437
 #, c-format
 msgid "Property names cannot end with a '/' character"
-msgstr "Egenskabsnavne må ikke slutte med et '/'-tegn"
+msgstr "Յատկութեան անունը չի կարող աւարտուել «/» գրանշանով"
 
 #: ../xfce4-settings-editor/xfce-settings-prop-dialog.c:650
 msgid "Edit Property"
-msgstr "Rediger egenskab"
+msgstr "Խմբագրել յատկութիւնը"
 
 #: ../xfce4-settings-editor/xfce4-settings-editor.desktop.in.h:2
 msgid "Graphical settings editor for Xfconf"
-msgstr "Grafisk indstillingsredigering til Xfconf"
+msgstr "Տեսապատկերային կարգաւորումների խմբագրիչ` Xfconf֊ի համար"
 
 #: ../xfce4-settings-manager/main.c:44
 msgid "Settings dialog to show"
-msgstr "Indstillingsvindue at vise"
+msgstr "Ցուցադրելի կարգաւորումների երկխաւսութիւնները"
 
 #: ../xfce4-settings-manager/xfce-settings-manager-dialog.c:195
 msgid "All _Settings"
-msgstr "Alle _indstillinger"
+msgstr "Բոլոր _կարգաւորումները"
 
 #: ../xfce4-settings-manager/xfce-settings-manager-dialog.c:205
 msgid "_Help"
-msgstr "_Hjælp"
+msgstr "_Աջակցութիւն"
 
 #: ../xfce4-settings-manager/xfce-settings-manager-dialog.c:432
 msgid "Settings"
-msgstr "Indstillinger"
+msgstr "Կարգաւորումներ"
 
 #: ../xfce4-settings-manager/xfce-settings-manager-dialog.c:434
 msgid "Customize your desktop"
-msgstr "Tilpas dit skrivebord"
+msgstr "Յարմարեցնել աշխատասեղանը"
 
 #: ../xfce4-settings-manager/xfce-settings-manager-dialog.c:958
 #: ../xfce4-settings-manager/xfce-settings-manager-dialog.c:969
 #, c-format
 msgid "Unable to start \"%s\""
-msgstr "Kunne ikke starte \"%s\""
+msgstr "Անհնար է գործարկել «%s»֊ը"
 
 #: ../xfce4-settings-manager/xfce-settings-manager.desktop.in.h:1
 msgid "Settings Manager"
-msgstr "Indstillingshåndtering"
+msgstr "Կարգաւորումների կառավարիչ"
 
 #: ../xfce4-settings-manager/xfce-settings-manager.desktop.in.h:2
 msgid "Graphical Settings Manager for Xfce 4"
-msgstr "Grafisk indstillingshåndtering til Xfce 4"
+msgstr "Տեսապատկերային կարգաւորումների կառավարիչ, Xfce 4֊ի համար"
 
 #: ../xfsettingsd/accessibility.c:412
 msgid "Sticky keys are enabled"
-msgstr "Klæbetaster er aktiveret"
+msgstr "Կպչուն ստեղները միացուած են"
 
 #: ../xfsettingsd/accessibility.c:414
 msgid "Sticky keys are disabled"
-msgstr "Klæbetaster er deaktiveret"
+msgstr "Կպչուն ստեղներն անջատուած են"
 
 #: ../xfsettingsd/accessibility.c:416
 msgid "Sticky keys"
-msgstr "Klæbetaster"
+msgstr "Կպչուն ստեղներ"
 
 #: ../xfsettingsd/accessibility.c:421
 msgid "Slow keys are enabled"
-msgstr "Langsomme taster er aktiveret"
+msgstr "Դանդաղ ստեղները միացուած են"
 
 #: ../xfsettingsd/accessibility.c:423
 msgid "Slow keys are disabled"
-msgstr "Langsomme taster er deaktiveret"
+msgstr "Դանդաղ ստեղները անջատուած են"
 
 #: ../xfsettingsd/accessibility.c:425
 msgid "Slow keys"
-msgstr "Langsomme taster"
+msgstr "Դանդաղ ստեղներ"
 
 #: ../xfsettingsd/accessibility.c:430
 msgid "Bounce keys are enabled"
-msgstr "Rystetaster er aktiveret"
+msgstr "«Յետցատկ»֊ի ստեղները միացուած են"
 
 #: ../xfsettingsd/accessibility.c:432
 msgid "Bounce keys are disabled"
-msgstr "Rystetaster er deaktiveret"
+msgstr "«Յետցատկ»֊ի ստեղներն անջատուած են"
 
 #: ../xfsettingsd/accessibility.c:434
 msgid "Bounce keys"
-msgstr "Rystetaster"
+msgstr "«Յետցատկ»֊ի ստեղներ"
 
 #: ../xfsettingsd/keyboard-shortcuts.c:242
 #, c-format
 msgid "Failed to launch shortcut \"%s\""
-msgstr "Kunne ikke starte genvej \"%s\""
+msgstr "Չյաջողուեց գործարկել «%s» դիւրանցումը"
 
 #: ../xfsettingsd/main.c:102
 msgid "Do not fork to the background"
-msgstr "Forgren ikke til baggrunden"
+msgstr "Չանցնել յետնաշերտային աշխատակերպի"
 
 #: ../xfsettingsd/main.c:103
 msgid "Replace running xsettings daemon (if any)"
-msgstr "Erstat kørende xsettings-dæmon (hvis den findes)"
+msgstr "Փոխարինել գործարկուող xsettings աւժանդակ ծրագիրը (եթե կա)"
 
 #. value in xfconf isn't a string, so make a default one
 #: ../xfsettingsd/workspaces.c:338 ../xfsettingsd/workspaces.c:396
 #, c-format
 msgid "Workspace %d"
-msgstr "Arbejdsområde %d"
+msgstr "Աշխատատարածք %d"
 
 #: ../xfsettingsd/xfsettingsd.desktop.in.h:1
 msgid "The Xfce Settings Daemon"
-msgstr "Xfce-indstillingsdæmonen"
+msgstr "Xfce֊ի կարգաւորումների աւժանդակ ծրագիր"
