@@ -11,7 +11,7 @@ dnl *** Version information ***
 dnl ***************************
 m4_define([xfce4_settings_version_major], [4])
 m4_define([xfce4_settings_version_minor], [13])
-m4_define([xfce4_settings_version_micro], [7])
+m4_define([xfce4_settings_version_micro], [8])
 m4_define([xfce4_settings_version_nano], [])
 m4_define([xfce4_settings_version_build], [@REVISION@])
 m4_define([xfce4_settings_version_tag], []) # Leave empty for releases
@@ -32,7 +32,7 @@ m4_define([xfce4_settings_debug_default], [ifelse(xfce4_settings_version_tag(), 
 dnl ***************************
 dnl *** Initialize autoconf ***
 dnl ***************************
-AC_COPYRIGHT([Copyright (c) 2008-2015
+AC_COPYRIGHT([Copyright (c) 2008-2019
         The Xfce development team. All rights reserved.])
 AC_INIT([xfce4-settings], [xfce4_settings_version], [https://bugzilla.xfce.org/])
 AC_PREREQ([2.60])
