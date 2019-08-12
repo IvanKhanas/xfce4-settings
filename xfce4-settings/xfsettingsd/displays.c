@@ -281,7 +281,6 @@ xfce_displays_helper_init (XfceDisplaysHelper *helper)
             /* remove any leftover apply property before setting the monitor */
             xfconf_channel_reset_property (helper->channel, APPLY_SCHEME_PROP, FALSE);
             xfconf_channel_set_string (helper->channel, ACTIVE_PROFILE, DEFAULT_SCHEME_NAME);
-            g_warning ("active profile is now: default");
 
             /* monitor channel changes */
             helper->handler = g_signal_connect (G_OBJECT (helper->channel),
@@ -302,18 +301,15 @@ xfce_displays_helper_init (XfceDisplaysHelper *helper)
                 matching_profile = xfce_displays_helper_get_matching_profile (helper);
                 if (matching_profile)
                 {
-                    g_warning ("matching profile is: %s", matching_profile);
                     xfce_displays_helper_channel_apply (helper, matching_profile);
                 }
                 else {
                     xfce_displays_helper_channel_apply (helper, DEFAULT_SCHEME_NAME);
-                    g_warning ("active profile is now: default");
                 }
             }
             /* restore the default scheme */
             else {
                 xfce_displays_helper_channel_apply (helper, DEFAULT_SCHEME_NAME);
-                g_warning ("active profile is now: default");
             }
         }
         else
@@ -439,23 +435,44 @@ xfce_displays_helper_reload (XfceDisplaysHelper *helper)
 
 
 
+static gchar **
+xfce_displays_helper_get_display_infos (gint      noutput,
+                                        Display  *xdisplay,
+                                        RROutput *outputs)
+{
+    gchar    **display_infos;
+    gint       m;
+    guint8    *edid_data;
+
+    display_infos = g_new0 (gchar *, noutput);
+    /* get all display edids, to only query randr once */
+    for (m = 0; m < noutput; ++m)
+    {
+        edid_data = xfce_randr_read_edid_data (xdisplay, outputs[m]);
+
+        if (edid_data)
+            display_infos[m] = g_compute_checksum_for_data (G_CHECKSUM_SHA1 , edid_data, 128);
+    }
+    return display_infos;
+}
+
+
+
 static gchar *
 xfce_displays_helper_get_matching_profile (XfceDisplaysHelper *helper)
 {
     GList              *profiles = NULL;
-    GdkDisplay         *display;
-    GError             *error = NULL;
     gpointer           *profile;
-    XfceRandr          *xfce_randr;
     gchar              *profile_name;
     gchar              *property;
+    gchar             **display_infos;
 
-    display = gdk_display_get_default ();
-    xfce_randr = xfce_randr_new (display, &error);
-    if (xfce_randr)
+    display_infos = xfce_displays_helper_get_display_infos (helper->resources->noutput,
+                                                            helper->xdisplay,
+                                                            helper->resources->outputs);
+    if (display_infos)
     {
-        profiles = display_settings_get_profiles (xfce_randr, helper->channel);
-        xfce_randr_free (xfce_randr);
+        profiles = display_settings_get_profiles (display_infos, helper->channel);
     }
 
     if (profiles == NULL)
@@ -476,6 +493,7 @@ xfce_displays_helper_get_matching_profile (XfceDisplaysHelper *helper)
     {
         xfsettings_dbg (XFSD_DEBUG_DISPLAYS, "Found %d matching display profiles.", g_list_length (profiles));
     }
+
     return NULL;
 }
 
@@ -710,12 +728,10 @@ xfce_displays_helper_load_from_xfconf (XfceDisplaysHelper *helper,
     g_assert (XFCE_IS_DISPLAYS_HELPER (helper) && helper->resources && output);
 
     active = output->active;
-    saved_outputs = xfconf_channel_get_properties (helper->channel, "/" DEFAULT_SCHEME_NAME);
 
     /* does this output exist in xfconf? */
     g_snprintf (property, sizeof (property), OUTPUT_FMT, scheme, output->info->name);
     value = g_hash_table_lookup (saved_outputs, property);
-    g_warning ("output found: %s (%s)", output->info->name, scheme);
 
     if (value == NULL || !G_VALUE_HOLDS_STRING (value))
         return active;
@@ -738,15 +754,11 @@ xfce_displays_helper_load_from_xfconf (XfceDisplaysHelper *helper,
 
     if (value == NULL || !G_VALUE_HOLDS_BOOLEAN (value))
         return active;
-    else
-        g_warning ("status found");
 
     /* Get the associated CRTC */
     crtc = xfce_displays_helper_find_usable_crtc (helper, output);
     if (!crtc)
         return active;
-    else
-        g_warning ("crtc found");
 
     /* disable inactive outputs */
     if (!g_value_get_boolean (value))
@@ -818,8 +830,6 @@ xfce_displays_helper_load_from_xfconf (XfceDisplaysHelper *helper,
         str_value = "";
     else
         str_value = g_value_get_string (value);
-    g_warning ("resolution found: %s vs. %s vs %s", property, str_value, xfconf_channel_get_string (helper->channel, property, ""));
-
 
     /* refresh rate */
     g_snprintf (property, sizeof (property), RRATE_PROP, scheme, output->info->name);
@@ -1462,17 +1472,15 @@ xfce_displays_helper_channel_apply (XfceDisplaysHelper *helper,
     guint       n, nactive;
     GHashTable *saved_outputs;
 
-    //saved_outputs = NULL;
+    saved_outputs = NULL;
 #ifdef HAS_RANDR_ONE_POINT_THREE
     helper->primary = None;
 #endif
 
     xfconf_channel_set_string (helper->channel, ACTIVE_PROFILE, scheme);
-    g_warning ("the scheme is %s", scheme);
 
     /* finally the list of saved outputs from xfconf */
     g_snprintf (property, sizeof (property), "/%s", scheme);
-    g_warning ("the property is %s", property);
     saved_outputs = xfconf_channel_get_properties (helper->channel, property);
 
     /* nothing saved, nothing to do */
@@ -1487,7 +1495,6 @@ xfce_displays_helper_channel_apply (XfceDisplaysHelper *helper,
                                                    g_ptr_array_index (helper->outputs,
                                                                       n)))
             ++nactive;
-        g_warning ("going to saved output number %d", nactive);
     }
 
     xfsettings_dbg (XFSD_DEBUG_DISPLAYS, "Total %d active output(s).", nactive);
@@ -1516,7 +1523,6 @@ xfce_displays_helper_channel_property_changed (XfconfChannel      *channel,
                                                const GValue       *value,
                                                XfceDisplaysHelper *helper)
 {
-    g_warning ("property changed: %s", property_name);
     if (G_UNLIKELY (G_VALUE_HOLDS_STRING (value) &&
         g_strcmp0 (property_name, APPLY_SCHEME_PROP) == 0))
     {

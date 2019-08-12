@@ -10,8 +10,8 @@ dnl ***************************
 dnl *** Version information ***
 dnl ***************************
 m4_define([xfce4_settings_version_major], [4])
-m4_define([xfce4_settings_version_minor], [13])
-m4_define([xfce4_settings_version_micro], [8])
+m4_define([xfce4_settings_version_minor], [14])
+m4_define([xfce4_settings_version_micro], [0])
 m4_define([xfce4_settings_version_nano], [])
 m4_define([xfce4_settings_version_build], [@REVISION@])
 m4_define([xfce4_settings_version_tag], []) # Leave empty for releases
