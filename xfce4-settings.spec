@@ -4,7 +4,7 @@ Release: alt1
 Summary: Settings Manager for Xfce
 Summary (ru_RU.UTF-8): Менеджер настроек Xfce
 
-License: %gpl2plus
+License: GPLv2+
 Url: https://www.xfce.org/
 Group: Graphical desktop/XFce
 Packager: Xfce Team <xfce@packages.altlinux.org>
@@ -13,8 +13,6 @@ Packager: Xfce Team <xfce@packages.altlinux.org>
 Source: %name-%version.tar
 Source1: xfce4-fixkeyboard
 Patch: %name-%version-%release.patch
-
-BuildRequires(pre): rpm-build-licenses
 
 BuildPreReq: rpm-build-xfce4 xfce4-dev-tools > 4.5
 BuildRequires: libxfce4ui-gtk3-devel libexo-gtk3-devel libxfconf-devel libgarcon-devel >= 0.1.10
