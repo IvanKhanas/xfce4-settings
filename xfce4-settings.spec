@@ -9,7 +9,7 @@ Url: https://www.xfce.org/
 Group: Graphical desktop/XFce
 Packager: Xfce Team <xfce@packages.altlinux.org>
 
-# Upstream: git://git.xfce.org/xfce/xfce4-settings
+Vcs: git://git.xfce.org/xfce/xfce4-settings
 Source: %name-%version.tar
 Source1: xfce4-fixkeyboard
 Patch: %name-%version-%release.patch
