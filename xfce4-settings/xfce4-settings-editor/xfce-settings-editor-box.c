@@ -67,7 +67,7 @@ struct _XfceSettingsEditorBox
     GtkWidget         *button_edit;
     GtkWidget         *button_reset;
 
-    gint			   paned_pos;
+    gint               paned_pos;
 };
 
 
@@ -190,6 +190,7 @@ xfce_settings_editor_box_init (XfceSettingsEditorBox *self)
     GtkWidget         *vbox;
     GtkWidget         *bbox;
     GtkWidget         *button;
+    GtkWidget         *image;
     GtkCssProvider    *provider;
 
 	self->channels_store = gtk_list_store_new (N_CHANNEL_COLUMNS,
@@ -199,12 +200,12 @@ xfce_settings_editor_box_init (XfceSettingsEditorBox *self)
                                           CHANNEL_COLUMN_NAME, GTK_SORT_ASCENDING);
 
     self->props_store = gtk_tree_store_new (N_PROP_COLUMNS,
-											G_TYPE_STRING,
-											G_TYPE_STRING,
-											G_TYPE_STRING,
-											G_TYPE_STRING,
-											G_TYPE_BOOLEAN,
-											G_TYPE_VALUE);
+                                            G_TYPE_STRING,
+                                            G_TYPE_STRING,
+                                            G_TYPE_STRING,
+                                            G_TYPE_STRING,
+                                            G_TYPE_BOOLEAN,
+                                            G_TYPE_VALUE);
     gtk_tree_sortable_set_sort_column_id (GTK_TREE_SORTABLE (self->props_store),
                                           PROP_COLUMN_NAME, GTK_SORT_ASCENDING);
     self->paned = paned = gtk_paned_new (GTK_ORIENTATION_HORIZONTAL);
@@ -217,7 +218,7 @@ xfce_settings_editor_box_init (XfceSettingsEditorBox *self)
     /* Style the GtkPaned */
     gtk_paned_set_wide_handle (GTK_PANED (paned), TRUE);
     provider = gtk_css_provider_new ();
-    gtk_css_provider_load_from_data (provider, 
+    gtk_css_provider_load_from_data (provider,
         "paned > separator.wide { background:transparent; }", -1, NULL);
     gtk_style_context_add_provider (gtk_widget_get_style_context (paned),
         GTK_STYLE_PROVIDER (provider), GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
@@ -252,7 +253,7 @@ xfce_settings_editor_box_init (XfceSettingsEditorBox *self)
                                                  _("Channel"), render,
                                                  "text", CHANNEL_COLUMN_NAME, NULL);
 
-    vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 6);
+    vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
     gtk_paned_add2 (GTK_PANED (paned), vbox);
     gtk_widget_show (vbox);
 
@@ -314,12 +315,14 @@ xfce_settings_editor_box_init (XfceSettingsEditorBox *self)
         G_CALLBACK (xfce_settings_editor_box_value_changed), self);
 
     bbox = gtk_button_box_new (GTK_ORIENTATION_HORIZONTAL);
-    gtk_box_set_spacing (GTK_BOX (bbox), 12);
     gtk_box_pack_start (GTK_BOX (vbox), bbox, FALSE, TRUE, 0);
     gtk_button_box_set_layout (GTK_BUTTON_BOX (bbox), GTK_BUTTONBOX_START);
+    gtk_style_context_add_class (gtk_widget_get_style_context (bbox), "inline-toolbar");
     gtk_widget_show (bbox);
 
-    button = xfce_gtk_button_new_mixed ("list-add", _("New"));
+    button = gtk_button_new ();
+    image = gtk_image_new_from_icon_name ("list-add-symbolic", GTK_ICON_SIZE_BUTTON);
+    gtk_button_set_image (GTK_BUTTON (button), image);
     gtk_container_add (GTK_CONTAINER (bbox), button);
     gtk_button_box_set_child_non_homogeneous (GTK_BUTTON_BOX (bbox), button, TRUE);
     gtk_widget_set_tooltip_text (button, _("New property"));
@@ -330,7 +333,9 @@ xfce_settings_editor_box_init (XfceSettingsEditorBox *self)
     g_signal_connect_swapped (G_OBJECT (button), "clicked",
         G_CALLBACK (xfce_settings_editor_box_property_new), self);
 
-    button = xfce_gtk_button_new_mixed ("gtk-edit", _("Edit"));
+    button = gtk_button_new ();
+    image = gtk_image_new_from_icon_name ("document-edit-symbolic", GTK_ICON_SIZE_BUTTON);
+    gtk_button_set_image (GTK_BUTTON (button), image);
     gtk_container_add (GTK_CONTAINER (bbox), button);
     gtk_button_box_set_child_non_homogeneous (GTK_BUTTON_BOX (bbox), button, TRUE);
     gtk_widget_set_tooltip_text (button, _("Edit selected property"));
@@ -341,7 +346,9 @@ xfce_settings_editor_box_init (XfceSettingsEditorBox *self)
     g_signal_connect_swapped (G_OBJECT (button), "clicked",
         G_CALLBACK (xfce_settings_editor_box_property_edit), self);
 
-    button = xfce_gtk_button_new_mixed ("document-revert", _("_Reset"));
+    button = gtk_button_new ();
+    image = gtk_image_new_from_icon_name ("document-revert-symbolic", GTK_ICON_SIZE_BUTTON);
+    gtk_button_set_image (GTK_BUTTON (button), image);
     gtk_container_add (GTK_CONTAINER (bbox), button);
     gtk_button_box_set_child_non_homogeneous (GTK_BUTTON_BOX (bbox), button, TRUE);
     gtk_widget_set_tooltip_text (button, _("Reset selected property"));
@@ -852,7 +859,7 @@ xfce_settings_editor_box_channel_monitor_changed (XfconfChannel *channel,
 												  GtkWidget     *window)
 {
     GtkTextBuffer *buffer;
-    GTimeVal       timeval;
+    gint64         timeval;
     gchar         *str;
     GValue         str_value = { 0, };
     GtkTextIter    iter;
@@ -860,7 +867,7 @@ xfce_settings_editor_box_channel_monitor_changed (XfconfChannel *channel,
     buffer = g_object_get_data (G_OBJECT (window), "buffer");
     g_return_if_fail (GTK_IS_TEXT_BUFFER (buffer));
 
-    g_get_current_time (&timeval);
+    timeval = g_get_real_time ();
 
     if (value != NULL && G_IS_VALUE (value))
     {
@@ -868,14 +875,14 @@ xfce_settings_editor_box_channel_monitor_changed (XfconfChannel *channel,
         if (g_value_transform (value, &str_value))
         {
             str = g_strdup_printf ("%ld: %s (%s: %s)\n",
-                                   timeval.tv_sec, property,
+                                   timeval / G_USEC_PER_SEC, property,
                                    G_VALUE_TYPE_NAME (value),
                                    g_value_get_string (&str_value));
         }
         else
         {
             str = g_strdup_printf ("%ld: %s (%s)\n",
-                                   timeval.tv_sec, property,
+                                   timeval / G_USEC_PER_SEC, property,
                                    G_VALUE_TYPE_NAME (value));
         }
         g_value_unset (&str_value);
@@ -883,7 +890,7 @@ xfce_settings_editor_box_channel_monitor_changed (XfconfChannel *channel,
     else
     {
         /* I18N: if a property is removed from the channel */
-        str = g_strdup_printf ("%ld: %s (%s)\n", timeval.tv_sec,
+        str = g_strdup_printf ("%ld: %s (%s)\n", timeval / G_USEC_PER_SEC,
                                property, _("reset"));
     }
 
@@ -933,7 +940,7 @@ xfce_settings_editor_box_channel_monitor (XfceSettingsEditorBox *self)
     GtkWidget     *textview;
     GtkWidget     *content_area;
     GtkTextBuffer *buffer;
-    GTimeVal       timeval;
+    gint64         timeval;
     gchar         *str;
     GtkTextIter    iter;
 
@@ -979,9 +986,9 @@ xfce_settings_editor_box_channel_monitor (XfceSettingsEditorBox *self)
     g_signal_connect (G_OBJECT (self->props_channel), "property-changed",
         G_CALLBACK (xfce_settings_editor_box_channel_monitor_changed), window);
 
-    g_get_current_time (&timeval);
+    timeval = g_get_real_time ();
     gtk_text_buffer_get_start_iter (buffer, &iter);
-    str = g_strdup_printf ("%ld: ", timeval.tv_sec);
+    str = g_strdup_printf ("%ld: ", timeval / G_USEC_PER_SEC);
     gtk_text_buffer_insert_with_tags_by_name (buffer, &iter, str, -1, "monospace", NULL);
     g_free (str);
 

@@ -499,6 +499,7 @@ color_settings_profile_add_cb (GtkButton *button, ColorSettings *settings)
 {
     g_autoptr(GPtrArray) profiles = NULL;
     gchar *window_title;
+    int response;
 
     /* add profiles of the right kind */
     profiles = cd_device_get_profiles (settings->current_device);
@@ -514,7 +515,10 @@ color_settings_profile_add_cb (GtkButton *button, ColorSettings *settings)
     gtk_window_set_title (GTK_WINDOW (settings->dialog_assign), window_title);
     xfce_titled_dialog_set_subtitle (XFCE_TITLED_DIALOG (settings->dialog_assign), color_device_get_title (settings->current_device));
     g_free (window_title);
-    gtk_widget_show (GTK_WIDGET (settings->dialog_assign));
+
+    response = gtk_dialog_run (GTK_DIALOG (settings->dialog_assign));
+    if (response == GTK_RESPONSE_DELETE_EVENT)
+        gtk_widget_hide (GTK_WIDGET (settings->dialog_assign));
 }
 
 
@@ -917,6 +921,7 @@ color_settings_profiles_list_box_row_activated_cb (GtkListBox *list_box,
 static void
 color_settings_dialog_destroy (ColorSettings *settings)
 {
+    gtk_widget_destroy (GTK_WIDGET (settings->dialog_assign));
     g_clear_object (&settings->cancellable);
     g_clear_object (&settings->client);
     g_clear_object (&settings->current_device);
@@ -1299,9 +1304,6 @@ color_settings_dialog_init (GtkBuilder *builder)
     g_signal_connect (settings->profiles_remove, "clicked", G_CALLBACK (color_settings_profile_remove_cb), settings);
 
     settings->profiles_info = gtk_builder_get_object (builder, "profiles-info");
-    /* Conditionally show/hide the info button, based on the availability of gnome-color-manager */
-    if (g_find_program_in_path ("gcm-viewer") == NULL)
-        gtk_widget_hide (GTK_WIDGET (settings->profiles_info));
     gtk_widget_set_sensitive (GTK_WIDGET (settings->profiles_info), FALSE);
     g_signal_connect (settings->profiles_info, "clicked", G_CALLBACK (color_settings_profile_info_cb), settings);
 
@@ -1354,6 +1356,12 @@ color_settings_dialog_init (GtkBuilder *builder)
     g_signal_connect (settings->button_assign_cancel, "clicked",
                       G_CALLBACK (color_settings_button_assign_cancel_cb), settings);
 
+    /* Conditionally show/hide the info buttons, based on the availability of gnome-color-manager */
+    if (g_find_program_in_path ("gcm-viewer") == NULL) {
+        gtk_widget_hide (GTK_WIDGET (settings->profiles_info));
+        gtk_widget_hide (GTK_WIDGET (settings->button_assign_info));
+    }
+
     cd_client_connect (settings->client,
                        settings->cancellable,
                        color_settings_connect_cb,
@@ -1375,7 +1383,7 @@ main (gint argc, gchar **argv)
     xfce_textdomain (GETTEXT_PACKAGE, LOCALEDIR, "UTF-8");
 
     /* initialize Gtk+ */
-    if (!gtk_init_with_args (&argc, &argv, "", entries, PACKAGE, &error)) {
+    if (!gtk_init_with_args (&argc, &argv, NULL, entries, PACKAGE, &error)) {
         if (G_LIKELY (error)) {
             /* print error */
             g_print ("%s: %s.\n", G_LOG_DOMAIN, error->message);
@@ -1417,6 +1425,7 @@ main (gint argc, gchar **argv)
         if (G_UNLIKELY (opt_socket_id == 0)) {
             /* Get the dialog widget */
             settings->dialog = gtk_builder_get_object (builder, "dialog");
+            gtk_window_set_type_hint (GTK_WINDOW (settings->dialog), GDK_WINDOW_TYPE_HINT_NORMAL);
 
             g_signal_connect (settings->dialog, "response",
                               G_CALLBACK (color_settings_dialog_response), settings);

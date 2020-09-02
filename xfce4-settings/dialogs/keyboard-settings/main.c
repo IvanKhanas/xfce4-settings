@@ -70,7 +70,7 @@ main (int    argc,
   xfce_textdomain (GETTEXT_PACKAGE, LOCALEDIR, "UTF-8");
 
   /* Initialize GTK+ and parse command line options */
-  if (G_UNLIKELY (!gtk_init_with_args (&argc, &argv, "", entries, PACKAGE, &error)))
+  if (G_UNLIKELY (!gtk_init_with_args (&argc, &argv, NULL, entries, PACKAGE, &error)))
     {
       if (G_LIKELY (error != NULL))
         {
@@ -123,6 +123,7 @@ main (int    argc,
     {
       /* Create and run the settings dialog */
       dialog = xfce_keyboard_settings_create_dialog (settings);
+      gtk_window_set_type_hint (GTK_WINDOW (dialog), GDK_WINDOW_TYPE_HINT_NORMAL);
 
       g_signal_connect (dialog, "response",
           G_CALLBACK (keyboard_settings_dialog_response), NULL);

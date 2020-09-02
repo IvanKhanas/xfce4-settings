@@ -436,23 +436,29 @@ xfce_displays_helper_reload (XfceDisplaysHelper *helper)
 
 
 static gchar **
-xfce_displays_helper_get_display_infos (gint      noutput,
-                                        Display  *xdisplay,
-                                        RROutput *outputs)
+xfce_displays_helper_get_display_infos (gint       noutput,
+                                        Display   *xdisplay,
+                                        GPtrArray *outputs)
 {
     gchar    **display_infos;
     gint       m;
     guint8    *edid_data;
 
-    display_infos = g_new0 (gchar *, noutput);
+    display_infos = g_new0 (gchar *, noutput + 1);
     /* get all display edids, to only query randr once */
     for (m = 0; m < noutput; ++m)
     {
-        edid_data = xfce_randr_read_edid_data (xdisplay, outputs[m]);
+        XfceRROutput *output;
+
+        output = g_ptr_array_index (outputs, m);
+        edid_data = xfce_randr_read_edid_data (xdisplay, output->id);
 
         if (edid_data)
             display_infos[m] = g_compute_checksum_for_data (G_CHECKSUM_SHA1 , edid_data, 128);
+        else
+            display_infos[m] = g_strdup ("");
     }
+
     return display_infos;
 }
 
@@ -467,12 +473,13 @@ xfce_displays_helper_get_matching_profile (XfceDisplaysHelper *helper)
     gchar              *property;
     gchar             **display_infos;
 
-    display_infos = xfce_displays_helper_get_display_infos (helper->resources->noutput,
+    display_infos = xfce_displays_helper_get_display_infos (helper->outputs->len,
                                                             helper->xdisplay,
-                                                            helper->resources->outputs);
+                                                            helper->outputs);
     if (display_infos)
     {
         profiles = display_settings_get_profiles (display_infos, helper->channel);
+        g_strfreev (display_infos);
     }
 
     if (profiles == NULL)
@@ -1090,6 +1097,7 @@ xfce_displays_helper_list_crtcs (XfceDisplaysHelper *helper)
     crtcs = g_ptr_array_new_with_free_func ((GDestroyNotify) xfce_displays_helper_free_crtc);
     for (n = 0; n < helper->resources->ncrtc; ++n)
     {
+        XRRCrtcTransformAttributes  *attr;
         xfsettings_dbg (XFSD_DEBUG_DISPLAYS, "Detected CRTC %lu.", helper->resources->crtcs[n]);
 
         gdk_x11_display_error_trap_push (helper->display);
@@ -1112,6 +1120,17 @@ xfce_displays_helper_list_crtcs (XfceDisplaysHelper *helper)
         crtc->height = crtc_info->height;
         crtc->x = crtc_info->x;
         crtc->y = crtc_info->y;
+        if (XRRGetCrtcTransform (helper->xdisplay, helper->resources->crtcs[n], &attr) && attr)
+        {
+            crtc->scalex = XFixedToDouble (attr->currentTransform.matrix[0][0]);
+            crtc->scaley = XFixedToDouble (attr->currentTransform.matrix[1][1]);
+            XFree (attr);
+        }
+        else
+        {
+            crtc->scalex = 1.0;
+            crtc->scaley = 1.0;
+        }
 
         crtc->noutput = crtc_info->noutput;
         crtc->outputs = NULL;
