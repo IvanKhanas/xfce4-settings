@@ -35,6 +35,7 @@ desktop_in_in_files =							\
 	mutt.desktop.in.in							\
 	nautilus.desktop.in.in						\
 	netscape-navigator.desktop.in.in			\
+	newmoon.desktop.in.in						\
 	nxterm.desktop.in.in						\
 	opera-browser.desktop.in.in					\
 	pcmanfm.desktop.in.in						\
