@@ -1,5 +1,5 @@
 Name: xfce4-settings
-Version: 4.15.2
+Version: 4.15.3
 Release: alt1
 Summary: Settings Manager for Xfce
 Summary (ru_RU.UTF-8): Менеджер настроек Xfce
@@ -72,7 +72,7 @@ for the Xfce desktop.
 install -pDm0755 %SOURCE1 %buildroot%_bindir/xfce4-fixkeyboard
 
 %files -f %name.lang
-%doc README TODO NEWS INSTALL COPYING AUTHORS
+%doc README.md TODO NEWS COPYING AUTHORS
 %_bindir/*
 %_libdir/xfce4/*
 %config(noreplace) %_sysconfdir/xdg/autostart/*
@@ -86,6 +86,10 @@ install -pDm0755 %SOURCE1 %buildroot%_bindir/xfce4-fixkeyboard
 %_iconsdir/*/*/*/*.*
 
 %changelog
+* Mon Nov 16 2020 Mikhail Efremov <sem@altlinux.org> 4.15.3-alt1
+- Explicitly enabled upower support.
+- Updated to 4.15.3.
+
 * Wed Sep 02 2020 Mikhail Efremov <sem@altlinux.org> 4.15.2-alt1
 - Updated Vcs tag.
 - Updated to 4.15.2.
