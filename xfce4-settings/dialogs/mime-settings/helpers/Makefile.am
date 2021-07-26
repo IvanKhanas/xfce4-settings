@@ -9,6 +9,7 @@ desktop_in_in_files =							\
 	brave.desktop.in.in							\
 	caja.desktop.in.in							\
 	chromium.desktop.in.in						\
+	chromium-gost.desktop.in.in						\
 	debian-sensible-browser.desktop.in.in		\
 	debian-x-terminal-emulator.desktop.in.in	\
 	dillo.desktop.in.in							\
