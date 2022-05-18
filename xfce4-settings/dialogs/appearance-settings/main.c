@@ -1139,11 +1139,6 @@ appearance_settings_dialog_configure_widgets (GtkBuilder *builder)
     appearance_settings_dialog_channel_property_changed (xsettings_channel, "/Xft/RGBA", NULL, builder);
     g_signal_connect (G_OBJECT (object), "changed", G_CALLBACK (cb_rgba_style_combo_changed), NULL);
 
-    /* Enable editable menu accelerators */
-    object = gtk_builder_get_object (builder, "gtk_caneditaccels_check_button");
-    xfconf_g_property_bind (xsettings_channel, "/Gtk/CanChangeAccels", G_TYPE_BOOLEAN,
-                            G_OBJECT (object), "active");
-
     /* Show menu images */
     object = gtk_builder_get_object (builder, "gtk_menu_images_check_button");
     xfconf_g_property_bind (xsettings_channel, "/Gtk/MenuImages", G_TYPE_BOOLEAN,
