@@ -1,5 +1,5 @@
 Name: xfce4-settings
-Version: 4.16.0
+Version: 4.16.3
 Release: alt1
 Summary: Settings Manager for Xfce
 Summary (ru_RU.UTF-8): Менеджер настроек Xfce
@@ -88,6 +88,32 @@ install -pDm0755 %SOURCE1 %buildroot%_bindir/xfce4-fixkeyboard
 %_iconsdir/*/*/*/*.*
 
 %changelog
+* Tue Jul 05 2022 Mikhail Efremov <sem@altlinux.org> 4.16.3-alt1
+- Updated to 4.16.3.
+
+* Tue May 31 2022 Mikhail Efremov <sem@altlinux.org> 4.16.2-alt5
+- displays: Enable 'Configure new displays when connected'
+  by default (closes: #42840).
+
+* Wed May 18 2022 Mikhail Efremov <sem@altlinux.org> 4.16.2-alt4
+- Drop "Enable editable accelerators" checkbox (closes: #42786).
+
+* Thu May 05 2022 Mikhail Efremov <sem@altlinux.org> 4.16.2-alt3
+- displays: Do nothing if 'Configure new displays when connected'
+  is disabled (closes: #42678).
+
+* Wed Sep 01 2021 Mikhail Efremov <sem@altlinux.org> 4.16.2-alt2
+- Added chromium-gost.desktop file (thx mcpain@) (closes: #40502).
+
+* Tue Jun 08 2021 Mikhail Efremov <sem@altlinux.org> 4.16.2-alt1
+- Updated to 4.16.2.
+
+* Tue May 11 2021 Mikhail Efremov <sem@altlinux.org> 4.16.1-alt2
+- Fixed build: added rpm-build-python3 to BR.
+
+* Tue Apr 13 2021 Mikhail Efremov <sem@altlinux.org> 4.16.1-alt1
+- Updated to 4.16.1.
+
 * Wed Dec 23 2020 Mikhail Efremov <sem@altlinux.org> 4.16.0-alt1
 - Updated to 4.16.0.
 
