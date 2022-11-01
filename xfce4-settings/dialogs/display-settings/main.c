@@ -55,6 +55,7 @@
 #include "scrollarea.h"
 
 #define MARGIN  16
+#define NOTIFY_PROP_DEFAULT 1
 
 enum
 {
@@ -318,15 +319,13 @@ display_settings_update_time_label (gpointer user_data)
     }
     else
     {
-        GObject *label;
         gchar   *label_string;
 
-        label_string = g_strdup_printf (_("The previous configuration will be restored in %i"
-                                          " seconds if you do not reply to this question."),
+        label_string = g_strdup_printf (_("The previous configuration will be restored in <b>%i"
+                                          " seconds</b> if you do not reply to this question."),
                                         confirmation_dialog->count);
 
-        label = gtk_builder_get_object (confirmation_dialog->builder, "label2");
-        gtk_label_set_text (GTK_LABEL (label), label_string);
+        gtk_message_dialog_format_secondary_markup (GTK_MESSAGE_DIALOG (dialog), "%s", label_string);
         g_free (label_string);
 
         return TRUE;
@@ -781,7 +780,7 @@ display_setting_refresh_rates_populate (GtkBuilder *builder)
             continue;
 
         /* Insert the mode */
-        name = g_strdup_printf (_("%.1f Hz"), modes[n].rate);
+        name = g_strdup_printf (_("%.2f Hz"), modes[n].rate);
         gtk_list_store_append (GTK_LIST_STORE (model), &iter);
         gtk_list_store_set (GTK_LIST_STORE (model), &iter,
                             COLUMN_COMBO_NAME, name,
@@ -2171,20 +2170,23 @@ display_settings_profile_delete (GtkWidget *widget, GtkBuilder *builder)
     }
 }
 
-static gboolean
-display_setting_minimal_autoshow_toggled (GtkSwitch       *widget,
-                                          gboolean         state,
-                                          GtkBuilder      *builder)
+static void
+display_setting_minimal_autoconnect_mode_changed (GtkComboBox *combobox,
+                                                  GtkBuilder  *builder)
 {
+    gint value;
+    gboolean state = TRUE;
     GObject *auto_enable_profiles;
+
+    value = gtk_combo_box_get_active (combobox);
+    /* On "Do nothing" disable the "auto-enable-profiles" option */
+    if (value == 0)
+      state = FALSE;
 
     auto_enable_profiles = gtk_builder_get_object (builder, "auto-enable-profiles");
     gtk_widget_set_sensitive (GTK_WIDGET (auto_enable_profiles), state);
     auto_enable_profiles = gtk_builder_get_object (builder, "auto-enable-profiles-label");
     gtk_widget_set_sensitive (GTK_WIDGET (auto_enable_profiles), state);
-    gtk_switch_set_state (GTK_SWITCH (widget), state);
-
-    return TRUE;
 }
 
 static void
@@ -2366,12 +2368,16 @@ display_settings_dialog_new (GtkBuilder *builder)
     g_signal_connect (G_OBJECT (selection), "changed", G_CALLBACK (display_settings_profile_changed), builder);
     g_signal_connect (G_OBJECT (combobox), "row-activated", G_CALLBACK (display_settings_profile_row_activated), builder);
 
-    check = gtk_builder_get_object (builder, "minimal-autoshow");
-    g_signal_connect (G_OBJECT (check), "state-set", G_CALLBACK (display_setting_minimal_autoshow_toggled), builder);
-    xfconf_g_property_bind (display_channel, "/Notify", G_TYPE_BOOLEAN, check,
+    combobox = gtk_builder_get_object (builder, "autoconnect-mode");
+    g_signal_connect (G_OBJECT (combobox), "changed", G_CALLBACK (display_setting_minimal_autoconnect_mode_changed), builder);
+    xfconf_g_property_bind (display_channel, "/Notify", G_TYPE_INT, combobox,
                             "active");
-    /* Correctly initiate the state of the auto-enable-profiles setting based on minimal-autoshow */
-    display_setting_minimal_autoshow_toggled ((GTK_SWITCH (check)), gtk_switch_get_active (GTK_SWITCH (check)), builder);
+    /* Correctly initialize the state of the auto-enable-profiles setting based on autoconnect-mode */
+    if (xfconf_channel_get_int (display_channel, "/Notify", -1) == -1)
+    {
+        gtk_combo_box_set_active (GTK_COMBO_BOX (combobox), NOTIFY_PROP_DEFAULT);
+        display_setting_minimal_autoconnect_mode_changed ((GTK_COMBO_BOX (combobox)), builder);
+    }
 
     apply_button = GTK_WIDGET (gtk_builder_get_object (builder, "apply"));
     g_signal_connect (G_OBJECT (apply_button), "clicked", G_CALLBACK (display_setting_apply), builder);
@@ -3892,7 +3898,6 @@ display_settings_show_main_dialog (GdkDisplay *display)
     {
         /* Build the dialog */
         dialog = display_settings_dialog_new (builder);
-        gtk_window_set_type_hint (GTK_WINDOW (dialog), GDK_WINDOW_TYPE_HINT_NORMAL);
 
         /* Set up notifications */
         XRRSelectInput (gdk_x11_display_get_xdisplay (display),
@@ -4005,17 +4010,14 @@ display_settings_minimal_advanced_clicked (GtkButton  *button,
 }
 
 static void
-display_settings_minimal_activated (GApplication *application,
-                                    gpointer      user_data)
+display_settings_minimal_get_positions (GtkWidget    *dialog,
+                                        GdkRectangle *monitor_rect,
+                                        GdkRectangle *window_rect)
 {
-    GtkWidget  *dialog;
     GdkDisplay *display;
     GdkSeat    *seat;
     GdkMonitor *monitor;
-    GdkRectangle geometry;
-    gint cursorx, cursory, window_width, window_height;
-
-    dialog = GTK_WIDGET (user_data);
+    gint cursorx, cursory;
 
     display = gdk_display_get_default ();
     seat = gdk_display_get_default_seat (display);
@@ -4024,13 +4026,74 @@ display_settings_minimal_activated (GApplication *application,
                                     &cursorx, &cursory, NULL);
 
     monitor = gdk_display_get_monitor_at_point (display, cursorx, cursory);
-    gdk_monitor_get_geometry (monitor, &geometry);
+    gdk_monitor_get_geometry (monitor, monitor_rect);
+    gtk_window_get_position (GTK_WINDOW (dialog), &window_rect->x, &window_rect->y);
+    gtk_window_get_size (GTK_WINDOW (dialog), &window_rect->width, &window_rect->height);
+}
 
-    gtk_window_get_size (GTK_WINDOW (dialog), &window_width, &window_height);
+static gboolean
+display_settings_minimal_center (gpointer user_data)
+{
+    GdkRectangle monitor_rect, window_rect;
+    GtkWidget *dialog = user_data;
+
+    display_settings_minimal_get_positions (dialog, &monitor_rect, &window_rect);
 
     gtk_window_move (GTK_WINDOW (dialog),
-                     geometry.x + geometry.width / 2 - window_width / 2,
-                     geometry.y + geometry.height / 2 - window_height / 2);
+                     monitor_rect.x + monitor_rect.width / 2 - window_rect.width / 2,
+                     monitor_rect.y + monitor_rect.height / 2 - window_rect.height / 2);
+
+    return FALSE;
+}
+
+static void
+display_settings_minimal_cycle (GtkWidget  *dialog,
+                                GtkBuilder *builder)
+{
+    GtkToggleButton *only_display1, *mirror_displays, *extend_right, *only_display2;
+
+    only_display1 = GTK_TOGGLE_BUTTON (gtk_builder_get_object (builder, "display1"));
+    mirror_displays = GTK_TOGGLE_BUTTON (gtk_builder_get_object (builder, "mirror"));
+    extend_right = GTK_TOGGLE_BUTTON (gtk_builder_get_object (builder, "extend_right"));
+    only_display2 = GTK_TOGGLE_BUTTON (gtk_builder_get_object (builder, "display2"));
+
+    if (gtk_toggle_button_get_active (only_display1))
+        if (gtk_widget_get_sensitive (GTK_WIDGET (mirror_displays)))
+            gtk_toggle_button_set_active (mirror_displays, TRUE);
+        else
+            gtk_toggle_button_set_active (extend_right, TRUE);
+    else if (gtk_toggle_button_get_active (mirror_displays))
+        gtk_toggle_button_set_active (extend_right, TRUE);
+    else if (gtk_toggle_button_get_active (extend_right))
+        gtk_toggle_button_set_active (only_display2, TRUE);
+    else
+        gtk_toggle_button_set_active (only_display1, TRUE);
+
+    g_timeout_add_seconds (1, display_settings_minimal_center, dialog);
+}
+
+static void
+display_settings_minimal_activated (GApplication *application,
+                                    gpointer      user_data)
+{
+    GtkBuilder *builder = user_data;
+    GtkWidget  *dialog;
+    GdkRectangle monitor_rect, window_rect;
+
+    dialog = GTK_WIDGET (gtk_builder_get_object (builder, "dialog"));
+    display_settings_minimal_get_positions (dialog, &monitor_rect, &window_rect);
+
+    /* Check if dialog is already at current monitor (where cursor is at) */
+    if (gdk_rectangle_intersect (&monitor_rect, &window_rect, NULL))
+    {
+        /* Select next preset if dialog is already at current monitor */
+        display_settings_minimal_cycle (dialog, builder);
+    }
+    else
+    {
+        /* Center at current monitor if displayed elsewhere */
+        display_settings_minimal_center (dialog);
+    }
 
     gtk_window_present (GTK_WINDOW (dialog));
 }
@@ -4190,7 +4253,7 @@ display_settings_show_minimal_dialog (GdkDisplay *display)
         g_signal_connect (advanced, "clicked", G_CALLBACK (display_settings_minimal_advanced_clicked),
                           builder);
 
-        g_signal_connect (app, "activate", G_CALLBACK (display_settings_minimal_activated), dialog);
+        g_signal_connect (app, "activate", G_CALLBACK (display_settings_minimal_activated), builder);
 
         /* Auto-apply the first profile in the list */
         if (xfconf_channel_get_bool (display_channel, "/AutoEnableProfiles", TRUE))

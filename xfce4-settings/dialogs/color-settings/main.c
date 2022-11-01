@@ -1424,7 +1424,6 @@ main (gint argc, gchar **argv)
         if (G_UNLIKELY (opt_socket_id == 0)) {
             /* Get the dialog widget */
             settings->dialog = gtk_builder_get_object (builder, "dialog");
-            gtk_window_set_type_hint (GTK_WINDOW (settings->dialog), GDK_WINDOW_TYPE_HINT_NORMAL);
 
             g_signal_connect (settings->dialog, "response",
                               G_CALLBACK (color_settings_dialog_response), settings);
@@ -1438,7 +1437,8 @@ main (gint argc, gchar **argv)
         else {
             /* Create plug widget */
             plug = gtk_plug_new (opt_socket_id);
-            g_signal_connect (plug, "delete-event", G_CALLBACK (color_settings_dialog_destroy), settings);
+            g_signal_connect_swapped (plug, "delete-event",
+                                      G_CALLBACK (color_settings_dialog_destroy), settings);
             gtk_widget_show (plug);
 
             /* Stop startup notification */
