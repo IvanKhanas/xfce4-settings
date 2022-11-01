@@ -5,7 +5,7 @@ Summary: Settings Manager for Xfce
 Summary (ru_RU.UTF-8): Менеджер настроек Xfce
 
 License: GPLv2+
-Url: https://www.xfce.org/
+Url: https://docs.xfce.org/xfce/xfce4-settings/start
 Group: Graphical desktop/XFce
 Packager: Xfce Team <xfce@packages.altlinux.org>
 
