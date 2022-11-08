@@ -1,0 +1,8 @@
+object c3f1e952e750b1bce4e629e8a84ef9ee2ba52b8e
+type commit
+tag xfce4-settings-4.17.1
+tagger Alexander Schwinn <alexxcons@xfce.org> 1667852299 +0100
+
+4.17.1
+
+- Escape characters which do not belong into an URI/URL (Issue #390)
