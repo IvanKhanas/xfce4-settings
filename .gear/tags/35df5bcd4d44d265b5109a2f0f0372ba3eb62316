@@ -1,0 +1,10 @@
+object 94763248f59846a5b25f9c216784051ee01b5f99
+type commit
+tag xfce4-settings-4.17.2
+tagger Alexander Schwinn <alexxcons@xfce.org> 1668290483 +0100
+
+4.17.2
+
+- Bumped copyright to 2022
+- mime-settings: Properly quote command parameters
+- Revert "Escape characters which do not belong into an URI/URL (Issue
