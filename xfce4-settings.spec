@@ -18,7 +18,7 @@ Patch: %name-%version-%release.patch
 
 BuildPreReq: rpm-build-xfce4 xfce4-dev-tools > 4.5
 BuildRequires: libxfce4ui-gtk3-devel libexo-gtk3-devel libxfconf-devel libgarcon-devel >= 0.1.10
-BuildRequires: intltool libICE-devel libXcursor-devel libXi-devel libXrandr-devel libglade-devel libnotify-devel libxklavier-devel
+BuildRequires: libXcursor-devel libXi-devel libXrandr-devel libnotify-devel libxklavier-devel
 %{?_enable_upower:BuildRequires: libupower-devel >= 0.99.4-alt2}
 BuildRequires: libcolord-devel
 BuildRequires: xorg-drv-libinput-devel
