@@ -1611,7 +1611,7 @@ msgstr "Не удалось установить почтовиком по ум�
 
 #: ../dialogs/mime-settings/xfce-mime-helper-chooser.c:314
 msgid "Failed to set default File Manager"
-msgstr "Не удалось установить проводником по умолчанию"
+msgstr "Не удалось установить файловым менеджером по умолчанию"
 
 #: ../dialogs/mime-settings/xfce-mime-helper-chooser.c:315
 msgid "Failed to set default Terminal Emulator"
@@ -1632,7 +1632,7 @@ msgstr "Выбор почтовика"
 
 #: ../dialogs/mime-settings/xfce-mime-helper-chooser.c:500
 msgid "Choose a custom File Manager"
-msgstr "Выбор проводника"
+msgstr "Выбор файлового менеджера"
 
 #: ../dialogs/mime-settings/xfce-mime-helper-chooser.c:501
 msgid "Choose a custom Terminal Emulator"
@@ -1654,7 +1654,7 @@ msgstr "Укажите приложение, которое вы хотите и
 msgid ""
 "Specify the application you want to use\n"
 "as default File Manager for Xfce:"
-msgstr "Укажите приложение, которое вы хотите использовать\nв качестве проводника по умолчанию для Xfce:"
+msgstr "Укажите приложение, которое вы хотите использовать\nв качестве файлового менеджера по умолчанию для Xfce:"
 
 #: ../dialogs/mime-settings/xfce-mime-helper-chooser.c:509
 msgid ""
@@ -1694,7 +1694,7 @@ msgstr "Пожалуйста, выберите предпочитаемый по
 msgid ""
 "Please choose your preferred File Manager\n"
 "now and click OK to proceed."
-msgstr "Пожалуйста, выберите предпочитаемый проводник\nи щёлкните «OK» для продолжения."
+msgstr "Пожалуйста, выберите предпочитаемый файловый менеджер\nи щёлкните «OK» для продолжения."
 
 #: ../dialogs/mime-settings/xfce-mime-helper-launcher-dialog.c:255
 msgid ""
@@ -1712,7 +1712,7 @@ msgstr "Не удалось запустить почтовик по умолч�
 
 #: ../dialogs/mime-settings/xfce-mime-helper-main.c:43
 msgid "Failed to execute default File Manager"
-msgstr "Не удалось запустить проводник по умолчанию"
+msgstr "Не удалось запустить файловый менеджер по умолчанию"
 
 #: ../dialogs/mime-settings/xfce-mime-helper-main.c:44
 msgid "Failed to execute default Terminal Emulator"
@@ -1751,7 +1751,7 @@ msgid ""
 "  MailReader       - The preferred Mail Reader.\n"
 "  FileManager      - The preferred File Manager.\n"
 "  TerminalEmulator - The preferred Terminal Emulator."
-msgstr "Для ключей «--launch» и «--query» поддерживаются следующие ТИПы:\n\n  WebBrowser       - предпочитаемый браузер.\n  MailReader       - предпочитаемый почтовик.\n  FileManager      - предпочитаемый проводник.\n  TerminalEmulator - предпочитаемый терминал."
+msgstr "Для ключей «--launch» и «--query» поддерживаются следующие ТИПы:\n\n  WebBrowser       - предпочитаемый браузер.\n  MailReader       - предпочитаемый почтовик.\n  FileManager      - предпочитаемый файловый менеджер.\n  TerminalEmulator - предпочитаемый терминал."
 
 #: ../dialogs/mime-settings/xfce-mime-helper-main.c:183
 #: ../dialogs/mime-settings/xfce-mime-helper-main.c:256
@@ -1832,7 +1832,7 @@ msgstr "_Утилиты"
 #: ../dialogs/mime-settings/xfce-mime-window.c:282
 #: ../dialogs/mime-settings/xfce4-file-manager.desktop.in.h:1
 msgid "File Manager"
-msgstr "Проводник"
+msgstr "Файловый менеджер"
 
 #: ../dialogs/mime-settings/xfce-mime-window.c:290
 msgid ""
@@ -1974,7 +1974,7 @@ msgstr "Brave"
 
 #: ../dialogs/mime-settings/helpers/caja.desktop.in.in.h:1
 msgid "Caja File Manager"
-msgstr "Проводник Caja"
+msgstr "Файловый менеджер Caja"
 
 #: ../dialogs/mime-settings/helpers/chromium.desktop.in.in.h:1
 msgid "Chromium"
@@ -2098,11 +2098,11 @@ msgstr "Браузер Opera"
 
 #: ../dialogs/mime-settings/helpers/pcmanfm.desktop.in.in.h:1
 msgid "PCMan File Manager"
-msgstr "Проводник PCMan"
+msgstr "Файловый менеджер PCMan"
 
 #: ../dialogs/mime-settings/helpers/pcmanfm-qt.desktop.in.in.h:1
 msgid "PCManFM-Qt File Manager"
-msgstr "Проводник PCManFM-Qt"
+msgstr "Файловый менеджер PCManFM-Qt"
 
 #: ../dialogs/mime-settings/helpers/qterminal.desktop.in.in.h:1
 msgid "QTerminal"
@@ -2118,7 +2118,7 @@ msgstr "QupZilla"
 
 #: ../dialogs/mime-settings/helpers/rodent.desktop.in.in.h:1
 msgid "Rodent File Manager"
-msgstr "Проводник Rodent"
+msgstr "Файловый менеджер Rodent"
 
 #: ../dialogs/mime-settings/helpers/rox-filer.desktop.in.in.h:1
 msgid "ROX-Filer"
@@ -2170,7 +2170,7 @@ msgstr "Терминал Xfce"
 
 #: ../dialogs/mime-settings/helpers/xfe.desktop.in.in.h:1
 msgid "Xfe File Manager"
-msgstr "Проводник Xfce"
+msgstr "Файловый менеджер Xfce"
 
 #: ../dialogs/mime-settings/helpers/xterm.desktop.in.in.h:1
 msgid "X Terminal"
