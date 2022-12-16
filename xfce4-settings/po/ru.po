@@ -1607,7 +1607,7 @@ msgstr "Не удалось установить браузером по умо�
 
 #: ../dialogs/mime-settings/xfce-mime-helper-chooser.c:313
 msgid "Failed to set default Mail Reader"
-msgstr "Не удалось установить почтовиком по умолчанию"
+msgstr "Не удалось установить почтовую программу по умолчанию"
 
 #: ../dialogs/mime-settings/xfce-mime-helper-chooser.c:314
 msgid "Failed to set default File Manager"
@@ -1628,7 +1628,7 @@ msgstr "Выбор браузера"
 
 #: ../dialogs/mime-settings/xfce-mime-helper-chooser.c:499
 msgid "Choose a custom Mail Reader"
-msgstr "Выбор почтовика"
+msgstr "Выбор почтовой программы"
 
 #: ../dialogs/mime-settings/xfce-mime-helper-chooser.c:500
 msgid "Choose a custom File Manager"
@@ -1648,7 +1648,7 @@ msgstr "Укажите приложение, которое вы хотите и
 msgid ""
 "Specify the application you want to use\n"
 "as default Mail Reader for Xfce:"
-msgstr "Укажите приложение, которое вы хотите использовать\nв качестве почтовика по умолчанию для Xfce:"
+msgstr "Укажите приложение, которое вы хотите использовать\nв качестве почтовой программы по умолчанию для Xfce:"
 
 #: ../dialogs/mime-settings/xfce-mime-helper-chooser.c:508
 msgid ""
@@ -1688,7 +1688,7 @@ msgstr "Пожалуйста, выберите предпочитаемый\nб�
 msgid ""
 "Please choose your preferred Mail Reader\n"
 "now and click OK to proceed."
-msgstr "Пожалуйста, выберите предпочитаемый почтовик\nи щёлкните «OK» для продолжения."
+msgstr "Пожалуйста, выберите предпочитаемую почтовую\nпрограмму и щёлкните «OK» для продолжения."
 
 #: ../dialogs/mime-settings/xfce-mime-helper-launcher-dialog.c:253
 msgid ""
@@ -1708,7 +1708,7 @@ msgstr "Не удалось запустить браузер по умолча�
 
 #: ../dialogs/mime-settings/xfce-mime-helper-main.c:42
 msgid "Failed to execute default Mail Reader"
-msgstr "Не удалось запустить почтовик по умолчанию"
+msgstr "Не удалось запустить почтовую программу по умолчанию"
 
 #: ../dialogs/mime-settings/xfce-mime-helper-main.c:43
 msgid "Failed to execute default File Manager"
@@ -1751,7 +1751,7 @@ msgid ""
 "  MailReader       - The preferred Mail Reader.\n"
 "  FileManager      - The preferred File Manager.\n"
 "  TerminalEmulator - The preferred Terminal Emulator."
-msgstr "Для ключей «--launch» и «--query» поддерживаются следующие ТИПы:\n\n  WebBrowser       - предпочитаемый браузер.\n  MailReader       - предпочитаемый почтовик.\n  FileManager      - предпочитаемый файловый менеджер.\n  TerminalEmulator - предпочитаемый терминал."
+msgstr "Для ключей «--launch» и «--query» поддерживаются следующие ТИПы:\n\n  WebBrowser       - предпочитаемый браузер.\n  MailReader       - предпочитаемая почтовая программа.\n  FileManager      - предпочитаемый файловый менеджер.\n  TerminalEmulator - предпочитаемый терминал."
 
 #: ../dialogs/mime-settings/xfce-mime-helper-main.c:183
 #: ../dialogs/mime-settings/xfce-mime-helper-main.c:256
@@ -1816,7 +1816,7 @@ msgstr "Для открытия гиперссылок и просмотра с�
 #: ../dialogs/mime-settings/xfce-mime-window.c:247
 #: ../dialogs/mime-settings/xfce4-mail-reader.desktop.in.h:1
 msgid "Mail Reader"
-msgstr "Почтовик"
+msgstr "Почтовая программа"
 
 #: ../dialogs/mime-settings/xfce-mime-window.c:255
 msgid ""
