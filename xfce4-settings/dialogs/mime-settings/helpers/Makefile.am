@@ -60,7 +60,8 @@ desktop_in_in_files =							\
 	w3m.desktop.in.in							\
 	xfce4-terminal.desktop.in.in				\
 	xfe.desktop.in.in							\
-	xterm.desktop.in.in
+	xterm.desktop.in.in							\
+	yandex-browser.desktop.in.in
 
 
 desktop_in_files = $(desktop_in_in_files:.desktop.in.in=.desktop.in)
