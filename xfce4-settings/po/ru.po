@@ -539,7 +539,7 @@ msgstr "Если выбрано, комбинации клавиш для пун
 
 #: dialogs/appearance-settings/appearance-dialog.glade:790
 msgid "Enable header bars in dialo_gs"
-msgstr "Включить &панели заголовка в диалогах"
+msgstr "Включить _панели заголовка в диалогах"
 
 #: dialogs/appearance-settings/appearance-dialog.glade:794
 msgid ""
