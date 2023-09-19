@@ -47,8 +47,6 @@ for the Xfce desktop.
 %patch -p1
 
 %build
-# Don't use git tag in version.
-%xfce4_drop_gitvtag xfce4_settings_version_tag configure.ac.in
 %xfce4reconf
 %configure  \
 	--enable-debug=minimum \
