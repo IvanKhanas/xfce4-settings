@@ -42,6 +42,7 @@
 #include "libinput-properties.h"
 #endif /* HAVE_LIBINPUT */
 
+#include <cairo-gobject.h>
 #include <gtk/gtk.h>
 #include <gtk/gtkx.h>
 #include <gdk/gdkx.h>
@@ -60,10 +61,17 @@
 #define PREVIEW_SPACING (2)
 #endif /* !HAVE_XCURSOR */
 
+#ifdef HAVE_LIBINPUT
+/* if we have an old header file */
+# ifndef LIBINPUT_PROP_HIRES_WHEEL_SCROLL_ENABLED
+#  define LIBINPUT_PROP_HIRES_WHEEL_SCROLL_ENABLED "libinput High Resolution Wheel Scroll Enabled"
+# endif
+#endif
+
 
 /* global setting channels */
-XfconfChannel *xsettings_channel;
-XfconfChannel *pointers_channel;
+static XfconfChannel *xsettings_channel;
+static XfconfChannel *pointers_channel;
 
 /* lock counter to avoid signals during updates */
 static gint locked = 0;
@@ -89,8 +97,6 @@ static GOptionEntry option_entries[] =
 };
 
 #ifdef HAVE_XCURSOR
-static const gchar *gsettings_category_gnome_interface = "org.gnome.desktop.interface";
-
 /* icon names for the preview widget */
 static const gchar *preview_names[] = {
     "left_ptr",            "left_ptr_watch",    "watch",             "hand2",
@@ -135,6 +141,28 @@ typedef union
     Atom    a;
 } propdata_t;
 
+#ifdef HAVE_LIBINPUT
+typedef enum
+{
+    LIBINPUT_CLICK_METHOD_NONE = 0,
+    LIBINPUT_CLICK_METHOD_BUTTON_AREAS = 1 << 0,
+    LIBINPUT_CLICK_METHOD_CLICK_FINGER = 1 << 1,
+} LibinputClickMethod;
+
+
+
+typedef enum
+{
+    LIBINPUT_ACCEL_PROFILE_NONE = 0,
+    LIBINPUT_ACCEL_PROFILE_ADAPTIVE = 1 << 0,
+    LIBINPUT_ACCEL_PROFILE_FLAT = 1 << 1,
+    LIBINPUT_ACCEL_PROFILE_CUSTOM = 1 << 2,
+} LibinputAccelProfile;
+
+
+
+static gboolean libinput_supports_custom_accel_profile = FALSE; // Requires libinput 1.23.0
+#endif
 
 
 static gchar *
@@ -171,9 +199,10 @@ mouse_settings_format_value_s (GtkScale *scale,
 
 
 #ifdef HAVE_XCURSOR
-static GdkPixbuf *
+static cairo_surface_t *
 mouse_settings_themes_pixbuf_from_filename (const gchar *filename,
-                                            guint        size)
+                                            guint        size,
+                                            gint         scale_factor)
 {
     XcursorImage *image;
     GdkPixbuf    *scaled, *pixbuf = NULL;
@@ -181,9 +210,10 @@ mouse_settings_themes_pixbuf_from_filename (const gchar *filename,
     guchar       *buffer, *p, tmp;
     gdouble       wratio, hratio;
     gint          dest_width, dest_height;
+    guint         full_size = size * scale_factor;
 
     /* load the image */
-    image = XcursorFilenameLoadImage (filename, size);
+    image = XcursorFilenameLoadImage (filename, full_size);
     if (G_LIKELY (image))
     {
         /* buffer size */
@@ -214,14 +244,14 @@ mouse_settings_themes_pixbuf_from_filename (const gchar *filename,
             g_free (buffer);
 
         /* scale pixbuf if needed */
-        if (pixbuf && (image->height > size || image->width > size))
+        if (pixbuf && (image->height > full_size || image->width > full_size))
         {
             /* calculate the ratio */
-            wratio = (gdouble) image->width / (gdouble) size;
-            hratio = (gdouble) image->height / (gdouble) size;
+            wratio = (gdouble) image->width / (gdouble) full_size;
+            hratio = (gdouble) image->height / (gdouble) full_size;
 
             /* init */
-            dest_width = dest_height = size;
+            dest_width = dest_height = full_size;
 
             /* set dest size */
             if (hratio > wratio)
@@ -241,27 +271,37 @@ mouse_settings_themes_pixbuf_from_filename (const gchar *filename,
         XcursorImageDestroy (image);
     }
 
-    return pixbuf;
+    if (G_LIKELY (pixbuf != NULL))
+    {
+        cairo_surface_t *surface = gdk_cairo_surface_create_from_pixbuf (pixbuf, scale_factor, NULL);
+        g_object_unref (pixbuf);
+        return surface;
+    }
+    else
+    {
+        return NULL;
+    }
 }
 
 
 
-static GdkPixbuf *
-mouse_settings_themes_preview_icon (const gchar *path)
+static cairo_surface_t *
+mouse_settings_themes_preview_icon (const gchar *path,
+                                    gint         scale_factor)
 {
-    GdkPixbuf *pixbuf = NULL;
+    cairo_surface_t *surface= NULL;
     gchar     *filename;
 
     /* we only try the normal cursor, it is (most likely) always there */
     filename = g_build_filename (path, "left_ptr", NULL);
 
-    /* try to load the pixbuf */
-    pixbuf = mouse_settings_themes_pixbuf_from_filename (filename, PREVIEW_SIZE);
+    /* try to load the preview */
+    surface = mouse_settings_themes_pixbuf_from_filename (filename, PREVIEW_SIZE, scale_factor);
 
     /* cleanup */
     g_free (filename);
 
-    return pixbuf;
+    return surface;
 }
 
 
@@ -270,63 +310,54 @@ static void
 mouse_settings_themes_preview_image (const gchar *path,
                                      GtkImage    *image)
 {
-    GdkPixbuf *pixbuf;
-    GdkPixbuf *preview;
-    guint      i, position;
-    gchar     *filename;
-    gint       dest_x, dest_y;
+    cairo_surface_t *preview;
+    cairo_t         *cr;
+    guint            i, position;
+    gint             scale_factor;
 
     /* create an empty preview image */
-    preview = gdk_pixbuf_new (GDK_COLORSPACE_RGB, TRUE, 8,
-                              (PREVIEW_SIZE + PREVIEW_SPACING) * PREVIEW_COLUMNS - PREVIEW_SPACING,
-                              (PREVIEW_SIZE + PREVIEW_SPACING) * PREVIEW_ROWS - PREVIEW_SPACING);
+    scale_factor = gtk_widget_get_scale_factor (GTK_WIDGET (image));
+    preview = cairo_image_surface_create (CAIRO_FORMAT_ARGB32,
+                                          ((PREVIEW_SIZE + PREVIEW_SPACING) * PREVIEW_COLUMNS - PREVIEW_SPACING) * scale_factor,
+                                          ((PREVIEW_SIZE + PREVIEW_SPACING) * PREVIEW_ROWS - PREVIEW_SPACING) * scale_factor);
+    cairo_surface_set_device_scale (preview, scale_factor, scale_factor);
+    cr = cairo_create (preview);
 
-    if (G_LIKELY (preview))
+    for (i = 0, position = 0; i < G_N_ELEMENTS (preview_names); i++)
     {
-        /* make the pixbuf transparent */
-        gdk_pixbuf_fill (preview, 0x00000000);
+        /* create cursor filename and try to load the pixbuf */
+        gchar     *filename = g_build_filename (path, preview_names[i], NULL);
+        cairo_surface_t *surface = mouse_settings_themes_pixbuf_from_filename (filename, PREVIEW_SIZE, scale_factor);
 
-        for (i = 0, position = 0; i < G_N_ELEMENTS (preview_names); i++)
+        g_free (filename);
+
+        if (G_LIKELY (surface))
         {
-            /* create cursor filename and try to load the pixbuf */
-            filename = g_build_filename (path, preview_names[i], NULL);
-            pixbuf = mouse_settings_themes_pixbuf_from_filename (filename, PREVIEW_SIZE);
-            g_free (filename);
+            gint dest_x, dest_y;
 
-            if (G_LIKELY (pixbuf))
-            {
-                /* calculate the icon position */
-                dest_x = (position % PREVIEW_COLUMNS) * (PREVIEW_SIZE + PREVIEW_SPACING);
-                dest_y = (position / PREVIEW_COLUMNS) * (PREVIEW_SIZE + PREVIEW_SPACING);
+            cairo_save (cr);
 
-                /* render it in the preview */
-                gdk_pixbuf_scale (pixbuf, preview, dest_x, dest_y,
-                                  gdk_pixbuf_get_width (pixbuf),
-                                  gdk_pixbuf_get_height (pixbuf),
-                                  dest_x, dest_y,
-                                  1.00, 1.00, GDK_INTERP_BILINEAR);
+            /* calculate the icon position */
+            dest_x = (position % PREVIEW_COLUMNS) * (PREVIEW_SIZE + PREVIEW_SPACING);
+            dest_y = (position / PREVIEW_COLUMNS) * (PREVIEW_SIZE + PREVIEW_SPACING);
+            cairo_translate (cr, dest_x, dest_y);
 
+            cairo_set_source_surface (cr, surface, 0, 0);
+            cairo_paint (cr);
 
-                /* release the pixbuf */
-                g_object_unref (G_OBJECT (pixbuf));
+            cairo_restore (cr);
+            cairo_surface_destroy (surface);
 
-                /* break if we've added enough icons */
-                if (++position >= PREVIEW_ROWS * PREVIEW_COLUMNS)
-                    break;
-            }
+            /* break if we've added enough icons */
+            if (++position >= PREVIEW_ROWS * PREVIEW_COLUMNS)
+                break;
         }
-
-        /* set the image */
-        gtk_image_set_from_pixbuf (GTK_IMAGE (image), preview);
-
-        /* release the pixbuf */
-        g_object_unref (G_OBJECT (preview));
     }
-    else
-    {
-        /* clear the image */
-        gtk_image_clear (GTK_IMAGE (image));
-    }
+
+    cairo_destroy (cr);
+
+    gtk_image_set_from_surface (image, preview);
+    cairo_surface_destroy (preview);
 }
 
 
@@ -340,7 +371,6 @@ mouse_settings_themes_selection_changed (GtkTreeSelection *selection,
     gboolean      has_selection;
     gchar        *path, *name;
     GObject      *image;
-    g_autoptr(GSettings) gsettings = NULL;
 
     has_selection = gtk_tree_selection_get_selected (selection, &model, &iter);
     if (G_LIKELY (has_selection))
@@ -357,13 +387,6 @@ mouse_settings_themes_selection_changed (GtkTreeSelection *selection,
         if (locked == 0)
         {
             xfconf_channel_set_string (xsettings_channel, "/Gtk/CursorThemeName", name);
-
-            /* Keep gsettings in sync */
-            gsettings = g_settings_new (gsettings_category_gnome_interface);
-            if (gsettings)
-            {
-                g_settings_set_string (gsettings, "cursor-theme", name);
-            }
         }
 
         /* cleanup */
@@ -426,7 +449,6 @@ mouse_settings_themes_populate_store (GtkBuilder *builder)
     const gchar        *comment;
     GtkTreeIter         iter;
     gint                position = 0;
-    GdkPixbuf          *pixbuf;
     gchar              *active_theme;
     GtkTreePath        *active_path = NULL;
     GtkListStore       *store;
@@ -435,6 +457,7 @@ mouse_settings_themes_populate_store (GtkBuilder *builder)
     GObject            *treeview;
     GtkTreeSelection   *selection;
     gchar              *comment_escaped;
+    gint                scale_factor;
 
     /* get the cursor paths */
 #if XCURSOR_LIB_MAJOR == 1 && XCURSOR_LIB_MINOR < 1
@@ -449,8 +472,11 @@ mouse_settings_themes_populate_store (GtkBuilder *builder)
     /* get the active theme */
     active_theme = xfconf_channel_get_string (xsettings_channel, "/Gtk/CursorThemeName", "default");
 
+    treeview = gtk_builder_get_object (builder, "theme-treeview");
+    scale_factor = gtk_widget_get_scale_factor (GTK_WIDGET (treeview));
+
     /* create the store */
-    store = gtk_list_store_new (N_THEME_COLUMNS, GDK_TYPE_PIXBUF, G_TYPE_STRING,
+    store = gtk_list_store_new (N_THEME_COLUMNS, CAIRO_GOBJECT_TYPE_SURFACE, G_TYPE_STRING,
                                 G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING);
 
     /* insert default */
@@ -492,15 +518,19 @@ mouse_settings_themes_populate_store (GtkBuilder *builder)
                     /* check if it looks like a cursor theme */
                     if (g_file_test (filename, G_FILE_TEST_IS_DIR))
                     {
-                        /* try to load a pixbuf */
-                        pixbuf = mouse_settings_themes_preview_icon (filename);
+                        cairo_surface_t *surface = mouse_settings_themes_preview_icon (filename, scale_factor);
 
                         /* insert in the store */
                         gtk_list_store_insert_with_values (store, &iter, position++,
-                                                           COLUMN_THEME_PIXBUF, pixbuf,
+                                                           COLUMN_THEME_PIXBUF, surface,
                                                            COLUMN_THEME_NAME, theme,
                                                            COLUMN_THEME_DISPLAY_NAME, theme,
                                                            COLUMN_THEME_PATH, filename, -1);
+
+                        if (G_LIKELY (surface != NULL))
+                        {
+                            cairo_surface_destroy (surface);
+                        }
 
                         /* check if this is the active theme, set the path */
                         if (strcmp (active_theme, theme) == 0)
@@ -508,10 +538,6 @@ mouse_settings_themes_populate_store (GtkBuilder *builder)
                             gtk_tree_path_free (active_path);
                             active_path = gtk_tree_model_get_path (GTK_TREE_MODEL (store), &iter);
                         }
-
-                        /* release pixbuf */
-                        if (G_LIKELY (pixbuf))
-                            g_object_unref (G_OBJECT (pixbuf));
 
                         /* check for a index.theme file for additional information */
                         index_file = g_build_filename (path, theme, "index.theme", NULL);
@@ -572,13 +598,12 @@ mouse_settings_themes_populate_store (GtkBuilder *builder)
     g_free (active_theme);
 
     /* set the treeview store */
-    treeview = gtk_builder_get_object (builder, "theme-treeview");
     gtk_tree_view_set_model (GTK_TREE_VIEW (treeview), GTK_TREE_MODEL (store));
     gtk_tree_view_set_tooltip_column (GTK_TREE_VIEW (treeview), COLUMN_THEME_COMMENT);
 
     /* setup the columns */
     renderer = gtk_cell_renderer_pixbuf_new ();
-    column = gtk_tree_view_column_new_with_attributes ("", renderer, "pixbuf", COLUMN_THEME_PIXBUF, NULL);
+    column = gtk_tree_view_column_new_with_attributes ("", renderer, "surface", COLUMN_THEME_PIXBUF, NULL);
     gtk_tree_view_append_column (GTK_TREE_VIEW (treeview), column);
 
     renderer = gtk_cell_renderer_text_new ();
@@ -740,6 +765,63 @@ mouse_settings_get_libinput_boolean (Display     *xdisplay,
     if (mouse_settings_get_device_prop (xdisplay, device, prop_name, XA_INTEGER, 1, &pdata[0]))
     {
         *val = (gboolean) (pdata[0].c);
+
+        return TRUE;
+    }
+
+    return FALSE;
+}
+
+
+
+static gboolean
+mouse_settings_get_libinput_click_method (Display             *xdisplay,
+                                          XDevice             *device,
+                                          const gchar         *prop_name,
+                                          LibinputClickMethod *click_method)
+{
+    propdata_t pdata[2];
+
+    if (mouse_settings_get_device_prop (xdisplay, device, prop_name, XA_INTEGER, 2, &pdata[0]))
+    {
+        *click_method = LIBINPUT_CLICK_METHOD_NONE;
+        if (pdata[0].c)
+            *click_method |= LIBINPUT_CLICK_METHOD_BUTTON_AREAS;
+        if (pdata[1].c)
+            *click_method |= LIBINPUT_CLICK_METHOD_CLICK_FINGER;
+
+        return TRUE;
+    }
+
+    return FALSE;
+}
+
+
+
+static gboolean
+mouse_settings_get_libinput_accel_profile (Display              *xdisplay,
+                                           XDevice              *device,
+                                           const gchar          *prop_name,
+                                           LibinputAccelProfile *accel_profile)
+{
+    propdata_t pdata[3] = {};
+    gboolean ok = FALSE;
+
+    ok = mouse_settings_get_device_prop (xdisplay, device, prop_name, XA_INTEGER, 3, &pdata[0]);
+    if (ok)
+        libinput_supports_custom_accel_profile = TRUE;
+    else if (!libinput_supports_custom_accel_profile)
+        ok = mouse_settings_get_device_prop (xdisplay, device, prop_name, XA_INTEGER, 2, &pdata[0]);
+
+    if (ok)
+    {
+        *accel_profile = LIBINPUT_ACCEL_PROFILE_NONE;
+        if (pdata[0].c)
+            *accel_profile |= LIBINPUT_ACCEL_PROFILE_ADAPTIVE;
+        if (pdata[1].c)
+            *accel_profile |= LIBINPUT_ACCEL_PROFILE_FLAT;
+        if (pdata[2].c)
+            *accel_profile |= LIBINPUT_ACCEL_PROFILE_CUSTOM;
 
         return TRUE;
     }
@@ -1009,6 +1091,135 @@ mouse_settings_synaptics_hscroll_sensitive (GtkBuilder *builder)
 
 
 
+#ifdef HAVE_LIBINPUT
+static void
+mouse_settings_libinput_toggled (GObject     *object,
+                                 GtkBuilder  *builder,
+                                 const char  *libinput_prop)
+{
+    gchar *name = NULL, *prop;
+
+    if (mouse_settings_device_get_selected (builder, NULL, &name))
+    {
+        prop = g_strconcat ("/", name, "/Properties/", libinput_prop, NULL);
+        g_strdelimit (prop, " ", '_');
+        xfconf_channel_set_int (pointers_channel, prop,
+                                gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (object)));
+        g_free (prop);
+    }
+
+    g_free (name);
+}
+
+
+
+static void
+mouse_settings_libinput_hires_scrolling_toggled (GObject     *object,
+                                                 GtkBuilder  *builder)
+{
+    mouse_settings_libinput_toggled (object, builder, LIBINPUT_PROP_HIRES_WHEEL_SCROLL_ENABLED);
+}
+
+
+
+static void
+mouse_settings_libinput_disable_touchpad_while_typing_toggled (GObject     *object,
+                                                               GtkBuilder  *builder)
+{
+    mouse_settings_libinput_toggled (object, builder, LIBINPUT_PROP_DISABLE_WHILE_TYPING);
+}
+
+
+
+static void
+mouse_settings_libinput_click_method_changed (GObject     *object,
+                                              GtkBuilder  *builder)
+{
+    gchar *name = NULL, *prop;
+    gint combo_box_val;
+    gint button_areas = 0;
+    gint click_finger = 0;
+
+    if (mouse_settings_device_get_selected (builder, NULL, &name))
+    {
+        prop = g_strconcat ("/", name, "/Properties/" LIBINPUT_PROP_CLICK_METHOD_ENABLED, NULL);
+        g_strdelimit (prop, " ", '_');
+
+        /* Possible values:
+         * 0 - off
+         * 1 - button areas
+         * 2 - click finger
+         */
+        combo_box_val = gtk_combo_box_get_active (GTK_COMBO_BOX (object));
+
+        /* Possible arrays:
+         * [0, 0] - off
+         * [1, 0] - button areas
+         * [0, 1] - click finger
+         */
+        if (combo_box_val == 1)
+            button_areas = 1;
+        else if (combo_box_val == 2)
+            click_finger = 1;
+
+        xfconf_channel_set_array (pointers_channel, prop,
+                                  G_TYPE_INT, &button_areas, G_TYPE_INT, &click_finger, G_TYPE_INVALID);
+
+        g_free (prop);
+    }
+
+    g_free (name);
+}
+
+
+
+static void
+mouse_settings_libinput_accel_profile_changed (GObject     *object,
+                                               GtkBuilder  *builder)
+{
+    gchar *name = NULL, *prop;
+    gboolean toggle_button_value;
+    gint adaptive = 0;
+    gint flat = 0;
+    gint custom = 0;
+
+    if (mouse_settings_device_get_selected (builder, NULL, &name))
+    {
+        prop = g_strconcat ("/", name, "/Properties/" LIBINPUT_PROP_ACCEL_PROFILE_ENABLED, NULL);
+        g_strdelimit (prop, " ", '_');
+
+        toggle_button_value = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (object));
+
+        /* Possible arrays:
+         * [1, 0, 0] - adaptive
+         * [0, 1, 0] - flat
+         * [0, 0, 1] - custom (unused)
+         */
+        if (toggle_button_value)
+            adaptive = 1;
+        else
+            flat = 1;
+
+        if (libinput_supports_custom_accel_profile)
+        {
+            xfconf_channel_set_array (pointers_channel, prop,
+                                    G_TYPE_INT, &adaptive, G_TYPE_INT, &flat, G_TYPE_INT, &custom, G_TYPE_INVALID);
+        }
+        else
+        {
+            xfconf_channel_set_array (pointers_channel, prop,
+                                    G_TYPE_INT, &adaptive, G_TYPE_INT, &flat, G_TYPE_INVALID);
+        }
+
+        g_free (prop);
+    }
+
+    g_free (name);
+}
+#endif
+
+
+
 #if defined(DEVICE_PROPERTIES) || defined(HAVE_LIBINPUT)
 static void
 mouse_settings_synaptics_set_scrolling (GtkComboBox *combobox,
@@ -1191,13 +1402,25 @@ mouse_settings_device_selection_changed (GtkBuilder *builder)
     gboolean           is_wacom = FALSE;
     gboolean           left_handed = FALSE;
     gboolean           reverse_scrolling = FALSE;
+    gboolean           scroll_wheel_available = FALSE;
 #ifdef HAVE_LIBINPUT
+    gboolean           has_hires_scrolling = FALSE;
+    gboolean           hires_scrolling = FALSE;
+    gboolean           libinput_has_accel_profile = FALSE;
+    LibinputAccelProfile libinput_accel_profile_available = LIBINPUT_ACCEL_PROFILE_NONE;
+    LibinputAccelProfile libinput_accel_profile = LIBINPUT_ACCEL_PROFILE_NONE;
     gboolean           is_libinput = FALSE;
 #endif /* HAVE_LIBINPUT */
 #if defined(DEVICE_PROPERTIES) || defined (HAVE_LIBINPUT)
 #ifdef HAVE_LIBINPUT
+    Atom               libinput_disable_while_typing_prop;
     Atom               libinput_tap_prop;
     Atom               libinput_scroll_methods_prop;
+    Atom               libinput_click_method_prop;
+    gint               libinput_disable_while_typing = -1;
+    gboolean           libinput_has_click_method = FALSE;
+    LibinputClickMethod libinput_click_methods_available = LIBINPUT_CLICK_METHOD_NONE;
+    LibinputClickMethod libinput_click_method = LIBINPUT_CLICK_METHOD_NONE;
 #endif /* HAVE_LIBINPUT */
     Atom               synaptics_prop;
     Atom               wacom_prop;
@@ -1259,6 +1482,15 @@ mouse_settings_device_selection_changed (GtkBuilder *builder)
 #ifdef HAVE_LIBINPUT
         is_libinput = mouse_settings_get_libinput_boolean (xdisplay, device, LIBINPUT_PROP_LEFT_HANDED, &left_handed);
         mouse_settings_get_libinput_boolean (xdisplay, device, LIBINPUT_PROP_NATURAL_SCROLL, &reverse_scrolling);
+        has_hires_scrolling = mouse_settings_get_libinput_boolean (xdisplay, device, LIBINPUT_PROP_HIRES_WHEEL_SCROLL_ENABLED, &hires_scrolling);
+        if (mouse_settings_get_libinput_accel_profile (xdisplay, device,
+                                                       LIBINPUT_PROP_ACCEL_PROFILES_AVAILABLE,
+                                                       &libinput_accel_profile_available))
+        {
+            libinput_has_accel_profile = mouse_settings_get_libinput_accel_profile (xdisplay, device,
+                                                                                    LIBINPUT_PROP_ACCEL_PROFILE_ENABLED,
+                                                                                    &libinput_accel_profile);
+        }
         if (!is_libinput)
 #endif /* HAVE_LIBINPUT */
         {
@@ -1326,8 +1558,10 @@ mouse_settings_device_selection_changed (GtkBuilder *builder)
 #if defined(DEVICE_PROPERTIES) || defined (HAVE_LIBINPUT)
 #ifdef HAVE_LIBINPUT
         /* lininput properties */
+        libinput_disable_while_typing_prop = XInternAtom (xdisplay, LIBINPUT_PROP_DISABLE_WHILE_TYPING, True);
         libinput_tap_prop = XInternAtom (xdisplay, LIBINPUT_PROP_TAP, True);
         libinput_scroll_methods_prop = XInternAtom (xdisplay, LIBINPUT_PROP_SCROLL_METHOD_ENABLED, True);
+        libinput_click_method_prop = XInternAtom (xdisplay, LIBINPUT_PROP_CLICK_METHOD_ENABLED, True);
 #endif /* HAVE_LIBINPUT */
         /* wacom and synaptics specific properties */
         device_enabled_prop = XInternAtom (xdisplay, "Device Enabled", True);
@@ -1363,6 +1597,11 @@ mouse_settings_device_selection_changed (GtkBuilder *builder)
                 else if (props[i] == wacom_rotation_prop)
                     wacom_rotation = mouse_settings_device_get_int_property (device, props[i], 0, NULL);
 #ifdef HAVE_LIBINPUT
+                else if (props[i] == libinput_disable_while_typing_prop)
+                {
+                    is_synaptics = TRUE;
+                    mouse_settings_get_libinput_boolean (xdisplay, device, LIBINPUT_PROP_DISABLE_WHILE_TYPING, &libinput_disable_while_typing);
+                }
                 else if (props[i] == libinput_tap_prop)
                 {
                     is_synaptics = TRUE;
@@ -1396,6 +1635,17 @@ mouse_settings_device_selection_changed (GtkBuilder *builder)
                             synaptics_edge_scroll = -1;
                     }
                 }
+                else if (props[i] == libinput_click_method_prop)
+                {
+                    if (mouse_settings_get_libinput_click_method (xdisplay, device,
+                                                                  LIBINPUT_PROP_CLICK_METHODS_AVAILABLE,
+                                                                  &libinput_click_methods_available))
+                    {
+                        libinput_has_click_method = mouse_settings_get_libinput_click_method (xdisplay, device,
+                                                                                              LIBINPUT_PROP_CLICK_METHOD_ENABLED,
+                                                                                              &libinput_click_method);
+                    }
+                }
 #endif /* HAVE_LIBINPUT */
             }
 
@@ -1407,13 +1657,44 @@ mouse_settings_device_selection_changed (GtkBuilder *builder)
         XCloseDevice (xdisplay, device);
     }
 
+    scroll_wheel_available = nbuttons >= 5;
+
     /* update button order */
     object = gtk_builder_get_object (builder, left_handed ? "device-left-handed" : "device-right-handed");
     gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (object), TRUE);
 
     object = gtk_builder_get_object (builder, "device-reverse-scrolling");
     gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (object), reverse_scrolling);
-    gtk_widget_set_sensitive (GTK_WIDGET (object), nbuttons >= 5);
+    gtk_widget_set_sensitive (GTK_WIDGET (object), scroll_wheel_available);
+
+    object = gtk_builder_get_object (builder, "libinput-hires-scrolling");
+#ifdef HAVE_LIBINPUT
+    /* don't show hires scrolling for touchpads, it's only for mouse wheels */
+    if (is_libinput && has_hires_scrolling && !is_synaptics)
+    {
+        gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (object), hires_scrolling);
+        gtk_widget_set_sensitive (GTK_WIDGET (object), scroll_wheel_available);
+        gtk_widget_set_visible (GTK_WIDGET (object), TRUE);
+    }
+    else
+#endif
+    {
+        gtk_widget_set_visible (GTK_WIDGET (object), FALSE);
+    }
+
+    object = gtk_builder_get_object (builder, "libinput-accel-profile");
+#ifdef HAVE_LIBINPUT
+    if (is_libinput && libinput_has_accel_profile)
+    {
+        gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (object), libinput_accel_profile == LIBINPUT_ACCEL_PROFILE_ADAPTIVE);
+        gtk_widget_set_sensitive (GTK_WIDGET (object), libinput_accel_profile_available & LIBINPUT_ACCEL_PROFILE_ADAPTIVE);
+        gtk_widget_set_visible (GTK_WIDGET (object), TRUE);
+    }
+    else
+#endif
+    {
+        gtk_widget_set_visible (GTK_WIDGET (object), FALSE);
+    }
 
     /* update acceleration scale */
     object = gtk_builder_get_object (builder, "device-acceleration-scale");
@@ -1492,6 +1773,39 @@ mouse_settings_device_selection_changed (GtkBuilder *builder)
 
         object = gtk_builder_get_object (builder, "synaptics-disable-while-type");
         gtk_widget_set_visible (GTK_WIDGET (object), !is_libinput);
+
+        object = gtk_builder_get_object (builder, "libinput-disable-while-type");
+        if (is_libinput)
+        {
+            gtk_widget_set_sensitive (GTK_WIDGET (object), libinput_disable_while_typing != -1);
+            gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (object), libinput_disable_while_typing > 0);
+        }
+        gtk_widget_set_visible (GTK_WIDGET (object), is_libinput);
+
+        object = gtk_builder_get_object (builder, "libinput-click-method-box");
+        if (is_libinput)
+        {
+            gtk_widget_set_sensitive (GTK_WIDGET (object), libinput_has_click_method);
+            if (libinput_click_method == LIBINPUT_CLICK_METHOD_BUTTON_AREAS)
+                gtk_combo_box_set_active (GTK_COMBO_BOX (object), 1);
+            else if (libinput_click_method == LIBINPUT_CLICK_METHOD_CLICK_FINGER)
+                gtk_combo_box_set_active (GTK_COMBO_BOX (object), 2);
+            else
+                gtk_combo_box_set_active (GTK_COMBO_BOX (object), 0);
+        }
+        gtk_widget_set_visible (GTK_WIDGET (object), is_libinput);
+        if (is_libinput)
+        {
+            object = gtk_builder_get_object (builder, "libinput-click-methods-store");
+            if (gtk_tree_model_iter_nth_child (GTK_TREE_MODEL (object), &iter, NULL, 1))
+                gtk_list_store_set (GTK_LIST_STORE (object), &iter, 1, libinput_click_methods_available & LIBINPUT_CLICK_METHOD_BUTTON_AREAS, -1);
+
+            if (gtk_tree_model_iter_nth_child (GTK_TREE_MODEL (object), &iter, NULL, 2))
+                gtk_list_store_set (GTK_LIST_STORE (object), &iter, 1, libinput_click_methods_available & LIBINPUT_CLICK_METHOD_CLICK_FINGER, -1);
+        }
+
+        object = gtk_builder_get_object (builder, "libinput-click-method-label");
+        gtk_widget_set_visible (GTK_WIDGET (object), is_libinput);
 
         object = gtk_builder_get_object (builder, "synaptics-disable-duration-box");
         gtk_widget_set_visible (GTK_WIDGET (object), !is_libinput);
@@ -1901,12 +2215,18 @@ main (gint argc, gchar **argv)
     if (G_UNLIKELY (opt_version))
     {
         g_print ("%s %s (Xfce %s)\n\n", G_LOG_DOMAIN, PACKAGE_VERSION, xfce_version_string ());
-        g_print ("%s\n", "Copyright (c) 2004-2022");
+        g_print ("%s\n", "Copyright (c) 2004-2024");
         g_print ("\t%s\n\n", _("The Xfce development team. All rights reserved."));
         g_print (_("Please report bugs to <%s>."), PACKAGE_BUGREPORT);
         g_print ("\n");
 
         return EXIT_SUCCESS;
+    }
+
+    if (!GDK_IS_X11_DISPLAY (gdk_display_get_default ()))
+    {
+        g_warning ("Mouse settings are only available on X11");
+        return EXIT_FAILURE;
     }
 
     /* initialize xfconf */
@@ -1987,6 +2307,16 @@ main (gint argc, gchar **argv)
             g_signal_connect_swapped (G_OBJECT (object), "toggled",
                                       G_CALLBACK (mouse_settings_device_save), builder);
 
+#ifdef HAVE_LIBINPUT
+            object = gtk_builder_get_object (builder, "libinput-hires-scrolling");
+            g_signal_connect (G_OBJECT (object), "toggled",
+                              G_CALLBACK (mouse_settings_libinput_hires_scrolling_toggled), builder);
+
+            object = gtk_builder_get_object (builder, "libinput-accel-profile");
+            g_signal_connect (G_OBJECT (object), "toggled",
+                              G_CALLBACK (mouse_settings_libinput_accel_profile_changed), builder);
+#endif
+
             object = gtk_builder_get_object (builder, "device-reset-feedback");
             g_signal_connect (G_OBJECT (object), "clicked",
                               G_CALLBACK (mouse_settings_device_reset), builder);
@@ -2004,6 +2334,16 @@ main (gint argc, gchar **argv)
             g_object_bind_property (G_OBJECT (synaptics_disable_while_type), "active",
                                     G_OBJECT (synaptics_disable_duration_table), "sensitive",
                                     G_BINDING_SYNC_CREATE);
+
+#ifdef HAVE_LIBINPUT
+            object = gtk_builder_get_object (builder, "libinput-disable-while-type");
+            g_signal_connect (G_OBJECT (object), "toggled",
+                              G_CALLBACK (mouse_settings_libinput_disable_touchpad_while_typing_toggled), builder);
+
+            object = gtk_builder_get_object (builder, "libinput-click-method-box");
+            g_signal_connect (G_OBJECT (object), "changed",
+                              G_CALLBACK (mouse_settings_libinput_click_method_changed), builder);
+#endif
 
             object = gtk_builder_get_object (builder, "synaptics-disable-duration-scale");
             g_signal_connect (G_OBJECT (object), "format-value",

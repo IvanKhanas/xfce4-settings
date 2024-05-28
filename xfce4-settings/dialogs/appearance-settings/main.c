@@ -32,22 +32,23 @@
 #endif
 
 #include <unistd.h>
+#include <fcntl.h>
+
 #include <glib.h>
 #include <glib/gstdio.h>
-#include <fcntl.h>
-#include <gtk/gtk.h>
-#include <gtk/gtkx.h>
-
-#include <gdk/gdkx.h>
-
 #include <gio/gio.h>
+#include <cairo-gobject.h>
+#include <gtk/gtk.h>
+#ifdef ENABLE_X11
+#include <gdk/gdkx.h>
+#include <gtk/gtkx.h>
+#endif
 
 #include <libxfce4ui/libxfce4ui.h>
 #include <libxfce4util/libxfce4util.h>
 #include <xfconf/xfconf.h>
 
 #include "appearance-dialog_ui.h"
-#include "images.h"
 
 #define INCH_MM      25.4
 
@@ -82,7 +83,6 @@ enum {
 	NUM_SYMBOLIC_COLORS
 };
 
-static const gchar *gsettings_category_gnome_interface = "org.gnome.desktop.interface";
 static const gchar* xft_hint_styles_array[] =
 {
     "hintnone", "hintslight", "hintmedium", "hintfull"
@@ -110,6 +110,7 @@ static GOptionEntry option_entries[] =
 
 /* Global xfconf channel */
 static XfconfChannel *xsettings_channel;
+static GSettings *desktop_interface_gsettings;
 
 typedef struct
 {
@@ -234,6 +235,33 @@ cb_ui_theme_selection_changed (GtkTreeSelection *selection)
 }
 
 static void
+cb_xfwm4_sync_label_link_activated (GtkLabel *label)
+{
+    gchar  *command;
+    GError *error = NULL;
+
+    command = g_find_program_in_path ("xfwm4-settings");
+    if (command != NULL && !g_spawn_command_line_async (command, &error))
+    {
+         xfce_dialog_show_error (NULL, error, _("Failed to display Xfwm4 Settings"));
+         g_error_free (error);
+    }
+
+    g_free (command);
+}
+
+static void
+cb_xfwm4_sync_switch_toggled (GObject *self, GParamSpec* pspec, gpointer user_data)
+{
+    /* Set the new XFWM4 theme */
+    if (gtk_switch_get_active (GTK_SWITCH (self)))
+        theme_selection_changed (GTK_TREE_SELECTION (user_data), "/Net/ThemeName");
+    else
+        xfconf_channel_set_string (xfconf_channel_get ("xfwm4"), "/general/theme", "Default");
+}
+
+#ifdef ENABLE_X11
+static void
 cb_window_scaling_factor_combo_changed (GtkComboBox *combo)
 {
     gint active;
@@ -244,6 +272,7 @@ cb_window_scaling_factor_combo_changed (GtkComboBox *combo)
     /* Save setting */
     xfconf_channel_set_int (xsettings_channel, "/Gdk/WindowScalingFactor", active);
 }
+#endif
 
 static void
 cb_antialias_check_button_toggled (GtkToggleButton *toggle)
@@ -375,15 +404,18 @@ appearance_settings_load_icon_themes (gpointer user_data)
     gboolean      has_cache;
     gchar        *cache_tooltip;
     GtkIconTheme *icon_theme;
-    GdkPixbuf    *preview;
+    cairo_surface_t *preview;
+    cairo_t      *cr;
     GdkPixbuf    *icon;
     gchar*        preview_icons[4] = { "folder", "go-down", "audio-volume-high", "web-browser" };
     int           coords[4][2] = { { 4, 4 }, { 24, 4 }, { 4, 24 }, { 24, 24 } };
+    gint          scale_factor;
 
     g_return_val_if_fail (pd != NULL, FALSE);
 
     list_store = pd->list_store;
     tree_view = pd->tree_view;
+    scale_factor = gtk_widget_get_scale_factor (GTK_WIDGET (tree_view));
 
     /* Determine current theme */
     active_theme_name = xfconf_channel_get_string (xsettings_channel, "/Net/IconThemeName", "Rodent");
@@ -426,8 +458,10 @@ appearance_settings_load_icon_themes (gpointer user_data)
                     check_list = g_slist_prepend (check_list, g_strdup (file));
 
                     /* Create the icon-theme preview */
-                    preview = gdk_pixbuf_new (GDK_COLORSPACE_RGB, TRUE, 8, 44, 44);
-                    gdk_pixbuf_fill (preview, 0x00);
+                    preview = cairo_image_surface_create (CAIRO_FORMAT_ARGB32, 44 * scale_factor, 44 * scale_factor);
+                    cairo_surface_set_device_scale (preview, scale_factor, scale_factor);
+                    cr = cairo_create (preview);
+
                     icon_theme = gtk_icon_theme_new ();
                     gtk_icon_theme_set_custom_theme (icon_theme, file);
 
@@ -435,16 +469,26 @@ appearance_settings_load_icon_themes (gpointer user_data)
                     {
                         icon = NULL;
                         if (gtk_icon_theme_has_icon (icon_theme, preview_icons[p]))
-                            icon = gtk_icon_theme_load_icon (icon_theme, preview_icons[p], 16, 0, NULL);
+                            icon = gtk_icon_theme_load_icon_for_scale (icon_theme, preview_icons[p], 16, scale_factor, GTK_ICON_LOOKUP_FORCE_SIZE, NULL);
                         else if (gtk_icon_theme_has_icon (icon_theme, "image-missing"))
-                            icon = gtk_icon_theme_load_icon (icon_theme, "image-missing", 16, 0, NULL);
+                            icon = gtk_icon_theme_load_icon_for_scale (icon_theme, "image-missing", 16, scale_factor, GTK_ICON_LOOKUP_FORCE_SIZE, NULL);
 
                         if (icon)
                         {
-                            gdk_pixbuf_copy_area (icon, 0, 0, 16, 16, preview, coords[p][0], coords[p][1]);
+                            cairo_save (cr);
+
+                            cairo_translate (cr, coords[p][0], coords[p][1]);
+                            cairo_scale (cr, 1.0 / scale_factor, 1.0 / scale_factor);
+
+                            gdk_cairo_set_source_pixbuf (cr, icon, 0, 0);
+                            cairo_paint (cr);
+
+                            cairo_restore (cr);
                             g_object_unref (icon);
                         }
                     }
+
+                    cairo_destroy (cr);
 
                     /* Get translated icon theme name and comment */
                     theme_name = xfce_rc_read_entry (index_file, "Name", file);
@@ -490,7 +534,7 @@ appearance_settings_load_icon_themes (gpointer user_data)
                     }
 
                     g_object_unref (icon_theme);
-                    g_object_unref (preview);
+                    cairo_surface_destroy (preview);
                 }
             }
 
@@ -696,7 +740,6 @@ appearance_settings_dialog_channel_property_changed (XfconfChannel *channel,
     guint         i;
     gint          antialias, dpi, custom_dpi;
     GtkTreeModel *model;
-    g_autoptr(GSettings) gsettings = NULL;
 
     g_return_if_fail (property_name != NULL);
     g_return_if_fail (GTK_IS_BUILDER (builder));
@@ -803,20 +846,28 @@ appearance_settings_dialog_channel_property_changed (XfconfChannel *channel,
             g_free (new_name);
         }
 
-        /* Keep gsettings in sync */
-        gsettings = g_settings_new (gsettings_category_gnome_interface);
-        if (gsettings)
+        /* Set the preferred color scheme (needed for GTK4) */
+        if (desktop_interface_gsettings != NULL)
         {
-            str = xfconf_channel_get_string (channel, property_name, NULL);
-            g_settings_set_string (gsettings, "gtk-theme", str);
-
-            /* Also set the preferred color scheme (needed for GTK4) */
-            if (str != NULL && g_str_has_suffix (str, "-dark"))
-                g_settings_set_string (gsettings, "color-scheme", "prefer-dark");
-            else
-                g_settings_reset (gsettings, "color-scheme");
-
-            g_free (str);
+            GSettingsSchema *schema;
+            g_object_get (desktop_interface_gsettings, "settings-schema", &schema, NULL);
+            if (g_settings_schema_has_key (schema, "color-scheme"))
+              {
+                str = xfconf_channel_get_string (channel, property_name, NULL);
+                if (str != NULL)
+                {
+                    gchar *strdown = g_ascii_strdown (str, -1);
+                    if (g_strstr_len (strdown, -1, "-dark-") || g_str_has_suffix (strdown, "-dark"))
+                        g_settings_set_string (desktop_interface_gsettings, "color-scheme", "prefer-dark");
+                    else
+                        g_settings_reset (desktop_interface_gsettings, "color-scheme");
+                    g_free (strdown);
+                    g_free (str);
+                }
+                else
+                    g_settings_reset (desktop_interface_gsettings, "color-scheme");
+              }
+            g_settings_schema_unref (schema);
         }
     }
     else if (strcmp (property_name, "/Net/IconThemeName") == 0)
@@ -859,35 +910,14 @@ appearance_settings_dialog_channel_property_changed (XfconfChannel *channel,
                                  pd,
                                  (GDestroyNotify) preview_data_free);
         }
-
-        /* Keep gsettings in sync */
-        gsettings = g_settings_new (gsettings_category_gnome_interface);
-        if (gsettings)
-        {
-            str = xfconf_channel_get_string (channel, property_name, NULL);
-            g_settings_set_string (gsettings, "icon-theme", str);
-            g_free (str);
-        }
-    }
-    else if (strcmp (property_name, "/Gtk/FontName") == 0)
-    {
-        /* Keep gsettings in sync */
-        gsettings = g_settings_new (gsettings_category_gnome_interface);
-        if (gsettings)
-        {
-            str = xfconf_channel_get_string (channel, property_name, NULL);
-            g_settings_set_string (gsettings, "font-name", str);
-            g_free (str);
-        }
     }
     else if (strcmp (property_name, "/Gtk/MonospaceFontName") == 0)
     {
         /* Keep gsettings in sync */
-        gsettings = g_settings_new (gsettings_category_gnome_interface);
-        if (gsettings)
+        if (desktop_interface_gsettings != NULL)
         {
             str = xfconf_channel_get_string (channel, property_name, NULL);
-            g_settings_set_string (gsettings, "monospace-font-name", str);
+            g_settings_set_string (desktop_interface_gsettings, "monospace-font-name", str);
             g_free (str);
         }
     }
@@ -934,8 +964,12 @@ install_theme (GtkWidget *widget, gchar **uris, GtkBuilder *builder)
 
     /* inform the user we are installing the theme */
     gdkwindow = gtk_widget_get_window (widget);
-    cursor = gdk_cursor_new_for_display (gtk_widget_get_display (widget), GDK_WATCH);
-    gdk_window_set_cursor (gdkwindow, cursor);
+    cursor = gdk_cursor_new_from_name (gtk_widget_get_display (widget), "wait");
+    if (cursor != NULL)
+    {
+        gdk_window_set_cursor (gdkwindow, cursor);
+        g_object_unref (cursor);
+    }
 
     /* iterate main loop to show cursor */
     while (gtk_events_pending ())
@@ -956,7 +990,7 @@ install_theme (GtkWidget *widget, gchar **uris, GtkBuilder *builder)
             {
                 case 2:
                     g_set_error (&error, G_SPAWN_ERROR, 0,
-                        _("File is larger than %d MB, installation aborted"), 50);
+                        _("File is too large, installation aborted"));
                     break;
 
                 case 3:
@@ -972,6 +1006,11 @@ install_theme (GtkWidget *widget, gchar **uris, GtkBuilder *builder)
                 case 5:
                     g_set_error_literal (&error, G_SPAWN_ERROR, 0,
                         _("Unknown format, only archives and directories are supported"));
+                    break;
+
+                case 6:
+                    g_set_error_literal (&error, G_SPAWN_ERROR, 0,
+                        _("Not a valid theme package"));
                     break;
 
                 default:
@@ -996,7 +1035,6 @@ install_theme (GtkWidget *widget, gchar **uris, GtkBuilder *builder)
 
     g_strfreev (uris);
     gdk_window_set_cursor (gdkwindow, NULL);
-    g_object_unref (cursor);
 
     if (something_installed)
     {
@@ -1071,17 +1109,69 @@ appearance_settings_install_theme_cb (GtkButton *widget, GtkBuilder *builder)
     g_free (theme);
 }
 
+static cairo_surface_t *
+appearance_settings_draw_subpixel_icon (gboolean is_rgb,
+                                        gboolean is_vertical,
+                                        gint     size,
+                                        gint     scale_factor)
+{
+    cairo_surface_t *surface;
+    cairo_t         *cr;
+    gint             color_width;
+    double           colors[3][3] = { { 0.0, }, };
+
+    surface = cairo_image_surface_create (CAIRO_FORMAT_ARGB32, size * scale_factor, size * scale_factor);
+    cairo_surface_set_device_scale (surface, scale_factor, scale_factor);
+
+    cr = cairo_create (surface);
+    cairo_scale (cr, 1.0 / scale_factor, 1.0 / scale_factor);
+
+    if (is_rgb)
+    {
+        colors[0][0] = 1.0;  // red
+        colors[1][1] = 1.0;  // green
+        colors[2][2] = 1.0;  // blue
+    }
+    else
+    {
+        colors[0][2] = 1.0;  // blue
+        colors[1][1] = 1.0;  // green
+        colors[2][0] = 1.0;  // red
+    }
+
+    color_width = (size * scale_factor) / 3;
+
+    for (gsize i = 0; i < G_N_ELEMENTS (colors); ++i)
+    {
+        cairo_save (cr);
+        cairo_set_source_rgb (cr, colors[i][0], colors[i][1], colors[i][2]);
+        cairo_rectangle (cr,
+                         is_vertical ? 0 : color_width * i,
+                         is_vertical ? color_width * i : 0,
+                         is_vertical ? size * scale_factor : color_width,
+                         is_vertical ? color_width : size * scale_factor);
+        cairo_fill (cr);
+        cairo_restore (cr);
+    }
+
+    cairo_destroy (cr);
+
+    return surface;
+}
+
 static void
 appearance_settings_dialog_configure_widgets (GtkBuilder *builder)
 {
     GObject           *object, *object2;
     GtkListStore      *list_store;
     GtkCellRenderer   *renderer;
-    GdkPixbuf         *pixbuf;
+    cairo_surface_t   *surface;
     GtkTreeSelection  *selection;
     GtkTreeViewColumn *column;
     preview_data      *pd;
     gchar             *path;
+    gint               menu_icon_size;
+    gint               scale_factor;
 
     /* Icon themes list */
     object = gtk_builder_get_object (builder, "install_icon_theme");
@@ -1089,8 +1179,9 @@ appearance_settings_dialog_configure_widgets (GtkBuilder *builder)
     g_signal_connect (G_OBJECT (object), "clicked", G_CALLBACK (appearance_settings_install_theme_cb), builder);
 
     object = gtk_builder_get_object (builder, "icon_theme_treeview");
+    scale_factor = gtk_widget_get_scale_factor (GTK_WIDGET (object));
 
-    list_store = gtk_list_store_new (N_THEME_COLUMNS, GDK_TYPE_PIXBUF, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_BOOLEAN);
+    list_store = gtk_list_store_new (N_THEME_COLUMNS, CAIRO_GOBJECT_TYPE_SURFACE, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_BOOLEAN);
     gtk_tree_sortable_set_sort_column_id (GTK_TREE_SORTABLE (list_store), COLUMN_THEME_DISPLAY_NAME, GTK_SORT_ASCENDING);
     gtk_tree_view_set_model (GTK_TREE_VIEW (object), GTK_TREE_MODEL (list_store));
     gtk_tree_view_set_tooltip_column (GTK_TREE_VIEW (object), COLUMN_THEME_COMMENT);
@@ -1101,7 +1192,7 @@ appearance_settings_dialog_configure_widgets (GtkBuilder *builder)
     /* Icon Previews */
     renderer = gtk_cell_renderer_pixbuf_new ();
     gtk_tree_view_column_pack_start (column, renderer, FALSE);
-    gtk_tree_view_column_set_attributes (column, renderer, "pixbuf", COLUMN_THEME_PREVIEW, NULL);
+    gtk_tree_view_column_set_attributes (column, renderer, "surface", COLUMN_THEME_PREVIEW, NULL);
     gtk_tree_view_append_column (GTK_TREE_VIEW (object), column);
 
     /* Theme Name and Description */
@@ -1185,7 +1276,11 @@ appearance_settings_dialog_configure_widgets (GtkBuilder *builder)
     if (path != NULL)
     {
         object = gtk_builder_get_object (builder, "xfwm4_sync_switch");
-        xfconf_g_property_bind (xsettings_channel, "/Xfce/SyncThemes", G_TYPE_BOOLEAN, G_OBJECT (object), "state");
+        xfconf_g_property_bind (xsettings_channel, "/Xfce/SyncThemes", G_TYPE_BOOLEAN, G_OBJECT (object), "active");
+        g_signal_connect (G_OBJECT (object), "notify::active", G_CALLBACK (cb_xfwm4_sync_switch_toggled), selection);
+
+        object = gtk_builder_get_object (builder, "xfwm4_sync_label");
+        g_signal_connect (G_OBJECT (object), "activate-link", G_CALLBACK (cb_xfwm4_sync_label_link_activated), NULL);
     }
     else
     {
@@ -1197,25 +1292,28 @@ appearance_settings_dialog_configure_widgets (GtkBuilder *builder)
     /* Subpixel (rgba) hinting Combo */
     object = gtk_builder_get_object (builder, "xft_rgba_store");
 
-    pixbuf = gdk_pixbuf_new_from_xpm_data (rgba_image_none_xpm);
-    gtk_list_store_insert_with_values (GTK_LIST_STORE (object), NULL, 0, 0, pixbuf, 1, _("None"), -1);
-    g_object_unref (G_OBJECT (pixbuf));
+    gtk_icon_size_lookup (GTK_ICON_SIZE_MENU, &menu_icon_size, &menu_icon_size);
 
-    pixbuf = gdk_pixbuf_new_from_xpm_data (rgba_image_rgb_xpm);
-    gtk_list_store_insert_with_values (GTK_LIST_STORE (object), NULL, 1, 0, pixbuf, 1, _("RGB"), -1);
-    g_object_unref (G_OBJECT (pixbuf));
+    surface = cairo_image_surface_create (CAIRO_FORMAT_ARGB32, menu_icon_size * scale_factor, menu_icon_size * scale_factor);
+    cairo_surface_set_device_scale (surface, scale_factor, scale_factor);
+    gtk_list_store_insert_with_values (GTK_LIST_STORE (object), NULL, 0, 0, surface, 1, _("None"), -1);
+    cairo_surface_destroy (surface);
 
-    pixbuf = gdk_pixbuf_new_from_xpm_data (rgba_image_bgr_xpm);
-    gtk_list_store_insert_with_values (GTK_LIST_STORE (object), NULL, 2, 0, pixbuf, 1, _("BGR"), -1);
-    g_object_unref (G_OBJECT (pixbuf));
+    surface = appearance_settings_draw_subpixel_icon (TRUE, FALSE, menu_icon_size, scale_factor);
+    gtk_list_store_insert_with_values (GTK_LIST_STORE (object), NULL, 1, 0, surface, 1, _("RGB"), -1);
+    cairo_surface_destroy (surface);
 
-    pixbuf = gdk_pixbuf_new_from_xpm_data (rgba_image_vrgb_xpm);
-    gtk_list_store_insert_with_values (GTK_LIST_STORE (object), NULL, 3, 0, pixbuf, 1, _("Vertical RGB"), -1);
-    g_object_unref (G_OBJECT (pixbuf));
+    surface = appearance_settings_draw_subpixel_icon (FALSE, FALSE, menu_icon_size, scale_factor);
+    gtk_list_store_insert_with_values (GTK_LIST_STORE (object), NULL, 2, 0, surface, 1, _("BGR"), -1);
+    cairo_surface_destroy (surface);
 
-    pixbuf = gdk_pixbuf_new_from_xpm_data (rgba_image_vbgr_xpm);
-    gtk_list_store_insert_with_values (GTK_LIST_STORE (object), NULL, 4, 0, pixbuf, 1, _("Vertical BGR"), -1);
-    g_object_unref (G_OBJECT (pixbuf));
+    surface = appearance_settings_draw_subpixel_icon (TRUE, TRUE, menu_icon_size, scale_factor);
+    gtk_list_store_insert_with_values (GTK_LIST_STORE (object), NULL, 3, 0, surface, 1, _("Vertical RGB"), -1);
+    cairo_surface_destroy (surface);
+
+    surface = appearance_settings_draw_subpixel_icon (FALSE, TRUE, menu_icon_size, scale_factor);
+    gtk_list_store_insert_with_values (GTK_LIST_STORE (object), NULL, 4, 0, surface, 1, _("Vertical BGR"), -1);
+    cairo_surface_destroy (surface);
 
     object = gtk_builder_get_object (builder, "xft_rgba_combo_box");
     appearance_settings_dialog_channel_property_changed (xsettings_channel, "/Xft/RGBA", NULL, builder);
@@ -1265,9 +1363,19 @@ appearance_settings_dialog_configure_widgets (GtkBuilder *builder)
     g_signal_connect (G_OBJECT (object2), "value-changed", G_CALLBACK (cb_custom_dpi_spin_button_changed), object);
 
     /* Window scaling factor */
-    object = gtk_builder_get_object (builder, "gdk_window_scaling_factor_combo_box");
-    appearance_settings_dialog_channel_property_changed (xsettings_channel, "/Gdk/WindowScalingFactor", NULL, builder);
-    g_signal_connect (G_OBJECT (object), "changed", G_CALLBACK(cb_window_scaling_factor_combo_changed), NULL);
+#ifdef ENABLE_X11
+    if (GDK_IS_X11_DISPLAY (gdk_display_get_default ()))
+    {
+        object = gtk_builder_get_object (builder, "gdk_window_scaling_factor_combo_box");
+        appearance_settings_dialog_channel_property_changed (xsettings_channel, "/Gdk/WindowScalingFactor", NULL, builder);
+        g_signal_connect (G_OBJECT (object), "changed", G_CALLBACK(cb_window_scaling_factor_combo_changed), NULL);
+    }
+    else
+#endif
+    {
+        object = gtk_builder_get_object (builder, "frame6");
+        gtk_widget_hide (GTK_WIDGET (object));
+    }
 
 #ifdef ENABLE_SOUND_SETTINGS
     /* Sounds */
@@ -1303,8 +1411,7 @@ appearance_settings_dialog_response (GtkWidget *dialog,
 gint
 main (gint argc, gchar **argv)
 {
-    GObject    *dialog, *plug_child;
-    GtkWidget  *plug;
+    GObject    *dialog;
     GtkBuilder *builder;
     GError     *error = NULL;
 
@@ -1336,7 +1443,7 @@ main (gint argc, gchar **argv)
     if (G_UNLIKELY (opt_version))
     {
         g_print ("%s %s (Xfce %s)\n\n", G_LOG_DOMAIN, PACKAGE_VERSION, xfce_version_string ());
-        g_print ("%s\n", "Copyright (c) 2008-2022");
+        g_print ("%s\n", "Copyright (c) 2008-2024");
         g_print ("\t%s\n\n", _("The Xfce development team. All rights reserved."));
         g_print (_("Please report bugs to <%s>."), PACKAGE_BUGREPORT);
         g_print ("\n");
@@ -1358,9 +1465,23 @@ main (gint argc, gchar **argv)
     xsettings_channel = xfconf_channel_new ("xsettings");
     if (G_LIKELY (xsettings_channel))
     {
+        GSettingsSchemaSource *source;
+
         /* hook to make sure the libxfce4ui library is linked */
         if (xfce_titled_dialog_get_type () == 0)
             return EXIT_FAILURE;
+
+        /* to synchronize some properties with GSettings */
+        source = g_settings_schema_source_get_default ();
+        if (source != NULL)
+          {
+            GSettingsSchema *schema = g_settings_schema_source_lookup (source, "org.gnome.desktop.interface", TRUE);
+            if (schema != NULL)
+              {
+                desktop_interface_gsettings = g_settings_new ("org.gnome.desktop.interface");
+                g_settings_schema_unref (schema);
+              }
+          }
 
         /* load the gtk user interface file*/
         builder = gtk_builder_new ();
@@ -1373,22 +1494,12 @@ main (gint argc, gchar **argv)
 
             appearance_settings_dialog_configure_widgets (builder);
 
-            if (G_UNLIKELY (opt_socket_id == 0))
+#ifdef ENABLE_X11
+            if (opt_socket_id != 0 && GDK_IS_X11_DISPLAY (gdk_display_get_default ()))
             {
-                /* build the dialog */
-                dialog = gtk_builder_get_object (builder, "dialog");
+                GtkWidget *plug;
+                GObject *plug_child;
 
-                g_signal_connect (dialog, "response",
-                    G_CALLBACK (appearance_settings_dialog_response), NULL);
-                gtk_window_present (GTK_WINDOW (dialog));
-
-                /* To prevent the settings dialog to be saved in the session */
-                gdk_x11_set_sm_client_id ("FAKE ID");
-
-                gtk_main ();
-            }
-            else
-            {
                 /* Create plug widget */
                 plug = gtk_plug_new (opt_socket_id);
                 g_signal_connect (plug, "delete-event", G_CALLBACK (gtk_main_quit), NULL);
@@ -1408,6 +1519,22 @@ main (gint argc, gchar **argv)
                 /* Enter main loop */
                 gtk_main ();
             }
+            else
+#endif
+            {
+                /* build the dialog */
+                dialog = gtk_builder_get_object (builder, "dialog");
+
+                g_signal_connect (dialog, "response",
+                    G_CALLBACK (appearance_settings_dialog_response), NULL);
+                gtk_window_present (GTK_WINDOW (dialog));
+#ifdef ENABLE_X11
+                /* To prevent the settings dialog to be saved in the session */
+                if (GDK_IS_X11_DISPLAY (gdk_display_get_default ()))
+                    gdk_x11_set_sm_client_id ("FAKE ID");
+#endif
+                gtk_main ();
+            }
         }
         else
         {
@@ -1420,6 +1547,8 @@ main (gint argc, gchar **argv)
 
         /* release the channel */
         g_object_unref (G_OBJECT (xsettings_channel));
+        if (desktop_interface_gsettings != NULL)
+          g_object_unref (desktop_interface_gsettings);
     }
 
     /* shutdown xfconf */

@@ -50,7 +50,7 @@
 #include <fontconfig/fontconfig.h>
 
 #include "xsettings.h"
-#include "debug.h"
+#include "common/debug.h"
 
 #define XSettingsTypeInteger 0
 #define XSettingsTypeString  1
@@ -459,15 +459,16 @@ xfce_xsettings_helper_prop_changed (XfconfChannel       *channel,
     xfsettings_dbg_filtered (XFSD_DEBUG_XSETTINGS, "prop \"%s\" changed (type=%s)",
                              prop_name, G_VALUE_TYPE_NAME (value));
 
-    if (G_LIKELY (value != NULL))
+    if (G_LIKELY (G_VALUE_TYPE (value) != G_TYPE_INVALID))
     {
         setting = g_hash_table_lookup (helper->settings, prop_name);
         if (G_LIKELY (setting != NULL))
         {
-            /* update the value, assuming the types match because
-             * you cannot changes types in xfconf without removing
-             * it first */
-            g_value_reset (setting->value);
+            /* update the value, without assuming the types match because
+             * you can change type in xfconf without removing it first
+             * e.g. via xfconf_channel_set_property() */
+            g_value_unset (setting->value);
+            g_value_init (setting->value, G_VALUE_TYPE (value));
             g_value_copy (value, setting->value);
 
             /* update the serial */
@@ -1130,7 +1131,7 @@ xfce_xsettings_helper_register (XfceXSettingsHelper *helper,
             /* register this xsettings window for this screen */
             xev.type = ClientMessage;
             xev.window = root_window;
-            xev.message_type = XInternAtom (xdisplay, "MANAGER", True);
+            xev.message_type = XInternAtom (xdisplay, "MANAGER", False);
             xev.format = 32;
             xev.data.l[0] = timestamp;
             xev.data.l[1] = selection_atom;
