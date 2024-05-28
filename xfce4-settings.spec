@@ -1,6 +1,6 @@
 Name: xfce4-settings
-Version: 4.18.0
-Release: alt2
+Version: 4.18.4
+Release: alt1
 Summary: Settings Manager for Xfce
 Summary (ru_RU.UTF-8): Менеджер настроек Xfce
 
@@ -86,6 +86,22 @@ install -pDm0755 %SOURCE1 %buildroot%_bindir/xfce4-fixkeyboard
 %_iconsdir/*/*/*/*.*
 
 %changelog
+* Thu Nov 30 2023 Mikhail Efremov <sem@altlinux.org> 4.18.4-alt1
+- Updated to 4.18.4.
+
+* Mon Jul 10 2023 Mikhail Efremov <sem@altlinux.org> 4.18.3-alt2
+- Fixed Russian translation (closes: #46825).
+
+* Tue Jul 04 2023 Mikhail Efremov <sem@altlinux.org> 4.18.3-alt1
+- Added yandex-browser helper.
+- Updated to 4.18.3.
+
+* Mon Feb 13 2023 Mikhail Efremov <sem@altlinux.org> 4.18.2-alt1
+- Updated to 4.18.2.
+
+* Thu Dec 22 2022 Mikhail Efremov <sem@altlinux.org> 4.18.1-alt1
+- Updated to 4.18.1.
+
 * Fri Dec 16 2022 Mikhail Efremov <sem@altlinux.org> 4.18.0-alt2
 - Fixed Russian "Mail Reader" translation.
 - Fixed Russian "File Manager" translation.
