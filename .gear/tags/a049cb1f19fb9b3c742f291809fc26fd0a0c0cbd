@@ -1,0 +1,20 @@
+object e49ca87408a4d234799edb30681c2bf0321bd2dc
+type commit
+tag xfce4-settings-4.19.4
+tagger Alexander Schwinn <alexxcons@xfce.org> 1733066539 +0100
+
+4.19.4
+
+- I18n: Update po/LINGUAS list
+- mime: Fix xfce_mime_helper_category_to_string leak
+- mime: Fix argument string leaks
+- reinstate sys/wait.h inclusion, needed for WEXITSTATUS at least on
+OpenBSD
+- mime: Fix error message for missing helper definition
+- Translation Updates:
+  Albanian, Amharic, Azerbaijani, Bengali, Bulgarian, Chinese (China),
+  Chinese (Taiwan), Czech, Dutch, English (United Kingdom), Estonian,
+  French, Galician, Georgian, German, Italian, Japanese, Kazakh,
+  Latvian, Lithuanian, Norwegian Bokmål, Occitan (post 1500), Polish,
+  Portuguese, Portuguese (Brazil), Serbian, Spanish, Swedish, Tatar,
+  Telugu, Turkish, Urdu, Urdu (Pakistan)
