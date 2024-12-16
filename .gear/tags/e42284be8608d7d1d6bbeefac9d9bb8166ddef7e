@@ -1,0 +1,10 @@
+object 380bf9b084fd1cafbcf14b08ca94645c48984afe
+type commit
+tag xfce4-settings-4.20.0
+tagger Alexander Schwinn <alexxcons@xfce.org> 1734255007 +0100
+
+4.20.0
+
+- xfsettingsd: Fix ushort and ulong types on FreeBSD
+- Translation Updates:
+  Finnish, Hebrew, Polish, Portuguese, Portuguese (Brazil)
