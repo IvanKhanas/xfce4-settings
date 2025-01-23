@@ -101,6 +101,9 @@ install -pDm0755 %SOURCE1 %buildroot%_bindir/xfce4-fixkeyboard
 - settings-manager: returned xscreensaver properties.
 - Updated to 4.19.3.
 
+* Tue Jun 11 2024 Mikhail Efremov <sem@altlinux.org> 4.18.6-alt1
+- Updated to 4.18.6.
+
 * Wed May 29 2024 Mikhail Efremov <sem@altlinux.org> 4.19.2-alt1
 - Updated to 4.19.2.
 
