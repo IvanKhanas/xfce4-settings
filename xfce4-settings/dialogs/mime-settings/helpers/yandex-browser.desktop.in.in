@@ -2,7 +2,7 @@
 Version=1.0
 Icon=yandex-browser
 Type=X-XFCE-Helper
-_Name=Yandex Browser
+Name=Yandex Browser
 StartupNotify=true
 X-XFCE-Binaries=yandex-browser-stable;yandex-browser;
 X-XFCE-Category=WebBrowser
