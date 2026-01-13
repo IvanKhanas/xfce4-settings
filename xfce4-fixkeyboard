@@ -1,26 +1,37 @@
 #!/bin/sh -eu
 # Try to adjust keyboard according with Xfce settings.
 
+FIXKEYBOARD="/etc/X11/xinit/fixkeyboard"
+SETXKBMAP="setxkbmap"
+
 get_xfce_xkb_conf()
 {
 	xfconf-query -c keyboard-layout -p "/Default/$1" 2>/dev/null
 }
 
+# Do nothing if in wayland session
+if [ "$XDG_SESSION_TYPE" = wayland ] || [ ! -x "$FIXKEYBOARD" ]; then
+	exit 0
+fi
+
 # Is it configured to use xfce layout settings?
 if [ "$(get_xfce_xkb_conf XkbDisable)" = false ]; then
+	if ! type "$SETXKBMAP" >/dev/null 2>&1; then
+		exit 0
+	fi
 	model="$(get_xfce_xkb_conf XkbModel)"
 	layout="$(get_xfce_xkb_conf XkbLayout)"
 	variant="$(get_xfce_xkb_conf XkbVariant)"
 	xkb_option_grp="$(get_xfce_xkb_conf XkbOptions/Group)"
 	xkb_option_compose="$(get_xfce_xkb_conf XkbOptions/Compose)"
 
-	setxkbmap -option
-	setxkbmap ${model:+-model "$model"} \
+	$SETXKBMAP -option
+	$SETXKBMAP ${model:+-model "$model"} \
 		${layout:+-layout "$layout"} \
 		${variant:+-variant "$variant"} \
 		${xkb_option_grp:+-option "$xkb_option_grp"} \
 		${xkb_option_compose:+-option "$xkb_option_compose"}
 else
 	# Use system settings
-	/etc/X11/xinit/fixkeyboard
+	exec $FIXKEYBOARD
 fi
