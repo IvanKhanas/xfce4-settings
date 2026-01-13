@@ -1,6 +1,6 @@
 Name: xfce4-settings
-Version: 4.20.0
-Release: alt2
+Version: 4.20.3
+Release: alt1
 Summary: Settings Manager for Xfce
 Summary (ru_RU.UTF-8): Менеджер настроек Xfce
 
@@ -17,8 +17,9 @@ Patch: %name-%version-%release.patch
 %def_enable upower
 
 BuildPreReq: rpm-build-xfce4 xfce4-dev-tools > 4.5
-BuildRequires: libxfce4ui-gtk3-devel libexo-gtk3-devel libxfconf-devel libgarcon-devel >= 0.1.10
+BuildRequires: libxfce4ui-gtk3-devel libexo-gtk3-devel libxfconf-devel >= 4.19.3 libgarcon-devel >= 4.18.0
 BuildRequires: libX11-devel libXcursor-devel libXi-devel libXrandr-devel libnotify-devel libxklavier-devel
+Buildrequires: libXext-devel
 BuildRequires: libwayland-client-devel wayland-devel >= 1.20 wlr-protocols libgtk-layer-shell-devel
 %{?_enable_upower:BuildRequires: libupower-devel >= 0.99.10}
 BuildRequires: libcolord-devel
@@ -47,12 +48,12 @@ for the Xfce desktop.
 %prep
 %setup
 %patch -p1
+%xfce4_cleanup_version
 
 %build
 %xfce4reconf
 %configure  \
 	--enable-debug=minimum \
-	--enable-maintainer-mode \
 	--disable-silent-rules \
 	--enable-x11 \
 	--enable-wayland \
@@ -91,6 +92,20 @@ install -pDm0755 %SOURCE1 %buildroot%_bindir/xfce4-fixkeyboard
 %exclude %_libdir/gtk-3.0/modules/*.la
 
 %changelog
+* Mon Dec 29 2025 Mikhail Efremov <sem@altlinux.org> 4.20.3-alt1
+- Updated to 4.20.3.
+
+* Thu Aug 14 2025 Mikhail Efremov <sem@altlinux.org> 4.20.2-alt1
+- Updated to 4.20.2.
+
+* Mon Feb 17 2025 Mikhail Efremov <sem@altlinux.org> 4.20.1-alt2
+- Fixed yandex-browser and chromium-gost helpers (closes: #53111).
+- Updated translations from upstream git.
+
+* Mon Feb 10 2025 Mikhail Efremov <sem@altlinux.org> 4.20.1-alt1
+- Dropped fake changelog entry.
+- Updated to 4.20.1.
+
 * Thu Jan 23 2025 Mikhail Efremov <sem@altlinux.org> 4.20.0-alt2
 - Added fake changelog entry.
 
