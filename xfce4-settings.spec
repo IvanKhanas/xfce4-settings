@@ -1,5 +1,5 @@
 Name: xfce4-settings
-Version: 4.20.3
+Version: 4.21.1
 Release: alt1
 Summary: Settings Manager for Xfce
 Summary (ru_RU.UTF-8): Менеджер настроек Xfce
@@ -86,6 +86,11 @@ install -pDm0755 %SOURCE1 %buildroot%_bindir/xfce4-fixkeyboard
 %_iconsdir/*/*/*/*.*
 
 %changelog
+* Tue Jan 13 2026 Mikhail Efremov <sem@altlinux.org> 4.21.1-alt1
+- xfce4-fixkeyboard: Do nothing in wayland session.
+- Switched to meson build.
+- Updated to 4.21.1.
+
 * Mon Dec 29 2025 Mikhail Efremov <sem@altlinux.org> 4.20.3-alt1
 - Updated to 4.20.3.
 
