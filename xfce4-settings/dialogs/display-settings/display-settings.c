@@ -16,12 +16,7 @@
  *  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
-#ifdef HAVE_CONFIG_H
-#include "config.h"
-#endif
-
 #include "display-settings.h"
-#include "identity-popup_ui.h"
 #include "scrollarea.h"
 
 #ifdef ENABLE_WAYLAND
@@ -435,7 +430,7 @@ popup_get (XfceDisplaySettings *settings,
     gchar *text;
     gint window_width, window_height;
 
-    if (gtk_builder_add_from_string (priv->builder, identity_popup_ui, identity_popup_ui_length, NULL) != 0)
+    if (gtk_builder_add_from_resource (priv->builder, "/org/xfce/settings/identity-popup.glade", NULL) != 0)
     {
         popup = GTK_WIDGET (gtk_builder_get_object (priv->builder, "popup"));
         gtk_widget_set_name (popup, "XfceDisplayDialogPopup");
@@ -1019,7 +1014,8 @@ xfce_display_settings_is_clonable (XfceDisplaySettings *settings)
 
 void
 xfce_display_settings_save (XfceDisplaySettings *settings,
-                            const gchar *scheme)
+                            const gchar *scheme,
+                            const gchar *profile_name)
 {
     gchar *prop;
 
@@ -1027,9 +1023,12 @@ xfce_display_settings_save (XfceDisplaySettings *settings,
 
     prop = g_strdup_printf ("/%s", scheme);
     xfconf_channel_reset_property (get_instance_private (settings)->channel, prop, TRUE);
-    g_free (prop);
 
     XFCE_DISPLAY_SETTINGS_GET_CLASS (settings)->save (settings, scheme);
+    if (profile_name != NULL)
+        xfconf_channel_set_string (get_instance_private (settings)->channel, prop, profile_name);
+
+    g_free (prop);
 }
 
 

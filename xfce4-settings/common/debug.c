@@ -16,10 +16,6 @@
  *  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
-#ifdef HAVE_CONFIG_H
-#include "config.h"
-#endif
-
 #include "debug.h"
 
 
@@ -34,6 +30,7 @@ static const GDebugKey dbg_keys[] = {
     { "accessibility", XFSD_DEBUG_ACCESSIBILITY },
     { "pointers", XFSD_DEBUG_POINTERS },
     { "displays", XFSD_DEBUG_DISPLAYS },
+    { "gtk-settings", XFSD_DEBUG_GTK_SETTINGS },
 };
 
 

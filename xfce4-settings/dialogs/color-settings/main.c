@@ -17,12 +17,11 @@
  *  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
-#ifdef HAVE_CONFIG_H
-#include "config.h"
+#ifdef HAVE_XFCE_REVISION_H
+#include "xfce-revision.h"
 #endif
 
 #include "color-device.h"
-#include "color-dialog_ui.h"
 #include "color-profile.h"
 
 #include <libxfce4ui/libxfce4ui.h>
@@ -971,7 +970,7 @@ color_settings_dialog_response (GtkWidget *dialog,
 {
     if (response_id == GTK_RESPONSE_HELP)
         xfce_dialog_show_help_with_version (GTK_WINDOW (dialog), "xfce4-settings", "color",
-                                            NULL, XFCE4_SETTINGS_VERSION_SHORT);
+                                            NULL, VERSION_SHORT);
     else
         color_settings_dialog_destroy (settings);
 }
@@ -1478,8 +1477,8 @@ main (gint argc,
     /* check if we should print version information */
     if (G_UNLIKELY (opt_version))
     {
-        g_print ("%s %s (Xfce %s)\n\n", G_LOG_DOMAIN, PACKAGE_VERSION, xfce_version_string ());
-        g_print ("%s\n", "Copyright (c) 2008-2024");
+        g_print ("%s %s (Xfce %s)\n\n", G_LOG_DOMAIN, VERSION_FULL, xfce_version_string ());
+        g_print ("%s\n", "Copyright (c) 2008-" COPYRIGHT_YEAR);
         g_print ("\t%s\n\n", _("The Xfce development team. All rights reserved."));
         g_print (_("Please report bugs to <%s>."), PACKAGE_BUGREPORT);
         g_print ("\n");
@@ -1493,7 +1492,7 @@ main (gint argc,
 
     /* load the Gtk user-interface file */
     builder = gtk_builder_new ();
-    if (gtk_builder_add_from_string (builder, color_dialog_ui, color_dialog_ui_length, &error) != 0)
+    if (gtk_builder_add_from_resource (builder, "/org/xfce/settings/color-dialog.glade", &error) != 0)
     {
         /* Initialize the dialog */
         settings = color_settings_dialog_init (builder);

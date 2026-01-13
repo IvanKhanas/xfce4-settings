@@ -17,8 +17,8 @@
  *  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
-#ifdef HAVE_CONFIG_H
-#include "config.h"
+#ifdef HAVE_XFCE_REVISION_H
+#include "xfce-revision.h"
 #endif
 
 #include "xfce-settings-editor-box.h"
@@ -62,8 +62,8 @@ save_window_size (GtkWidget *dialog,
     {
         /* save window size */
         gtk_window_get_size (GTK_WINDOW (dialog), &width, &height);
-        xfconf_channel_set_int (channel, "/last/window-width", width),
-            xfconf_channel_set_int (channel, "/last/window-height", height);
+        xfconf_channel_set_int (channel, "/last/window-width", width);
+        xfconf_channel_set_int (channel, "/last/window-height", height);
         xfconf_channel_set_int (channel, "/last/paned-position", paned_pos);
     }
 }
@@ -77,7 +77,7 @@ settings_dialog_response (GtkWidget *dialog,
         xfce_dialog_show_help_with_version (GTK_WINDOW (dialog),
                                             "xfce4-settings",
                                             "editor", NULL,
-                                            XFCE4_SETTINGS_VERSION_SHORT);
+                                            VERSION_SHORT);
     else
     {
         save_window_size (dialog, settings_editor);
@@ -132,8 +132,8 @@ main (gint argc,
     /* print version information */
     if (G_UNLIKELY (opt_version))
     {
-        g_print ("%s %s (Xfce %s)\n\n", G_LOG_DOMAIN, PACKAGE_VERSION, xfce_version_string ());
-        g_print ("%s\n", "Copyright (c) 2008-2024");
+        g_print ("%s %s (Xfce %s)\n\n", G_LOG_DOMAIN, VERSION_FULL, xfce_version_string ());
+        g_print ("%s\n", "Copyright (c) 2008-" COPYRIGHT_YEAR);
         g_print ("\t%s\n\n", _("The Xfce development team. All rights reserved."));
         g_print (_("Please report bugs to <%s>."), PACKAGE_BUGREPORT);
         g_print ("\n");

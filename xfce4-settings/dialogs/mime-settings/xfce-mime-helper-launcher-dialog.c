@@ -16,10 +16,6 @@
  * Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
-#ifdef HAVE_CONFIG_H
-#include "config.h"
-#endif
-
 #include "xfce-mime-helper-chooser.h"
 #include "xfce-mime-helper-enum-types.h"
 #include "xfce-mime-helper-launcher-dialog.h"
@@ -94,7 +90,7 @@ xfce_mime_helper_launcher_dialog_class_init (XfceMimeHelperLauncherDialogClass *
                                                       "Category",
                                                       XFCE_MIME_TYPE_MIME_HELPER_CATEGORY,
                                                       XFCE_MIME_HELPER_WEBBROWSER,
-                                                      EXO_PARAM_READWRITE | G_PARAM_CONSTRUCT));
+                                                      G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS | G_PARAM_CONSTRUCT));
 }
 
 
@@ -256,6 +252,14 @@ xfce_mime_helper_launcher_dialog_set_category (XfceMimeHelperLauncherDialog *lau
         "now and click OK to proceed."),
     N_ ("Please choose your preferred Terminal\n"
         "Emulator now and click OK to proceed."),
+    N_ ("Please choose your preferred Text\n"
+        "Editor now and click OK to proceed."),
+    N_ ("Please choose your preferred Image\n"
+        "Viewer now and click OK to proceed."),
+    N_ ("Please choose your preferred Audio\n"
+        "Player now and click OK to proceed."),
+    N_ ("Please choose your preferred Video\n"
+        "Player now and click OK to proceed."),
   };
 
   /* sanity check the categories */

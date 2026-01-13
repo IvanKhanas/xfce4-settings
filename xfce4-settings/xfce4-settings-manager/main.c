@@ -17,8 +17,8 @@
  *  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
  */
 
-#ifdef HAVE_CONFIG_H
-#include "config.h"
+#ifdef HAVE_XFCE_REVISION_H
+#include "xfce-revision.h"
 #endif
 
 #include "xfce-settings-manager-dialog.h"
@@ -71,8 +71,8 @@ main (int argc,
 
     if (G_UNLIKELY (opt_version))
     {
-        g_print ("%s %s (Xfce %s)\n\n", G_LOG_DOMAIN, PACKAGE_VERSION, xfce_version_string ());
-        g_print ("%s\n", "Copyright (c) 2008-2024");
+        g_print ("%s %s (Xfce %s)\n\n", G_LOG_DOMAIN, VERSION_FULL, xfce_version_string ());
+        g_print ("%s\n", "Copyright (c) 2008-" COPYRIGHT_YEAR);
         g_print ("\t%s\n\n", _("The Xfce development team. All rights reserved."));
         g_print (_("Please report bugs to <%s>."), PACKAGE_BUGREPORT);
         g_print ("\n");

@@ -17,11 +17,9 @@
  *  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
-#ifdef HAVE_CONFIG_H
-#include "config.h"
+#ifdef HAVE_XFCE_REVISION_H
+#include "xfce-revision.h"
 #endif
-
-#include "appearance-dialog_ui.h"
 
 #include <cairo-gobject.h>
 #include <gio/gio.h>
@@ -97,6 +95,7 @@ static GOptionEntry option_entries[] = {
 /* Global xfconf channel */
 static XfconfChannel *xsettings_channel;
 static GSettings *desktop_interface_gsettings;
+static GSettings *xapps_portal_gsettings;
 
 typedef struct
 {
@@ -986,6 +985,35 @@ appearance_settings_load_ui_themes (gpointer user_data)
 }
 
 static void
+set_gsettings_color_scheme (GSettings *settings,
+                            XfconfChannel *channel,
+                            const gchar *property_name)
+{
+    if (settings != NULL)
+    {
+        GSettingsSchema *schema;
+        g_object_get (settings, "settings-schema", &schema, NULL);
+        if (g_settings_schema_has_key (schema, "color-scheme"))
+        {
+            gchar *str = xfconf_channel_get_string (channel, property_name, NULL);
+            if (str != NULL)
+            {
+                gchar *strdown = g_ascii_strdown (str, -1);
+                if (g_strstr_len (strdown, -1, "-dark-") || g_str_has_suffix (strdown, "-dark"))
+                    g_settings_set_string (settings, "color-scheme", "prefer-dark");
+                else
+                    g_settings_reset (settings, "color-scheme");
+                g_free (strdown);
+                g_free (str);
+            }
+            else
+                g_settings_reset (settings, "color-scheme");
+        }
+        g_settings_schema_unref (schema);
+    }
+}
+
+static void
 appearance_settings_dialog_channel_property_changed (XfconfChannel *channel,
                                                      const gchar *property_name,
                                                      const GValue *value,
@@ -1102,29 +1130,9 @@ appearance_settings_dialog_channel_property_changed (XfconfChannel *channel,
             g_free (new_name);
         }
 
-        /* Set the preferred color scheme (needed for GTK4) */
-        if (desktop_interface_gsettings != NULL)
-        {
-            GSettingsSchema *schema;
-            g_object_get (desktop_interface_gsettings, "settings-schema", &schema, NULL);
-            if (g_settings_schema_has_key (schema, "color-scheme"))
-            {
-                str = xfconf_channel_get_string (channel, property_name, NULL);
-                if (str != NULL)
-                {
-                    gchar *strdown = g_ascii_strdown (str, -1);
-                    if (g_strstr_len (strdown, -1, "-dark-") || g_str_has_suffix (strdown, "-dark"))
-                        g_settings_set_string (desktop_interface_gsettings, "color-scheme", "prefer-dark");
-                    else
-                        g_settings_reset (desktop_interface_gsettings, "color-scheme");
-                    g_free (strdown);
-                    g_free (str);
-                }
-                else
-                    g_settings_reset (desktop_interface_gsettings, "color-scheme");
-            }
-            g_settings_schema_unref (schema);
-        }
+        /* Set color scheme in gsettings, so that apps/services that read it apply the correct theme */
+        set_gsettings_color_scheme (desktop_interface_gsettings, channel, property_name);
+        set_gsettings_color_scheme (xapps_portal_gsettings, channel, property_name);
     }
     else if (strcmp (property_name, "/Net/IconThemeName") == 0)
     {
@@ -1663,7 +1671,7 @@ appearance_settings_dialog_response (GtkWidget *dialog,
 {
     if (response_id == GTK_RESPONSE_HELP)
         xfce_dialog_show_help_with_version (GTK_WINDOW (dialog), "xfce4-settings", "appearance",
-                                            NULL, XFCE4_SETTINGS_VERSION_SHORT);
+                                            NULL, VERSION_SHORT);
     else
         gtk_main_quit ();
 }
@@ -1703,8 +1711,8 @@ main (gint argc,
     /* print version information */
     if (G_UNLIKELY (opt_version))
     {
-        g_print ("%s %s (Xfce %s)\n\n", G_LOG_DOMAIN, PACKAGE_VERSION, xfce_version_string ());
-        g_print ("%s\n", "Copyright (c) 2008-2024");
+        g_print ("%s %s (Xfce %s)\n\n", G_LOG_DOMAIN, VERSION_FULL, xfce_version_string ());
+        g_print ("%s\n", "Copyright (c) 2008-" COPYRIGHT_YEAR);
         g_print ("\t%s\n\n", _("The Xfce development team. All rights reserved."));
         g_print (_("Please report bugs to <%s>."), PACKAGE_BUGREPORT);
         g_print ("\n");
@@ -1742,11 +1750,17 @@ main (gint argc,
                 desktop_interface_gsettings = g_settings_new ("org.gnome.desktop.interface");
                 g_settings_schema_unref (schema);
             }
+            schema = g_settings_schema_source_lookup (source, "org.x.apps.portal", TRUE);
+            if (schema != NULL)
+            {
+                xapps_portal_gsettings = g_settings_new ("org.x.apps.portal");
+                g_settings_schema_unref (schema);
+            }
         }
 
         /* load the gtk user interface file*/
         builder = gtk_builder_new ();
-        if (gtk_builder_add_from_string (builder, appearance_dialog_ui, appearance_dialog_ui_length, &error) != 0)
+        if (gtk_builder_add_from_resource (builder, "/org/xfce/settings/appearance-dialog.glade", &error) != 0)
         {
             /* connect signal to monitor the channel */
             g_signal_connect (G_OBJECT (xsettings_channel), "property-changed",
@@ -1809,6 +1823,8 @@ main (gint argc,
         g_object_unref (G_OBJECT (xsettings_channel));
         if (desktop_interface_gsettings != NULL)
             g_object_unref (desktop_interface_gsettings);
+        if (xapps_portal_gsettings != NULL)
+            g_object_unref (xapps_portal_gsettings);
     }
 
     /* shutdown xfconf */

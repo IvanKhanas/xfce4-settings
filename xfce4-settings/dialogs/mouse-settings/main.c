@@ -17,11 +17,9 @@
  *  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
-#ifdef HAVE_CONFIG_H
-#include "config.h"
+#ifdef HAVE_XFCE_REVISION_H
+#include "xfce-revision.h"
 #endif
-
-#include "mouse-dialog_ui.h"
 
 #include "xfsettingsd/pointers-defines.h"
 
@@ -730,7 +728,7 @@ mouse_settings_get_libinput_accel (Display *xdisplay,
                                    XDevice *device,
                                    gdouble *val)
 {
-    propdata_t pdata[1];
+    propdata_t pdata[1] = { 0 };
     Atom float_type;
 
     float_type = XInternAtom (xdisplay, "FLOAT", False);
@@ -753,7 +751,7 @@ mouse_settings_get_libinput_boolean (Display *xdisplay,
                                      const gchar *prop_name,
                                      gboolean *val)
 {
-    propdata_t pdata[1];
+    propdata_t pdata[1] = { 0 };
 
     if (mouse_settings_get_device_prop (xdisplay, device, prop_name, XA_INTEGER, 1, &pdata[0]))
     {
@@ -773,7 +771,7 @@ mouse_settings_get_libinput_click_method (Display *xdisplay,
                                           const gchar *prop_name,
                                           LibinputClickMethod *click_method)
 {
-    propdata_t pdata[2];
+    propdata_t pdata[2] = { 0 };
 
     if (mouse_settings_get_device_prop (xdisplay, device, prop_name, XA_INTEGER, 2, &pdata[0]))
     {
@@ -797,7 +795,7 @@ mouse_settings_get_libinput_accel_profile (Display *xdisplay,
                                            const gchar *prop_name,
                                            LibinputAccelProfile *accel_profile)
 {
-    propdata_t pdata[3] = {};
+    propdata_t pdata[3] = { 0 };
     gboolean ok = FALSE;
 
     ok = mouse_settings_get_device_prop (xdisplay, device, prop_name, XA_INTEGER, 3, &pdata[0]);
@@ -1605,7 +1603,7 @@ mouse_settings_device_selection_changed (GtkBuilder *builder)
                 }
                 else if (props[i] == libinput_scroll_methods_prop)
                 {
-                    propdata_t pdata[3];
+                    propdata_t pdata[3] = { 0 };
                     gboolean success;
 
                     success = mouse_settings_get_device_prop (xdisplay,
@@ -2159,7 +2157,7 @@ mouse_settings_dialog_response (GtkWidget *dialog,
 {
     if (response_id == GTK_RESPONSE_HELP)
         xfce_dialog_show_help_with_version (GTK_WINDOW (dialog), "xfce4-settings", "mouse",
-                                            NULL, XFCE4_SETTINGS_VERSION_SHORT);
+                                            NULL, VERSION_SHORT);
     else
         gtk_main_quit ();
 }
@@ -2210,8 +2208,8 @@ main (gint argc,
     /* print version information */
     if (G_UNLIKELY (opt_version))
     {
-        g_print ("%s %s (Xfce %s)\n\n", G_LOG_DOMAIN, PACKAGE_VERSION, xfce_version_string ());
-        g_print ("%s\n", "Copyright (c) 2004-2024");
+        g_print ("%s %s (Xfce %s)\n\n", G_LOG_DOMAIN, VERSION_FULL, xfce_version_string ());
+        g_print ("%s\n", "Copyright (c) 2004-" COPYRIGHT_YEAR);
         g_print ("\t%s\n\n", _("The Xfce development team. All rights reserved."));
         g_print (_("Please report bugs to <%s>."), PACKAGE_BUGREPORT);
         g_print ("\n");
@@ -2270,9 +2268,7 @@ main (gint argc,
     {
         /* load the Gtk+ user-interface file */
         builder = gtk_builder_new ();
-        if (gtk_builder_add_from_string (builder, mouse_dialog_ui,
-                                         mouse_dialog_ui_length, &error)
-            != 0)
+        if (gtk_builder_add_from_resource (builder, "/org/xfce/settings/mouse-dialog.glade", &error) != 0)
         {
             /* lock */
             locked++;

@@ -47,6 +47,7 @@ struct _XfceRRMode
     guint width;
     guint height;
     gdouble rate;
+    XRRModeFlags flags;
 };
 
 struct _XfceOutputPosition
@@ -112,11 +113,15 @@ xfce_randr_preferred_mode (XfceRandr *randr,
 RRMode *
 xfce_randr_clonable_modes (XfceRandr *randr);
 
-gchar *
+const gchar *
 xfce_randr_get_edid (XfceRandr *randr,
                      guint noutput);
 
-gchar *
+const gchar *
+xfce_randr_get_edid_by_id (XfceRandr *randr,
+                           RROutput output);
+
+const gchar *
 xfce_randr_get_output_info_name (XfceRandr *randr,
                                  guint noutput);
 
@@ -143,6 +148,9 @@ guint
 xfce_randr_mode_height (XfceRandr *randr,
                         guint output,
                         const XfceRRMode *mode);
+
+gdouble
+xfce_randr_calculate_refresh_rate (XRRModeInfo mode);
 
 G_END_DECLS
 

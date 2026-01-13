@@ -67,7 +67,6 @@
         <Category>X-XFCE-SettingsDialog</Category>
         <Category>X-XFCE-SystemSettings</Category>
       </And>
-      <Filename>xfce4-about.desktop</Filename>
     </Include>
   </Menu>
 

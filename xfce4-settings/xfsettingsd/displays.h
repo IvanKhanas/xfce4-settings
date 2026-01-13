@@ -37,13 +37,14 @@
 #define SCALE_PROP OUTPUT_FMT "/Scale"
 #define SCALEX_PROP OUTPUT_FMT "/Scale/X"
 #define RRATE_PROP OUTPUT_FMT "/RefreshRate"
+#define MODE_FLAGS_PROP OUTPUT_FMT "/ModeFlags"
 #define POSX_PROP OUTPUT_FMT "/Position/X"
 #define POSY_PROP OUTPUT_FMT "/Position/Y"
 #define NOTIFY_PROP "/Notify"
 
 /* some messages belonging to parts of code common to X11/Wayland implementations
  * that are not easy to share in the parent class */
-#define WARNING_MESSAGE_UNKNOWN_MODE "Unknown mode '%s @ %.1f' for output %s, aborting."
+#define WARNING_MESSAGE_UNKNOWN_MODE "Unknown mode '%s @ %.2f' for output %s, aborting."
 #define WARNING_MESSAGE_ALL_DISABLED "Stored Xfconf properties disable all outputs, aborting."
 #define DEBUG_MESSAGE_TOGGLING_INTERNAL "Toggling internal output %s."
 #define DEBUG_MESSAGE_DISABLING_INTERNAL "%s will be disabled."
@@ -52,6 +53,8 @@
 #define DEBUG_MESSAGE_DIFF_N_OUTPUTS "Noutput: before = %d, after = %d."
 #define DEBUG_MESSAGE_ALL_DISABLED "No active output anymore! Attempting to re-enable the internal output."
 #define DEBUG_MESSAGE_NEW_OUTPUT "New output connected: %s"
+#define DEBUG_MESSAGE_OUTPUT_NAMES_MISMATCH "Output names don't match: '%s' (system) loaded as '%s' (xfconf), EDID '%s'"
+#define DEBUG_MESSAGE_NO_XFCONF_DATA "No xfconf data found for output '%s', EDID '%s'"
 
 G_BEGIN_DECLS
 

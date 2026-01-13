@@ -16,10 +16,6 @@
  *  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
-#ifdef HAVE_CONFIG_H
-#include "config.h"
-#endif
-
 #include "displays-wayland.h"
 
 #include "common/debug.h"
@@ -129,19 +125,45 @@ load_from_xfconf (XfceDisplaysHelperWayland *helper,
                   GHashTable *saved_outputs,
                   XfceWlrOutput *output)
 {
-    gchar *property = g_strdup_printf (OUTPUT_FMT, scheme, output->name);
-    GValue *value = g_hash_table_lookup (saved_outputs, property);
+    gchar *property;
+    GValue *value;
     GList *lp;
     const gchar *str_value;
     gint int_value;
     gdouble double_value;
-    g_free (property);
+    gchar *output_name = NULL;
+    GHashTableIter iter;
+    gpointer key;
 
-    if (!G_VALUE_HOLDS_STRING (value))
+    g_hash_table_iter_init (&iter, saved_outputs);
+    while (g_hash_table_iter_next (&iter, &key, (gpointer *) &value))
+    {
+        if (g_str_has_suffix (key, "EDID")
+            && G_VALUE_HOLDS_STRING (value)
+            && g_strcmp0 (g_value_get_string (value), output->edid) == 0)
+        {
+            gchar **tokens = g_strsplit (key, "/", -1);
+            if (g_strv_length (tokens) == 4)
+            {
+                output_name = g_strdup (tokens[2]);
+                if (g_strcmp0 (output_name, output->name) != 0)
+                {
+                    xfsettings_dbg (XFSD_DEBUG_DISPLAYS, DEBUG_MESSAGE_OUTPUT_NAMES_MISMATCH,
+                                    output->name, output_name, output->edid);
+                }
+            }
+            g_strfreev (tokens);
+            break;
+        }
+    }
+    if (output_name == NULL)
+    {
+        xfsettings_dbg (XFSD_DEBUG_DISPLAYS, DEBUG_MESSAGE_NO_XFCONF_DATA, output->name, output->edid);
         return;
+    }
 
     /* status */
-    property = g_strdup_printf (ACTIVE_PROP, scheme, output->name);
+    property = g_strdup_printf (ACTIVE_PROP, scheme, output_name);
     value = g_hash_table_lookup (saved_outputs, property);
     g_free (property);
     if (!G_VALUE_HOLDS_BOOLEAN (value))
@@ -152,7 +174,7 @@ load_from_xfconf (XfceDisplaysHelperWayland *helper,
         return;
 
     /* resolution */
-    property = g_strdup_printf (RESOLUTION_PROP, scheme, output->name);
+    property = g_strdup_printf (RESOLUTION_PROP, scheme, output_name);
     value = g_hash_table_lookup (saved_outputs, property);
     g_free (property);
     if (G_VALUE_HOLDS_STRING (value))
@@ -161,7 +183,7 @@ load_from_xfconf (XfceDisplaysHelperWayland *helper,
         str_value = "";
 
     /* refresh rate */
-    property = g_strdup_printf (RRATE_PROP, scheme, output->name);
+    property = g_strdup_printf (RRATE_PROP, scheme, output_name);
     value = g_hash_table_lookup (saved_outputs, property);
     g_free (property);
     if (G_VALUE_HOLDS_DOUBLE (value))
@@ -183,7 +205,7 @@ load_from_xfconf (XfceDisplaysHelperWayland *helper,
     if (lp == NULL)
     {
         /* unsupported mode, abort for this output */
-        g_warning (WARNING_MESSAGE_UNKNOWN_MODE, str_value, double_value, output->name);
+        g_warning (WARNING_MESSAGE_UNKNOWN_MODE, str_value, double_value, output_name);
         return;
     }
     else
@@ -193,7 +215,7 @@ load_from_xfconf (XfceDisplaysHelperWayland *helper,
     }
 
     /* rotation */
-    property = g_strdup_printf (ROTATION_PROP, scheme, output->name);
+    property = g_strdup_printf (ROTATION_PROP, scheme, output_name);
     value = g_hash_table_lookup (saved_outputs, property);
     g_free (property);
     if (G_VALUE_HOLDS_INT (value))
@@ -202,7 +224,7 @@ load_from_xfconf (XfceDisplaysHelperWayland *helper,
         int_value = 0;
 
     /* reflection */
-    property = g_strdup_printf (REFLECTION_PROP, scheme, output->name);
+    property = g_strdup_printf (REFLECTION_PROP, scheme, output_name);
     value = g_hash_table_lookup (saved_outputs, property);
     g_free (property);
     if (G_VALUE_HOLDS_STRING (value))
@@ -253,7 +275,7 @@ load_from_xfconf (XfceDisplaysHelperWayland *helper,
     }
 
     /* scaling */
-    property = g_strdup_printf (SCALE_PROP, scheme, output->name);
+    property = g_strdup_printf (SCALE_PROP, scheme, output_name);
     value = g_hash_table_lookup (saved_outputs, property);
     g_free (property);
     if (G_VALUE_HOLDS_DOUBLE (value))
@@ -264,7 +286,7 @@ load_from_xfconf (XfceDisplaysHelperWayland *helper,
     output->scale = wl_fixed_from_double (double_value);
 
     /* position, x */
-    property = g_strdup_printf (POSX_PROP, scheme, output->name);
+    property = g_strdup_printf (POSX_PROP, scheme, output_name);
     value = g_hash_table_lookup (saved_outputs, property);
     g_free (property);
     if (G_VALUE_HOLDS_INT (value))
@@ -273,13 +295,15 @@ load_from_xfconf (XfceDisplaysHelperWayland *helper,
         output->x = 0;
 
     /* position, y */
-    property = g_strdup_printf (POSY_PROP, scheme, output->name);
+    property = g_strdup_printf (POSY_PROP, scheme, output_name);
     value = g_hash_table_lookup (saved_outputs, property);
     g_free (property);
     if (G_VALUE_HOLDS_INT (value))
         output->y = g_value_get_int (value);
     else
         output->y = 0;
+
+    g_free (output_name);
 }
 
 
@@ -314,6 +338,7 @@ apply_all (XfceDisplaysHelperWayland *helper)
     struct zwlr_output_configuration_v1 *config = zwlr_output_manager_v1_create_configuration (wl_manager, helper->serial);
     zwlr_output_configuration_v1_add_listener (config, &configuration_listener, helper);
     g_ptr_array_foreach (outputs, apply, config);
+    xfsettings_dbg (XFSD_DEBUG_DISPLAYS, "Applying configuration %p", config);
     zwlr_output_configuration_v1_apply (config);
 }
 
@@ -516,14 +541,17 @@ manager_listener (XfceWlrOutputManager *manager,
                 continue;
 
             xfsettings_dbg (XFSD_DEBUG_DISPLAYS, DEBUG_MESSAGE_NEW_OUTPUT, output->name);
-            output->new = FALSE;
 
+            if (helper->previous_n_outputs == 0)
+            {
+                output->enabled = TRUE;
+            }
             /* do nothing or dialog */
-            if (action <= ACTION_ON_NEW_OUTPUT_SHOW_DIALOG)
+            else if (action <= ACTION_ON_NEW_OUTPUT_SHOW_DIALOG)
             {
                 output->enabled = FALSE;
             }
-            if (action == ACTION_ON_NEW_OUTPUT_MIRROR)
+            else if (action == ACTION_ON_NEW_OUTPUT_MIRROR)
             {
                 output->enabled = TRUE;
                 output->x = 0;
@@ -556,7 +584,7 @@ static void
 configuration_succeeded (void *data,
                          struct zwlr_output_configuration_v1 *config)
 {
-    xfsettings_dbg (XFSD_DEBUG_DISPLAYS, "Successfully applied configuration");
+    xfsettings_dbg (XFSD_DEBUG_DISPLAYS, "Successfully applied configuration %p", config);
     zwlr_output_configuration_v1_destroy (config);
 }
 
@@ -566,7 +594,7 @@ static void
 configuration_failed (void *data,
                       struct zwlr_output_configuration_v1 *config)
 {
-    xfsettings_dbg (XFSD_DEBUG_DISPLAYS, "Failed to apply configuration");
+    xfsettings_dbg (XFSD_DEBUG_DISPLAYS, "Failed to apply configuration %p", config);
     g_warning ("Failed to apply configuration");
     zwlr_output_configuration_v1_destroy (config);
 }
@@ -579,6 +607,6 @@ configuration_cancelled (void *data,
 {
     XfceDisplaysHelperWayland *helper = data;
     helper->config_cancelled = TRUE;
-    xfsettings_dbg (XFSD_DEBUG_DISPLAYS, "Configuration application cancelled");
+    xfsettings_dbg (XFSD_DEBUG_DISPLAYS, "Cancelled application of configuration %p", config);
     zwlr_output_configuration_v1_destroy (config);
 }

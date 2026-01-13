@@ -28,10 +28,6 @@
 
 /* Further modifications come from upstream hwdata */
 
-#ifdef HAVE_CONFIG_H
-#include "config.h"
-#endif
-
 #include "edid.h"
 
 #include <glib/gi18n-lib.h>
@@ -2573,7 +2569,7 @@ read_pnp_ids (void)
     gchar *contents;
     gchar **lines;
     gchar *line;
-    gchar *code, *name;
+    gchar *code, *name, *tab;
     gint i;
 
     if (pnp_ids)
@@ -2587,12 +2583,17 @@ read_pnp_ids (void)
         for (i = 0; lines[i]; i++)
         {
             line = lines[i];
-            if (line[3] == '\t')
+            tab = g_strstr_len (line, -1, "\t");
+            if (tab != NULL && tab - line == 3)
             {
                 code = line;
                 line[3] = '\0';
                 name = line + 4;
                 g_hash_table_insert (pnp_ids, code, name);
+            }
+            else
+            {
+                g_free (line);
             }
         }
         g_free (lines);

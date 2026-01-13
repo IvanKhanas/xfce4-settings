@@ -18,10 +18,6 @@
  *  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
-#ifdef HAVE_CONFIG_H
-#include "config.h"
-#endif
-
 #include "displays.h"
 
 #ifdef HAVE_UPOWERGLIB
@@ -217,7 +213,7 @@ xfce_displays_helper_get_matching_profile (XfceDisplaysHelper *helper)
     else if (g_list_length (profiles) == 1)
     {
         profile = g_strdup (profiles->data);
-        xfsettings_dbg (XFSD_DEBUG_DISPLAYS, "Applied the only matching display profile: %s", profile);
+        xfsettings_dbg (XFSD_DEBUG_DISPLAYS, "Applying the only matching display profile: %s", profile);
     }
     else
     {
