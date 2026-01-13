@@ -16,8 +16,10 @@ Patch: %name-%version-%release.patch
 
 %def_enable upower
 
-BuildPreReq: rpm-build-xfce4 xfce4-dev-tools > 4.5
-BuildRequires: libxfce4ui-gtk3-devel libexo-gtk3-devel libxfconf-devel >= 4.19.3 libgarcon-devel >= 4.18.0
+BuildRequires(pre): rpm-build-xfce4 xfce4-dev-tools > 4.5
+BuildRequires(pre): meson rpm-macros-meson >= 1.3.1-alt1
+BuildRequires: libxfce4ui-gtk3-devel >= 4.21.2
+BuildRequires: libxfconf-devel >= 4.19.3 libgarcon-devel >= 4.18.0
 BuildRequires: libX11-devel libXcursor-devel libXi-devel libXrandr-devel libnotify-devel libxklavier-devel
 Buildrequires: libXext-devel
 BuildRequires: libwayland-client-devel wayland-devel >= 1.20 wlr-protocols libgtk-layer-shell-devel
@@ -51,27 +53,21 @@ for the Xfce desktop.
 %xfce4_cleanup_version
 
 %build
-%xfce4reconf
-%configure  \
-	--enable-debug=minimum \
-	--disable-silent-rules \
-	--enable-x11 \
-	--enable-wayland \
-	--enable-libnotify \
-%if_enabled upower
-	--enable-upower-glib \
-%else
-	--disable-upower-glib \
-%endif
-	--enable-xcursor \
-	--enable-xorg-libinput \
-	--enable-libxklavier \
-	--enable-sound-settings \
-	--enable-colord
-%make
+%meson \
+	-Dx11=enabled \
+	-Dwayland=enabled \
+	-Dlibnotify=enabled \
+	%{subst_enable_meson_feature upower upower} \
+	-Dxcursor=enabled \
+	-Dxorg-libinput=enabled \
+	-Dlibxklavier=enabled \
+	-Dsound-settings=true \
+	-Dcolord=enabled
+
+%meson_build -v
 
 %install
-%makeinstall_std
+%meson_install
 %find_lang %name
 install -pDm0755 %SOURCE1 %buildroot%_bindir/xfce4-fixkeyboard
 
@@ -88,8 +84,6 @@ install -pDm0755 %SOURCE1 %buildroot%_bindir/xfce4-fixkeyboard
 %_datadir/xfce4/*
 %_desktopdir/*.desktop
 %_iconsdir/*/*/*/*.*
-
-%exclude %_libdir/gtk-3.0/modules/*.la
 
 %changelog
 * Mon Dec 29 2025 Mikhail Efremov <sem@altlinux.org> 4.20.3-alt1
