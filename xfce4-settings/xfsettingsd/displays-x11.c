@@ -34,8 +34,6 @@
 #include <math.h>
 #endif
 
-
-
 /* wrappers to avoid querying too often */
 typedef struct _XfceRRCrtc XfceRRCrtc;
 typedef struct _XfceRROutput XfceRROutput;
@@ -151,6 +149,7 @@ struct _XfceRRCrtc
     gint y;
     gdouble scalex;
     gdouble scaley;
+    gint transform_changed;
     gint noutput;
     RROutput *outputs;
     gint npossible;
@@ -230,6 +229,7 @@ xfce_displays_helper_x11_init (XfceDisplaysHelperX11 *helper)
         XRRSelectInput (helper->xdisplay,
                         GDK_WINDOW_XID (helper->root_window),
                         RRScreenChangeNotifyMask);
+
         gdk_x11_register_standard_event_type (helper->display,
                                               helper->event_base,
                                               RRNotify + 1);
@@ -459,6 +459,9 @@ xfce_displays_helper_x11_channel_apply (XfceDisplaysHelper *_helper,
     /* nothing saved, nothing to do */
     if (saved_outputs == NULL)
         goto err_cleanup;
+
+    for (n = 0; n < helper->crtcs->len; ++n)
+        ((XfceRRCrtc *) g_ptr_array_index (helper->crtcs, n))->transform_changed = FALSE;
 
     /* first loop, loads all the outputs, and gets the number of active ones */
     nactive = 0;
@@ -966,6 +969,7 @@ xfce_displays_helper_x11_load_from_xfconf (XfceDisplaysHelperX11 *helper,
 
     if (crtc->scalex != scale || crtc->scaley != scale)
     {
+        crtc->transform_changed = TRUE;
         crtc->scalex = scale;
         crtc->scaley = scale;
         crtc->changed = TRUE;
@@ -1425,7 +1429,10 @@ xfce_displays_helper_x11_apply_crtc_transform (XfceRRCrtc *crtc,
 
     g_assert (XFCE_IS_DISPLAYS_HELPER_X11 (helper) && helper->xdisplay && crtc);
 
-    if (!crtc->changed)
+    /* Avoid an extra XSync between XRRSetScreenSize and XRRSetCrtcConfig when no transform
+     * is needed. This reduces visible "jumping" artifacts when switching modes (e.g. on
+     * restore to a larger resolution). */
+    if (!crtc->transform_changed && crtc->scalex == 1 && crtc->scaley == 1)
         return;
 
     if (crtc->scalex == 1 && crtc->scaley == 1)
@@ -1481,7 +1488,10 @@ xfce_displays_helper_x11_apply_crtc (XfceRRCrtc *crtc,
         }
 
         if (ret == RRSetConfigSuccess)
+        {
             crtc->changed = FALSE;
+            crtc->transform_changed = FALSE;
+        }
         else
             g_warning ("Failed to configure CRTC %lu.", crtc->id);
     }
@@ -1538,6 +1548,8 @@ xfce_displays_helper_x11_apply_all (XfceDisplaysHelperX11 *helper)
     g_ptr_array_foreach (helper->crtcs, (GFunc) xfce_displays_helper_x11_normalize_crtc, helper);
 
     gdk_x11_display_error_trap_push (helper->display);
+
+    /* Not a bug: X11 RandR mode changes are not atomic, so transient artifacts may be visible. */
 
     /* grab server to prevent clients from thinking no output is enabled */
     gdk_x11_display_grab (helper->display);

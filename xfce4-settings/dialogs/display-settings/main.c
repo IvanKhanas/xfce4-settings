@@ -33,6 +33,7 @@
 #include <xfconf/xfconf.h>
 
 #ifdef HAVE_XRANDR
+#include "common/xfce-randr.h"
 #include <gdk/gdkx.h>
 #include <gtk/gtkx.h>
 #define WINDOWING_IS_X11() GDK_IS_X11_DISPLAY (gdk_display_get_default ())
@@ -108,6 +109,22 @@ static GOptionEntry option_entries[] = {
 
 /* Outputs Combobox */
 GtkWidget *apply_button = NULL;
+
+/* Temporary xfconf schemes used during Apply/Restore */
+#define DEFAULT_SCHEME_NAME "Default"
+#define TEMP_SCHEME_NAME "Temp"
+#define PREVIOUS_SCHEME_NAME "Temp-Previous"
+
+/* g_object_set_data() keys */
+#define SNAPSHOT_SCHEME_KEY "xfce4-display-settings::snapshot-scheme"
+#define SNAPSHOT_ACTIVE_PROFILE_KEY "xfce4-display-settings::snapshot-active-profile"
+#define ROLLBACK_PENDING_KEY "xfce4-display-settings::rollback-pending"
+
+static void
+display_settings_rollback_cleanup (XfconfChannel *channel,
+                                   const gchar *property_name,
+                                   const GValue *value,
+                                   XfceDisplaySettings *settings);
 
 /* Show nice representation of the display ratio */
 typedef struct _XfceRatio
@@ -328,6 +345,41 @@ display_setting_timed_confirmation (XfceDisplaySettings *settings)
 
     return response_id == 2;
 }
+
+#ifdef HAVE_XRANDR
+static gboolean
+display_settings_snapshot_current_configuration_x11 (XfconfChannel *channel,
+                                                     const gchar *scheme)
+{
+    g_return_val_if_fail (XFCONF_IS_CHANNEL (channel), FALSE);
+    g_return_val_if_fail (scheme != NULL, FALSE);
+
+    if (!WINDOWING_IS_X11 ())
+        return FALSE;
+
+    GError *error = NULL;
+    XfceRandr *randr = xfce_randr_new (gdk_display_get_default (), &error);
+    if (randr == NULL)
+    {
+        if (error != NULL)
+        {
+            g_warning ("Failed to snapshot current RandR configuration: %s", error->message);
+            g_error_free (error);
+        }
+        return FALSE;
+    }
+
+    gchar *prop = g_strdup_printf ("/%s", scheme);
+    xfconf_channel_reset_property (channel, prop, TRUE);
+    g_free (prop);
+
+    for (guint n = 0; n < randr->noutput; n++)
+        xfce_randr_save_output (randr, scheme, channel, n);
+
+    xfce_randr_free (randr);
+    return TRUE;
+}
+#endif
 
 static void
 update_output_positions (XfceDisplaySettings *settings,
@@ -1299,18 +1351,46 @@ show_confirmation_dialog (gpointer data)
 {
     XfceDisplaySettings *settings = data;
     XfconfChannel *channel = xfce_display_settings_get_channel (settings);
+    const gchar *snapshot_scheme = g_object_get_data (G_OBJECT (settings), SNAPSHOT_SCHEME_KEY);
 
-    /* Ask user confirmation (or recover to Default on timeout) */
+    /* Ask user confirmation (or restore previous configuration on timeout) */
     if (display_setting_timed_confirmation (settings))
     {
         /* Update Default */
-        xfce_display_settings_save (settings, "Default", NULL);
-        xfconf_channel_set_string (channel, "/ActiveProfile", "Default");
+        xfce_display_settings_save (settings, DEFAULT_SCHEME_NAME, NULL);
+        xfconf_channel_set_string (channel, "/ActiveProfile", DEFAULT_SCHEME_NAME);
+
+        /* Drop snapshot: it is only needed for rollback */
+        if (snapshot_scheme != NULL)
+        {
+            gchar *prop = g_strdup_printf ("/%s", snapshot_scheme);
+            xfconf_channel_reset_property (channel, prop, TRUE);
+            g_free (prop);
+        }
+
+        g_object_set_data (G_OBJECT (settings), SNAPSHOT_SCHEME_KEY, NULL);
+        g_object_set_data (G_OBJECT (settings), SNAPSHOT_ACTIVE_PROFILE_KEY, NULL);
     }
     else
     {
-        /* Recover to Default */
-        xfconf_channel_set_string (channel, "/Schemes/Apply", "Default");
+        /* Restore the previous configuration */
+        if (snapshot_scheme != NULL)
+        {
+            /* Clean up the snapshot after xfsettingsd finished applying it */
+            g_object_set_data (G_OBJECT (settings), ROLLBACK_PENDING_KEY, GINT_TO_POINTER (1));
+            g_signal_handlers_disconnect_by_func (channel, display_settings_rollback_cleanup, settings);
+            g_signal_connect (channel, "property-changed::/Schemes/Apply",
+                              G_CALLBACK (display_settings_rollback_cleanup), settings);
+
+            xfconf_channel_set_string (channel, "/Schemes/Apply", snapshot_scheme);
+        }
+        else
+        {
+            /* Fallback: re-apply the previously active profile (or Default) */
+            const gchar *old_profile = g_object_get_data (G_OBJECT (settings), SNAPSHOT_ACTIVE_PROFILE_KEY);
+            xfconf_channel_set_string (channel, "/Schemes/Apply", old_profile != NULL ? old_profile : DEFAULT_SCHEME_NAME);
+            g_object_set_data (G_OBJECT (settings), SNAPSHOT_ACTIVE_PROFILE_KEY, NULL);
+        }
         foo_scroll_area_invalidate (FOO_SCROLL_AREA (xfce_display_settings_get_scroll_area (settings)));
     }
 
@@ -1324,6 +1404,26 @@ static void
 display_setting_apply (GtkWidget *widget,
                        XfceDisplaySettings *settings)
 {
+    XfconfChannel *channel = xfce_display_settings_get_channel (settings);
+
+    /* Prepare rollback data (needed for Restore / timeout) */
+    g_signal_handlers_disconnect_by_func (channel, display_settings_rollback_cleanup, settings);
+    g_object_set_data (G_OBJECT (settings), ROLLBACK_PENDING_KEY, NULL);
+    g_object_set_data (G_OBJECT (settings), SNAPSHOT_SCHEME_KEY, NULL);
+    g_object_set_data (G_OBJECT (settings), SNAPSHOT_ACTIVE_PROFILE_KEY, NULL);
+
+    g_object_set_data_full (G_OBJECT (settings),
+                            SNAPSHOT_ACTIVE_PROFILE_KEY,
+                            xfconf_channel_get_string (channel, "/ActiveProfile", DEFAULT_SCHEME_NAME),
+                            g_free);
+
+#ifdef HAVE_XRANDR
+    if (display_settings_snapshot_current_configuration_x11 (channel, PREVIOUS_SCHEME_NAME))
+    {
+        g_object_set_data_full (G_OBJECT (settings), SNAPSHOT_SCHEME_KEY, g_strdup (PREVIOUS_SCHEME_NAME), g_free);
+    }
+#endif
+
     /* Put disabled outputs on the right before applying changes */
     guint n_outputs = xfce_display_settings_get_n_outputs (settings);
     for (guint n = 0; n < n_outputs; n++)
@@ -1357,13 +1457,54 @@ display_setting_apply (GtkWidget *widget,
     foo_scroll_area_invalidate (FOO_SCROLL_AREA (xfce_display_settings_get_scroll_area (settings)));
 
     /* Apply changes via a temporary profile */
-    xfce_display_settings_save (settings, "Temp", NULL);
-    xfconf_channel_set_string (xfce_display_settings_get_channel (settings), "/Schemes/Apply", "Temp");
+    xfce_display_settings_save (settings, TEMP_SCHEME_NAME, NULL);
+    xfconf_channel_set_string (xfce_display_settings_get_channel (settings), "/Schemes/Apply", TEMP_SCHEME_NAME);
 
     /* Run dialog after this signal handler to avoid random freeze */
     g_idle_add (show_confirmation_dialog, settings);
 
     gtk_widget_set_sensitive (widget, FALSE);
+}
+
+static void
+display_settings_rollback_cleanup (XfconfChannel *channel,
+                                   const gchar *property_name,
+                                   const GValue *value,
+                                   XfceDisplaySettings *settings)
+{
+    (void) property_name;
+
+    if (g_object_get_data (G_OBJECT (settings), ROLLBACK_PENDING_KEY) == NULL)
+        return;
+
+    /* Wait until xfsettingsd resets /Schemes/Apply, which happens after applying */
+    if (value != NULL && G_VALUE_HOLDS_STRING (value))
+        return;
+
+    const gchar *snapshot_scheme = g_object_get_data (G_OBJECT (settings), SNAPSHOT_SCHEME_KEY);
+    if (snapshot_scheme == NULL)
+        return;
+
+    /* Ignore /Schemes/Apply resets not related to our rollback request */
+    gchar *active_profile = xfconf_channel_get_string (channel, "/ActiveProfile", NULL);
+    gboolean is_rollback = g_strcmp0 (active_profile, snapshot_scheme) == 0;
+    g_free (active_profile);
+    if (!is_rollback)
+        return;
+
+    const gchar *old_profile = g_object_get_data (G_OBJECT (settings), SNAPSHOT_ACTIVE_PROFILE_KEY);
+    if (old_profile != NULL)
+        xfconf_channel_set_string (channel, "/ActiveProfile", old_profile);
+
+    gchar *prop = g_strdup_printf ("/%s", snapshot_scheme);
+    xfconf_channel_reset_property (channel, prop, TRUE);
+    g_free (prop);
+
+    g_object_set_data (G_OBJECT (settings), ROLLBACK_PENDING_KEY, NULL);
+    g_object_set_data (G_OBJECT (settings), SNAPSHOT_SCHEME_KEY, NULL);
+    g_object_set_data (G_OBJECT (settings), SNAPSHOT_ACTIVE_PROFILE_KEY, NULL);
+
+    g_signal_handlers_disconnect_by_func (channel, display_settings_rollback_cleanup, settings);
 }
 
 static void
